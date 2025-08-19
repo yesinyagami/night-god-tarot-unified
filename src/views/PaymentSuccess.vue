@@ -43,12 +43,7 @@ onMounted(() => {
   
   // Add notification
   if (window.notify) {
-    window.notify({
-      type: 'success',
-      title: 'Payment Successful!',
-      message: 'Welcome to your enhanced spiritual journey.',
-      timeout: 5000
-    })
+    window.notify('Payment Successful! Welcome to your enhanced spiritual journey.', 'success')
   }
 })
 </script>

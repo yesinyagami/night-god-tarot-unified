@@ -43,12 +43,7 @@ onMounted(() => {
   
   // Add notification
   if (window.notify) {
-    window.notify({
-      type: 'info',
-      title: 'Payment Cancelled',
-      message: 'No problem! You can upgrade anytime.',
-      timeout: 3000
-    })
+    window.notify('Payment Cancelled. No problem! You can upgrade anytime.', 'info')
   }
 })
 </script>

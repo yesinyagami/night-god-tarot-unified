@@ -39,7 +39,7 @@ const router = useRouter()
 
 onMounted(() => {
   // Remove loading screen
-  const loadingElement = document.querySelector('.loading')
+  const loadingElement = document.querySelector('.loading') as HTMLElement
   if (loadingElement) {
     loadingElement.style.opacity = '0'
     setTimeout(() => {

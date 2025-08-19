@@ -163,13 +163,14 @@
 import { ref, onMounted } from 'vue'
 import { useTarotStore } from '../stores/tarot'
 import TarotCard from '../components/TarotCard.vue'
+import type { TarotCard as TarotCardType } from '../types/tarot'
 
 const tarotStore = useTarotStore()
 
 const question = ref('')
-const selectedCards = ref([])
-const availableCards = ref([])
-const reading = ref(null)
+const selectedCards = ref<TarotCardType[]>([])
+const availableCards = ref<TarotCardType[]>([])
+const reading = ref<any>(null)
 const isLoading = ref(false)
 
 const cardPositions = ['Past/Foundation', 'Present/Challenge', 'Future/Outcome']
@@ -189,7 +190,7 @@ function shuffleCards() {
   availableCards.value = allCards.slice(0, 20) // Show 20 random cards
 }
 
-function selectCard(card) {
+function selectCard(card: TarotCardType) {
   if (selectedCards.value.includes(card)) {
     selectedCards.value = selectedCards.value.filter(c => c.id !== card.id)
   } else if (selectedCards.value.length < 3) {

@@ -136,8 +136,13 @@ function getIcon(type: Notification['type']) {
   }
 }
 
-// Global notification system
-window.notify = addNotification
+// Global notification system with simple interface
+function notify(message: string, type: Notification['type'] = 'info') {
+  return addNotification({ message, type })
+}
+
+// @ts-ignore
+window.notify = notify
 
 // Export for composable use
 defineExpose({
