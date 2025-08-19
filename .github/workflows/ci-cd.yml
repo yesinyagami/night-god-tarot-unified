@@ -206,7 +206,7 @@ jobs:
   deploy-to-staging:
     name: Deploy to Staging
     runs-on: ubuntu-latest
-    needs: [docker]
+    needs: [build]
     if: github.ref == 'refs/heads/develop'
     environment: staging
     steps:
@@ -357,7 +357,7 @@ jobs:
   notify:
     name: Notify on Failure
     runs-on: ubuntu-latest
-    needs: [quality, test, build, security, docker, lighthouse]
+    needs: [quality, test, build, security, env-check, lighthouse]
     if: always() && (failure() || cancelled())
     steps:
       - name: Send notification
