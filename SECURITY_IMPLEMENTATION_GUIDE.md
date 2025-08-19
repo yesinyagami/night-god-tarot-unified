@@ -10,7 +10,7 @@
 #### ❌ **BEFORE (CRITICAL VULNERABILITY):**
 ```javascript
 // EXPOSED API KEY - ANYONE CAN STEAL AND ABUSE
-const MONICA_API_KEY = 'sk-vj0VTDNuoEXtCZ9iwGEOWf96NBGGyvnIWmiVGAp6uBGGNh8r-6T8oWSOk9xhLsgvOyA1sOEPbyEUjKUBkngHC_gpFV4O';
+const MONICA_API_KEY = 'your_monica_api_key_here';
 ```
 
 #### ✅ **AFTER (SECURE IMPLEMENTATION):**

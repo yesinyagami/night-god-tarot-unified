@@ -73,7 +73,7 @@ npm run test:monica-only
 ### **Environment Variables (`.env`)**
 ```env
 # Monica AI Configuration
-MONICA_API_KEY=sk-vj0VTDNuoEXtCZ9iwGEOWf96NBGGyvnIWmiVGAp6uBGGNh8r-6T8oWSOk9xhLsgvOyA1sOEPbyEUjKUBkngHC_gpFV4O
+MONICA_API_KEY=your_monica_api_key_here
 MONICA_BASE_URL=https://openapi.monica.im
 MONICA_ONLY_MODE=true
 

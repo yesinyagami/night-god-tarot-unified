@@ -12,7 +12,7 @@
 #### **❌ MAJOR SECURITY FLAWS:**
 1. **🔥 EXPOSED API KEY** - Monica AI key hardcoded in client-side JavaScript
    ```javascript
-   const MONICA_API_KEY = 'sk-vj0VTDNuoEXtCZ9iwGEOWf96NBGGyvnIWmiVGAp6uBGGNh8r-6T8oWSOk9xhLsgvOyA1sOEPbyEUjKUBkngHC_gpFV4O';
+   const MONICA_API_KEY = 'your_monica_api_key_here';
    ```
    **Risk Level: CRITICAL** - API key can be stolen and abused
 

@@ -8,7 +8,7 @@
 ### ❌ **BEFORE (Grade: F)**
 ```javascript
 // EXPOSED API KEY - CRITICAL VULNERABILITY
-const MONICA_API_KEY = 'sk-vj0VTDNuoEXtCZ9iwGEOWf96NBGGyvnIWmiVGAp6uBGGNh8r-6T8oWSOk9xhLsgvOyA1sOEPbyEUjKUBkngHC_gpFV4O';
+const MONICA_API_KEY = 'your_monica_api_key_here';
 
 // No CSP headers
 // Multiple XSS injection points

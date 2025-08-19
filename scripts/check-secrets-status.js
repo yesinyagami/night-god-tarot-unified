@@ -5,7 +5,7 @@
 
 import { execSync } from 'child_process';
 
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || 'your_github_token_here';
 const REPO = 'yesinyagami/night-god-tarot-unified';
 
 const REQUIRED_SECRETS = [
