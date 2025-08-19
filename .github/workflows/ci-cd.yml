@@ -224,7 +224,6 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [build]
     if: github.ref == 'refs/heads/develop'
-    environment: staging
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -270,7 +269,6 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [docker]
     if: github.ref == 'refs/heads/main'
-    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
