@@ -66,6 +66,7 @@ jobs:
           files: ./coverage/lcov.info
           flags: unittests
           name: codecov-umbrella
+          token: ${{ secrets.CODECOV_TOKEN }}
         continue-on-error: true
 
   # Build Application
@@ -179,10 +180,28 @@ jobs:
       name: staging
       url: https://staging.nightgodtarot.com
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Verify required secrets
+        run: |
+          if [ -z "${{ secrets.MONICA_API_KEY }}" ]; then
+            echo "Error: MONICA_API_KEY secret is not configured"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DB_PASSWORD }}" ]; then
+            echo "Error: DB_PASSWORD secret is not configured"
+            exit 1
+          fi
+          echo "All required secrets are configured"
+          
       - name: Deploy to staging server
         run: |
           echo "Deploying to staging environment..."
-          # Add your deployment script here
+          echo "Environment: staging"
+          echo "Monica API configured: $([ -n "$MONICA_API_KEY" ] && echo "✓" || echo "✗")"
+          echo "Database configured: $([ -n "$DB_PASSWORD" ] && echo "✓" || echo "✗")"
+          # Add your actual deployment script here
         env:
           MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -197,10 +216,33 @@ jobs:
       name: production
       url: https://nightgodtarot.com
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Verify required secrets
+        run: |
+          if [ -z "${{ secrets.MONICA_API_KEY }}" ]; then
+            echo "Error: MONICA_API_KEY secret is not configured"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DB_PASSWORD }}" ]; then
+            echo "Error: DB_PASSWORD secret is not configured"
+            exit 1
+          fi
+          if [ -z "${{ secrets.REDIS_PASSWORD }}" ]; then
+            echo "Error: REDIS_PASSWORD secret is not configured"
+            exit 1
+          fi
+          echo "All required secrets are configured"
+          
       - name: Deploy to production server
         run: |
           echo "Deploying to production environment..."
-          # Add your deployment script here
+          echo "Environment: production"
+          echo "Monica API configured: $([ -n "$MONICA_API_KEY" ] && echo "✓" || echo "✗")"
+          echo "Database configured: $([ -n "$DB_PASSWORD" ] && echo "✓" || echo "✗")"
+          echo "Redis configured: $([ -n "$REDIS_PASSWORD" ] && echo "✓" || echo "✗")"
+          # Add your actual deployment script here
         env:
           MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -227,6 +269,17 @@ jobs:
       - name: Build application
         run: npm run build-only
 
+      - name: Start development server
+        run: |
+          npm run dev &
+          echo $! > dev-server.pid
+          sleep 10
+        
+      - name: Wait for server to be ready
+        run: |
+          timeout 60 bash -c 'until curl -s http://localhost:5173 > /dev/null; do sleep 2; done'
+          echo "Server is ready"
+        
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
@@ -237,8 +290,15 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
         continue-on-error: true
+        
+      - name: Stop development server
+        run: |
+          if [ -f dev-server.pid ]; then
+            kill $(cat dev-server.pid) || true
+            rm dev-server.pid
+          fi
 
-# Notification on failure
+  # Notification on failure
   notify:
     name: Notify on Failure
     runs-on: ubuntu-latest
@@ -248,4 +308,8 @@ jobs:
       - name: Send notification
         run: |
           echo "Pipeline failed! Sending notification..."
+          echo "Failed jobs: ${{ join(needs.*.result, ', ') }}"
           # Add your notification logic here (Slack, Discord, email, etc.)
+          # Example: curl webhook to Discord/Slack
+        env:
+          NOTIFICATION_WEBHOOK: ${{ secrets.NOTIFICATION_WEBHOOK }}
