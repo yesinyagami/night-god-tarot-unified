@@ -20,6 +20,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "test:monica-only": "node scripts/test-monica.js",
+    "check-env": "node scripts/check-env.js",
     "docker:build": "docker build -t night-god-tarot .",
     "docker:run": "docker-compose up -d",
     "docker:stop": "docker-compose down",

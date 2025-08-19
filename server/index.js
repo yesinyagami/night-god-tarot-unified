@@ -29,6 +29,22 @@ import { logRequest } from './middleware/logging.js';
 // Load environment variables
 dotenv.config();
 
+// Validate required environment variables
+const requiredEnvVars = ['MONICA_API_KEY', 'JWT_SECRET'];
+const missingVars = requiredEnvVars.filter(varName => !process.env[varName] || process.env[varName] === 'your-monica-api-key-here' || process.env[varName] === 'your-jwt-secret-here-minimum-32-characters');
+
+if (missingVars.length > 0) {
+  console.error('❌ Missing or placeholder environment variables:');
+  missingVars.forEach(varName => {
+    console.error(`   - ${varName}`);
+  });
+  console.error('\n📋 Please configure these in your .env file or environment variables');
+  console.error('💡 For development, copy .env.example to .env and fill in real values');
+  if (process.env.NODE_ENV === 'production') {
+    process.exit(1); // Exit in production if missing critical vars
+  }
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -125,7 +141,14 @@ app.post('/api/ai/chat', authenticateToken, async (req, res, next) => {
     });
 
     if (!response.ok) {
-      throw new Error(`Monica API Error: ${response.status}`);
+      const errorText = await response.text();
+      console.error('Monica AI Chat API Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText,
+        hasApiKey: !!process.env.MONICA_API_KEY
+      });
+      throw new Error(`Monica API Error: ${response.status} - ${errorText}`);
     }
 
     const data = await response.json();
@@ -193,14 +216,25 @@ app.post('/api/readings/perform', async (req, res, next) => {
     });
 
     if (!aiResponse.ok) {
-      // Fallback to mock response
+      const errorText = await aiResponse.text();
+      console.error('Monica AI API Error:', {
+        status: aiResponse.status,
+        statusText: aiResponse.statusText,
+        error: errorText,
+        hasApiKey: !!process.env.MONICA_API_KEY,
+        apiKeyPrefix: process.env.MONICA_API_KEY ? process.env.MONICA_API_KEY.substring(0, 10) + '...' : 'Missing'
+      });
+      
+      // Fallback to mock response with error info
       return res.json({
         ...reading,
-        interpretation: 'The cards reveal a journey of transformation and growth. Trust in the divine timing of your path.',
+        interpretation: `The cosmic energies are currently realigning. Here is your divine guidance: The cards reveal a journey of transformation and growth. Trust in the divine timing of your path.`,
         collectiveWisdom: 'The universe speaks of new beginnings and infinite possibilities.',
         personalAnalysis: 'Your inner strength guides you toward your highest potential.',
         wisdomIntegration: 'By embracing both light and shadow, you find balance.',
         poeticSublimation: 'Like stars dancing in the cosmic void, your soul journey unfolds with grace.',
+        fallback: true,
+        apiError: aiResponse.status
       });
     }
 
