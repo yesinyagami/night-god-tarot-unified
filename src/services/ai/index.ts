@@ -21,15 +21,12 @@ class FrontendAISystem implements AISystem {
   async initialize(): Promise<void> {
     console.log('🤖 Initializing Monica AI System (Frontend Mode)...')
     
-    // Get API key from environment or localStorage
-    this.apiKey = import.meta.env.MONICA_API_KEY || localStorage.getItem('monica-api-key')
-    
-    if (!this.apiKey) {
-      console.warn('⚠️  Monica API key not found - using mock responses')
-    }
+    // Frontend should not handle API keys directly
+    // All AI requests will go through backend API
+    this.apiKey = null // Removed direct API key access
     
     this.initialized = true
-    console.log('✅ AI System initialized')
+    console.log('✅ AI System initialized - using backend proxy')
   }
 
   async performReading(request: ReadingRequest): Promise<{ finalReading: TarotReading }> {
@@ -57,48 +54,47 @@ class FrontendAISystem implements AISystem {
 
   getSystemStatus() {
     return {
-      connected: this.initialized && !!this.apiKey,
+      connected: this.initialized, // Backend handles API key
       ready: this.initialized
     }
   }
 
   private async callMonicaAPI(request: ReadingRequest): Promise<{ finalReading: TarotReading }> {
-    if (!this.apiKey) {
-      throw new Error('No API key available')
-    }
-
-    const response = await fetch('https://openapi.monica.im/v1/chat/completions', {
+    // Use backend API instead of direct Monica API call
+    const response = await fetch('/api/readings/perform', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
-        messages: [
-          {
-            role: 'system',
-            content: `You are a mystical tarot reader for Night God Tarot. Provide deep, insightful readings that combine traditional tarot wisdom with modern psychological understanding. Always be supportive, empowering, and spiritually guided.`
-          },
-          {
-            role: 'user',
-            content: this.buildReadingPrompt(request)
-          }
-        ],
-        max_tokens: 1500,
-        temperature: 0.8
+        question: request.question,
+        cards: request.cards,
+        userId: request.userId,
+        preferences: {
+          model: 'claude-3-5-sonnet-20241022',
+          temperature: 0.8
+        }
       })
     })
 
     if (!response.ok) {
-      throw new Error(`Monica API Error: ${response.status}`)
+      throw new Error(`Backend API Error: ${response.status}`)
     }
 
     const data = await response.json()
-    const aiResponse = data.choices[0].message.content
-
+    
     return {
-      finalReading: this.parseAIResponse(aiResponse, request)
+      finalReading: {
+        id: data.id,
+        userId: data.userId,
+        spreadId: request.spreadId,
+        question: data.question,
+        cards: data.cards,
+        interpretation: data.interpretation,
+        timestamp: new Date(data.timestamp),
+        isPublic: false,
+        tags: ['ai-generated', 'divine-guidance']
+      }
     }
   }
 

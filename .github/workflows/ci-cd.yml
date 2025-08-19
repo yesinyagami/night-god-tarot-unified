@@ -183,15 +183,23 @@ jobs:
         
       - name: Verify required secrets
         run: |
-          if [ -z "${{ secrets.MONICA_API_KEY }}" ]; then
+          if [ -z "$MONICA_API_KEY" ]; then
             echo "Error: MONICA_API_KEY secret is not configured"
             exit 1
           fi
-          if [ -z "${{ secrets.DB_PASSWORD }}" ]; then
+          if [ -z "$DB_PASSWORD" ]; then
             echo "Error: DB_PASSWORD secret is not configured"
             exit 1
           fi
+          if [ -z "$JWT_SECRET" ]; then
+            echo "Error: JWT_SECRET secret is not configured"
+            exit 1
+          fi
           echo "All required secrets are configured"
+        env:
+          MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
           
       - name: Deploy to staging server
         run: |
@@ -199,10 +207,14 @@ jobs:
           echo "Environment: staging"
           echo "Monica API configured: $([ -n "$MONICA_API_KEY" ] && echo "✓" || echo "✗")"
           echo "Database configured: $([ -n "$DB_PASSWORD" ] && echo "✓" || echo "✗")"
+          echo "JWT Secret configured: $([ -n "$JWT_SECRET" ] && echo "✓" || echo "✗")"
           # Add your actual deployment script here
         env:
           MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NODE_ENV: staging
+          FRONTEND_URL: https://staging.nightgodtarot.com
 
   # Deploy to Production
   deploy-to-production:
@@ -217,19 +229,28 @@ jobs:
         
       - name: Verify required secrets
         run: |
-          if [ -z "${{ secrets.MONICA_API_KEY }}" ]; then
+          if [ -z "$MONICA_API_KEY" ]; then
             echo "Error: MONICA_API_KEY secret is not configured"
             exit 1
           fi
-          if [ -z "${{ secrets.DB_PASSWORD }}" ]; then
+          if [ -z "$DB_PASSWORD" ]; then
             echo "Error: DB_PASSWORD secret is not configured"
             exit 1
           fi
-          if [ -z "${{ secrets.REDIS_PASSWORD }}" ]; then
+          if [ -z "$REDIS_PASSWORD" ]; then
             echo "Error: REDIS_PASSWORD secret is not configured"
             exit 1
           fi
+          if [ -z "$JWT_SECRET" ]; then
+            echo "Error: JWT_SECRET secret is not configured"
+            exit 1
+          fi
           echo "All required secrets are configured"
+        env:
+          MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
           
       - name: Deploy to production server
         run: |
@@ -238,11 +259,15 @@ jobs:
           echo "Monica API configured: $([ -n "$MONICA_API_KEY" ] && echo "✓" || echo "✗")"
           echo "Database configured: $([ -n "$DB_PASSWORD" ] && echo "✓" || echo "✗")"
           echo "Redis configured: $([ -n "$REDIS_PASSWORD" ] && echo "✓" || echo "✗")"
+          echo "JWT Secret configured: $([ -n "$JWT_SECRET" ] && echo "✓" || echo "✗")"
           # Add your actual deployment script here
         env:
           MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NODE_ENV: production
+          FRONTEND_URL: https://nightgodtarot.com
 
   # Lighthouse Performance Test
   lighthouse:
