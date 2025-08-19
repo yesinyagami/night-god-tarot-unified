@@ -128,7 +128,7 @@ Focus on empowerment, growth, and spiritual guidance. Be mystical but practical.
     // In a real implementation, this would parse the structured AI response
     // For now, create a structured reading from the response
     
-    const cardNames = request.cards.map(c => c.name).join(', ')
+    // const cardNames = request.cards.map(c => c.name).join(', ') // For future use
     
     return {
       id: `reading-${Date.now()}`,

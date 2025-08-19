@@ -3,7 +3,7 @@
  * Centralized error handling and logging
  */
 
-export function errorHandler(err, req, res, next) {
+export function errorHandler(err, req, res, _next) {
   // Enhanced error logging
   const errorId = `err_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   
