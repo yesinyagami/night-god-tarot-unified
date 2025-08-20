@@ -50,7 +50,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log('📖 About view mounted')
+  // About view mounted
 })
 </script>
 

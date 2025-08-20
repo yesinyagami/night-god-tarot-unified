@@ -40,6 +40,7 @@ export interface TarotCard {
   }
   unlockConditions?: UnlockCondition[]
   rarity?: 'common' | 'rare' | 'epic' | 'legendary' | 'mythic'
+  revealed?: boolean // For UI state management
 }
 
 export interface TarotSpread {
@@ -79,6 +80,8 @@ export interface TarotReading {
   question: string
   cards: DrawnCard[]
   interpretation: string
+  guidance?: string
+  timing?: string
   aiInterpretations?: AIInterpretation[]
   poeticInterpretation?: string
   timestamp: Date
@@ -87,6 +90,12 @@ export interface TarotReading {
   mood?: string
   userFeedback?: UserFeedback
   storyElements?: StoryElement[]
+  title?: string // For reading display
+  mainText?: string
+  collectiveWisdom?: string
+  personalAnalysis?: string  
+  wisdomIntegration?: string
+  poeticSublimation?: string
 }
 
 // =================== AI & MONICA TYPES ===================

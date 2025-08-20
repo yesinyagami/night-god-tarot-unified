@@ -117,8 +117,9 @@ router.post('/perform', authenticateToken, asyncHandler(async (req, res) => {
       }
     });
 
-  } catch (error) {
+  } catch (aiError) {
     // Fallback interpretation if AI fails
+    console.warn('AI reading failed, using fallback:', aiError.message);
     reading.interpretation = generateFallbackReading(reading);
     reading.status = 'completed';
     readings.set(reading.id, reading);

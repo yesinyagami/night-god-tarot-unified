@@ -20,6 +20,8 @@ import cardsRoutes from './routes/cards.js';
 import readingsRoutes from './routes/readings.js';
 import paymentsRoutes from './routes/payments.js';
 import adminRoutes from './routes/admin.js';
+import apiKeysRoutes from './routes/apiKeys.js';
+import consentRoutes from './routes/consent.js';
 
 // Import middleware
 import { errorHandler } from './middleware/errorHandler.js';
@@ -60,7 +62,7 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https:"],
-      connectSrc: ["'self'", "https://openapi.monica.im"],
+      connectSrc: ["'self'", "https://openapi.monica.im", "https://api.openweathermap.org", "https://newsapi.org", "https://ipinfo.io", "http://ip-api.com", "https://api.ipgeolocation.io", "https://api.currentsapi.services"],
     },
   },
 }));
@@ -120,6 +122,8 @@ app.use('/api/cards', cardsRoutes);
 app.use('/api/readings', readingsRoutes);
 app.use('/api/payments', paymentsRoutes);
 app.use('/api/admin', authenticateToken, adminRoutes);
+app.use('/api/keys', apiKeysRoutes);
+app.use('/api/consent', consentRoutes);
 
 // Monica AI proxy endpoint
 app.post('/api/ai/chat', authenticateToken, async (req, res, next) => {

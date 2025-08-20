@@ -39,7 +39,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log('💔 Payment cancelled page loaded')
+  // Payment cancelled page loaded
   
   // Add notification
   if (window.notify) {

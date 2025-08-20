@@ -17,7 +17,6 @@ let particles: Array<{
 
 onMounted(() => {
   createParticles()
-  animate()
 })
 
 onUnmounted(() => {

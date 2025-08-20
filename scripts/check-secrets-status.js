@@ -3,7 +3,7 @@
  * 用於驗證所有必要的 secrets 是否已設置
  */
 
-import { execSync } from 'child_process';
+// import { execSync } from 'child_process'; // Available for future use
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || 'your_github_token_here';
 const REPO = 'yesinyagami/night-god-tarot-unified';

@@ -27,7 +27,7 @@ let oscillator: OscillatorNode | null = null
 let gainNode: GainNode | null = null
 
 onMounted(() => {
-  console.log('🎵 Audio system mounted')
+  // Audio system mounted
 })
 
 onUnmounted(() => {
@@ -45,7 +45,7 @@ function toggleAudio() {
 function startAudio() {
   try {
     if (!audioContext) {
-      audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+      audioContext = new (window.AudioContext || (window as any).webkitAudioContext || AudioContext)()
     }
 
     if (audioContext.state === 'suspended') {
@@ -69,7 +69,7 @@ function startAudio() {
     oscillator.start()
     isPlaying.value = true
 
-    console.log('🎵 Ambient audio started')
+    // Ambient audio started
   } catch (error) {
     console.warn('Audio not supported or failed:', error)
   }
@@ -88,6 +88,6 @@ function stopAudio() {
   }
 
   isPlaying.value = false
-  console.log('🔇 Ambient audio stopped')
+  // Ambient audio stopped
 }
 </script>

@@ -437,7 +437,7 @@ Remember: You are not just giving a reading - you are creating a transformative 
         })
         
         results[name] = response.ok
-      } catch (error) {
+      } catch {
         results[name] = false
       }
     }

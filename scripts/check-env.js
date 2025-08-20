@@ -141,7 +141,7 @@ if (process.env.MONICA_API_KEY && process.env.MONICA_API_KEY !== 'your-monica-ap
 
     if (response.ok) {
       console.log('✅ Monica AI API: Connection successful');
-      const data = await response.json();
+      await response.json(); // Consume response without storing unused data
       console.log('   Response received successfully');
     } else {
       console.log(`❌ Monica AI API: Connection failed (${response.status})`);

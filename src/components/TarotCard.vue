@@ -1,213 +1,263 @@
 <template>
-  <div
-    :class="[
-      'relative group cursor-pointer transition-all duration-500 transform hover:scale-105',
-      {
-        'animate-glow': selected,
-        'hover:shadow-glow': !selected
-      }
-    ]"
-    @click="$emit('select', card)"
+  <div 
+    class="tarot-card" 
+    :class="{ 'revealed': revealed, 'selectable': selectable }"
+    @click="$emit('card-selected')"
   >
-    <!-- Card Container -->
-    <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/20 to-slate-900/20 backdrop-blur-sm border border-white/10">
-      
-      <!-- Card Image -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div
-          v-if="!isRevealed && showBack"
-          class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-800 to-blue-800"
-        >
-          <div class="text-gold-400 text-4xl">🌙</div>
-        </div>
-        <img
-          v-else-if="card.image"
-          :src="card.image"
-          :alt="card.name"
-          class="w-full h-full object-cover"
+    <div class="card-inner">
+      <div class="card-front">
+        <img 
+          :src="cardImageUrl" 
+          :alt="card.name" 
+          class="card-image"
           @error="handleImageError"
+          @load="handleImageLoad"
         />
-        <div
-          v-else
-          class="w-full h-full flex flex-col items-center justify-center text-center p-4 bg-gradient-to-br from-purple-800/30 to-blue-800/30"
-        >
-          <!-- Fallback Design -->
-          <div class="text-4xl mb-2">{{ getCardEmoji(card) }}</div>
-          <h3 class="text-sm font-semibold text-white mb-1">{{ card.name }}</h3>
-          <p class="text-xs text-gray-300">{{ card.arcana }}</p>
-          <div class="absolute top-2 right-2 text-xs bg-black/50 px-2 py-1 rounded">
-            {{ card.number }}
-          </div>
+        <div class="card-overlay">
+          <h3 class="card-name">{{ card.name }}</h3>
+          <p class="card-arcana">{{ formatArcana(card.arcana) }}</p>
         </div>
       </div>
-
-      <!-- Selection Indicator -->
-      <div
-        v-if="selected"
-        class="absolute inset-0 bg-gradient-to-br from-gold-400/20 to-gold-600/20 border-2 border-gold-400 rounded-xl"
-      ></div>
-
-      <!-- Hover Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div class="absolute bottom-0 left-0 right-0 p-3">
-          <h3 class="text-white font-semibold text-sm">{{ card.name }}</h3>
-          <p class="text-gray-300 text-xs">{{ card.arcana }}</p>
-          <div v-if="position" class="text-gold-400 text-xs mt-1">{{ position }}</div>
+      <div class="card-back">
+        <div class="card-back-design">
+          <div class="sacred-symbol">🌙</div>
+          <div class="card-title">Night God Tarot</div>
         </div>
       </div>
-
-      <!-- Arcana Badge -->
-      <div class="absolute top-2 left-2">
-        <span class="text-xs px-2 py-1 rounded-full bg-black/50 text-white">
-          {{ card.arcana }}
-        </span>
-      </div>
-
-      <!-- Element/Suit Badge -->
-      <div v-if="card.element || card.suit" class="absolute top-2 right-2">
-        <span class="text-xs px-2 py-1 rounded-full bg-black/50 text-white">
-          {{ card.element || card.suit }}
-        </span>
-      </div>
     </div>
-
-    <!-- Card Info Panel (expandable) -->
-    <div
-      v-if="showDetails && isRevealed"
-      class="absolute top-full left-0 right-0 mt-2 p-4 bg-black/90 backdrop-blur-sm rounded-lg border border-white/20 z-10 text-sm"
-    >
-      <h4 class="font-semibold text-gold-400 mb-2">{{ card.name }}</h4>
-      <p class="text-gray-300 mb-2">{{ card.meanings?.upright?.general || 'No meaning available' }}</p>
-      <div class="flex flex-wrap gap-1">
-        <span
-          v-for="keyword in (card.keywords?.upright || [])"
-          :key="keyword"
-          class="text-xs px-2 py-1 bg-purple-600/30 text-purple-200 rounded"
-        >
-          {{ keyword }}
-        </span>
-      </div>
-    </div>
-
-    <!-- Glow Effect -->
-    <div
-      v-if="selected || mysticalGlow"
-      class="absolute inset-0 -z-10 bg-gradient-to-br from-gold-400/30 to-purple-600/30 blur-lg rounded-xl animate-pulse"
-    ></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { TarotCard } from '../types/tarot'
 
 interface Props {
   card: TarotCard
-  selected?: boolean
-  showBack?: boolean
-  showDetails?: boolean
-  position?: string
-  mysticalGlow?: boolean
+  revealed?: boolean
+  selectable?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  selected: false,
-  showBack: false,
-  showDetails: false,
-  mysticalGlow: false
+  revealed: true,
+  selectable: false
 })
 
-const emit = defineEmits<{
-  select: [card: TarotCard]
-}>()
-
-const isRevealed = ref(!props.showBack)
 const imageError = ref(false)
+const imageLoaded = ref(false)
 
-const cardPosition = computed(() => props.position || '')
+const cardImageUrl = computed(() => {
+  if (imageError.value) {
+    return createPlaceholderImage()
+  }
+  return props.card.image
+})
 
 function handleImageError() {
   imageError.value = true
-  console.warn(`Failed to load image for card: ${props.card.name}`)
+  // Card image fallback to placeholder
 }
 
-function getCardEmoji(card: TarotCard): string {
-  // Major Arcana emojis
-  const majorArcanaEmojis: Record<string, string> = {
-    'The Fool': '🃏',
-    'The Magician': '🎩',
-    'The High Priestess': '🌙',
-    'The Empress': '👑',
-    'The Emperor': '🏰',
-    'The Hierophant': '⛪',
-    'The Lovers': '💕',
-    'The Chariot': '🏇',
-    'Strength': '🦁',
-    'The Hermit': '🔦',
-    'Wheel of Fortune': '🎡',
-    'Justice': '⚖️',
-    'The Hanged Man': '🙃',
-    'Death': '💀',
-    'Temperance': '⚗️',
-    'The Devil': '👹',
-    'The Tower': '🗼',
-    'The Star': '⭐',
-    'The Moon': '🌙',
-    'The Sun': '☀️',
-    'Judgement': '📯',
-    'The World': '🌍'
-  }
-
-  // Suit emojis
-  const suitEmojis: Record<string, string> = {
-    'wands': '🔥',
-    'cups': '💧',
-    'swords': '⚔️',
-    'pentacles': '💰'
-  }
-
-  // Check major arcana first
-  if (card.arcana === 'major' && majorArcanaEmojis[card.name]) {
-    return majorArcanaEmojis[card.name]
-  }
-
-  // Check suit
-  if (card.suit && suitEmojis[card.suit]) {
-    return suitEmojis[card.suit]
-  }
-
-  // Hidden cards
-  if (card.arcana === 'hidden') {
-    return '🔮'
-  }
-
-  // Default
-  return '🃏'
+function handleImageLoad() {
+  imageLoaded.value = true
+  imageError.value = false
 }
 
-// Reveal card after a delay if showing back initially
-if (props.showBack) {
-  setTimeout(() => {
-    isRevealed.value = true
-  }, 500)
+function createPlaceholderImage(): string {
+  // Create a data URL for a placeholder image with card info
+  const canvas = document.createElement('canvas')
+  canvas.width = 400
+  canvas.height = 700
+  const ctx = canvas.getContext('2d')
+  
+  if (!ctx) return ''
+  
+  // Mystical background
+  const gradient = ctx.createLinearGradient(0, 0, 0, 700)
+  gradient.addColorStop(0, '#1a1a2e')
+  gradient.addColorStop(0.5, '#16213e')
+  gradient.addColorStop(1, '#0f0f23')
+  
+  ctx.fillStyle = gradient
+  ctx.fillRect(0, 0, 400, 700)
+  
+  // Golden border
+  ctx.strokeStyle = '#FFD700'
+  ctx.lineWidth = 4
+  ctx.strokeRect(10, 10, 380, 680)
+  
+  // Card name
+  ctx.fillStyle = '#FFD700'
+  ctx.font = 'bold 28px serif'
+  ctx.textAlign = 'center'
+  
+  const name = props.card.name
+  const maxWidth = 340
+  const words = name.split(' ')
+  let line = ''
+  let y = 100
+  const lineHeight = 35
+  
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' '
+    const metrics = ctx.measureText(testLine)
+    const testWidth = metrics.width
+    
+    if (testWidth > maxWidth && n > 0) {
+      ctx.fillText(line, 200, y)
+      line = words[n] + ' '
+      y += lineHeight
+    } else {
+      line = testLine
+    }
+  }
+  ctx.fillText(line, 200, y)
+  
+  // Arcana type
+  ctx.font = '20px serif'
+  ctx.fillStyle = '#B8860B'
+  ctx.fillText(formatArcana(props.card.arcana), 200, y + 50)
+  
+  // Element (if available)
+  if (props.card.element) {
+    ctx.font = '18px serif'
+    ctx.fillStyle = '#DAA520'
+    ctx.fillText(`Element: ${props.card.element}`, 200, y + 80)
+  }
+  
+  // Keywords
+  const keywords = props.card.keywords.upright.slice(0, 3).join(' • ')
+  ctx.font = '16px serif'
+  ctx.fillStyle = '#F0E68C'
+  ctx.fillText(keywords, 200, y + 120)
+  
+  // Mystical symbol
+  ctx.font = '80px serif'
+  ctx.fillStyle = '#FFD700'
+  ctx.fillText('🔮', 200, y + 220)
+  
+  // Card number/suit info
+  let cardInfo = ''
+  if (props.card.arcana === 'major') {
+    cardInfo = `Major Arcana ${props.card.number !== undefined ? props.card.number : ''}`
+  } else if (props.card.suit) {
+    cardInfo = `${props.card.suit} ${props.card.number || ''}`
+  }
+  
+  ctx.font = '14px serif'
+  ctx.fillStyle = '#B8860B'
+  ctx.fillText(cardInfo, 200, 650)
+  
+  return canvas.toDataURL()
 }
+
+function formatArcana(arcana: string): string {
+  if (arcana === 'major') return 'Major Arcana'
+  if (arcana === 'minor') return 'Minor Arcana'
+  return arcana.charAt(0).toUpperCase() + arcana.slice(1)
+}
+
+defineEmits<{
+  'card-selected': []
+}>()
 </script>
 
 <style scoped>
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
+.tarot-card {
+  @apply relative w-32 h-56 cursor-pointer transition-all duration-500 transform-gpu;
+  perspective: 1000px;
 }
 
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-  }
+.tarot-card.selectable:hover {
+  @apply scale-105;
 }
 
-.shadow-glow {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+.card-inner {
+  @apply relative w-full h-full transition-transform duration-700;
+  transform-style: preserve-3d;
+}
+
+.tarot-card.revealed .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  @apply absolute inset-0 rounded-lg overflow-hidden;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+  @apply bg-gradient-to-b from-gray-900 to-black border border-yellow-400;
+}
+
+.card-back {
+  @apply bg-gradient-to-b from-blue-900 via-purple-900 to-indigo-900 border border-yellow-400;
+}
+
+.card-image {
+  @apply w-full h-full object-cover;
+}
+
+.card-overlay {
+  @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2;
+}
+
+.card-name {
+  @apply text-yellow-400 font-bold text-xs mb-1;
+  font-family: 'Cinzel', serif;
+}
+
+.card-arcana {
+  @apply text-yellow-600 text-xs;
+}
+
+.card-back-design {
+  @apply flex flex-col items-center justify-center h-full text-center p-4;
+}
+
+.sacred-symbol {
+  @apply text-6xl mb-4;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.card-title {
+  @apply text-yellow-400 font-bold text-sm tracking-wider;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Animation for card flip */
+@keyframes cardFlip {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+.tarot-card.revealing .card-inner {
+  animation: cardFlip 0.7s ease-in-out forwards;
+}
+
+/* Mystical glow effect */
+.tarot-card::before {
+  content: '';
+  @apply absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300;
+  background: linear-gradient(45deg, 
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(255, 215, 0, 0) 50%,
+    rgba(255, 215, 0, 0.1) 100%);
+}
+
+.tarot-card:hover::before {
+  @apply opacity-100;
+}
+
+/* Sacred geometry overlay */
+.card-front::after {
+  content: '';
+  @apply absolute inset-0 opacity-10;
+  background-image: radial-gradient(circle at 50% 50%, 
+    transparent 30%, 
+    rgba(255, 215, 0, 0.1) 40%, 
+    transparent 60%);
 }
 </style>

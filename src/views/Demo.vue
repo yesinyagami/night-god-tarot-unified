@@ -163,20 +163,20 @@
 import { ref, onMounted } from 'vue'
 import { useTarotStore } from '../stores/tarot'
 import TarotCard from '../components/TarotCard.vue'
-import type { TarotCard as TarotCardType } from '../types/tarot'
+import type { TarotCard as TarotCardType, TarotReading } from '../types/tarot'
 
 const tarotStore = useTarotStore()
 
 const question = ref('')
 const selectedCards = ref<TarotCardType[]>([])
 const availableCards = ref<TarotCardType[]>([])
-const reading = ref<any>(null)
+const reading = ref<TarotReading | null>(null)
 const isLoading = ref(false)
 
 const cardPositions = ['Past/Foundation', 'Present/Challenge', 'Future/Outcome']
 
 onMounted(async () => {
-  console.log('🔮 Demo view mounted')
+  // Demo view mounted
   await tarotStore.loadCards()
   shuffleCards()
 })
@@ -209,17 +209,14 @@ async function performReading() {
   
   try {
     const readingRequest = {
-      cards: selectedCards.value,
+      cards: selectedCards.value.map((card, index) => ({
+        positionId: `position-${index}`,
+        cardId: card.id,
+        reversed: Math.random() < 0.2
+      })),
       question: question.value || 'General life guidance',
-      spread: 'three-card',
-      user: {
-        id: 'demo-user',
-        name: 'Seeker',
-        preferences: {
-          style: 'mystical',
-          depth: 'detailed'
-        }
-      }
+      spreadId: 'three-card',
+      userId: 'demo-user'
     }
     
     reading.value = await tarotStore.performReading(readingRequest)
@@ -227,12 +224,29 @@ async function performReading() {
     console.error('Reading failed:', error)
     // Fallback reading for demo
     reading.value = {
+      id: `demo-reading-${Date.now()}`,
+      userId: 'demo-user',
+      spreadId: 'three-card',
+      question: question.value || 'General life guidance',
       title: '✨ Divine Guidance Revealed',
+      interpretation: 'The divine has spoken through these sacred cards. Your journey unfolds with purpose, guided by cosmic wisdom and inner knowing. Trust in the process, embrace the transformation, and step boldly into your destined future.',
+      guidance: 'Embrace the changes coming your way. Trust your inner wisdom and remain open to new possibilities. The universe is aligning to support your highest good.',
+      timing: 'The energies are most favorable within the next lunar cycle. Pay attention to synchronicities and trust your intuitive guidance.',
       collectiveWisdom: 'The universe speaks through these cards, revealing patterns that connect your current situation to the greater cosmic flow. Ancient wisdom suggests that this moment holds significant potential for transformation.',
       personalAnalysis: 'Your personal energy signature resonates with themes of growth, challenge, and ultimate triumph. The cards reflect your inner strength and readiness to embrace change.',
       wisdomIntegration: 'By integrating the lessons from your past experiences with present awareness, you create a foundation for manifesting your highest potential.',
       poeticSublimation: 'Like stars that shine brightest in the darkest night, your soul\'s light emerges most brilliantly through life\'s challenges, illuminating paths previously unseen.',
-      mainText: 'The divine has spoken through these sacred cards. Your journey unfolds with purpose, guided by cosmic wisdom and inner knowing. Trust in the process, embrace the transformation, and step boldly into your destined future.'
+      mainText: 'The divine has spoken through these sacred cards. Your journey unfolds with purpose, guided by cosmic wisdom and inner knowing. Trust in the process, embrace the transformation, and step boldly into your destined future.',
+      timestamp: new Date(),
+      isPublic: false,
+      tags: ['demo', 'guidance', 'transformation'],
+      cards: selectedCards.value.map((card, index) => ({
+        positionId: `position-${index}`,
+        cardId: card.id,
+        reversed: Math.random() < 0.2,
+        interpretation: card.meanings.upright.general,
+        confidence: 0.85
+      }))
     }
   } finally {
     isLoading.value = false
@@ -248,7 +262,7 @@ function newReading() {
 
 function shareReading() {
   // Implementation for sharing functionality
-  console.log('Share reading:', reading.value)
+  // Share reading functionality
 }
 </script>
 

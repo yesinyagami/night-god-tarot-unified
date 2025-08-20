@@ -23,12 +23,12 @@ const STATIC_ASSETS = [
   })
 ];
 
-// API endpoints to cache
-const API_ENDPOINTS = [
-  '/api/cards',
-  '/api/spreads',
-  '/api/meanings'
-];
+// API endpoints to cache (currently unused but available for future enhancement)
+// const API_ENDPOINTS = [
+//   '/api/cards',
+//   '/api/spreads',
+//   '/api/meanings'
+// ];
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {

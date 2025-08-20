@@ -52,7 +52,7 @@ function closeModal() {
 }
 
 function handleiPassPayment() {
-  console.log('🏦 Redirecting to iPass payment...')
+  // Redirecting to iPass payment
   // Implementation for iPass payment
   closeModal()
 }

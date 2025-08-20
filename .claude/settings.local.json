@@ -35,7 +35,8 @@
       "WebFetch(domain:github.com)",
       "Bash(npm run type-check:*)",
       "Bash(npm audit:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:yesinyagami-jp.carrd.co)"
     ],
     "deny": []
   }

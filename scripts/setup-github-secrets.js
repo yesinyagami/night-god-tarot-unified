@@ -3,7 +3,7 @@
  * 用於自動設置 GitHub Actions 所需的 secrets
  */
 
-import { execSync } from 'child_process';
+// import { execSync } from 'child_process'; // Available for future automation
 import crypto from 'crypto';
 
 // 生成隨機密鑰的函數

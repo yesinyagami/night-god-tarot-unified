@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import type { TarotCard } from '../types/tarot'
 
 // Types for the memory system

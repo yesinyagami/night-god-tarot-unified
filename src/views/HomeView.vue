@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <!-- AI Horoscope Widget -->
+    <HoroscopeWidget />
+    
     <div class="container mx-auto px-4 py-16">
       <!-- Hero Section -->
       <section class="text-center mb-20">
@@ -80,6 +83,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import HoroscopeWidget from '../components/HoroscopeWidget.vue'
 import NightGodTarotDemo from '../components/NightGodTarotDemo.vue'
 import MembershipFeatures from '../components/MembershipFeatures.vue'
 import BuyMeCoffeeButton from '../components/payment/BuyMeCoffeeButton.vue'
@@ -88,7 +92,7 @@ import StoryReader from '../components/StoryReader.vue'
 import SupportersWall from '../components/SupportersWall.vue'
 
 onMounted(() => {
-  console.log('🏠 Home view mounted - Night God Tarot')
+  // Home view mounted - Night God Tarot
 })
 </script>
 

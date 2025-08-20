@@ -104,6 +104,11 @@
           <div class="warning-portal">
             <div class="warning-header">
               <h3>⚠️ {{ tSync('importantWarning') }}</h3>
+              <!-- Language Toggle in Warning Modal -->
+              <button @click="toggleLanguage" class="warning-lang-toggle" :title="getLanguageToggleText()">
+                <span class="lang-icon">🌐</span>
+                <span class="lang-text">{{ getLanguageToggleText() }}</span>
+              </button>
             </div>
             <div class="warning-content">
               <p>{{ tSync('warningMessage') }}</p>
@@ -145,6 +150,7 @@
                   type="email" 
                   v-model="userRegistration.email"
                   :placeholder="tSync('emailPlaceholder')"
+                  @focus="onEmailFocus"
                   class="mystical-input"
                 />
               </div>
@@ -179,6 +185,66 @@
                 <span class="benefit-icon">✨</span>
                 <span>{{ tSync('saveProgress') }}</span>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Policy Modal - Shows when user focuses on email field -->
+        <div v-if="showPrivacyModal" class="privacy-modal">
+          <div class="modal-overlay" @click="closePrivacyModal"></div>
+          <div class="privacy-portal">
+            <div class="privacy-header">
+              <h3>🔒 {{ tSync('privacyPolicyTitle') }}</h3>
+              <!-- Language Toggle in Privacy Modal -->
+              <button @click="toggleLanguage" class="privacy-lang-toggle" :title="getLanguageToggleText()">
+                <span class="lang-icon">🌐</span>
+                <span class="lang-text">{{ getLanguageToggleText() }}</span>
+              </button>
+            </div>
+            <div class="privacy-content">
+              <!-- IP Data Collection Section -->
+              <div class="privacy-section">
+                <h4>{{ tSync('ipDataCollectionTitle') }}</h4>
+                <p>{{ tSync('ipDataCollectionText') }}</p>
+                <ul class="privacy-points">
+                  <li>{{ tSync('websiteFunctionality') }}</li>
+                  <li>{{ tSync('securityProtection') }}</li>
+                  <li>{{ tSync('statisticalAnalysis') }}</li>
+                </ul>
+                <p class="privacy-note">{{ tSync('ipStorageText') }}</p>
+              </div>
+
+              <!-- Email Data Collection Section -->
+              <div class="privacy-section">
+                <h4>{{ tSync('emailDataCollectionTitle') }}</h4>
+                <p>{{ tSync('emailDataCollectionText') }}</p>
+                <ul class="privacy-points">
+                  <li>{{ tSync('accountManagement') }}</li>
+                  <li>{{ tSync('communicationNotification') }}</li>
+                  <li>{{ tSync('marketingPromotion') }}</li>
+                </ul>
+              </div>
+
+              <!-- User Rights Section -->
+              <div class="privacy-section">
+                <h4>{{ tSync('userRights') }}</h4>
+                <ul class="privacy-points">
+                  <li>{{ tSync('rightUnsubscribe') }}</li>
+                  <li>{{ tSync('rightAccess') }}</li>
+                  <li>{{ tSync('rightProtection') }}</li>
+                </ul>
+              </div>
+
+              <!-- Policy Updates -->
+              <div class="privacy-section">
+                <p class="privacy-note">{{ tSync('policyUpdates') }}</p>
+                <p class="contact-info">{{ tSync('contactUs') }}</p>
+              </div>
+            </div>
+            <div class="privacy-actions">
+              <button @click="acceptPrivacyPolicy" class="accept-privacy-btn">
+                {{ tSync('iAcceptPrivacy') }}
+              </button>
             </div>
           </div>
         </div>
@@ -488,7 +554,221 @@ const currentHerelePoetry = ref({
 const isCharging = ref(false)
 // Audio now handled by BinauralAudioPlayer component
 // Monica connection status is internal - not displayed to users
-const currentLanguage = ref<'zh' | 'en' | 'ja'>('zh')
+const currentLanguage = ref<'zh' | 'en' | 'ja'>('en')
+
+// Multi-language Static Translations
+const staticTranslations = {
+  zh: {
+    // Main Page Elements
+    title: '夜神塔羅',
+    subtitle: 'AI驅動神秘占卜宇宙 • 31萬字史詩小說',
+    activateOracle: '啟動神諭',
+    askUniverse: '🕯️ 向宇宙提問',
+    questionPlaceholder: '在這個神聖時刻，您最想了解什麼？讓宇宙的智慧為您指引方向...',
+    // Registration System
+    registrationTitle: '完成註冊享受完整體驗',
+    registrationDescription: '您已使用完免費試用，請先確認條款後註冊帳戶以繼續探索神秘塔羅世界',
+    nameLabel: '姓名',
+    namePlaceholder: '請輸入您的姓名',
+    emailLabel: '電子郵件地址',
+    emailPlaceholder: 'your.email@example.com',
+    passwordLabel: '密碼',
+    passwordPlaceholder: '請設定安全密碼',
+    completeRegistration: '完成註冊',
+    freeTrialCompleted: '🎯 免費試用已完成',
+    unlimitedFlips: '無限制翻牌體驗',
+    viewFlippedCards: '查看已翻牌組',
+    saveProgress: '保存進度記錄',
+    // Action buttons
+    shareReading: '分享神諭',
+    saveReading: '珍藏占卜',
+    resetReading: '重新占卜',
+    // Tab names
+    oracleTab: '神諭',
+    novelTab: '史詩',
+    progressTab: '成長',
+    // Chapter titles
+    prologueTitle: '夜神的覺醒',
+    chapter1Title: '命運的召喚',
+    chapter2Title: '塔羅的奧秘',
+    chapter3Title: 'AI神諭的誕生',
+    chapter4Title: '靈魂的對話',
+    chapter5Title: '宇宙的真相',
+    prologueNumber: '序章',
+    chapter1Number: '第一章',
+    chapter2Number: '第二章',
+    chapter3Number: '第三章',
+    chapter4Number: '第四章',
+    chapter5Number: '第五章',
+    // Privacy Policy Warning
+    privacyPolicyTitle: '塔羅牌網站隱私權政策',
+    ipDataCollectionTitle: 'IP資料蒐集與使用警語',
+    ipDataCollectionText: '本網站（以下簡稱「我們」或「本網站」）在您瀏覽或使用本網站時，可能會自動蒐集您的網際網路協定位址（IP地址）。IP地址是用於識別您的網路設備並確保您能正常連線至本網站的技術資訊。我們蒐集IP地址的目的包括但不限於：',
+    websiteFunctionality: '網站功能運作：確保網站正常運作並提供您所需的服務，例如塔羅牌占卜功能。',
+    securityProtection: '安全性保護：監測與防止未經授權的存取、詐欺或其他潛在的安全威脅。',
+    statisticalAnalysis: '統計分析：蒐集匿名化的流量數據以分析網站使用情況，進而改善使用者體驗。',
+    ipStorageText: '您的IP地址將以加密方式儲存，並僅在必要時由授權人員存取。我們不會將您的IP地址與其他個人身份資訊結合，除非您主動提供相關資料（如電子郵件地址）。除非法律要求或經您同意，我們不會向第三方披露您的IP地址。',
+    emailDataCollectionTitle: '電子郵件資料蒐集與使用警語',
+    emailDataCollectionText: '若您選擇在本網站註冊帳戶、訂閱電子報、提交問題或參與其他互動功能，我們可能會蒐集您的電子郵件地址。蒐集電子郵件地址的目的包括但不限於：',
+    accountManagement: '帳戶管理：進行註冊、登入或密碼重設，以確保您能順利使用本網站的個人化服務。',
+    communicationNotification: '通訊與通知：向您發送與塔羅牌占卜相關的資訊、更新或回覆您的問題。',
+    marketingPromotion: '行銷與推廣：在您同意接收行銷資訊的情況下，我們可能會向您發送推廣內容或特別優惠。',
+    userRights: '您的權利與選擇',
+    rightUnsubscribe: '您可以隨時點擊電子郵件中的「取消訂閱」連結來停止接收行銷郵件。',
+    rightAccess: '您有權存取、修正或刪除我們所蒐集的關於您的電子郵件資料。請透過本網站提供的聯繫方式與我們聯繫。',
+    rightProtection: '我們已實施適當的技術與組織措施，以保護您的電子郵件資料免受未經授權的存取、遺失或披露。',
+    policyUpdates: '本隱私權政策可能會定期更新，以反映法律要求或服務變更。任何更新將於本網站公布，並在生效前通知您。',
+    contactUs: '若您對本隱私權政策或資料處理方式有任何疑問，請透過以下聯繫方式與我們聯繫：privacy@nightgodtarot.com',
+    iAcceptPrivacy: '我已閱讀並同意隱私權政策',
+    // Warning System
+    importantWarning: '重要警告',
+    warningMessage: '夜神塔羅包含神秘力量，使用前請仔細閱讀以下注意事項：',
+    warningPoint1: '此系統僅供娛樂和精神指導，不應用於重要決策',
+    warningPoint2: '塔羅占卜結果僅為參考，請勿過度依賴',
+    warningPoint3: '如有心理健康問題，請諮詢專業醫療人員',
+    iUnderstand: '我已理解並同意'
+  },
+  en: {
+    // Main Page Elements
+    title: 'Night God Tarot',
+    subtitle: 'AI-Powered Mystical Divination Universe • 310,000-Word Epic Novel',
+    activateOracle: 'Activate Oracle',
+    askUniverse: '🕯️ Ask the Universe',
+    questionPlaceholder: 'In this sacred moment, what do you most want to know? Let the wisdom of the universe guide you...',
+    // Registration System
+    registrationTitle: 'Complete Registration for Full Experience',
+    registrationDescription: 'You have used your free trial. Please confirm terms and register to continue exploring the mystical tarot world',
+    nameLabel: 'Name',
+    namePlaceholder: 'Enter your name',
+    emailLabel: 'Email Address',
+    emailPlaceholder: 'your.email@example.com',
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Set a secure password',
+    completeRegistration: 'Complete Registration',
+    freeTrialCompleted: '🎯 Free Trial Completed',
+    unlimitedFlips: 'Unlimited Card Flips',
+    viewFlippedCards: 'View Flipped Cards',
+    saveProgress: 'Save Progress Records',
+    // Action buttons
+    shareReading: 'Share Reading',
+    saveReading: 'Save Reading',
+    resetReading: 'Reset Reading',
+    // Tab names
+    oracleTab: 'Oracle',
+    novelTab: 'Novel',
+    progressTab: 'Progress',
+    // Chapter titles
+    prologueTitle: 'Night God Awakening',
+    chapter1Title: 'Call of Destiny',
+    chapter2Title: 'Mysteries of Tarot',
+    chapter3Title: 'Birth of AI Oracle',
+    chapter4Title: 'Dialogue of Souls',
+    chapter5Title: 'Universal Truth',
+    prologueNumber: 'Prologue',
+    chapter1Number: 'Chapter 1',
+    chapter2Number: 'Chapter 2',
+    chapter3Number: 'Chapter 3',
+    chapter4Number: 'Chapter 4',
+    chapter5Number: 'Chapter 5',
+    // Privacy Policy Warning
+    privacyPolicyTitle: 'Tarot Website Privacy Policy',
+    ipDataCollectionTitle: 'IP Data Collection and Usage Notice',
+    ipDataCollectionText: 'This website (hereinafter referred to as "we" or "this website") may automatically collect your Internet Protocol address (IP address) when you browse or use this website. IP addresses are technical information used to identify your network device and ensure proper connection to this website. Our purposes for collecting IP addresses include but are not limited to:',
+    websiteFunctionality: 'Website Functionality: Ensuring normal website operation and providing services you require, such as tarot card divination functions.',
+    securityProtection: 'Security Protection: Monitoring and preventing unauthorized access, fraud, or other potential security threats.',
+    statisticalAnalysis: 'Statistical Analysis: Collecting anonymized traffic data to analyze website usage and improve user experience.',
+    ipStorageText: 'Your IP address will be stored in encrypted form and accessed only when necessary by authorized personnel. We will not combine your IP address with other personal identification information unless you voluntarily provide such data (such as email addresses). We will not disclose your IP address to third parties unless required by law or with your consent.',
+    emailDataCollectionTitle: 'Email Data Collection and Usage Notice',
+    emailDataCollectionText: 'If you choose to register an account, subscribe to newsletters, submit inquiries, or participate in other interactive features on this website, we may collect your email address. Purposes for collecting email addresses include but are not limited to:',
+    accountManagement: 'Account Management: Registration, login, or password reset to ensure smooth use of personalized services on this website.',
+    communicationNotification: 'Communication & Notification: Sending information, updates, or responses related to tarot card divination.',
+    marketingPromotion: 'Marketing & Promotion: With your consent to receive marketing information, we may send promotional content or special offers.',
+    userRights: 'Your Rights and Choices',
+    rightUnsubscribe: 'You can stop receiving marketing emails at any time by clicking the "unsubscribe" link in emails.',
+    rightAccess: 'You have the right to access, correct, or delete email data we have collected about you. Please contact us through the contact methods provided on this website.',
+    rightProtection: 'We have implemented appropriate technical and organizational measures to protect your email data from unauthorized access, loss, or disclosure.',
+    policyUpdates: 'This privacy policy may be updated periodically to reflect legal requirements or service changes. Any updates will be posted on this website and notified before taking effect.',
+    contactUs: 'If you have any questions about this privacy policy or data processing practices, please contact us at: privacy@nightgodtarot.com',
+    iAcceptPrivacy: 'I have read and agree to the Privacy Policy',
+    // Warning System
+    importantWarning: 'Important Warning',
+    warningMessage: 'Night God Tarot contains mystical powers. Please carefully read the following precautions before use:',
+    warningPoint1: 'This system is for entertainment and spiritual guidance only, not for important decisions',
+    warningPoint2: 'Tarot reading results are for reference only, do not over-rely on them',
+    warningPoint3: 'If you have mental health issues, please consult professional medical personnel',
+    iUnderstand: 'I Understand and Agree'
+  },
+  ja: {
+    // Main Page Elements
+    title: 'ナイトゴッドタロット',
+    subtitle: 'AI駆動神秘占い宇宙 • 31万字叙事詩小説',
+    activateOracle: 'オラクル起動',
+    askUniverse: '🕯️ 宇宙に尋ねる',
+    questionPlaceholder: 'この神聖な瞬間に、あなたが最も知りたいことは何ですか？宇宙の知恵があなたを導きます...',
+    // Registration System
+    registrationTitle: '完全体験のための登録完了',
+    registrationDescription: '無料トライアルを使用されました。利用規約を確認してアカウント登録し、神秘的なタロットの世界を探索し続けてください',
+    nameLabel: '名前',
+    namePlaceholder: 'お名前を入力してください',
+    emailLabel: 'メールアドレス',
+    emailPlaceholder: 'your.email@example.com',
+    passwordLabel: 'パスワード',
+    passwordPlaceholder: '安全なパスワードを設定してください',
+    completeRegistration: '登録完了',
+    freeTrialCompleted: '🎯 無料トライアル完了',
+    unlimitedFlips: '無制限カードフリップ',
+    viewFlippedCards: 'フリップしたカードを見る',
+    saveProgress: '進捗記録の保存',
+    // Action buttons
+    shareReading: 'リーディング共有',
+    saveReading: 'リーディング保存',
+    resetReading: 'リーディングリセット',
+    // Tab names
+    oracleTab: 'オラクル',
+    novelTab: '小説',
+    progressTab: '進捗',
+    // Chapter titles
+    prologueTitle: 'ナイトゴッドの覚醒',
+    chapter1Title: '運命の呼び声',
+    chapter2Title: 'タロットの神秘',
+    chapter3Title: 'AIオラクルの誕生',
+    chapter4Title: '魂の対話',
+    chapter5Title: '宇宙の真実',
+    prologueNumber: 'プロローグ',
+    chapter1Number: '第1章',
+    chapter2Number: '第2章',
+    chapter3Number: '第3章',
+    chapter4Number: '第4章',
+    chapter5Number: '第5章',
+    // Privacy Policy Warning
+    privacyPolicyTitle: 'タロットウェブサイトプライバシーポリシー',
+    ipDataCollectionTitle: 'IPデータ収集・使用に関する通知',
+    ipDataCollectionText: '本ウェブサイト（以下「当社」または「本ウェブサイト」）は、お客様が本ウェブサイトを閲覧または使用する際に、インターネットプロトコルアドレス（IPアドレス）を自動的に収集する場合があります。IPアドレスは、お客様のネットワークデバイスを識別し、本ウェブサイトへの適切な接続を確保するための技術情報です。IPアドレスを収集する目的には以下が含まれますが、これらに限定されません：',
+    websiteFunctionality: 'ウェブサイト機能：ウェブサイトの正常な動作を確保し、タロットカード占い機能などの必要なサービスを提供する。',
+    securityProtection: 'セキュリティ保護：不正アクセス、詐欺、その他の潜在的なセキュリティ脅威を監視し防止する。',
+    statisticalAnalysis: '統計分析：ウェブサイトの使用状況を分析し、ユーザーエクスペリエンスを向上させるために匿名化されたトラフィックデータを収集する。',
+    ipStorageText: 'お客様のIPアドレスは暗号化された形式で保存され、必要に応じて承認された担当者のみがアクセスします。お客様が自発的にそのようなデータ（電子メールアドレスなど）を提供しない限り、IPアドレスを他の個人識別情報と組み合わせることはありません。法律で要求される場合またはお客様の同意がある場合を除き、第三者にIPアドレスを開示することはありません。',
+    emailDataCollectionTitle: 'メールデータ収集・使用に関する通知',
+    emailDataCollectionText: '本ウェブサイトでアカウント登録、ニュースレターの購読、問い合わせの送信、またはその他のインタラクティブ機能への参加を選択した場合、メールアドレスを収集する場合があります。メールアドレスを収集する目的には以下が含まれますが、これらに限定されません：',
+    accountManagement: 'アカウント管理：本ウェブサイトのパーソナライズされたサービスを円滑に利用するための登録、ログイン、またはパスワードリセット。',
+    communicationNotification: 'コミュニケーション・通知：タロットカード占いに関連する情報、更新、または回答の送信。',
+    marketingPromotion: 'マーケティング・プロモーション：マーケティング情報の受信に同意いただいた場合、プロモーションコンテンツや特別オファーを送信することがあります。',
+    userRights: 'お客様の権利と選択',
+    rightUnsubscribe: 'メール内の「配信停止」リンクをクリックすることで、いつでもマーケティングメールの受信を停止できます。',
+    rightAccess: 'お客様について当社が収集したメールデータにアクセス、修正、削除する権利があります。本ウェブサイトで提供されている連絡方法を通じてお問い合わせください。',
+    rightProtection: 'お客様のメールデータを不正アクセス、紛失、開示から保護するために適切な技術的・組織的措置を実施しています。',
+    policyUpdates: 'このプライバシーポリシーは、法的要件やサービスの変更を反映するために定期的に更新される場合があります。更新は本ウェブサイトに掲載され、有効になる前に通知いたします。',
+    contactUs: 'このプライバシーポリシーまたはデータ処理慣行について質問がある場合は、privacy@nightgodtarot.com までお問い合わせください。',
+    iAcceptPrivacy: 'プライバシーポリシーを読み、同意します',
+    // Warning System
+    importantWarning: '重要な警告',
+    warningMessage: 'ナイトゴッドタロットには神秘的な力が含まれています。使用前に以下の注意事項をよくお読みください：',
+    warningPoint1: 'このシステムは娯楽と精神的指導のためのものであり、重要な決定には使用しないでください',
+    warningPoint2: 'タロット占いの結果は参考程度にとどめ、過度に依存しないでください',
+    warningPoint3: '精神的健康に問題がある場合は、専門の医療従事者にご相談ください',
+    iUnderstand: '理解して同意します'
+  }
+}
 
 // Monica ChatGPT-5 Dynamic Translation System
 const translationCache = ref<{ [key: string]: string }>({})
@@ -582,18 +862,62 @@ const t = async (key: string): Promise<string> => {
   }
 }
 
+// Create a reactive translation map that updates when language changes
+const reactiveTranslations = computed(() => {
+  const translations: Record<string, string> = {}
+  
+  // Define static translation keys
+  const staticKeys = [
+    // Main page elements
+    'title', 'subtitle', 'activateOracle', 'askUniverse', 'questionPlaceholder',
+    // Registration form elements
+    'registrationTitle', 'registrationDescription', 'nameLabel', 'namePlaceholder', 
+    'emailLabel', 'emailPlaceholder', 'passwordLabel', 'passwordPlaceholder', 'completeRegistration',
+    'freeTrialCompleted', 'unlimitedFlips', 'viewFlippedCards', 'saveProgress',
+    // Action buttons and tabs
+    'shareReading', 'saveReading', 'resetReading', 'oracleTab', 'novelTab', 'progressTab',
+    // Chapter titles and numbers
+    'prologueTitle', 'chapter1Title', 'chapter2Title', 'chapter3Title', 'chapter4Title', 'chapter5Title',
+    'prologueNumber', 'chapter1Number', 'chapter2Number', 'chapter3Number', 'chapter4Number', 'chapter5Number',
+    // Privacy policy elements
+    'privacyPolicyTitle', 'ipDataCollectionTitle', 'ipDataCollectionText', 'websiteFunctionality',
+    'securityProtection', 'statisticalAnalysis', 'ipStorageText', 'emailDataCollectionTitle',
+    'emailDataCollectionText', 'accountManagement', 'communicationNotification', 'marketingPromotion',
+    'userRights', 'rightUnsubscribe', 'rightAccess', 'rightProtection', 'policyUpdates', 
+    'contactUs', 'iAcceptPrivacy',
+    // Warning modal elements
+    'importantWarning', 'warningMessage', 'warningPoint1', 'warningPoint2', 'warningPoint3', 'iUnderstand'
+  ]
+  
+  // Build reactive translations based on current language
+  staticKeys.forEach(key => {
+    const staticTranslation = staticTranslations[currentLanguage.value]?.[key as keyof typeof staticTranslations.en]
+    if (staticTranslation) {
+      translations[key] = staticTranslation
+    } else {
+      // Fallback to base text
+      const sourceText = baseTexts[key as keyof typeof baseTexts]
+      if (sourceText) {
+        if (currentLanguage.value === 'zh') {
+          translations[key] = sourceText
+        } else {
+          // Return cached translation or source text
+          const cacheKey = `${key}-${currentLanguage.value}`
+          translations[key] = translationCache.value[cacheKey] || sourceText
+        }
+      } else {
+        translations[key] = key
+      }
+    }
+  })
+  
+  return translations
+})
+
 // Synchronous version for reactive elements that need immediate response
 const tSync = (key: string): string => {
-  const sourceText = baseTexts[key as keyof typeof baseTexts]
-  if (!sourceText) return key
-
-  if (currentLanguage.value === 'zh') {
-    return sourceText
-  }
-
-  // Return cached translation or source text
-  const cacheKey = `${key}-${currentLanguage.value}`
-  return translationCache.value[cacheKey] || sourceText
+  // Use reactive translations that update when language changes
+  return reactiveTranslations.value[key] || key
 }
 
 // Batch translation for efficiency
@@ -641,6 +965,7 @@ const currentReading = ref<TarotReading | null>(null)
 // Memory System
 const showWarningModal = ref(true)
 const showRegistrationModal = ref(false)
+const showPrivacyModal = ref(false)
 const isMemorySystemActive = ref(false)
 const freeCardFlipsUsed = ref(0)
 const maxFreeFlips = ref(1)
@@ -695,13 +1020,13 @@ const herelePoetryCollection = [
   }
 ]
 
-const novelChapters = reactive([
-  { id: 'prologue', number: '序章', title: '夜神的覺醒', unlocked: true },
-  { id: 'chapter-1', number: '第一章', title: '命運的召喚', unlocked: true },
-  { id: 'chapter-2', number: '第二章', title: '塔羅的奧秘', unlocked: userLevel.value >= 5 },
-  { id: 'chapter-3', number: '第三章', title: 'AI神諭的誕生', unlocked: userLevel.value >= 10 },
-  { id: 'chapter-4', number: '第四章', title: '靈魂的對話', unlocked: userLevel.value >= 15 },
-  { id: 'chapter-5', number: '第五章', title: '宇宙的真相', unlocked: userLevel.value >= 20 }
+const novelChapters = computed(() => [
+  { id: 'prologue', number: tSync('prologueNumber'), title: tSync('prologueTitle'), unlocked: true },
+  { id: 'chapter-1', number: tSync('chapter1Number'), title: tSync('chapter1Title'), unlocked: true },
+  { id: 'chapter-2', number: tSync('chapter2Number'), title: tSync('chapter2Title'), unlocked: userLevel.value >= 5 },
+  { id: 'chapter-3', number: tSync('chapter3Number'), title: tSync('chapter3Title'), unlocked: userLevel.value >= 10 },
+  { id: 'chapter-4', number: tSync('chapter4Number'), title: tSync('chapter4Title'), unlocked: userLevel.value >= 15 },
+  { id: 'chapter-5', number: tSync('chapter5Number'), title: tSync('chapter5Title'), unlocked: userLevel.value >= 20 }
 ])
 
 const userAchievements = reactive([
@@ -855,6 +1180,30 @@ const isValidRegistration = (): boolean => {
 
 const isValidEmail = (email: string): boolean => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
+// Privacy Modal Functions
+const onEmailFocus = () => {
+  // Show privacy modal when user focuses on email field
+  showPrivacyModal.value = true
+}
+
+const closePrivacyModal = () => {
+  showPrivacyModal.value = false
+}
+
+const acceptPrivacyPolicy = () => {
+  // Save privacy policy acceptance
+  localStorage.setItem('nightGodTarot_PrivacyAccepted', 'true')
+  localStorage.setItem('nightGodTarot_PrivacyAcceptedDate', Date.now().toString())
+  
+  // Close the modal
+  showPrivacyModal.value = false
+  
+  // Show success message
+  addNotification('success', '🔒', 'Privacy Policy Accepted', 'You can now continue with registration')
+  
+  console.log('🔒 Privacy policy accepted by user')
 }
 
 const flipAndSelectCard = (card: TarotCard) => {
@@ -1139,7 +1488,7 @@ const saveReading = () => {
 
 // showCardDetails function removed with library functionality
 
-const selectChapter = (chapter: typeof novelChapters[0]) => {
+const selectChapter = (chapter: { id: string; number: string; title: string; unlocked: boolean }) => {
   if (chapter.unlocked) {
     currentChapter.value = chapter.id
     // Implementation for chapter reading
@@ -1246,13 +1595,7 @@ onMounted(async () => {
 // Watchers
 watch(userLevel, (newLevel, oldLevel) => {
   if (newLevel > oldLevel) {
-    // Update chapter unlocks
-    novelChapters.forEach(chapter => {
-      if (chapter.id === 'chapter-2' && newLevel >= 5) chapter.unlocked = true
-      if (chapter.id === 'chapter-3' && newLevel >= 10) chapter.unlocked = true
-      if (chapter.id === 'chapter-4' && newLevel >= 15) chapter.unlocked = true
-      if (chapter.id === 'chapter-5' && newLevel >= 20) chapter.unlocked = true
-    })
+    // Chapter unlocks are now handled in the computed property based on userLevel
     
     // Update achievements
     userAchievements.forEach(achievement => {
@@ -2818,11 +3161,49 @@ watch(userLevel, (newLevel, oldLevel) => {
   overflow-y: auto;
 }
 
+.warning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
 .warning-header h3 {
   color: #ff4444;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+  flex: 1;
+}
+
+.warning-lang-toggle {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid rgba(255, 68, 68, 0.5);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  color: #ff4444;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.warning-lang-toggle:hover {
+  background: rgba(255, 68, 68, 0.3);
+  border-color: rgba(255, 68, 68, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.warning-lang-toggle .lang-icon {
+  font-size: 1.2em;
+}
+
+.warning-lang-toggle .lang-text {
+  font-weight: 500;
 }
 
 .warning-content {
@@ -2892,6 +3273,185 @@ watch(userLevel, (newLevel, oldLevel) => {
 .accept-warning-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+}
+
+/* Privacy Policy Modal Styles */
+.privacy-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+}
+
+.privacy-portal {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.9));
+  border: 2px solid #4ade80;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(74, 222, 128, 0.3);
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+.privacy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(74, 222, 128, 0.3);
+  padding-bottom: 1rem;
+}
+
+.privacy-header h3 {
+  color: #4ade80;
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  flex: 1;
+}
+
+.privacy-lang-toggle {
+  background: rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  color: #4ade80;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.privacy-lang-toggle:hover {
+  background: rgba(74, 222, 128, 0.3);
+  border-color: rgba(74, 222, 128, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+
+.privacy-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.privacy-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.privacy-section h4 {
+  color: #4ade80;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+}
+
+.privacy-section p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.privacy-points {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.privacy-points li {
+  color: rgba(255, 255, 255, 0.85);
+  margin: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.privacy-points li:before {
+  content: "🔐";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2em;
+}
+
+.privacy-note {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(74, 222, 128, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #4ade80;
+}
+
+.contact-info {
+  color: #4ade80;
+  font-weight: 500;
+}
+
+.privacy-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(74, 222, 128, 0.3);
+  text-align: center;
+}
+
+.accept-privacy-btn {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  min-width: 250px;
+}
+
+.accept-privacy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+/* Privacy Modal Responsive */
+@media (max-width: 768px) {
+  .privacy-portal {
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+    width: 95%;
+    margin: 1rem;
+  }
+  
+  .privacy-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .privacy-content {
+    max-height: 50vh;
+  }
+  
+  .privacy-section {
+    padding: 1rem;
+  }
 }
 
 /* Memory System Styles */

@@ -186,3 +186,137 @@ body {
     background-position: 200% 0;
   }
 }
+
+/* === NIGHT GOD BRANDING SYSTEM === */
+.logo-sanctuary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  z-index: 10;
+}
+
+.night-god-logo {
+  height: 80px;
+  width: auto;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 215, 0, 0.8);
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 107, 53, 0.4),
+    inset 0 0 20px rgba(255, 215, 0, 0.2);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+.night-god-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 
+    0 0 50px rgba(255, 215, 0, 0.9),
+    0 0 100px rgba(255, 107, 53, 0.6),
+    inset 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.logo-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 60%, rgba(255, 215, 0, 0.1) 70%, transparent 90%);
+  animation: auraRotate 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Khrael Language Symbol */
+.khrael-symbol {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+}
+
+.khrael-image {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+  transition: all 0.6s ease;
+  animation: khraelPulse 4s ease-in-out infinite;
+}
+
+.khrael-image:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+}
+
+.symbol-essence {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 50%, rgba(255, 215, 0, 0.1) 60%, transparent 80%);
+  animation: essenceFlow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Brand Constellation Enhanced */
+.brand-constellation {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Keyframes for Branding Animations */
+@keyframes logoGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.6),
+      0 0 60px rgba(255, 107, 53, 0.4),
+      inset 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(255, 215, 0, 0.8),
+      0 0 80px rgba(255, 107, 53, 0.6),
+      inset 0 0 30px rgba(255, 215, 0, 0.3);
+  }
+}
+
+@keyframes auraRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes khraelPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    transform: scale(1.05);
+  }
+}
+
+@keyframes essenceFlow {
+  0%, 100% {
+    background: radial-gradient(circle, transparent 50%, rgba(255, 215, 0, 0.1) 60%, transparent 80%);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    background: radial-gradient(circle, transparent 40%, rgba(255, 215, 0, 0.15) 60%, transparent 90%);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}

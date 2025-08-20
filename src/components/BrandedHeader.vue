@@ -119,7 +119,7 @@ function closeMobileMenu() {
 
 onMounted(() => {
   // Check AI system status
-  console.log('🌙 Night God Tarot header mounted')
+  // Night God Tarot header mounted
 })
 </script>
 

@@ -32,7 +32,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log('👻 404 page loaded')
+  // 404 page loaded
 })
 </script>
 

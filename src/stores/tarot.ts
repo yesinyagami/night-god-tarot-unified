@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { TarotCard, TarotReading, ReadingRequest } from '../types/tarot'
+import type { TarotCard, TarotReading, ReadingRequest, DrawnCard } from '../types/tarot'
 import { aiSystem } from '../services/ai'
+import { tarotCards } from '../data/cards'
 
 export const useTarotStore = defineStore('tarot', () => {
   // State
-  const cards = ref<TarotCard[]>([])
+  const cards = ref<TarotCard[]>(tarotCards)
   const currentReading = ref<TarotReading | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
@@ -32,7 +33,7 @@ export const useTarotStore = defineStore('tarot', () => {
       // Load tarot cards from data
       const { tarotCards } = await import('../data/cards')
       cards.value = tarotCards
-      console.log(`🃏 Loaded ${cards.value.length} tarot cards`)
+      // Loaded tarot cards
     } catch (err) {
       error.value = 'Failed to load tarot cards'
       console.error('Error loading cards:', err)
@@ -49,7 +50,7 @@ export const useTarotStore = defineStore('tarot', () => {
     error.value = null
     
     try {
-      console.log('🔮 Performing tarot reading with AI system...')
+      // Performing tarot reading with AI system
       
       // Use AI system for reading
       const result = await aiSystem.performReading({
@@ -217,7 +218,10 @@ export const useTarotStore = defineStore('tarot', () => {
   }
 
   function generateFallbackReading(request: ReadingRequest): TarotReading {
-    const cardNames = request.cards?.map((c: any) => c.name).join(', ') || 'No cards'
+    const cardNames = request.cards?.map((c: DrawnCard) => {
+      // In a real app, you'd look up the card name from cardId
+      return `Card-${c.cardId}`
+    }).join(', ') || 'No cards'
     
     return {
       id: `reading-${Date.now()}`,

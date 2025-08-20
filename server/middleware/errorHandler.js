@@ -3,6 +3,8 @@
  * Centralized error handling and logging
  */
 
+// Express error handler middleware - requires 4 parameters by convention
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function errorHandler(err, req, res, _next) {
   // Enhanced error logging
   const errorId = `err_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

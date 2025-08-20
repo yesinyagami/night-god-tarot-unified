@@ -85,7 +85,7 @@ class MonicaTranslationService {
 
     try {
       const result = await translationPromise
-      this.setCache(cacheKey, result, request.toLanguage)
+      this.setCache(cacheKey, result)
       return result
     } catch (error) {
       console.error('Monica translation failed:', error)
@@ -140,7 +140,7 @@ class MonicaTranslationService {
           
           // Cache the result
           const cacheKey = this.getCacheKey(item.text, request.fromLanguage, request.toLanguage)
-          this.setCache(cacheKey, translation, request.toLanguage)
+          this.setCache(cacheKey, translation)
         })
       } catch (error) {
         console.error('Monica batch translation failed:', error)
@@ -243,7 +243,7 @@ class MonicaTranslationService {
       } else {
         throw new Error('Invalid batch translation format')
       }
-    } catch (parseError) {
+    } catch {
       // Fallback: split by lines if JSON parsing fails
       return result.split('\n').map((line: string) => line.trim()).filter((line: string) => line)
     }
@@ -342,7 +342,7 @@ Translate to English with these guidelines:
     return cached.translation
   }
 
-  private setCache(cacheKey: string, translation: string, language: string): void {
+  private setCache(cacheKey: string, translation: string): void {
     this.cache[cacheKey] = {
       translation,
       timestamp: Date.now()
@@ -360,9 +360,9 @@ Translate to English with these guidelines:
     }
   }, 1000)
 
-  private debounce(func: Function, wait: number) {
+  private debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
     let timeout: number
-    return function executedFunction(...args: any[]) {
+    return function executedFunction(...args: Parameters<T>) {
       const later = () => {
         clearTimeout(timeout)
         func(...args)

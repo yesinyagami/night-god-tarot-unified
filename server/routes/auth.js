@@ -153,7 +153,8 @@ router.post('/upgrade', authenticateToken, asyncHandler(async (req, res) => {
     return res.status(401).json({ error: 'Authentication required' });
   }
 
-  const { tier, paymentToken } = req.body;
+  const { tier } = req.body;
+  // paymentToken available for future payment processing integration
 
   // Validate tier
   if (!['moon-shadow', 'night-god'].includes(tier)) {

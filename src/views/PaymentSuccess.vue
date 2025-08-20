@@ -39,7 +39,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log('✅ Payment success page loaded')
+  // Payment success page loaded
   
   // Add notification
   if (window.notify) {
