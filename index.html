@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" href="/assets/khrael.png" type="image/png">
+    <link rel="icon" href="./assets/khrael.png" type="image/png">
     
     <!-- Critical CSS - Inline only critical above-the-fold styles -->
     <style>
@@ -162,8 +162,8 @@
     </style>
     
     <!-- Load non-critical CSS asynchronously -->
-    <link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+    <link rel="preload" href="./css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./css/main.css"></noscript>
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -211,7 +211,7 @@
     <nav class="navbar" role="navigation" aria-label="主要導航">
         <div class="nav-container">
             <a href="#" class="brand" aria-label="Night God Tarot 首頁">
-                <img src="/assets/khrael.png" alt="Night God Tarot Logo" width="32" height="32" loading="eager">
+                <img src="./assets/khrael.png" alt="Night God Tarot Logo" width="32" height="32" loading="eager">
                 <span>夜神塔羅</span>
             </a>
             
@@ -294,7 +294,7 @@
                         </p>
                     </div>
                     <div class="about-image">
-                        <img src="/assets/khrael.png" alt="專業塔羅占卜師" loading="lazy" width="400" height="300">
+                        <img src="./assets/khrael.png" alt="專業塔羅占卜師" loading="lazy" width="400" height="300">
                     </div>
                 </div>
             </div>
@@ -382,13 +382,13 @@
     </div>
     
     <!-- JavaScript - Load asynchronously -->
-    <script src="/js/main.js" async></script>
+    <script src="./js/main.js" async></script>
     
     <!-- Service Worker for Performance -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .catch(err => console.log('SW registration failed'));
             });
         }
