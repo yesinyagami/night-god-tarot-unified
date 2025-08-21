@@ -40,7 +40,9 @@
       "Bash(git push:*)",
       "Bash(node:*)",
       "Bash(git pull:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(GITHUB_ACTIONS=true NODE_ENV=production npm run build)",
+      "Bash(git rm:*)"
     ],
     "deny": []
   }
