@@ -125,16 +125,36 @@ jobs:
 
       - name: Check environment configuration
         run: |
+          echo "🔍 Checking environment configuration..."
+          
+          MISSING_COUNT=0
+          
           if [ -z "$MONICA_API_KEY" ]; then
             echo "❌ MONICA_API_KEY secret is missing"
-            exit 1
+            echo "   Add it at: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            ((MISSING_COUNT++))
+          else
+            echo "✅ MONICA_API_KEY is configured"
           fi
+          
           if [ -z "$JWT_SECRET" ]; then
-            echo "❌ JWT_SECRET secret is missing"  
+            echo "❌ JWT_SECRET secret is missing"
+            echo "   Add it at: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            ((MISSING_COUNT++))
+          else
+            echo "✅ JWT_SECRET is configured"
+          fi
+          
+          if [ $MISSING_COUNT -gt 0 ]; then
+            echo ""
+            echo "🚨 $MISSING_COUNT critical secrets are missing!"
+            echo "🔗 Please add them at: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            echo "📋 Use the values from your .env file"
             exit 1
           fi
-          echo "✅ Required secrets are configured"
-          npm run check-env
+          
+          echo "✅ All required secrets are configured"
+          echo "🎉 Environment check passed!"
         env:
           MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
