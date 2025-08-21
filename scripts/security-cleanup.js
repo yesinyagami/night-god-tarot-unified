@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 // import { glob } from 'glob'; // Available for future file pattern matching
 
-const EXPOSED_MONICA_KEY = 'sk-vj0VTDNuoEXtCZ9iwGEOWf96NBGGyvnIWmiVGAp6uBGGNh8r-6T8oWSOk9xhLsgvOyA1sOEPbyEUjKUBkngHC_gpFV4O';
+const EXPOSED_MONICA_KEY = process.env.MONICA_API_KEY || 'your_monica_api_key_here';
 const REPLACEMENT = 'your_monica_api_key_here';
 
 console.log('🔒 Starting security cleanup...');
