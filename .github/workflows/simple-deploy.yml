@@ -1,0 +1,36 @@
+name: Simple Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: |
+        echo "Building Night God Tarot..."
+        npm run build
+      env:
+        NODE_ENV: production
+        
+    - name: Deploy info
+      run: |
+        echo "✅ Build completed successfully"
+        echo "📦 Output in dist/ folder"
+        echo "🚀 Ready for deployment"

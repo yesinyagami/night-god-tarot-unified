@@ -39,7 +39,8 @@
       "WebFetch(domain:yesinyagami-jp.carrd.co)",
       "Bash(git push:*)",
       "Bash(node:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(touch:*)"
     ],
     "deny": []
   }
