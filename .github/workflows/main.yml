@@ -1,0 +1,124 @@
+name: Main CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # Build and Test
+  build-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run linter
+      run: npm run lint
+      continue-on-error: true
+
+    - name: Build application
+      run: npm run build
+      env:
+        NODE_ENV: production
+
+    - name: Run tests
+      run: npm test -- --run
+      continue-on-error: true
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-files
+        path: dist/
+        retention-days: 1
+
+  # Check Secrets Configuration
+  check-secrets:
+    name: Check Secrets
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check required secrets
+      run: |
+        echo "🔍 Checking GitHub Secrets configuration..."
+        
+        MISSING=0
+        
+        # Check Monica API Key
+        if [ -z "${{ secrets.MONICA_API_KEY }}" ]; then
+          echo "⚠️ MONICA_API_KEY is not configured"
+          echo "   Add it at: Settings → Secrets → Actions"
+          MISSING=$((MISSING + 1))
+        else
+          echo "✅ MONICA_API_KEY is configured"
+        fi
+        
+        # Check JWT Secret
+        if [ -z "${{ secrets.JWT_SECRET }}" ]; then
+          echo "⚠️ JWT_SECRET is not configured"
+          echo "   Add it at: Settings → Secrets → Actions"
+          MISSING=$((MISSING + 1))
+        else
+          echo "✅ JWT_SECRET is configured"
+        fi
+        
+        if [ $MISSING -gt 0 ]; then
+          echo ""
+          echo "📝 $MISSING secret(s) need to be configured"
+          echo "🔗 Go to: https://github.com/${{ github.repository }}/settings/secrets/actions"
+        else
+          echo ""
+          echo "🎉 All secrets are properly configured!"
+        fi
+
+  # Deploy to GitHub Pages
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist-files
+        path: dist/
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload to Pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: dist/
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
