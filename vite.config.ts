@@ -13,7 +13,7 @@ export default defineConfig({
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
-  base: './',
+  base: process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS ? './' : '/',
   server: {
     host: true,
     port: 5173,
