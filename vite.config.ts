@@ -13,7 +13,7 @@ export default defineConfig({
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
-  base: process.env.GITHUB_ACTIONS ? '/night-god-tarot-unified/' : '/',
+  base: process.env.GITHUB_ACTIONS === 'true' ? '/night-god-tarot-unified/' : '/',
   server: {
     host: true,
     port: 5173,

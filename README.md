@@ -9,7 +9,7 @@
 
 Night God Tarot combines ancient wisdom with cutting-edge AI technology, offering profound tarot readings through unlimited Monica AI intelligence. Access Claude, GPT, Yi, and Gemini models for deep spiritual insights.
 
-🔮 **[Try Live Demo](http://localhost:5173)** | 📚 **[Read Documentation](./DEPLOYMENT_GUIDE.md)** | 🤖 **[Monica AI Platform](https://platform.monica.im)**
+🔮 **[Try Live Demo](https://yesinyagami.github.io/night-god-tarot-unified/)** | 📚 **[Read Documentation](./DEPLOYMENT_GUIDE.md)** | 🤖 **[Monica AI Platform](https://openapi.monica.im)**
 
 ---
 
