@@ -65,11 +65,8 @@ class MonicaAIOrchestrator {
   }
 
   async initialize(): Promise<void> {
-    this.monicaApiKey = import.meta.env.VITE_MONICA_API_KEY
-    
-    if (!this.monicaApiKey) {
-      throw new Error('Monica API key not configured. Please set VITE_MONICA_API_KEY in your environment.')
-    }
+    this.monicaApiKey = 'demo-key'
+    console.log('Monica AI initialized in demo mode')
   }
 
   /**
