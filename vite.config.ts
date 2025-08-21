@@ -13,7 +13,7 @@ export default defineConfig({
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
-  base: '/night-god-tarot-unified/',
+  base: './',
   server: {
     host: true,
     port: 5173,
