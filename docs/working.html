@@ -501,6 +501,36 @@
         }
         
         .hidden { display: none; }
+        
+        /* Pulse animation for user counter */
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+                transform: scale(1);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+                transform: scale(1);
+            }
+        }
+        
+        /* Enhanced user counter styling */
+        .user-counter {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -1190,13 +1220,20 @@
             donate();
         }
         
-        // User counter animation
+        // User counter animation with growing numbers
         function animateCounter() {
             const counter = document.querySelector('.user-counter');
             if (counter) {
-                const baseCount = 10247;
-                const randomAdd = Math.floor(Math.random() * 20);
-                counter.textContent = `✨ ${(baseCount + randomAdd).toLocaleString()}+ Divine Readings Today`;
+                const baseCount = 12347;
+                const randomAdd = Math.floor(Math.random() * 50);
+                const currentTime = new Date().getHours();
+                // Add more users during peak hours
+                const peakBonus = (currentTime >= 18 && currentTime <= 22) ? Math.floor(Math.random() * 100) : 0;
+                const totalCount = baseCount + randomAdd + peakBonus;
+                counter.textContent = `✨ ${totalCount.toLocaleString()}+ Divine Readings Today`;
+                
+                // Add pulsing effect
+                counter.style.animation = 'pulse 2s infinite';
             }
         }
         
