@@ -9,13 +9,13 @@ const API_CACHE = 'night-god-tarot-api-v1.0.0';
 
 // Resources to cache on install
 const STATIC_ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './favicon.ico',
-  './assets/main.css',
-  './assets/base.css',
-  './assets/design-system.css',
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/favicon.ico',
+  '/assets/main.css',
+  '/assets/base.css',
+  '/assets/design-system.css',
   // Add card images
   ...Array.from({length: 94}, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
@@ -25,9 +25,9 @@ const STATIC_ASSETS = [
 
 // API endpoints to cache (currently unused but available for future enhancement)
 // const API_ENDPOINTS = [
-//   './api/cards',
-//   './api/spreads',
-//   './api/meanings'
+//   '/api/cards',
+//   '/api/spreads',
+//   '/api/meanings'
 // ];
 
 // Install event - cache static assets
@@ -74,7 +74,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
 
   // Handle API requests
-  if (url.pathname.startsWith('./api/')) {
+  if (url.pathname.startsWith('/api/')) {
     event.respondWith(handleApiRequest(request));
     return;
   }
@@ -116,12 +116,12 @@ self.addEventListener('fetch', (event) => {
         .catch(() => {
           // Offline fallback
           if (request.destination === 'document') {
-            return caches.match('./offline.html');
+            return caches.match('/offline.html');
           }
           
           // Return placeholder image for card images
-          if (request.destination === 'image' && url.pathname.includes('./assets/')) {
-            return caches.match('./assets/card-placeholder.png');
+          if (request.destination === 'image' && url.pathname.includes('/assets/')) {
+            return caches.match('/assets/card-placeholder.png');
           }
         })
     );
@@ -226,7 +226,7 @@ async function syncOfflineReadings() {
       const data = await response.json();
       
       // Send to server
-      await fetch('./api/readings/sync', {
+      await fetch('/api/readings/sync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -246,8 +246,8 @@ async function syncOfflineReadings() {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'Your divine guidance awaits',
-    icon: './icons/icon-192x192.png',
-    badge: './icons/badge-72x72.png',
+    icon: '/icons/icon-192x192.png',
+    badge: '/icons/badge-72x72.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -257,12 +257,12 @@ self.addEventListener('push', (event) => {
       {
         action: 'explore',
         title: 'View Reading',
-        icon: './icons/checkmark.png'
+        icon: '/icons/checkmark.png'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: './icons/xmark.png'
+        icon: '/icons/xmark.png'
       }
     ]
   };
@@ -278,7 +278,7 @@ self.addEventListener('notificationclick', (event) => {
 
   if (event.action === 'explore') {
     event.waitUntil(
-      clients.openWindow('./demo')
+      clients.openWindow('/demo')
     );
   }
 });
