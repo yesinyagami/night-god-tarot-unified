@@ -48,6 +48,13 @@
           </div>
           <h1 class="cosmic-title">{{ tSync('title') }}</h1>
           <div class="subtitle-glow">{{ tSync('subtitle') }}</div>
+          <div class="expertise-constellation">
+            <span class="expertise-star" title="World-Class Design">🎨</span>
+            <span class="expertise-star" title="AI Engineering">🤖</span>
+            <span class="expertise-star" title="Tarot Mastery">🔮</span>
+            <span class="expertise-star" title="Global Languages">🌍</span>
+            <span class="expertise-star" title="Brand Strategy">⭐</span>
+          </div>
         </div>
 
         <!-- Header Controls -->
@@ -1818,6 +1825,38 @@ watch(userLevel, (newLevel, oldLevel) => {
   font-size: 1.2rem;
   margin-top: 0.5rem;
   opacity: 0.9;
+}
+
+.expertise-constellation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.expertise-star {
+  font-size: 2rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+.expertise-star:nth-child(1) { animation-delay: 0s; }
+.expertise-star:nth-child(2) { animation-delay: 0.6s; }
+.expertise-star:nth-child(3) { animation-delay: 1.2s; }
+.expertise-star:nth-child(4) { animation-delay: 1.8s; }
+.expertise-star:nth-child(5) { animation-delay: 2.4s; }
+
+.expertise-star:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px #ffd700);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
 }
 
 /* Ascension Display */
