@@ -2159,21 +2159,20 @@ onMounted(async () => {
     }
   }, 100) // Start after 100ms to ensure UI is ready
   
-  // Force remove loading screen after Vue mounts
-  setTimeout(() => {
-    const loadingElements = document.querySelectorAll('.loading')
-    loadingElements.forEach(el => {
-      if (el && el.parentNode) {
-        el.style.opacity = '0'
-        setTimeout(() => {
-          if (el.parentNode) {
-            el.parentNode.removeChild(el)
-          }
-        }, 500)
-      }
-    })
-    console.log('🎭 Loading screen removed')
-  }, 200)
+  // Force remove loading screen immediately after Vue mounts
+  const loadingElements = document.querySelectorAll('.loading')
+  loadingElements.forEach(el => {
+    if (el && el.parentNode) {
+      el.style.transition = 'opacity 0.5s ease'
+      el.style.opacity = '0'
+      setTimeout(() => {
+        if (el.parentNode) {
+          el.parentNode.removeChild(el)
+        }
+      }, 500)
+    }
+  })
+  console.log('🎭 Loading screen removed')
   
   // Check if user has already registered and activate memory system
   const savedEmail = cardMemorySystem.getSavedEmail()
