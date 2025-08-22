@@ -13,7 +13,7 @@ jobs:
       tag-name: ${{ steps.release.outputs.tag_name }}
     steps:
       - name: 🏁 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🏷️ Release Please
         uses: google-github-actions/release-please-action@v4
@@ -30,7 +30,7 @@ jobs:
     environment: production
     steps:
       - name: 🏁 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
