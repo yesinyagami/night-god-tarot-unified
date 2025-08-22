@@ -37,7 +37,7 @@
         <div class="brand-constellation">
           <!-- Night God Logo Integration -->
           <div class="logo-sanctuary">
-            <img src="/src/assets/night-god-logo.jpg" alt="Night God Tarot" class="night-god-logo" />
+            <img :src="nightGodLogo" alt="Night God Tarot" class="night-god-logo" />
             <div class="logo-aura"></div>
           </div>
           
@@ -537,6 +537,7 @@ import { cardMemorySystem } from '../services/cardMemorySystem'
 import type { FlippedCardRecord } from '../services/cardMemorySystem'
 import WeatherNewsWidget from './WeatherNewsWidget.vue'
 import BinauralAudioPlayer from './BinauralAudioPlayer.vue'
+import nightGodLogo from '../assets/night-god-logo.jpg'
 
 // Store
 const tarotStore = useTarotStore()
