@@ -1,0 +1,12 @@
+{
+  "cards": [
+    {
+      "name": "The Fool",
+      "description": "New beginnings"
+    }
+  ],
+  "question": "我的未来如何？",
+  "userId": "test-user",
+  "language": "zh",
+  "useAdvanced": true
+}

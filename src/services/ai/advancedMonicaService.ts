@@ -37,6 +37,13 @@ export interface VoiceReadingRequest {
   emotion?: 'calm' | 'dramatic' | 'inspiring' | 'mysterious'
 }
 
+export interface MultiLanguageReading {
+  question: string
+  cards: Array<{name: string, description: string}>
+  targetLanguage: 'zh' | 'en' | 'ja'
+  includeOriginal?: boolean
+}
+
 export interface MultiModelReading {
   question: string
   cards: Array<{name: string, description: string}>
@@ -564,6 +571,129 @@ Blend ancient wisdom with contemporary understanding.
       .slice(0, 5)
     
     return items
+  }
+
+  /**
+   * 🌐 Multi-Language Tarot Reading (ZH/EN/JA)
+   */
+  async performMultiLanguageReading(request: MultiLanguageReading): Promise<{
+    originalReading: string
+    translatedReading?: string
+    language: string
+    confidence: number
+  }> {
+    const cardsList = request.cards.map(c => c.name).join(', ')
+    
+    // Language-specific prompts and cultural context
+    const languagePrompts = {
+      zh: {
+        prompt: `
+🌟 夜神塔羅神聖解讀 🌟
+
+抽到的牌卡：${cardsList}
+詢問問題："${request.question}"
+
+作為資深塔羅大師，請提供深度的中文解讀：
+
+1. 🌊 集體智慧 - 牌卡的傳統象徵意義與宇宙法則
+2. 🧠 個人分析 - 針對問題的具體指引與洞察
+3. ⚖️ 智慧整合 - 實用的建議與行動方針
+4. 🎭 詩意昇華 - 以優美的中文表達神聖的智慧
+
+請用流暢的中文，融合東方智慧與塔羅奧秘，為問卜者帶來深刻的靈性指引。
+        `,
+        system: '你是夜神塔羅大師，精通中華文化與塔羅智慧，用優美的中文為問卜者提供深刻的靈性指引。'
+      },
+      en: {
+        prompt: `
+🌟 Night God Tarot Sacred Reading 🌟
+
+Cards drawn: ${cardsList}
+Question: "${request.question}"
+
+As a master tarot reader, provide a profound English interpretation:
+
+1. 🌊 Collective Wisdom - Traditional symbolism and universal principles
+2. 🧠 Personal Analysis - Specific guidance and insights for the question
+3. ⚖️ Wisdom Integration - Practical advice and action steps
+4. 🎭 Poetic Sublimation - Express divine wisdom with elegant English
+
+Blend Western mystical traditions with tarot secrets, delivering transformative spiritual guidance.
+        `,
+        system: 'You are the Night God Tarot Master, combining Western mystical wisdom with tarot knowledge to provide profound spiritual guidance in eloquent English.'
+      },
+      ja: {
+        prompt: `
+🌟 ナイトゴッドタロット神聖なリーディング 🌟
+
+引いたカード：${cardsList}
+質問：「${request.question}」
+
+タロットマスターとして、深い日本語の解釈を提供してください：
+
+1. 🌊 集合的知恵 - 伝統的な象徴と宇宙の法則
+2. 🧠 個人的分析 - 質問に対する具体的な指導と洞察
+3. ⚖️ 知恵の統合 - 実践的なアドバイスと行動指針
+4. 🎭 詩的昇華 - 美しい日本語で神聖な知恵を表現
+
+日本の精神文化とタロットの神秘を融合し、心に響く霊的指導をお届けください。
+        `,
+        system: 'あなたはナイトゴッドタロットマスターです。日本の精神文化とタロットの知恵を組み合わせ、美しい日本語で深い霊的指導を提供します。'
+      }
+    }
+    
+    const config = languagePrompts[request.targetLanguage]
+    
+    try {
+      const response = await fetch(`${this.config.baseUrl}/v1/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.config.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o',
+          messages: [
+            {
+              role: 'system',
+              content: config.system
+            },
+            {
+              role: 'user',
+              content: config.prompt
+            }
+          ],
+          max_tokens: 2500,
+          temperature: 0.8
+        })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        const reading = data.choices[0].message.content
+        
+        return {
+          originalReading: reading,
+          language: request.targetLanguage,
+          confidence: this.calculateReadingConfidence(reading)
+        }
+      }
+    } catch (error) {
+      console.error(`Multi-language reading failed for ${request.targetLanguage}:`, error)
+    }
+    
+    // Fallback readings in each language
+    const fallbackReadings = {
+      zh: `🌟 夜神塔羅神聖指引 🌟\n\n抽到的牌卡 ${cardsList} 為您的問題「${request.question}」帶來了宇宙的智慧。\n\n這些神聖的符號提醒您相信內在的智慧，跟隨心靈的指引。每一張牌都承載著古老的能量，為您的人生道路照亮方向。\n\n願這份解讀為您帶來啟發與平靜。🌙✨`,
+      en: `🌟 Night God Tarot Divine Guidance 🌟\n\nThe cards ${cardsList} bring cosmic wisdom for your question "${request.question}".\n\nThese sacred symbols remind you to trust your inner wisdom and follow your heart's guidance. Each card carries ancient energy to illuminate your life path.\n\nMay this reading bring you inspiration and peace. 🌙✨`,
+      ja: `🌟 ナイトゴッドタロット神聖な導き 🌟\n\nカード ${cardsList} があなたの質問「${request.question}」に宇宙の知恵をもたらします。\n\nこれらの神聖なシンボルは、内なる知恵を信じ、心の導きに従うことを思い出させてくれます。各カードは古代のエネルギーを持ち、あなたの人生の道を照らします。\n\nこのリーディングがあなたにインスピレーションと平和をもたらしますように。🌙✨`
+    }
+    
+    return {
+      originalReading: fallbackReadings[request.targetLanguage],
+      language: request.targetLanguage,
+      confidence: 0.7
+    }
   }
 
   /**
