@@ -53,7 +53,8 @@
       "Bash(find:*)",
       "WebFetch(domain:docs.github.com)",
       "Bash(npx vite:*)",
-      "WebFetch(domain:monica.im)"
+      "WebFetch(domain:monica.im)",
+      "WebFetch(domain:localhost)"
     ],
     "deny": []
   }
