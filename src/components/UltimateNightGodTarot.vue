@@ -1560,25 +1560,56 @@ const initializeParticleSystem = () => {
 
 // Lifecycle
 onMounted(async () => {
+  console.log('🌙 Night God Tarot initializing...')
+  
   // Load saved language preference
   const savedLanguage = localStorage.getItem('preferredLanguage')
   if (savedLanguage && (savedLanguage === 'zh' || savedLanguage === 'en' || savedLanguage === 'ja')) {
     currentLanguage.value = savedLanguage as 'zh' | 'en' | 'ja'
   }
   
-  createStarField()
-  initializeParticleSystem()
-  
-  // Initialize AI system and Monica translator (non-blocking for demo mode)
-  Promise.all([
-    aiSystem.initialize().catch(e => console.warn('AI system initialization failed:', e)),
-    monicaTranslator.initialize().catch(e => console.warn('Monica translator initialization failed:', e))
-  ])
-  
-  // Pre-translate if non-Chinese language is selected (non-blocking for demo mode)
-  if (currentLanguage.value !== 'zh') {
-    translateAllTexts().catch(e => console.warn('Translation failed:', e))
+  // Initialize visual effects immediately (non-blocking)
+  try {
+    createStarField()
+    initializeParticleSystem()
+    console.log('✨ Visual effects initialized')
+  } catch (e) {
+    console.warn('Visual effects initialization failed:', e)
   }
+  
+  // Initialize services in background without blocking UI
+  setTimeout(async () => {
+    try {
+      await Promise.allSettled([
+        aiSystem.initialize().catch(e => console.warn('AI system initialization failed:', e)),
+        monicaTranslator.initialize().catch(e => console.warn('Monica translator initialization failed:', e))
+      ])
+      console.log('🤖 Services initialized')
+      
+      // Pre-translate if needed (also non-blocking)
+      if (currentLanguage.value !== 'zh') {
+        translateAllTexts().catch(e => console.warn('Translation failed:', e))
+      }
+    } catch (e) {
+      console.warn('Service initialization failed:', e)
+    }
+  }, 100) // Start after 100ms to ensure UI is ready
+  
+  // Force remove loading screen after Vue mounts
+  setTimeout(() => {
+    const loadingElements = document.querySelectorAll('.loading')
+    loadingElements.forEach(el => {
+      if (el && el.parentNode) {
+        el.style.opacity = '0'
+        setTimeout(() => {
+          if (el.parentNode) {
+            el.parentNode.removeChild(el)
+          }
+        }, 500)
+      }
+    })
+    console.log('🎭 Loading screen removed')
+  }, 200)
   
   // Check if user has already registered and activate memory system
   const savedEmail = cardMemorySystem.getSavedEmail()
