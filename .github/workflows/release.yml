@@ -61,7 +61,7 @@ jobs:
           zip -r night-god-tarot-${{ needs.create-release.outputs.tag-name }}.zip dist/
 
       - name: 📤 Upload release assets
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: |
             night-god-tarot-${{ needs.create-release.outputs.tag-name }}.tar.gz
