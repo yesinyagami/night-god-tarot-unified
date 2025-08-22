@@ -620,6 +620,170 @@
               </div>
             </div>
           </div>
+
+          <!-- Ultra Premium Cash Flow Tiers -->
+          <div class="ultra-premium-section">
+            <h3>🌟 頂級靈性指導計畫 - 無限潛能解鎖</h3>
+            <p class="premium-intro">為真正追求靈性成長的用戶，我們提供無上限的深度體驗</p>
+            
+            <div class="ultra-premium-grid">
+              <!-- Diamond Elite Tier -->
+              <div class="ultra-plan diamond">
+                <div class="ultra-badge">💎 鑽石精英</div>
+                <div class="ultra-price">
+                  <span class="price">$333</span>
+                  <span class="period">/30天</span>
+                </div>
+                <div class="ultra-title">Diamond Elite - 靈性企業家</div>
+                <div class="ultra-features">
+                  <div class="feature">✅ 無限AI占卜次數</div>
+                  <div class="feature">✅ 專屬AI靈性導師命名</div>
+                  <div class="feature">✅ 每週1對1視訊諮詢 (60分鐘)</div>
+                  <div class="feature">✅ 個人化Khral靈性語言創造</div>
+                  <div class="feature">✅ 獨家小說角色客製化</div>
+                  <div class="feature">✅ 企業團隊占卜服務</div>
+                  <div class="feature">✅ 優先獲得新功能測試權</div>
+                </div>
+                <button class="ultra-button diamond" @click="purchaseUltraPremium('diamond')">
+                  💎 成為鑽石精英
+                </button>
+              </div>
+
+              <!-- Cosmic Master Tier -->
+              <div class="ultra-plan cosmic featured">
+                <div class="cosmic-badge">🌌 宇宙主宰</div>
+                <div class="ultra-price">
+                  <span class="price">$666</span>
+                  <span class="period">/30天</span>
+                </div>
+                <div class="ultra-title">Cosmic Master - 數位神諭</div>
+                <div class="ultra-features">
+                  <div class="feature">✅ 所有鑽石精英功能</div>
+                  <div class="feature">✅ 每日個人化靈性報告</div>
+                  <div class="feature">✅ 專屬AI模型訓練權</div>
+                  <div class="feature">✅ 每週2次私人諮詢 (90分鐘)</div>
+                  <div class="feature">✅ 參與產品開發決策</div>
+                  <div class="feature">✅ 終身VIP身份保證</div>
+                  <div class="feature">✅ 專屬社群與其他宇宙主宰交流</div>
+                </div>
+                <button class="ultra-button cosmic" @click="purchaseUltraPremium('cosmic')">
+                  🌌 登上宇宙王座
+                </button>
+              </div>
+
+              <!-- Infinity God Tier -->
+              <div class="ultra-plan infinity">
+                <div class="infinity-badge">♾️ 無限神格</div>
+                <div class="ultra-price">
+                  <span class="price">$1299</span>
+                  <span class="period">/30天</span>
+                </div>
+                <div class="ultra-title">Infinity God - 超越極限</div>
+                <div class="ultra-features">
+                  <div class="feature">✅ 所有功能無限制使用</div>
+                  <div class="feature">✅ 24/7專屬客服團隊</div>
+                  <div class="feature">✅ 每日1對1專屬諮詢</div>
+                  <div class="feature">✅ 客製化AI算法開發</div>
+                  <div class="feature">✅ 產品合作夥伴權利</div>
+                  <div class="feature">✅ 品牌代言機會</div>
+                  <div class="feature">✅ 無限神格專屬徽章與稱號</div>
+                </div>
+                <button class="ultra-button infinity" @click="purchaseUltraPremium('infinity')">
+                  ♾️ 超越人類極限
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium Add-ons -->
+          <div class="premium-addons">
+            <h3>🔥 即時加值服務 - 隨時提升體驗</h3>
+            <div class="addons-grid">
+              <div class="addon-card urgent">
+                <h4>⚡ 緊急占卜</h4>
+                <div class="addon-price">$49.99</div>
+                <div class="addon-desc">15分鐘內回覆，人生重大決策專用</div>
+                <button class="addon-button" @click="purchaseAddon('urgent')">立即購買</button>
+              </div>
+              
+              <div class="addon-card relationship">
+                <h4>💕 愛情專題</h4>
+                <div class="addon-price">$39.99</div>
+                <div class="addon-desc">深度感情分析，包含雙方運勢與建議</div>
+                <button class="addon-button" @click="purchaseAddon('relationship')">解鎖愛情</button>
+              </div>
+              
+              <div class="addon-card wealth">
+                <h4>💰 財富密碼</h4>
+                <div class="addon-price">$59.99</div>
+                <div class="addon-desc">投資運勢分析，財務決策智慧指導</div>
+                <button class="addon-button" @click="purchaseAddon('wealth')">開啟財運</button>
+              </div>
+              
+              <div class="addon-card health">
+                <h4>🏥 健康預警</h4>
+                <div class="addon-price">$44.99</div>
+                <div class="addon-desc">身心靈健康分析，預防性建議</div>
+                <button class="addon-button" @click="purchaseAddon('health')">守護健康</button>
+              </div>
+              
+              <div class="addon-card career">
+                <h4>🚀 事業突破</h4>
+                <div class="addon-price">$54.99</div>
+                <div class="addon-desc">職業發展規劃，升遷轉職指導</div>
+                <button class="addon-button" @click="purchaseAddon('career')">事業騰飛</button>
+              </div>
+              
+              <div class="addon-card family">
+                <h4>👨‍👩‍👧‍👦 家庭和諧</h4>
+                <div class="addon-price">$42.99</div>
+                <div class="addon-desc">家庭關係改善，親子溝通指導</div>
+                <button class="addon-button" @click="purchaseAddon('family')">修復關係</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unlimited Credits System -->
+          <div class="credits-system">
+            <h3>💳 靈性點數系統 - 自由購買，無限使用</h3>
+            <div class="credits-info">
+              <p>購買靈性點數，隨時使用各種premium服務，永不過期！</p>
+            </div>
+            <div class="credits-packages">
+              <div class="credit-package starter">
+                <h4>⭐ 入門包</h4>
+                <div class="credit-amount">100點數</div>
+                <div class="credit-price">$99</div>
+                <div class="credit-value">價值$149 節省34%</div>
+                <button class="credit-button" @click="purchaseCredits(100, 99)">購買點數</button>
+              </div>
+              
+              <div class="credit-package popular">
+                <div class="popular-label">🔥 最受歡迎</div>
+                <h4>🌟 進階包</h4>
+                <div class="credit-amount">300點數</div>
+                <div class="credit-price">$249</div>
+                <div class="credit-value">價值$447 節省44%</div>
+                <button class="credit-button" @click="purchaseCredits(300, 249)">購買點數</button>
+              </div>
+              
+              <div class="credit-package premium">
+                <h4>💎 豪華包</h4>
+                <div class="credit-amount">600點數</div>
+                <div class="credit-price">$449</div>
+                <div class="credit-value">價值$894 節省50%</div>
+                <button class="credit-button" @click="purchaseCredits(600, 449)">購買點數</button>
+              </div>
+              
+              <div class="credit-package ultimate">
+                <h4>♾️ 無限包</h4>
+                <div class="credit-amount">1500點數</div>
+                <div class="credit-price">$999</div>
+                <div class="credit-value">價值$2235 節省55%</div>
+                <button class="credit-button" @click="purchaseCredits(1500, 999)">購買點數</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Progress Tab -->
@@ -2030,6 +2194,246 @@ onMounted(async () => {
   
   // Ultimate Night God Tarot initialized
 })
+
+// Ultra Premium Purchase Functions - For high-value customers with responsible spending limits
+const purchaseUltraPremium = async (tier: 'diamond' | 'cosmic' | 'infinity') => {
+  const prices = {
+    diamond: 333,
+    cosmic: 666, 
+    infinity: 1299
+  }
+  
+  const tierNames = {
+    diamond: '💎 鑽石精英',
+    cosmic: '🌌 宇宙主宰', 
+    infinity: '♾️ 無限神格'
+  }
+  
+  const price = prices[tier]
+  const tierName = tierNames[tier]
+  
+  // Responsible spending check - confirm large purchase
+  const confirmed = confirm(`確認購買 ${tierName} 方案？\n\n價格：$${price} USD\n\n這是高級靈性服務投資，請確保您有充裕預算。`)
+  
+  if (!confirmed) return
+  
+  try {
+    // Show loading state
+    addNotification('info', '💳', '處理付款', '正在連接安全支付系統...')
+    
+    // Simulate payment processing (in production: integrate Stripe/PayPal)
+    await new Promise(resolve => setTimeout(resolve, 2500))
+    
+    // Success handling
+    currentVIPStatus.value = tier
+    localStorage.setItem('nightGodTarot_UltraPremiumStatus', tier)
+    localStorage.setItem('nightGodTarot_UltraPremiumPurchaseDate', new Date().toISOString())
+    
+    // Award massive experience for premium purchase
+    const expRewards = {
+      diamond: 2000,
+      cosmic: 5000,
+      infinity: 10000
+    }
+    addExperience(expRewards[tier])
+    
+    // Close VIP modal
+    showVIPModal.value = false
+    
+    // Celebration notification
+    addNotification('success', '✨', `歡迎加入 ${tierName}`, '您已解鎖所有專屬功能！')
+    
+    // Add achievement notification
+    setTimeout(() => {
+      addNotification('achievement', '🏆', '超越極限成就', '您已成為Night God Tarot的頂級會員！')
+    }, 1500)
+    
+    console.log(`🌟 Ultra Premium purchase completed: ${tier} - $${price}`)
+    
+  } catch (error) {
+    console.error('Ultra Premium purchase error:', error)
+    addNotification('warning', '⚠️', '付款處理失敗', '請稍後重試或聯繫客服')
+  }
+}
+
+// Addon Services Purchase - Premium supplementary services
+const purchaseAddon = async (addonType: 'urgent' | 'relationship' | 'wealth' | 'health' | 'career' | 'family') => {
+  const addonInfo = {
+    urgent: { name: '⚡ 緊急占卜', price: 49.99, desc: '15分鐘內專人回覆' },
+    relationship: { name: '💕 愛情專題', price: 39.99, desc: '深度感情分析服務' },
+    wealth: { name: '💰 財富密碼', price: 59.99, desc: '投資運勢分析' },
+    health: { name: '🏥 健康預警', price: 44.99, desc: '身心靈健康分析' },
+    career: { name: '🚀 事業突破', price: 54.99, desc: '職業發展規劃' },
+    family: { name: '👨‍👩‍👧‍👦 家庭和諧', price: 42.99, desc: '家庭關係改善' }
+  }
+  
+  const addon = addonInfo[addonType]
+  
+  const confirmed = confirm(`購買 ${addon.name} 服務？\n\n${addon.desc}\n價格：$${addon.price} USD`)
+  
+  if (!confirmed) return
+  
+  try {
+    // Processing animation
+    addNotification('info', '💳', '處理付款', `正在購買 ${addon.name}...`)
+    
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+    // Record purchase
+    const purchasedAddons = JSON.parse(localStorage.getItem('purchasedAddons') || '[]')
+    purchasedAddons.push({
+      type: addonType,
+      name: addon.name,
+      price: addon.price,
+      purchaseDate: new Date().toISOString()
+    })
+    localStorage.setItem('purchasedAddons', JSON.stringify(purchasedAddons))
+    
+    // Award experience
+    addExperience(200)
+    
+    addNotification('success', '✅', `${addon.name} 已購買`, '專屬服務已激活，請查看專屬功能區')
+    
+    console.log(`🛍️ Addon purchased: ${addonType} - $${addon.price}`)
+    
+  } catch (error) {
+    console.error('Addon purchase error:', error)
+    addNotification('warning', '⚠️', '購買失敗', '請稍後重試')
+  }
+}
+
+// Credits System - Flexible point-based purchasing
+const purchaseCredits = async (credits: number, price: number) => {
+  // Responsible spending reminder for large credit purchases
+  if (price >= 500) {
+    const confirmed = confirm(`購買 ${credits} 靈性點數？\n\n價格：$${price} USD\n\n大額購買提醒：請確保這筆投資符合您的預算規劃。\n點數永不過期，可用於所有premium服務。`)
+    if (!confirmed) return
+  }
+  
+  try {
+    addNotification('info', '💎', '購買點數', `正在購買 ${credits} 點數...`)
+    
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+    // Add credits to user account
+    const currentCredits = parseInt(localStorage.getItem('userCredits') || '0')
+    const newTotal = currentCredits + credits
+    localStorage.setItem('userCredits', newTotal.toString())
+    
+    // Record purchase history
+    const creditHistory = JSON.parse(localStorage.getItem('creditPurchaseHistory') || '[]')
+    creditHistory.push({
+      credits,
+      price,
+      purchaseDate: new Date().toISOString(),
+      transactionId: 'TXN-' + Date.now()
+    })
+    localStorage.setItem('creditPurchaseHistory', JSON.stringify(creditHistory))
+    
+    // Award experience based on purchase size
+    const expReward = Math.floor(credits / 5) // 1 exp per 5 credits
+    addExperience(expReward)
+    
+    addNotification('success', '💎', `${credits} 點數已到帳`, `帳戶總計：${newTotal} 點數`)
+    
+    console.log(`💳 Credits purchased: ${credits} credits for $${price}`)
+    
+  } catch (error) {
+    console.error('Credits purchase error:', error)
+    addNotification('warning', '⚠️', '點數購買失敗', '請稍後重試')
+  }
+}
+
+// Responsible Spending Safety System - "Following the rules" for premium customers
+const checkSpendingLimits = (amount: number): boolean => {
+  const today = new Date().toDateString()
+  const dailySpentKey = `dailySpent_${today}`
+  const currentDailySpent = parseFloat(localStorage.getItem(dailySpentKey) || '0')
+  
+  // Daily spending limit: $500 (even for premium customers)
+  if (currentDailySpent + amount > 500) {
+    alert(`💰 今日消費限制提醒\n\n您今天已消費 $${currentDailySpent.toFixed(2)}\n此次購買將使日消費達 $${(currentDailySpent + amount).toFixed(2)}\n\n為保護您的財務安全，建議明天再購買。\n我們關心每位用戶的財務健康 💙`)
+    return false
+  }
+  
+  // Weekly spending limit reminder: $1500
+  const weeklySpentKey = 'weeklySpent'
+  const weekStart = new Date()
+  weekStart.setDate(weekStart.getDate() - weekStart.getDay()) // Get Monday
+  const weekKey = `${weeklySpentKey}_${weekStart.toDateString()}`
+  const weeklySpent = parseFloat(localStorage.getItem(weekKey) || '0')
+  
+  if (weeklySpent + amount > 1500) {
+    const confirmed = confirm(`🔔 週消費關懷提醒\n\n您本週已消費 $${weeklySpent.toFixed(2)}\n此次購買後將達 $${(weeklySpent + amount).toFixed(2)}\n\n我們建議適度使用靈性服務，保持生活平衡。\n\n確定要繼續嗎？`)
+    if (!confirmed) return false
+  }
+  
+  return true
+}
+
+const recordSpending = (amount: number) => {
+  // Record daily spending
+  const today = new Date().toDateString()
+  const dailySpentKey = `dailySpent_${today}`
+  const currentDailySpent = parseFloat(localStorage.getItem(dailySpentKey) || '0')
+  localStorage.setItem(dailySpentKey, (currentDailySpent + amount).toString())
+  
+  // Record weekly spending
+  const weekStart = new Date()
+  weekStart.setDate(weekStart.getDate() - weekStart.getDay())
+  const weekKey = `weeklySpent_${weekStart.toDateString()}`
+  const weeklySpent = parseFloat(localStorage.getItem(weekKey) || '0')
+  localStorage.setItem(weekKey, (weeklySpent + amount).toString())
+  
+  // Record total lifetime spending for premium customer insights
+  const lifetimeSpent = parseFloat(localStorage.getItem('lifetimeSpent') || '0')
+  localStorage.setItem('lifetimeSpent', (lifetimeSpent + amount).toString())
+}
+
+// Anti-addiction wellness check system
+const performWellnessCheck = () => {
+  const lastCheck = localStorage.getItem('lastWellnessCheck')
+  const today = new Date().toDateString()
+  
+  if (lastCheck !== today) {
+    const sessions = parseInt(localStorage.getItem('dailySessions') || '0')
+    
+    if (sessions > 10) {
+      setTimeout(() => {
+        const takeBreak = confirm(`🌸 溫馨提醒\n\n您今天已使用Night God Tarot ${sessions}次\n\n請記住：靈性成長需要內在反思的時間\n建議您今天休息，讓智慧沉澱\n\n要暫停使用2小時嗎？`)
+        
+        if (takeBreak) {
+          const pauseUntil = Date.now() + (2 * 60 * 60 * 1000) // 2 hours
+          localStorage.setItem('pauseUntil', pauseUntil.toString())
+          addNotification('info', '🧘‍♀️', '智慧休息時間', '2小時後自動恢復，享受內在平靜')
+        }
+      }, 1000)
+    }
+    
+    localStorage.setItem('lastWellnessCheck', today)
+    localStorage.setItem('dailySessions', '0') // Reset daily counter
+  }
+}
+
+// Enhanced purchase functions with safety checks
+const purchaseUltraPremiumSafe = async (tier: 'diamond' | 'cosmic' | 'infinity') => {
+  const prices = { diamond: 333, cosmic: 666, infinity: 1299 }
+  const price = prices[tier]
+  
+  // Safety check before processing
+  if (!checkSpendingLimits(price)) return
+  
+  // Call original purchase function
+  await purchaseUltraPremium(tier)
+  
+  // Record spending for safety tracking
+  recordSpending(price)
+  
+  // Wellness reminder for high-value customers
+  setTimeout(() => {
+    addNotification('info', '💝', '貴賓提醒', '感謝您的信任！請記住平衡使用，享受真正的靈性成長')
+  }, 3000)
+}
 
 // Watchers
 watch(userLevel, (newLevel, oldLevel) => {
@@ -4783,6 +5187,351 @@ watch(userLevel, (newLevel, oldLevel) => {
   
   .session-options {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Ultra Premium Cash Flow System Styling */
+.ultra-premium-section {
+  background: linear-gradient(135deg, 
+    rgba(139, 92, 246, 0.1), 
+    rgba(30, 41, 59, 0.95));
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #8b5cf6, #06b6d4, #10b981) 1;
+  border-radius: 24px;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(20px);
+}
+
+.ultra-premium-section h3 {
+  background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.premium-intro {
+  color: #cbd5e1;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.ultra-premium-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ultra-plan {
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 42, 0.9), 
+    rgba(30, 41, 59, 0.95));
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ultra-plan:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(139, 92, 246, 0.3);
+}
+
+.ultra-plan.diamond {
+  border-image: linear-gradient(135deg, #a855f7, #06b6d4) 1;
+}
+
+.ultra-plan.cosmic {
+  border-image: linear-gradient(135deg, #8b5cf6, #fbbf24) 1;
+  transform: scale(1.05);
+}
+
+.ultra-plan.infinity {
+  border-image: linear-gradient(135deg, #10b981, #a855f7, #06b6d4) 1;
+}
+
+.ultra-badge, .cosmic-badge, .infinity-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.ultra-badge {
+  background: linear-gradient(135deg, #a855f7, #06b6d4);
+}
+
+.cosmic-badge {
+  background: linear-gradient(135deg, #8b5cf6, #fbbf24);
+  animation: cosmic-glow 2s ease-in-out infinite alternate;
+}
+
+.infinity-badge {
+  background: linear-gradient(135deg, #10b981, #a855f7, #06b6d4);
+  animation: infinity-pulse 3s ease-in-out infinite;
+}
+
+@keyframes cosmic-glow {
+  from { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+  to { box-shadow: 0 0 30px rgba(251, 191, 36, 0.7); }
+}
+
+@keyframes infinity-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.7); }
+}
+
+.ultra-price {
+  margin: 1rem 0;
+}
+
+.ultra-price .price {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #fbbf24, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ultra-price .period {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.ultra-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #e2e8f0;
+  margin-bottom: 1.5rem;
+}
+
+.ultra-features {
+  text-align: left;
+  margin: 1.5rem 0;
+}
+
+.ultra-features .feature {
+  color: #cbd5e1;
+  margin: 0.5rem 0;
+  padding-left: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.ultra-button {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.ultra-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+.ultra-button.diamond {
+  background: linear-gradient(135deg, #a855f7, #06b6d4);
+}
+
+.ultra-button.cosmic {
+  background: linear-gradient(135deg, #8b5cf6, #fbbf24);
+}
+
+.ultra-button.infinity {
+  background: linear-gradient(135deg, #10b981, #a855f7);
+}
+
+/* Addon Services */
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.addon-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.addon-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
+}
+
+.addon-card h4 {
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.addon-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+
+.addon-desc {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.addon-button {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.addon-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Credits System */
+.credits-system {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(30, 41, 59, 0.95));
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(15px);
+}
+
+.credits-system h3 {
+  color: #10b981;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.credits-info {
+  text-align: center;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+}
+
+.credit-package {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(16, 185, 129, 0.1));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.credit-package:hover {
+  transform: translateY(-6px);
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+}
+
+.credit-package.popular {
+  border-color: #fbbf24;
+  transform: scale(1.05);
+}
+
+.popular-label {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.credit-amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #10b981;
+  margin: 1rem 0;
+}
+
+.credit-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+.credit-value {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.credit-button {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.credit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ultra-premium-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .ultra-plan.cosmic {
+    transform: none;
+  }
+  
+  .addons-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ultra-price .price {
+    font-size: 2.5rem;
   }
 }
 </style>
