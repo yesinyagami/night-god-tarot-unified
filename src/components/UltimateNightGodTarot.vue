@@ -491,6 +491,137 @@
           </div>
         </div>
 
+        <!-- VIP Subscription Tab -->
+        <div v-if="activeTab === 'vip'" class="vip-realm">
+          <h2 class="realm-title">👑 VIP至尊會員計畫</h2>
+          
+          <!-- Current Status -->
+          <div class="vip-status-card">
+            <div class="current-tier">
+              <span class="tier-badge" :class="vipTier">{{ getVipTierName(vipTier) }}</span>
+              <div class="tier-benefits">
+                <p v-if="vipTier === 'free'">🌟 免費體驗 - 每日1次抽牌</p>
+                <p v-else>✨ VIP會員至 {{ formatDate(vipExpiry) }}</p>
+              </div>
+            </div>
+            <div class="gamification-stats">
+              <div class="stat-item">
+                <div class="stat-number">{{ userLevel }}</div>
+                <div class="stat-label">靈性等級</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">{{ userStreak }}</div>
+                <div class="stat-label">連續天數</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">{{ totalDraws }}</div>
+                <div class="stat-label">總抽牌數</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIP Plans -->
+          <div class="vip-plans-grid">
+            <!-- Silver Plan -->
+            <div class="vip-plan silver" :class="{ active: vipTier === 'silver' }">
+              <div class="plan-header">
+                <h3>🥈 Silver VIP</h3>
+                <div class="plan-title">Mystic Apprentice</div>
+                <div class="plan-price">
+                  <span class="price">$53</span>
+                  <span class="period">/30天</span>
+                </div>
+              </div>
+              <div class="plan-features">
+                <div class="feature">✅ 每日5次AI問答</div>
+                <div class="feature">✅ 每日1次額外抽牌</div>
+                <div class="feature">✅ Khral語言翻譯</div>
+                <div class="feature">✅ 優先客服支援</div>
+                <div class="feature">✅ 小說章節1-8</div>
+                <div class="feature">✅ 天氣心情關聯報告</div>
+              </div>
+              <button class="vip-button" @click="purchaseVip('silver')" :disabled="vipTier === 'silver'">
+                {{ vipTier === 'silver' ? '✅ 已訂閱' : '🚀 立即升級' }}
+              </button>
+            </div>
+
+            <!-- Gold Plan -->
+            <div class="vip-plan gold featured" :class="{ active: vipTier === 'gold' }">
+              <div class="popular-badge">🌟 最受歡迎</div>
+              <div class="plan-header">
+                <h3>🥇 Gold VIP</h3>
+                <div class="plan-title">Oracle Adept</div>
+                <div class="plan-price">
+                  <span class="price">$100</span>
+                  <span class="period">/30天</span>
+                </div>
+              </div>
+              <div class="plan-features">
+                <div class="feature">✅ 每日10次AI問答</div>
+                <div class="feature">✅ 每日個人化神秘報告</div>
+                <div class="feature">✅ 每日3次故事整合</div>
+                <div class="feature">✅ 進階卡牌解鎖</div>
+                <div class="feature">✅ 小說章節1-15</div>
+                <div class="feature">✅ 季節儀式指導</div>
+                <div class="feature">✅ 自定義頭像主題</div>
+              </div>
+              <button class="vip-button" @click="purchaseVip('gold')" :disabled="vipTier === 'gold'">
+                {{ vipTier === 'gold' ? '✅ 已訂閱' : '👑 立即升級' }}
+              </button>
+            </div>
+
+            <!-- Platinum Plan -->
+            <div class="vip-plan platinum" :class="{ active: vipTier === 'platinum' }">
+              <div class="plan-header">
+                <h3>💎 Platinum VIP</h3>
+                <div class="plan-title">Digital Sage</div>
+                <div class="plan-price">
+                  <span class="price">$166</span>
+                  <span class="period">/30天</span>
+                </div>
+              </div>
+              <div class="plan-features">
+                <div class="feature">✅ 每日3次頂級算法占卜</div>
+                <div class="feature">✅ 每月5次Khral語言課程</div>
+                <div class="feature">✅ 每日1次故事分支選擇</div>
+                <div class="feature">✅ 獨家角色卡牌</div>
+                <div class="feature">✅ 完整31萬字小說</div>
+                <div class="feature">✅ AI伴侶命名權</div>
+                <div class="feature">✅ Beta功能搶先體驗</div>
+                <div class="feature">✅ 每月視訊塔羅諮詢</div>
+              </div>
+              <button class="vip-button" @click="purchaseVip('platinum')" :disabled="vipTier === 'platinum'">
+                {{ vipTier === 'platinum' ? '✅ 已訂閱' : '💎 至尊體驗' }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Premium Sessions -->
+          <div class="premium-sessions">
+            <h3>💫 單次付費占卜服務</h3>
+            <div class="session-options">
+              <div class="session-card">
+                <h4>🔮 基礎占卜</h4>
+                <div class="session-price">$9.99</div>
+                <div class="session-desc">3張牌陣列，1000字解讀</div>
+                <button class="session-button" @click="purchaseSession('basic')">立即體驗</button>
+              </div>
+              <div class="session-card">
+                <h4>⭐ 進階占卜</h4>
+                <div class="session-price">$16.99</div>
+                <div class="session-desc">凱爾特十字陣，AI多重分析，天氣整合</div>
+                <button class="session-button" @click="purchaseSession('advanced')">深度解讀</button>
+              </div>
+              <div class="session-card">
+                <h4>👑 大師占卜</h4>
+                <div class="session-price">$26.99</div>
+                <div class="session-desc">完整10張牌陣，小說整合，Khral洞察</div>
+                <button class="session-button" @click="purchaseSession('master')">終極體驗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Progress Tab -->
         <div v-if="activeTab === 'progress'" class="progress-realm">
           <h2 class="realm-title">📊 靈魂成長</h2>
@@ -647,6 +778,7 @@ const staticTranslations = {
     // Tab names
     oracleTab: '神諭',
     chatTab: 'AI問答',
+    vipTab: 'VIP會員',
     novelTab: '小說',
     progressTab: '成長',
     chatPlaceholder: '向AI神諭提問任何關於塔羅、命運或人生的問題...',
@@ -719,6 +851,7 @@ const staticTranslations = {
     // Tab names
     oracleTab: 'Oracle',
     chatTab: 'AI Chat',
+    vipTab: 'VIP Plans',
     novelTab: 'Novel',
     progressTab: 'Progress',
     chatPlaceholder: 'Ask the AI Oracle any questions about tarot, destiny, or life...',
@@ -1018,9 +1151,19 @@ const translateAllTexts = async () => {
   }
 }
 
-const userLevel = ref(parseInt(localStorage.getItem('userLevel') || '8'))
-const userExperience = ref(parseInt(localStorage.getItem('userExperience') || '450'))
-const maxExperience = ref(600)
+// Enhanced Gamification System
+const userLevel = ref(parseInt(localStorage.getItem('userLevel') || '1'))
+const userExperience = ref(parseInt(localStorage.getItem('userExperience') || '0'))
+const maxExperience = ref(computed(() => userLevel.value * 100))
+const userStreak = ref(parseInt(localStorage.getItem('dailyStreak') || '0'))
+const lastLoginDate = ref(localStorage.getItem('lastLogin') || '')
+const totalDraws = ref(parseInt(localStorage.getItem('totalDraws') || '0'))
+const userBadges = ref(JSON.parse(localStorage.getItem('userBadges') || '[]'))
+const userTitle = ref(localStorage.getItem('userTitle') || 'Novice Seeker')
+const vipTier = ref(localStorage.getItem('vipTier') || 'free')
+const vipExpiry = ref(localStorage.getItem('vipExpiry') || '')
+const dailyDrawsUsed = ref(parseInt(localStorage.getItem('dailyDrawsUsed') || '0'))
+const lastDrawDate = ref(localStorage.getItem('lastDrawDate') || '')
 
 const userQuestion = ref('')
 
@@ -1068,6 +1211,7 @@ const lunarPhases = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '�
 const tabs = computed(() => [
   { id: 'oracle', name: tSync('oracleTab'), icon: '🔮' },
   { id: 'chat', name: tSync('chatTab'), icon: '🤖' },
+  { id: 'vip', name: tSync('vipTab'), icon: '👑' },
   { id: 'novel', name: tSync('novelTab'), icon: '📖' },
   { id: 'progress', name: tSync('progressTab'), icon: '📊' }
 ])
@@ -1603,6 +1747,92 @@ const shuffleCards = (cards: TarotCard[]): TarotCard[] => {
   return shuffled
 }
 
+// VIP and Gamification Functions
+const getVipTierName = (tier: string): string => {
+  const tierNames = {
+    'free': '🌟 免費會員',
+    'silver': '🥈 Silver VIP',
+    'gold': '🥇 Gold VIP',
+    'platinum': '💎 Platinum VIP'
+  }
+  return tierNames[tier as keyof typeof tierNames] || '🌟 免費會員'
+}
+
+const formatDate = (dateString: string): string => {
+  if (!dateString) return ''
+  return new Date(dateString).toLocaleDateString('zh-TW')
+}
+
+const checkDailyStreak = () => {
+  const today = new Date().toDateString()
+  const lastLogin = lastLoginDate.value
+  
+  if (lastLogin === today) {
+    return // Already logged in today
+  }
+  
+  const yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  
+  if (lastLogin === yesterday.toDateString()) {
+    userStreak.value++
+  } else if (lastLogin !== today) {
+    userStreak.value = 1
+  }
+  
+  lastLoginDate.value = today
+  localStorage.setItem('lastLogin', today)
+  localStorage.setItem('dailyStreak', userStreak.value.toString())
+  
+  // Streak rewards
+  if (userStreak.value % 7 === 0) {
+    addNotification('success', '🔥', '連續登入獎勵！', `連續${userStreak.value}天！額外經驗+50`)
+    addExperience(50)
+  }
+}
+
+const purchaseVip = async (tier: 'silver' | 'gold' | 'platinum') => {
+  const prices = {
+    silver: 53,
+    gold: 100, 
+    platinum: 166
+  }
+  
+  // Simulate payment process
+  const confirmed = confirm(`確認購買${getVipTierName(tier)}會員？價格：$${prices[tier]}`)
+  
+  if (confirmed) {
+    // In real app, integrate Stripe payment here
+    vipTier.value = tier
+    const expiryDate = new Date()
+    expiryDate.setDate(expiryDate.getDate() + 30)
+    vipExpiry.value = expiryDate.toISOString()
+    
+    localStorage.setItem('vipTier', tier)
+    localStorage.setItem('vipExpiry', vipExpiry.value)
+    
+    addNotification('success', '👑', 'VIP升級成功！', `歡迎成為${getVipTierName(tier)}！`)
+    addExperience(100)
+  }
+}
+
+const purchaseSession = async (type: 'basic' | 'advanced' | 'master') => {
+  const prices = {
+    basic: 9.99,
+    advanced: 16.99,
+    master: 26.99
+  }
+  
+  const confirmed = confirm(`確認購買${type}占卜服務？價格：$${prices[type]}`)
+  
+  if (confirmed) {
+    // In real app, integrate Stripe payment here
+    addNotification('success', '💫', '付費占卜已購買！', '請前往神諭頁面體驗')
+    // Redirect to oracle tab and trigger premium reading
+    activeTab.value = 'oracle'
+  }
+}
+
 const addNotification = (
   type: 'success' | 'info' | 'warning' | 'achievement',
   icon: string,
@@ -1743,6 +1973,9 @@ onMounted(async () => {
   } catch (e) {
     console.warn('Visual effects initialization failed:', e)
   }
+  
+  // Initialize gamification
+  checkDailyStreak()
   
   // Initialize services in background without blocking UI
   setTimeout(async () => {
@@ -4271,6 +4504,285 @@ watch(userLevel, (newLevel, oldLevel) => {
   
   .chat-features {
     flex-direction: column;
+  }
+}
+
+/* VIP Subscription Interface Styles */
+.vip-realm {
+  padding: 1rem;
+}
+
+.vip-status-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.current-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tier-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tier-badge.free {
+  background: linear-gradient(135deg, #64748b, #475569);
+  color: white;
+}
+
+.tier-badge.silver {
+  background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
+  color: #1e293b;
+}
+
+.tier-badge.gold {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1e293b;
+}
+
+.tier-badge.platinum {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: white;
+}
+
+.gamification-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #8b5cf6;
+}
+
+.stat-label {
+  color: rgba(148, 163, 184, 0.8);
+  font-size: 0.875rem;
+}
+
+.vip-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.vip-plan {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 2px solid rgba(148, 163, 184, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.vip-plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vip-plan.featured {
+  border-color: #fbbf24;
+  transform: scale(1.05);
+}
+
+.vip-plan.active {
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.95));
+}
+
+.popular-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1e293b;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.plan-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.plan-title {
+  color: rgba(148, 163, 184, 0.8);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.plan-price .price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #8b5cf6;
+}
+
+.plan-price .period {
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.plan-features {
+  margin: 1.5rem 0;
+}
+
+.plan-features .feature {
+  padding: 0.5rem 0;
+  color: rgba(148, 163, 184, 0.9);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.plan-features .feature:last-child {
+  border-bottom: none;
+}
+
+.vip-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: none;
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vip-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+}
+
+.vip-button:disabled {
+  background: linear-gradient(135deg, #10b981, #059669);
+  cursor: not-allowed;
+}
+
+.premium-sessions {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.premium-sessions h3 {
+  text-align: center;
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.session-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.session-card {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: all 0.3s ease;
+}
+
+.session-card:hover {
+  transform: translateY(-3px);
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+}
+
+.session-card h4 {
+  color: white;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.session-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #8b5cf6;
+  margin-bottom: 0.5rem;
+}
+
+.session-desc {
+  color: rgba(148, 163, 184, 0.8);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.session-button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.session-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Mobile VIP optimizations */
+@media (max-width: 768px) {
+  .vip-status-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .gamification-stats {
+    gap: 1rem;
+  }
+  
+  .vip-plans-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .vip-plan.featured {
+    transform: none;
+  }
+  
+  .session-options {
+    grid-template-columns: 1fr;
   }
 }
 </style>
