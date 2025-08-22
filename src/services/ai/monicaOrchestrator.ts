@@ -54,7 +54,7 @@ export interface OrchestrationResult {
 class MonicaAIOrchestrator {
   private monicaApiKey: string | null = null
   private baseUrl = 'https://openapi.monica.im'
-  private requestTimeout = 45000 // 45 seconds for complex queries
+  private requestTimeout = 120000 // 2 minutes for UNLIMITED deep analysis
 
   // Available working models through Monica (verified)
   private models = {
@@ -67,8 +67,20 @@ class MonicaAIOrchestrator {
   }
 
   async initialize(): Promise<void> {
-    this.monicaApiKey = 'demo-key'
-    console.log('Monica AI initialized in demo mode')
+    this.monicaApiKey = import.meta.env.VITE_MONICA_API_KEY || 'sk-S18SC7Y5bNxtb9hUX5A1aiYjAlsxkS7FclYkJq51IS4Qa2w9VS0v8rcIH4GlfqjakV3P1TtFSobfqpda5EjVekIg69Hd'
+    console.log('🌟 Monica AI initialized with UNLIMITED access!')
+    
+    // Test connection with all available models
+    const healthStatus = await this.healthCheck()
+    const workingModels = Object.entries(healthStatus)
+      .filter(([_, working]) => working)
+      .map(([model]) => model)
+    
+    console.log(`🚀 Available AI models: ${workingModels.join(', ')}`)
+    
+    if (workingModels.length === 0) {
+      console.warn('⚠️ No AI models available - using fallback mode')
+    }
   }
 
   /**

@@ -808,14 +808,14 @@
                 const cardElement = document.createElement('div');
                 cardElement.className = 'tarot-card';
                 cardElement.dataset.cardId = card.id;
-                cardElement.innerHTML = \`
+                cardElement.innerHTML = `
                     <div class="tarot-card-back">🔮</div>
                     <div class="tarot-card-front">
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">\${card.icon}</div>
-                        <div style="font-size: 0.8rem; font-weight: bold;" data-card-name="\${card.id}">\${card.name}</div>
-                        <div style="font-size: 0.7rem; margin-top: 0.3rem;">\${card.meaning}</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">${card.icon}</div>
+                        <div style="font-size: 0.8rem; font-weight: bold;" data-card-name="${card.id}">${card.name}</div>
+                        <div style="font-size: 0.7rem; margin-top: 0.3rem;">${card.meaning}</div>
                     </div>
-                \`;
+                `;
                 cardElement.onclick = () => flipCard(cardElement, card);
                 tarotGrid.appendChild(cardElement);
             });
@@ -843,13 +843,13 @@
         // Show Card Reading
         function showCardReading(card) {
             const interpretations = [
-                \`\${card.icon} \${getCardName(card)} 揭示了重要訊息：\${card.meaning}。這張牌提醒您要相信內在智慧，順應宇宙的引導。\`,
-                \`宇宙選擇了 \${card.icon} \${getCardName(card)} 來指引您。這意味著 \${card.meaning} 在您的生活中扮演關鍵角色。\`,
-                \`\${card.icon} \${getCardName(card)} 的出現不是偶然。它代表 \${card.meaning}，為您指明前進的方向。\`
+                `${card.icon} ${getCardName(card)} 揭示了重要訊息：${card.meaning}。這張牌提醒您要相信內在智慧，順應宇宙的引導。`,
+                `宇宙選擇了 ${card.icon} ${getCardName(card)} 來指引您。這意味著 ${card.meaning} 在您的生活中扮演關鍵角色。`,
+                `${card.icon} ${getCardName(card)} 的出現不是偶然。它代表 ${card.meaning}，為您指明前進的方向。`
             ];
             
             const randomInterpretation = interpretations[Math.floor(Math.random() * interpretations.length)];
-            alert(\`\${getTranslation('card-revealed')}\\n\\n\${randomInterpretation}\`);
+            alert(`${getTranslation('card-revealed')}\n\n${randomInterpretation}`);
         }
         
         // Get Card Name by Language
@@ -865,11 +865,11 @@
         function updateFlippedCount() {
             const countElement = document.getElementById('flippedCount');
             if (currentLanguage === 'zh') {
-                countElement.textContent = \`已翻牌數: \${dailyFlipped}/\${DAILY_FLIP_LIMIT} 今日免費\`;
+                countElement.textContent = `已翻牌數: ${dailyFlipped}/${DAILY_FLIP_LIMIT} 今日免費`;
             } else if (currentLanguage === 'en') {
-                countElement.textContent = \`Flipped: \${dailyFlipped}/\${DAILY_FLIP_LIMIT} Daily Free\`;
+                countElement.textContent = `Flipped: ${dailyFlipped}/${DAILY_FLIP_LIMIT} Daily Free`;
             } else {
-                countElement.textContent = \`フリップ済み: \${dailyFlipped}/\${DAILY_FLIP_LIMIT} 今日無料\`;
+                countElement.textContent = `フリップ済み: ${dailyFlipped}/${DAILY_FLIP_LIMIT} 今日無料`;
             }
         }
         
@@ -930,7 +930,7 @@
             const temp = Math.floor(Math.random() * 20) + 15; // 15-35°C
             
             document.getElementById('weatherIcon').textContent = weatherIcons[randomIndex];
-            document.getElementById('weatherTemp').textContent = \`\${temp}°C\`;
+            document.getElementById('weatherTemp').textContent = `${temp}°C`;
             document.getElementById('weatherDesc').textContent = weatherDescs[currentLanguage][randomIndex];
         }
         
@@ -996,12 +996,12 @@
         function addChatMessage(type, message, className = '') {
             const chatMessages = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
-            messageDiv.className = \`chat-message \${type} \${className}\`;
+            messageDiv.className = `chat-message ${type} ${className}`;
             
             if (type === 'user') {
-                messageDiv.innerHTML = \`<strong>🧙‍♂️ 您:</strong> \${message}\`;
+                messageDiv.innerHTML = `<strong>🧙‍♂️ 您:</strong> ${message}`;
             } else {
-                messageDiv.innerHTML = \`<strong>🔮 夜神AI:</strong> \${message}\`;
+                messageDiv.innerHTML = `<strong>🔮 夜神AI:</strong> ${message}`;
             }
             
             chatMessages.appendChild(messageDiv);
@@ -1011,22 +1011,22 @@
         function generateAiResponse(userMessage) {
             const responses = {
                 zh: [
-                    \`感謝您的提問："\${userMessage}"。根據宇宙的指引，我建議您保持開放的心態，相信內在智慧將為您帶來答案。🌟\`,
-                    \`您的問題很有深度。塔羅智慧告訴我們，"\${userMessage}" 的答案就在您心中。靜心冥想將幫助您找到方向。✨\`,
-                    \`關於 "\${userMessage}"，星象顯示這是一個重要的轉折點。建議您勇敢面對變化，擁抱新的可能性。🔮\`,
-                    \`宇宙聽到了您的疑問。對於 "\${userMessage}"，我感應到正能量正在匯聚。保持信心，好事即將發生。🌙\`
+                    `感謝您的提問："${userMessage}"。根據宇宙的指引，我建議您保持開放的心態，相信內在智慧將為您帶來答案。🌟`,
+                    `您的問題很有深度。塔羅智慧告訴我們，"${userMessage}" 的答案就在您心中。靜心冥想將幫助您找到方向。✨`,
+                    `關於 "${userMessage}"，星象顯示這是一個重要的轉折點。建議您勇敢面對變化，擁抱新的可能性。🔮`,
+                    `宇宙聽到了您的疑問。對於 "${userMessage}"，我感應到正能量正在匯聚。保持信心，好事即將發生。🌙`
                 ],
                 en: [
-                    \`Thank you for your question: "\${userMessage}". According to cosmic guidance, I suggest staying open-minded - your inner wisdom will bring you answers. 🌟\`,
-                    \`Your question is profound. Tarot wisdom tells us the answer to "\${userMessage}" lies within you. Meditation will help you find direction. ✨\`,
-                    \`Regarding "\${userMessage}", the stars show this is an important turning point. I advise facing change bravely and embracing new possibilities. 🔮\`,
-                    \`The universe has heard your question. For "\${userMessage}", I sense positive energy gathering. Keep faith - good things are coming. 🌙\`
+                    `Thank you for your question: "${userMessage}". According to cosmic guidance, I suggest staying open-minded - your inner wisdom will bring you answers. 🌟`,
+                    `Your question is profound. Tarot wisdom tells us the answer to "${userMessage}" lies within you. Meditation will help you find direction. ✨`,
+                    `Regarding "${userMessage}", the stars show this is an important turning point. I advise facing change bravely and embracing new possibilities. 🔮`,
+                    `The universe has heard your question. For "${userMessage}", I sense positive energy gathering. Keep faith - good things are coming. 🌙`
                 ],
                 jp: [
-                    \`ご質問ありがとうございます：「\${userMessage}」。宇宙の導きによると、オープンマインドを保つことをお勧めします。あなたの内なる知恵が答えをもたらすでしょう。🌟\`,
-                    \`あなたの質問は深遠です。タロットの知恵によると、「\${userMessage}」の答えはあなたの心の中にあります。瞑想が方向を見つける助けとなるでしょう。✨\`,
-                    \`「\${userMessage}」について、星は重要な転換点を示しています。変化を勇敢に受け入れ、新しい可能性を抱くことをお勧めします。🔮\`,
-                    \`宇宙があなたの疑問を聞いています。「\${userMessage}」について、ポジティブなエネルギーが集まっているのを感じます。信念を保ってください。良いことが起こります。🌙\`
+                    `ご質問ありがとうございます：「${userMessage}」。宇宙の導きによると、オープンマインドを保つことをお勧めします。あなたの内なる知恵が答えをもたらすでしょう。🌟`,
+                    `あなたの質問は深遠です。タロットの知恵によると、「${userMessage}」の答えはあなたの心の中にあります。瞑想が方向を見つける助けとなるでしょう。✨`,
+                    `「${userMessage}」について、星は重要な転換点を示しています。変化を勇敢に受け入れ、新しい可能性を抱くことをお勧めします。🔮`,
+                    `宇宙があなたの疑問を聞いています。「${userMessage}」について、ポジティブなエネルギーが集まっているのを感じます。信念を保ってください。良いことが起こります。🌙`
                 ]
             };
             
@@ -1038,9 +1038,9 @@
         function showReading(type) {
             const readingKey = type + '-reading';
             const reading = getTranslation(readingKey);
-            const upgradeMsg = currentLanguage === 'zh' ? '\\n\\n🎯 立即升級VIP獲得完整預測報告和AI分析！' : 
-                              currentLanguage === 'en' ? '\\n\\n🎯 Upgrade to VIP for complete prediction report and AI analysis!' : 
-                              '\\n\\n🎯 VIPにアップグレードして完全な予測レポートとAI分析を取得！';
+            const upgradeMsg = currentLanguage === 'zh' ? '\n\n🎯 立即升級VIP獲得完整預測報告和AI分析！' : 
+                              currentLanguage === 'en' ? '\n\n🎯 Upgrade to VIP for complete prediction report and AI analysis!' : 
+                              '\n\n🎯 VIPにアップグレードして完全な予測レポートとAI分析を取得！';
             alert(reading + upgradeMsg);
         }
         
@@ -1074,26 +1074,26 @@
             const amount = prices[plan];
             
             if (dailySpent + amount > DAILY_SPENDING_LIMIT) {
-                const limitMsg = currentLanguage === 'zh' ? \`已達每日消費限額 $\${DAILY_SPENDING_LIMIT}。明日再來或聯繫客服提高限額。\` :
-                                currentLanguage === 'en' ? \`Daily spending limit $\${DAILY_SPENDING_LIMIT} reached. Come back tomorrow or contact support to increase limit.\` :
-                                \`一日の支出制限$\${DAILY_SPENDING_LIMIT}に達しました。明日またお越しいただくか、サポートに連絡して制限を引き上げてください。\`;
+                const limitMsg = currentLanguage === 'zh' ? `已達每日消費限額 $${DAILY_SPENDING_LIMIT}。明日再來或聯繫客服提高限額。` :
+                                currentLanguage === 'en' ? `Daily spending limit $${DAILY_SPENDING_LIMIT} reached. Come back tomorrow or contact support to increase limit.` :
+                                `一日の支出制限$${DAILY_SPENDING_LIMIT}に達しました。明日またお越しいただくか、サポートに連絡して制限を引き上げてください。`;
                 alert(limitMsg);
                 return;
             }
             
             const confirmMsg = currentLanguage === 'zh' ? 
-                \`確認購買 \${plan} 方案 ($\${amount})?\\n\\n⚠️ 今日已消費: $\${dailySpent}\\n每日限額: $\${DAILY_SPENDING_LIMIT}\` :
+                `確認購買 ${plan} 方案 ($${amount})?\n\n⚠️ 今日已消費: $${dailySpent}\n每日限額: $${DAILY_SPENDING_LIMIT}` :
                 currentLanguage === 'en' ? 
-                \`Confirm purchase \${plan} plan ($\${amount})?\\n\\n⚠️ Today spent: $\${dailySpent}\\nDaily limit: $\${DAILY_SPENDING_LIMIT}\` :
-                \`\${plan}プランの購入を確認 ($\${amount})?\\n\\n⚠️ 今日の支出: $\${dailySpent}\\n一日の制限: $\${DAILY_SPENDING_LIMIT}\`;
+                `Confirm purchase ${plan} plan ($${amount})?\n\n⚠️ Today spent: $${dailySpent}\nDaily limit: $${DAILY_SPENDING_LIMIT}` :
+                `${plan}プランの購入を確認 ($${amount})?\n\n⚠️ 今日の支出: $${dailySpent}\n一日の制限: $${DAILY_SPENDING_LIMIT}`;
             
             if (confirm(confirmMsg)) {
                 dailySpent += amount;
                 const successMsg = currentLanguage === 'zh' ? 
-                    \`🎉 購買成功！歡迎成為 \${plan} 會員！享受專屬特權與無限占卜服務。\` :
+                    `🎉 購買成功！歡迎成為 ${plan} 會員！享受專屬特權與無限占卜服務。` :
                     currentLanguage === 'en' ? 
-                    \`🎉 Purchase successful! Welcome \${plan} member! Enjoy exclusive privileges and unlimited divination services.\` :
-                    \`🎉 購入成功！\${plan}メンバーへようこそ！独占特典と無制限占いサービスをお楽しみください。\`;
+                    `🎉 Purchase successful! Welcome ${plan} member! Enjoy exclusive privileges and unlimited divination services.` :
+                    `🎉 購入成功！${plan}メンバーへようこそ！独占特典と無制限占卜サービスをお楽しみください。`;
                 alert(successMsg);
             }
         }

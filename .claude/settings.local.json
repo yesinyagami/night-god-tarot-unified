@@ -52,7 +52,8 @@
       "WebFetch(domain:yesinyagami.github.io)",
       "Bash(find:*)",
       "WebFetch(domain:docs.github.com)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "WebFetch(domain:monica.im)"
     ],
     "deny": []
   }
