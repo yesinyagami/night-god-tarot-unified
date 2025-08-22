@@ -36,7 +36,7 @@
             <router-link to="/demo" class="btn-primary">
               🔮 Try Reading
             </router-link>
-            <a href="mailto:contact@nightgodtarot.com" class="btn-secondary">
+            <a href="https://github.com/yesinyagami/night-god-tarot-unified/issues" target="_blank" class="btn-secondary">
               📧 Contact Us
             </a>
           </div>

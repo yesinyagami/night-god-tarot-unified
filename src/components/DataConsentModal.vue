@@ -139,7 +139,7 @@
           <h3 class="section-title">📞 {{ t('contact-title') }}</h3>
           <p class="section-content">{{ t('contact-desc') }}</p>
           <div class="contact-info">
-            <p>📧 Email: privacy@nightgodtarot.com</p>
+            <p>📧 Contact: https://github.com/yesinyagami/night-god-tarot-unified/issues</p>
             <p>🌐 Contact: Available through website contact form</p>
             <p>⏰ Response Time: Within 72 hours</p>
             <p>📋 CCPA Request: <a href="#" @click="handleCCPARequest" class="ccpa-link">{{ t('do-not-sell-link') }}</a></p>

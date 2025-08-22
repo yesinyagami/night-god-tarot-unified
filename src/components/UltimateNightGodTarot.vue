@@ -626,7 +626,7 @@ const staticTranslations = {
     rightAccess: '您有權存取、修正或刪除我們所蒐集的關於您的電子郵件資料。請透過本網站提供的聯繫方式與我們聯繫。',
     rightProtection: '我們已實施適當的技術與組織措施，以保護您的電子郵件資料免受未經授權的存取、遺失或披露。',
     policyUpdates: '本隱私權政策可能會定期更新，以反映法律要求或服務變更。任何更新將於本網站公布，並在生效前通知您。',
-    contactUs: '若您對本隱私權政策或資料處理方式有任何疑問，請透過以下聯繫方式與我們聯繫：privacy@nightgodtarot.com',
+    contactUs: '若您對本隱私權政策或資料處理方式有任何疑問，請透過 GitHub 聯繫我們：https://github.com/yesinyagami/night-god-tarot-unified/issues',
     iAcceptPrivacy: '我已閱讀並同意隱私權政策',
     // Warning System
     importantWarning: '重要警告',
@@ -696,7 +696,7 @@ const staticTranslations = {
     rightAccess: 'You have the right to access, correct, or delete email data we have collected about you. Please contact us through the contact methods provided on this website.',
     rightProtection: 'We have implemented appropriate technical and organizational measures to protect your email data from unauthorized access, loss, or disclosure.',
     policyUpdates: 'This privacy policy may be updated periodically to reflect legal requirements or service changes. Any updates will be posted on this website and notified before taking effect.',
-    contactUs: 'If you have any questions about this privacy policy or data processing practices, please contact us at: privacy@nightgodtarot.com',
+    contactUs: 'If you have any questions about this privacy policy or data processing practices, please contact us via GitHub: https://github.com/yesinyagami/night-god-tarot-unified/issues',
     iAcceptPrivacy: 'I have read and agree to the Privacy Policy',
     // Warning System
     importantWarning: 'Important Warning',
@@ -766,7 +766,7 @@ const staticTranslations = {
     rightAccess: 'お客様について当社が収集したメールデータにアクセス、修正、削除する権利があります。本ウェブサイトで提供されている連絡方法を通じてお問い合わせください。',
     rightProtection: 'お客様のメールデータを不正アクセス、紛失、開示から保護するために適切な技術的・組織的措置を実施しています。',
     policyUpdates: 'このプライバシーポリシーは、法的要件やサービスの変更を反映するために定期的に更新される場合があります。更新は本ウェブサイトに掲載され、有効になる前に通知いたします。',
-    contactUs: 'このプライバシーポリシーまたはデータ処理慣行について質問がある場合は、privacy@nightgodtarot.com までお問い合わせください。',
+    contactUs: 'このプライバシーポリシーまたはデータ処理慣行について質問がある場合は、GitHubでお問い合わせください：https://github.com/yesinyagami/night-god-tarot-unified/issues',
     iAcceptPrivacy: 'プライバシーポリシーを読み、同意します',
     // Warning System
     importantWarning: '重要な警告',
@@ -1469,13 +1469,13 @@ const resetReading = () => {
 
 const shareReading = () => {
   if (currentReading.value) {
-    const shareText = `我剛在夜神塔羅獲得了神聖的占卜結果！ ✨\n\n${currentReading.value.title}\n\n來體驗AI驅動的神秘占卜吧：https://nightgodtarot.com`
+    const shareText = `我剛在夜神塔羅獲得了神聖的占卜結果！ ✨\n\n${currentReading.value.title}\n\n來體驗AI驅動的神秘占卜吧：https://yesinyagami.github.io/night-god-tarot-unified/`
     
     if (navigator.share) {
       navigator.share({
         title: '夜神塔羅 - 神諭分享',
         text: shareText,
-        url: 'https://nightgodtarot.com'
+        url: 'https://yesinyagami.github.io/night-god-tarot-unified/'
       })
     } else {
       navigator.clipboard.writeText(shareText)
