@@ -1,0 +1,54 @@
+title: "💬 General Discussion"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🌙 Night God Tarot Community Discussion
+        
+        Welcome to our sacred space for open dialogue about divination, technology, and the mystical arts.
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: "🔮 Discussion Topic"
+      options:
+        - "🃏 Tarot Interpretations & Meanings"
+        - "🤖 AI in Divination"
+        - "🌙 Spiritual Technology"
+        - "🎨 Design & User Experience"
+        - "🌍 Global Tarot Traditions"
+        - "⚡ Technical Development"
+        - "📚 Learning & Resources"
+        - "🎭 Community & Culture"
+        - "🔒 Privacy & Ethics"
+        - "🌟 Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: discussion
+    attributes:
+      label: "💭 Your Thoughts"
+      description: "Share your insights, questions, or observations"
+      placeholder: "What's on your mind regarding Night God Tarot?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: experience
+    attributes:
+      label: "🎯 Your Experience"
+      description: "Optional: Share relevant background or expertise"
+      placeholder: "Your professional or personal connection to this topic..."
+
+  - type: checkboxes
+    id: community-guidelines
+    attributes:
+      label: "🌟 Community Guidelines"
+      options:
+        - label: "I will maintain respectful discourse"
+          required: true
+        - label: "I understand this is a space for constructive dialogue"
+          required: true
+        - label: "I respect diverse spiritual and technical perspectives"
+          required: true

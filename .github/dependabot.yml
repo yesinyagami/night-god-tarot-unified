@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "yesinyagami"
+    assignees:
+      - "yesinyagami"
+    commit-message:
+      prefix: "🔧"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "security"
+
+  - package-ecosystem: "github-actions" 
+    directory: "/.github/workflows"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "yesinyagami"
+    assignees:
+      - "yesinyagami"
+    commit-message:
+      prefix: "🚀"
+    labels:
+      - "github-actions"
+      - "ci/cd"

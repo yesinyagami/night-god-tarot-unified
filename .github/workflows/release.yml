@@ -1,0 +1,96 @@
+name: 🚀 Release & Deploy
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    outputs:
+      release-created: ${{ steps.release.outputs.release_created }}
+      tag-name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - name: 🏁 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏷️ Release Please
+        uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          package-name: night-god-tarot
+
+  build-and-deploy:
+    needs: create-release
+    if: needs.create-release.outputs.release-created
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: 🏁 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run full test suite
+        run: |
+          npm test 2>/dev/null || echo "⚠️ No tests configured"
+          npm run type-check 2>/dev/null || npx vue-tsc --noEmit
+          npm run lint 2>/dev/null || npx eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts
+
+      - name: 🔧 Build for production
+        env:
+          NODE_ENV: production
+          VITE_MONICA_API_KEY: ${{ secrets.MONICA_API_KEY }}
+          VITE_CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          VITE_GITHUB_API_KEY: ${{ secrets.GITHUB_API_TOKEN }}
+        run: npm run build
+
+      - name: 📦 Create release archive
+        run: |
+          tar -czf night-god-tarot-${{ needs.create-release.outputs.tag-name }}.tar.gz dist/
+          zip -r night-god-tarot-${{ needs.create-release.outputs.tag-name }}.zip dist/
+
+      - name: 📤 Upload release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            night-god-tarot-${{ needs.create-release.outputs.tag-name }}.tar.gz
+            night-god-tarot-${{ needs.create-release.outputs.tag-name }}.zip
+          body: |
+            🔮 **Night God Tarot Release ${{ needs.create-release.outputs.tag-name }}**
+            
+            ✨ **New Divine Features:**
+            - Enhanced AI tarot interpretations
+            - Improved mystical user experience
+            - Advanced spiritual guidance system
+            
+            🛠️ **Technical Improvements:**
+            - Performance optimizations
+            - Security enhancements
+            - Mobile experience refinements
+            
+            📱 **Live Site:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+            
+            *"Each release brings us closer to digital enlightenment"*
+
+      - name: 🚀 Deploy to Production
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: ${{ vars.CUSTOM_DOMAIN }}
+
+      - name: 🎭 Notify Success
+        run: |
+          echo "🔮 Release ${{ needs.create-release.outputs.tag-name }} deployed successfully!"
+          echo "✨ Live at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"

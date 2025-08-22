@@ -1,0 +1,81 @@
+name: 🔐 Setup GitHub Secrets from Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      setup_secrets:
+        description: 'Setup repository secrets from .env file'
+        required: true
+        default: 'true'
+        type: boolean
+
+jobs:
+  setup-secrets:
+    runs-on: ubuntu-latest
+    if: github.actor == github.repository_owner
+    steps:
+      - name: 🏁 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔐 Setup GitHub CLI
+        run: |
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install gh
+
+      - name: 🔑 Extract and Set Secrets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Set critical secrets from .env
+          if [ -f .env ]; then
+            echo "🔍 Found .env file, extracting secrets..."
+            
+            # GitHub Token
+            GITHUB_API_TOKEN=$(grep "GITHUB_TOKEN=" .env | cut -d'=' -f2)
+            if [ ! -z "$GITHUB_API_TOKEN" ]; then
+              echo "Setting GITHUB_API_TOKEN secret..."
+              echo "$GITHUB_API_TOKEN" | gh secret set GITHUB_API_TOKEN
+            fi
+            
+            # Claude API Key  
+            CLAUDE_KEY=$(grep "CLAUDE_API_KEY=" .env | cut -d'=' -f2)
+            if [ ! -z "$CLAUDE_KEY" ]; then
+              echo "Setting CLAUDE_API_KEY secret..."
+              echo "$CLAUDE_KEY" | gh secret set CLAUDE_API_KEY
+            fi
+            
+            # Monica API Key
+            MONICA_KEY=$(grep "MONICA_API_KEY=" .env | cut -d'=' -f2)
+            if [ ! -z "$MONICA_KEY" ]; then
+              echo "Setting MONICA_API_KEY secret..."
+              echo "$MONICA_KEY" | gh secret set MONICA_API_KEY
+            fi
+            
+            # JWT Secret
+            JWT_SECRET=$(grep "JWT_SECRET=" .env | cut -d'=' -f2)
+            if [ ! -z "$JWT_SECRET" ]; then
+              echo "Setting JWT_SECRET..."
+              echo "$JWT_SECRET" | gh secret set JWT_SECRET
+            fi
+            
+            # Encryption Key
+            ENCRYPTION_KEY=$(grep "ENCRYPTION_KEY=" .env | cut -d'=' -f2)
+            if [ ! -z "$ENCRYPTION_KEY" ]; then
+              echo "Setting ENCRYPTION_KEY..."
+              echo "$ENCRYPTION_KEY" | gh secret set ENCRYPTION_KEY
+            fi
+            
+            echo "✅ Secrets setup completed!"
+            echo "🔒 Repository secrets are now configured for secure deployment"
+          else
+            echo "❌ .env file not found"
+          fi
+
+      - name: 🗂️ List Current Secrets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "📋 Current repository secrets:"
+          gh secret list
