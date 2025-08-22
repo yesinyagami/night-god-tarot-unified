@@ -1562,15 +1562,15 @@ onMounted(async () => {
   createStarField()
   initializeParticleSystem()
   
-  // Initialize AI system and Monica translator
-  await Promise.all([
-    aiSystem.initialize(),
-    monicaTranslator.initialize()
+  // Initialize AI system and Monica translator (non-blocking for demo mode)
+  Promise.all([
+    aiSystem.initialize().catch(e => console.warn('AI system initialization failed:', e)),
+    monicaTranslator.initialize().catch(e => console.warn('Monica translator initialization failed:', e))
   ])
   
-  // Pre-translate if non-Chinese language is selected
+  // Pre-translate if non-Chinese language is selected (non-blocking for demo mode)
   if (currentLanguage.value !== 'zh') {
-    await translateAllTexts()
+    translateAllTexts().catch(e => console.warn('Translation failed:', e))
   }
   
   // Check if user has already registered and activate memory system
