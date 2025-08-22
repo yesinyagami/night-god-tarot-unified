@@ -56,12 +56,14 @@ class MonicaAIOrchestrator {
   private baseUrl = 'https://openapi.monica.im'
   private requestTimeout = 45000 // 45 seconds for complex queries
 
-  // Available models through Monica
+  // Available working models through Monica (verified)
   private models = {
-    perplexity: 'perplexity-7b-online',
-    gemini: 'gemini-1.5-pro-latest', 
-    chatgpt5: 'gpt-4o',  // Monica's latest ChatGPT model
-    claude: 'claude-3-5-sonnet-20241022'
+    deepseek: 'deepseek-chat',  // Working DeepSeek model for research
+    gemini: 'gemini-1.5-pro',   // Working Gemini model for analysis
+    chatgpt5: 'gpt-4o',        // Working GPT-4o for poetry
+    claude: 'claude-3-5-sonnet-20241022',  // Working Claude for backup
+    llama: 'llama-3.1-405b-instruct',      // Working Llama for diversity
+    gpt4omini: 'gpt-4o-mini'   // Working efficient GPT model
   }
 
   async initialize(): Promise<void> {
@@ -76,9 +78,9 @@ class MonicaAIOrchestrator {
     const startTime = Date.now()
     
     try {
-      // Stage 1: Research with Perplexity
-      console.log('🔍 Stage 1: Researching tarot symbolism with Perplexity...')
-      const researchData = await this.researchWithPerplexity(query)
+      // Stage 1: Research with DeepSeek Chat
+      console.log('🌊 Stage 1: Deep research of tarot symbolism with DeepSeek Chat...')
+      const researchData = await this.researchWithDeepSeek(query)
       
       // Stage 2: Combine data with Gemini
       console.log('🧠 Stage 2: Analyzing and combining data with Gemini...')
@@ -110,27 +112,28 @@ class MonicaAIOrchestrator {
   }
 
   /**
-   * Stage 1: Research tarot meanings and symbolism with Perplexity
+   * Stage 1: Deep research of tarot meanings and symbolism with DeepSeek
    */
-  private async researchWithPerplexity(query: CustomerQuery): Promise<MonicaResponse> {
+  private async researchWithDeepSeek(query: CustomerQuery): Promise<MonicaResponse> {
     const startTime = Date.now()
     
     const cardNames = query.cards.map(card => `${card.name} (${card.nameEn})`).join(', ')
     
-    const researchPrompt = `As a professional tarot researcher, please search for comprehensive information about these specific tarot cards and their meanings in the context of the question: "${query.question}"
+    const researchPrompt = `As a master tarot scholar with deep analytical capabilities, please provide comprehensive research on these specific tarot cards and their profound meanings in the context of the question: "${query.question}"
 
-Cards to research: ${cardNames}
+Cards to analyze: ${cardNames}
 Spread type: ${query.spread}
 
-Please find and provide:
-1. Deep historical and symbolic meanings of each card
-2. Modern interpretations and psychological insights
-3. Card combinations and synergies in this spread
-4. Cultural variations in interpretations (especially Eastern/Western differences)
-5. Recent tarot scholarship and expert opinions
-6. How these cards relate to the specific question asked
+Please provide deep analysis on:
+1. Historical origins and symbolic foundations of each card
+2. Psychological archetypes and modern interpretations
+3. Synergistic meanings when these cards appear together
+4. Cross-cultural perspectives (Western, Eastern, mystical traditions)
+5. Numerological and astrological correspondences
+6. Practical applications to the specific question asked
+7. Advanced symbolic connections and hidden meanings
 
-Focus on authoritative sources, established tarot traditions, and contemporary expert interpretations. Include any relevant numerological or astrological connections.`
+Draw upon classical tarot scholarship, Jungian psychology, comparative mythology, and contemporary spiritual understanding. Provide thorough, scholarly insights that bridge ancient wisdom with modern understanding.`
 
     try {
       const response = await fetch(`${this.baseUrl}/v1/chat/completions`, {
@@ -140,11 +143,11 @@ Focus on authoritative sources, established tarot traditions, and contemporary e
           'Authorization': `Bearer ${this.monicaApiKey}`
         },
         body: JSON.stringify({
-          model: this.models.perplexity,
+          model: this.models.deepseek,
           messages: [
             {
               role: 'system',
-              content: 'You are a master tarot researcher with access to comprehensive databases of tarot knowledge, historical texts, and contemporary interpretations. Provide detailed, accurate, and well-sourced information.'
+              content: 'You are DeepSeek Chat, an advanced AI with exceptional analytical depth and scholarly research capabilities. You excel at comprehensive tarot analysis, drawing connections between symbols, archetypes, and meanings across multiple traditions and time periods.'
             },
             {
               role: 'user',
@@ -158,7 +161,7 @@ Focus on authoritative sources, established tarot traditions, and contemporary e
       })
 
       if (!response.ok) {
-        throw new Error(`Perplexity API Error: ${response.status} ${response.statusText}`)
+        throw new Error(`DeepSeek API Error: ${response.status} ${response.statusText}`)
       }
 
       const data = await response.json()
@@ -166,13 +169,13 @@ Focus on authoritative sources, established tarot traditions, and contemporary e
       
       return {
         stage: 'research',
-        model: this.models.perplexity,
+        model: this.models.deepseek,
         content,
         confidence: this.calculateConfidence(content, 'research'),
         processingTime: Date.now() - startTime
       }
     } catch (error) {
-      console.error('Perplexity research failed:', error)
+      console.error('DeepSeek research failed:', error)
       throw new Error(`Research stage failed: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
@@ -447,10 +450,10 @@ Remember: You are not just giving a reading - you are creating a transformative 
    */
   getModelCapabilities() {
     return {
-      perplexity: {
-        name: 'Perplexity 7B Online',
-        purpose: 'Real-time research and fact-finding',
-        strengths: ['Current information', 'Source citations', 'Comprehensive search'],
+      deepseek: {
+        name: 'DeepSeek Chat',
+        purpose: 'Deep analytical research and comprehensive analysis',
+        strengths: ['Analytical depth', 'Scholarly research', 'Complex reasoning', 'Symbolic analysis'],
         stage: 1
       },
       gemini: {
