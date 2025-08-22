@@ -1,1 +1,315 @@
-<\!DOCTYPE html><html><head><title>Night God Tarot - Working</title><meta http-equiv="refresh" content="0;url=working.html"></head><body><h1>Redirecting...</h1></body></html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night God Tarot - 全球最強AI塔羅占卜平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+        
+        .header {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+            border-color: #fbbf24;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-section {
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .pricing-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #fbbf24;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid #8b5cf6;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 3rem;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            color: #cbd5e1;
+        }
+        
+        .features li::before {
+            content: '✅ ';
+            color: #10b981;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            border: none;
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        .chat-section {
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .chat-window {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            min-height: 300px;
+            margin-bottom: 1rem;
+        }
+        
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">🔮 Night God Tarot</div>
+        <p style="color: #cbd5e1; margin-top: 0.5rem;">全球最強AI塔羅占卜平台</p>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1 class="hero-title">探索您的命運之路</h1>
+            <p style="color: #cbd5e1; font-size: 1.2rem;">結合古老智慧與AI科技，為您揭示未來</p>
+        </section>
+
+        <div class="cards-grid">
+            <div class="card" onclick="alert('💕 愛情占卜功能開發中...')">
+                <div class="card-icon">💕</div>
+                <div class="card-title">愛情占卜</div>
+                <p style="color: #94a3b8;">探索感情運勢</p>
+            </div>
+            
+            <div class="card" onclick="alert('💼 事業占卜功能開發中...')">
+                <div class="card-icon">💼</div>
+                <div class="card-title">事業運勢</div>
+                <p style="color: #94a3b8;">職業發展指引</p>
+            </div>
+            
+            <div class="card" onclick="alert('💰 財富占卜功能開發中...')">
+                <div class="card-icon">💰</div>
+                <div class="card-title">財富密碼</div>
+                <p style="color: #94a3b8;">財務自由之路</p>
+            </div>
+            
+            <div class="card" onclick="alert('🏥 健康占卜功能開發中...')">
+                <div class="card-icon">🏥</div>
+                <div class="card-title">健康指引</div>
+                <p style="color: #94a3b8;">身心靈平衡</p>
+            </div>
+            
+            <div class="card" onclick="alert('✨ 靈性占卜功能開發中...')">
+                <div class="card-icon">✨</div>
+                <div class="card-title">靈性成長</div>
+                <p style="color: #94a3b8;">高維度智慧</p>
+            </div>
+            
+            <div class="card" onclick="alert('🌟 每日占卜功能開發中...')">
+                <div class="card-icon">🌟</div>
+                <div class="card-title">每日指引</div>
+                <p style="color: #94a3b8;">今日運勢</p>
+            </div>
+        </div>
+
+        <section class="pricing-section">
+            <h2 class="pricing-title">💰 超級現金流系統</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 style="color: #a855f7;">💎 鑽石精英</h3>
+                    <div class="price">$333<span class="price-period">/月</span></div>
+                    <ul class="features">
+                        <li>無限AI占卜</li>
+                        <li>專屬導師</li>
+                        <li>每日報告</li>
+                        <li>優先支援</li>
+                    </ul>
+                    <button class="btn" onclick="alert('購買鑽石精英方案！')">立即購買</button>
+                </div>
+                
+                <div class="pricing-card" style="border-color: #fbbf24; transform: scale(1.05);">
+                    <h3 style="color: #fbbf24;">🌌 宇宙主宰</h3>
+                    <div class="price">$666<span class="price-period">/月</span></div>
+                    <ul class="features">
+                        <li>所有鑽石功能</li>
+                        <li>私人諮詢</li>
+                        <li>量子算法</li>
+                        <li>終身VIP</li>
+                    </ul>
+                    <button class="btn" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);" onclick="alert('購買宇宙主宰方案！')">立即購買</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 style="color: #10b981;">♾️ 無限神格</h3>
+                    <div class="price">$1299<span class="price-period">/月</span></div>
+                    <ul class="features">
+                        <li>無限制功能</li>
+                        <li>24/7團隊</li>
+                        <li>客製化AI</li>
+                        <li>投資分紅</li>
+                    </ul>
+                    <button class="btn" onclick="alert('購買無限神格方案！')">立即購買</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="chat-section">
+            <h2 style="text-align: center; color: #06b6d4; margin-bottom: 2rem;">🤖 AI神諭對話</h2>
+            <div class="chat-window">
+                <p style="color: #cbd5e1;">歡迎來到夜神塔羅！我是您的AI靈性導師。</p>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" placeholder="輸入您的問題...">
+                <button class="btn" style="width: auto; padding: 1rem 2rem;" onclick="alert('AI對話功能開發中...')">發送</button>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Night God Tarot - 全球最先進的AI塔羅平台</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://yesinyagami.github.io/night-god-tarot-unified/" style="color: #8b5cf6;">官方網站</a>
+        </p>
+    </footer>
+
+    <script>
+        console.log('🔮 Night God Tarot - WORKING VERSION LOADED!');
+        // Remove any loading screens if they exist
+        document.querySelectorAll('.loading').forEach(el => el.remove());
+    </script>
+</body>
+</html>
