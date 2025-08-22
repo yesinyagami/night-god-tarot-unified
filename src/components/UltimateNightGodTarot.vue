@@ -438,6 +438,59 @@
           </div>
         </div>
 
+        <!-- Q&A AI Chat Tab -->
+        <div v-if="activeTab === 'chat'" class="chat-realm">
+          <h2 class="realm-title">🤖 AI神諭問答</h2>
+          <div class="chat-interface">
+            <div class="chat-container">
+              <div class="chat-messages" ref="chatMessagesRef">
+                <div v-for="message in chatMessages" :key="message.id" class="chat-message" :class="message.type">
+                  <div class="message-avatar">
+                    <span v-if="message.type === 'user'">🧙‍♂️</span>
+                    <span v-else>🤖</span>
+                  </div>
+                  <div class="message-content">
+                    <div class="message-text">{{ message.text }}</div>
+                    <div class="message-time">{{ formatTime(message.timestamp) }}</div>
+                  </div>
+                </div>
+                <div v-if="isAiThinking" class="chat-message ai thinking">
+                  <div class="message-avatar">🤖</div>
+                  <div class="message-content">
+                    <div class="typing-indicator">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="chat-input-area">
+                <div class="input-container">
+                  <input 
+                    v-model="currentMessage" 
+                    @keypress.enter="sendMessage"
+                    :placeholder="tSync('chatPlaceholder')"
+                    class="chat-input"
+                    :disabled="isAiThinking"
+                  />
+                  <button 
+                    @click="sendMessage" 
+                    class="send-button"
+                    :disabled="!currentMessage.trim() || isAiThinking"
+                  >
+                    <span v-if="!isAiThinking">✨</span>
+                    <span v-else class="loading-spinner">🔄</span>
+                  </button>
+                </div>
+                <div class="chat-features">
+                  <button @click="clearChat" class="feature-btn">🗑️ 清空對話</button>
+                  <button @click="exportChat" class="feature-btn">💾 匯出對話</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Progress Tab -->
         <div v-if="activeTab === 'progress'" class="progress-realm">
           <h2 class="realm-title">📊 靈魂成長</h2>
@@ -593,8 +646,10 @@ const staticTranslations = {
     resetReading: '重新占卜',
     // Tab names
     oracleTab: '神諭',
+    chatTab: 'AI問答',
     novelTab: '小說',
     progressTab: '成長',
+    chatPlaceholder: '向AI神諭提問任何關於塔羅、命運或人生的問題...',
     // Chapter titles
     prologueTitle: '夜神的覺醒',
     chapter1Title: '命運的召喚',
@@ -663,8 +718,10 @@ const staticTranslations = {
     resetReading: 'Reset Reading',
     // Tab names
     oracleTab: 'Oracle',
+    chatTab: 'AI Chat',
     novelTab: 'Novel',
     progressTab: 'Progress',
+    chatPlaceholder: 'Ask the AI Oracle any questions about tarot, destiny, or life...',
     // Chapter titles
     prologueTitle: 'Night God Awakening',
     chapter1Title: 'Call of Destiny',
@@ -966,6 +1023,19 @@ const userExperience = ref(parseInt(localStorage.getItem('userExperience') || '4
 const maxExperience = ref(600)
 
 const userQuestion = ref('')
+
+// Chat functionality
+const chatMessages = ref([
+  {
+    id: 1,
+    type: 'ai',
+    text: '🔮 歡迎來到AI神諭問答！我是您的數位靈性導師，可以回答關於塔羅、命運、人生哲學的任何問題。請隨意提問！',
+    timestamp: new Date()
+  }
+])
+const currentMessage = ref('')
+const isAiThinking = ref(false)
+const chatMessagesRef = ref(null)
 const selectedCards = ref<TarotCard[]>([])
 const availableCards = ref<TarotCard[]>([])
 const currentReading = ref<TarotReading | null>(null)
@@ -997,6 +1067,7 @@ const lunarPhases = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '�
 
 const tabs = computed(() => [
   { id: 'oracle', name: tSync('oracleTab'), icon: '🔮' },
+  { id: 'chat', name: tSync('chatTab'), icon: '🤖' },
   { id: 'novel', name: tSync('novelTab'), icon: '📖' },
   { id: 'progress', name: tSync('progressTab'), icon: '📊' }
 ])
@@ -1360,6 +1431,102 @@ const getModelCountForLevel = (level: number): number => {
   if (level >= 10) return 4  // Sage: 4 models
   if (level >= 5) return 3   // Adept: 3 models
   return 2                   // Novice: 2 models
+}
+
+// Chat methods
+const sendMessage = async () => {
+  if (!currentMessage.value.trim() || isAiThinking.value) return
+  
+  const userMessageText = currentMessage.value.trim()
+  const userMessage = {
+    id: Date.now(),
+    type: 'user',
+    text: userMessageText,
+    timestamp: new Date()
+  }
+  
+  chatMessages.value.push(userMessage)
+  currentMessage.value = ''
+  isAiThinking.value = true
+  
+  // Scroll to bottom
+  nextTick(() => {
+    if (chatMessages_ref.value) {
+      chatMessages_ref.value.scrollTop = chatMessages_ref.value.scrollHeight
+    }
+  })
+  
+  try {
+    // Use Monica AI for chat responses
+    const response = await monicaTranslator.getAIResponse({
+      message: userMessageText,
+      context: 'Night God Tarot AI Oracle - Mystical guidance and tarot wisdom',
+      language: currentLanguage.value === 'zh' ? 'Chinese' : 'English'
+    })
+    
+    const aiMessage = {
+      id: Date.now() + 1,
+      type: 'ai',
+      text: response,
+      timestamp: new Date()
+    }
+    
+    chatMessages.value.push(aiMessage)
+    
+  } catch (error) {
+    console.error('Chat error:', error)
+    const errorMessage = {
+      id: Date.now() + 1,
+      type: 'ai',
+      text: currentLanguage.value === 'zh' ? 
+        '🔮 神諭暫時無法連接，請稍後再試...' : 
+        '🔮 Oracle connection temporarily unavailable, please try again...',
+      timestamp: new Date()
+    }
+    chatMessages.value.push(errorMessage)
+  } finally {
+    isAiThinking.value = false
+    
+    // Scroll to bottom
+    nextTick(() => {
+      if (chatMessages_ref.value) {
+        chatMessages_ref.value.scrollTop = chatMessages_ref.value.scrollHeight
+      }
+    })
+  }
+}
+
+const clearChat = () => {
+  chatMessages.value = [
+    {
+      id: 1,
+      type: 'ai',
+      text: currentLanguage.value === 'zh' ? 
+        '🔮 歡迎來到AI神諭問答！我是您的數位靈性導師，可以回答關於塔羅、命運、人生哲學的任何問題。請隨意提問！' :
+        '🔮 Welcome to AI Oracle Q&A! I am your digital spiritual guide, ready to answer any questions about tarot, destiny, and life philosophy. Feel free to ask!',
+      timestamp: new Date()
+    }
+  ]
+}
+
+const exportChat = () => {
+  const chatText = chatMessages.value.map(msg => 
+    `[${formatTime(msg.timestamp)}] ${msg.type === 'user' ? '🧙‍♂️ You' : '🤖 AI Oracle'}: ${msg.text}`
+  ).join('\n\n')
+  
+  const blob = new Blob([chatText], { type: 'text/plain' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `night-god-tarot-chat-${new Date().toISOString().slice(0, 10)}.txt`
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}
+
+const formatTime = (timestamp: Date): string => {
+  return timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 }
 
 const generateFallbackReading = (): TarotReading => {
@@ -3864,6 +4031,246 @@ watch(userLevel, (newLevel, oldLevel) => {
   .login-portal {
     max-width: 750px;
     padding: 4rem;
+  }
+}
+
+/* Chat Interface Styles */
+.chat-realm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-interface {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  min-height: 500px;
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  max-height: 400px;
+}
+
+.chat-message {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+.chat-message.user {
+  flex-direction: row-reverse;
+}
+
+.chat-message.user .message-content {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  align-self: flex-end;
+}
+
+.chat-message.ai .message-content {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.message-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  flex-shrink: 0;
+}
+
+.message-content {
+  max-width: 75%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.message-text {
+  color: white;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.7);
+  margin-top: 0.25rem;
+}
+
+.chat-message.thinking .message-content {
+  padding: 1rem;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.typing-indicator span {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #8b5cf6;
+  border-radius: 50%;
+  animation: typingDot 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+.chat-input-area {
+  padding: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.chat-input::placeholder {
+  color: rgba(148, 163, 184, 0.6);
+}
+
+.send-button {
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: none;
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 3rem;
+}
+
+.send-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.chat-features {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.feature-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.5rem;
+  color: rgba(148, 163, 184, 0.8);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feature-btn:hover {
+  background: rgba(30, 41, 59, 0.8);
+  color: white;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingDot {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile chat optimizations */
+@media (max-width: 768px) {
+  .chat-interface {
+    height: 500px;
+    min-height: 400px;
+  }
+  
+  .chat-messages {
+    max-height: 300px;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  .chat-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .chat-features {
+    flex-direction: column;
   }
 }
 </style>
