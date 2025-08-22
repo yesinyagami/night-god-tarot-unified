@@ -566,6 +566,17 @@
         <p style="color: #cbd5e1; margin-top: 0.5rem;">全球最強AI塔羅占卜平台</p>
     </header>
 
+    <!-- Monetization Bar -->
+    <div class="monetization-bar">
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;">
+            <div class="user-counter">✨ 12,347+ Divine Readings Today</div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button onclick="donate()" class="donation-btn">☕ Support Us</button>
+                <button onclick="upgradePremium()" class="premium-btn">🌟 Premium</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <section class="hero">
             <h1 class="hero-title">探索您的命運之路</h1>
@@ -1149,19 +1160,29 @@
         
         // Monetization Functions
         function donate() {
-            // PayPal donation redirect
+            // Buy Me A Coffee - Primary option
+            const bmcUrl = 'https://www.buymeacoffee.com/nightgodtarot';
+            
+            // PayPal backup options
             const donations = {
                 small: 'https://paypal.me/divineoracle/5',
                 medium: 'https://paypal.me/divineoracle/15', 
                 large: 'https://paypal.me/divineoracle/25'
             };
             
-            const choice = prompt('Choose donation amount:\n1 = $5 (Coffee)\n2 = $15 (Lunch)\n3 = $25 (Premium Support)\n\nEnter 1, 2, or 3:');
+            const choice = prompt('💫 Support Night God Tarot:\n\n☕ BMC = Buy Me A Coffee (Any Amount)\n1 = $5 PayPal (Coffee)\n2 = $15 PayPal (Lunch)\n3 = $25 PayPal (Premium)\n\nEnter: BMC, 1, 2, or 3');
             
-            if (choice === '1') window.open(donations.small, '_blank');
-            else if (choice === '2') window.open(donations.medium, '_blank');
-            else if (choice === '3') window.open(donations.large, '_blank');
-            else if (choice) alert('Thank you for considering! Please enter 1, 2, or 3.');
+            if (choice && choice.toLowerCase().includes('bmc')) {
+                window.open(bmcUrl, '_blank');
+            } else if (choice === '1') {
+                window.open(donations.small, '_blank');
+            } else if (choice === '2') {
+                window.open(donations.medium, '_blank');
+            } else if (choice === '3') {
+                window.open(donations.large, '_blank');
+            } else if (choice) {
+                alert('Thank you! 🙏 Please enter BMC for Buy Me A Coffee, or 1/2/3 for PayPal amounts.');
+            }
         }
         
         function upgradePremium() {
