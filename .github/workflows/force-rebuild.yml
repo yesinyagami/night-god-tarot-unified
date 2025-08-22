@@ -1,0 +1,25 @@
+name: Force GitHub Pages Rebuild
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Touch timestamp file
+        run: |
+          mkdir -p docs
+          date > docs/timestamp.txt
+          
+      - name: Commit timestamp
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/timestamp.txt
+          git commit -m "Force rebuild $(date)" || exit 0
+          git push
