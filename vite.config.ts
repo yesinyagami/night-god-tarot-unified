@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
-  base: './',
+  base: mode === 'production' ? './' : '/',
   server: {
     host: true,
     port: 5173,

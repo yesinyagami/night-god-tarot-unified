@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 Night God Tarot - Global AI Tarot Platform</title>
+    <title>🔮 Divine Oracle AI - Ultimate Multi-Language Tarot Platform</title>
     <meta http-equiv='cache-control' content='no-cache'>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -15,561 +15,312 @@
             color: #e2e8f0;
         }
         
-        .language-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .lang-btn {
-            background: rgba(139, 92, 246, 0.8);
-            border: 2px solid #8b5cf6;
-            border-radius: 20px;
-            padding: 8px 15px;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: #8b5cf6;
-            transform: scale(1.1);
-        }
-        
-        .lang-btn.active {
-            background: #fbbf24;
-            border-color: #fbbf24;
-        }
-        
-        .warning-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 20000;
-        }
-        
-        .warning-content {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            border: 3px solid #ef4444;
-            border-radius: 25px;
-            padding: 3rem;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(239, 68, 68, 0.5);
-        }
-        
-        .warning-icon {
-            font-size: 4rem;
-            color: #ef4444;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-        
-        .warning-title {
-            font-size: 2rem;
-            color: #ef4444;
-            margin-bottom: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .warning-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            color: #cbd5e1;
-        }
-        
-        .age-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .age-btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .age-btn.accept {
-            background: #10b981;
-            color: white;
-        }
-        
-        .age-btn.decline {
-            background: #ef4444;
-            color: white;
-        }
-        
-        .age-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        }
-        
-        .spending-warning {
-            background: rgba(239, 68, 68, 0.1);
-            border: 2px solid #ef4444;
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        
-        .spending-warning h3 {
-            color: #ef4444;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .spending-limit {
-            background: rgba(16, 185, 129, 0.1);
-            border: 2px solid #10b981;
-            border-radius: 15px;
-            padding: 1rem;
-            margin: 1rem 0;
-            color: #10b981;
-        }
-        
         .header {
             background: rgba(15, 23, 42, 0.95);
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-            border-bottom: 3px solid rgba(139, 92, 246, 0.5);
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
         }
         
         .logo {
             font-size: 3rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 0.5rem;
         }
         
+        .tagline {
+            font-size: 1.2rem;
+            color: #fbbf24;
+            font-weight: 500;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2rem;
         }
         
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
         
         .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin: 4rem 0;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 3rem;
         }
         
-        .card {
-            background: rgba(139, 92, 246, 0.15);
-            border: 2px solid rgba(139, 92, 246, 0.4);
-            border-radius: 25px;
-            padding: 2.5rem;
-            text-align: center;
+        .language-selector {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            color: #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.4s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.6);
-            border-color: #fbbf24;
-        }
-        
-        .card-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-title {
-            font-size: 1.8rem;
-            color: #fbbf24;
-            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
             font-weight: 600;
         }
         
-        .pricing-section {
-            background: rgba(251, 191, 36, 0.15);
-            border-radius: 30px;
-            padding: 4rem;
-            margin: 5rem 0;
-            border: 2px solid rgba(251, 191, 36, 0.3);
-        }
-        
-        .pricing-title {
-            font-size: 3rem;
-            text-align: center;
-            color: #fbbf24;
-            margin-bottom: 4rem;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-        }
-        
-        .pricing-card {
-            background: rgba(15, 23, 42, 0.95);
-            border: 3px solid #8b5cf6;
-            border-radius: 25px;
-            padding: 3rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5);
-        }
-        
-        .price {
-            font-size: 4rem;
-            color: #fbbf24;
-            font-weight: bold;
-            margin: 2rem 0;
+        .lang-btn:hover, .lang-btn.active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.4));
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
         }
         
         .features {
-            list-style: none;
-            margin: 2.5rem 0;
-            text-align: left;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
         }
         
-        .features li {
-            padding: 0.8rem 0;
-            color: #cbd5e1;
-            font-size: 1.1rem;
-        }
-        
-        .features li::before {
-            content: '✅ ';
-            color: #10b981;
-            font-size: 1.2rem;
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            border: none;
-            border-radius: 20px;
-            padding: 1.5rem 3rem;
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
+        .feature {
+            background: rgba(30, 41, 59, 0.6);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            text-align: center;
             transition: all 0.3s ease;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.6);
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
         }
         
-        .footer {
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-desc {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
             text-align: center;
-            padding: 4rem;
-            border-top: 2px solid rgba(139, 92, 246, 0.3);
-            color: #94a3b8;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
         }
         
-        .hidden { display: none; }
+        .start-btn {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+        }
+        
+        .content {
+            display: none;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        .status {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .status-text {
+            color: #22c55e;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
-    <!-- Age Verification Warning Modal -->
-    <div id="warningModal" class="warning-modal">
-        <div class="warning-content">
-            <div class="warning-icon">⚠️</div>
-            <h2 class="warning-title" data-translate="warning-title">重要警告 / Important Warning / 重要な警告</h2>
-            <div class="warning-text" data-translate="warning-text">
-                <p><strong>中文:</strong> 本平台僅供娛樂用途。請勿過度依賴占卜結果做重要決定。如有賭博成癮問題請尋求專業協助。</p>
-                <p><strong>English:</strong> This platform is for entertainment purposes only. Do not rely excessively on divination results for important decisions. Seek professional help if you have gambling addiction issues.</p>
-                <p><strong>日本語:</strong> このプラットフォームは娯楽目的のみです。重要な決定を占いの結果に過度に依存しないでください。ギャンブル依存症の問題がある場合は専門家の助けを求めてください。</p>
-            </div>
-            <div class="spending-warning">
-                <h3 data-translate="spending-warning">消費警告 / Spending Warning / 支出警告</h3>
-                <div class="spending-limit">
-                    <p data-translate="daily-limit">每日消費限額: $100 USD / Daily Limit: $100 USD / 一日の制限: $100 USD</p>
-                </div>
-            </div>
-            <div class="age-buttons">
-                <button class="age-btn accept" onclick="acceptWarning()" data-translate="accept">
-                    我已滿18歲並同意 / I am 18+ and Agree / 18歳以上で同意します
-                </button>
-                <button class="age-btn decline" onclick="declineWarning()" data-translate="decline">
-                    離開 / Leave / 退出
-                </button>
-            </div>
-        </div>
+    <div class="header">
+        <div class="logo">🔮 Divine Oracle AI</div>
+        <div class="tagline">Ultimate Multi-Language Tarot Platform</div>
     </div>
-
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <button class="lang-btn active" onclick="setLanguage('zh')" id="zh-btn">中文</button>
-        <button class="lang-btn" onclick="setLanguage('en')" id="en-btn">English</button>
-        <button class="lang-btn" onclick="setLanguage('jp')" id="jp-btn">日本語</button>
-    </div>
-
-    <header class="header">
-        <div class="logo">🔮 Night God Tarot</div>
-        <p style="color: #cbd5e1; font-size: 1.2rem;" data-translate="subtitle">
-            全球最強AI塔羅占卜平台
-        </p>
-    </header>
-
+    
     <div class="container">
-        <section class="hero">
-            <h1 class="hero-title" data-translate="hero-title">探索您的命運之路</h1>
-            <p style="color: #cbd5e1; font-size: 1.3rem;" data-translate="hero-desc">
-                結合古老智慧與AI科技，為您揭示無限未來可能
-            </p>
-        </section>
-
-        <div class="cards-grid">
-            <div class="card" onclick="showReading('love')">
-                <div class="card-icon">💕</div>
-                <div class="card-title" data-translate="love-title">愛情占卜</div>
-                <p style="color: #94a3b8; font-size: 1.1rem;" data-translate="love-desc">探索感情運勢與真愛指引</p>
+        <div class="status">
+            <div class="status-text">✅ LIVE & OPERATIONAL - All AI Services Active</div>
+        </div>
+        
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+            <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+            <button class="lang-btn" onclick="switchLanguage('ja')">日本語</button>
+        </div>
+        
+        <div class="content active" id="content-zh">
+            <div class="hero">
+                <h1 class="hero-title">神聖智慧預言系統</h1>
+                <p class="hero-subtitle">無限AI動力塔羅占卜 • 多語言文化適配 • 即時神諭指引</p>
             </div>
             
-            <div class="card" onclick="showReading('wealth')">
-                <div class="card-icon">💰</div>
-                <div class="card-title" data-translate="wealth-title">財富密碼</div>
-                <p style="color: #94a3b8; font-size: 1.1rem;" data-translate="wealth-desc">解鎖財務自由之路</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🌟</div>
+                    <h3 class="feature-title">無限AI智慧</h3>
+                    <p class="feature-desc">Monica AI無限制存取，結合GPT-4o、Claude、Gemini多模型智慧，提供最精準的神諭指引。</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">多語言文化</h3>
+                    <p class="feature-desc">專業中文、日文、英文支援，融入各文化的神秘智慧傳統，提供最貼近的靈性指引。</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">即時串流</h3>
+                    <p class="feature-desc">實時串流塔羅解讀，宇宙視覺效果，離線PWA支援，隨時隨地獲得神聖智慧。</p>
+                </div>
             </div>
             
-            <div class="card" onclick="showReading('spiritual')">
-                <div class="card-icon">✨</div>
-                <div class="card-title" data-translate="spiritual-title">靈性成長</div>
-                <p style="color: #94a3b8; font-size: 1.1rem;" data-translate="spiritual-desc">覺醒高維度智慧</p>
+            <div class="cta-section">
+                <h2>開始您的神聖之旅</h2>
+                <p>體驗世界頂級的AI塔羅平台，獲得無限制的神諭指引</p>
+                <button class="start-btn" onclick="startReading()">開始占卜 ✨</button>
             </div>
         </div>
-
-        <section class="pricing-section">
-            <h2 class="pricing-title" data-translate="pricing-title">💰 超級現金流系統</h2>
+        
+        <div class="content" id="content-en">
+            <div class="hero">
+                <h1 class="hero-title">Divine Oracle AI System</h1>
+                <p class="hero-subtitle">Unlimited AI-Powered Tarot • Multi-Cultural Adaptation • Real-Time Divine Guidance</p>
+            </div>
             
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 style="color: #a855f7; font-size: 1.8rem; margin-bottom: 1rem;" data-translate="diamond-title">💎 鑽石精英</h3>
-                    <div class="price">$333<span style="font-size: 1.5rem; color: #94a3b8;">/月</span></div>
-                    <ul class="features">
-                        <li data-translate="diamond-1">無限次AI占卜</li>
-                        <li data-translate="diamond-2">專屬靈性導師</li>
-                        <li data-translate="diamond-3">每日運勢報告</li>
-                        <li data-translate="diamond-4">優先客服支援</li>
-                    </ul>
-                    <button class="btn" onclick="purchase('diamond')" data-translate="buy-diamond">立即購買 - 開啟財富</button>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🌟</div>
+                    <h3 class="feature-title">Unlimited AI Wisdom</h3>
+                    <p class="feature-desc">Unlimited Monica AI access with GPT-4o, Claude, Gemini multi-model intelligence for the most accurate divine guidance.</p>
                 </div>
                 
-                <div class="pricing-card">
-                    <h3 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1rem;" data-translate="cosmic-title">🌌 宇宙主宰</h3>
-                    <div class="price">$666<span style="font-size: 1.5rem; color: #94a3b8;">/月</span></div>
-                    <ul class="features">
-                        <li data-translate="cosmic-1">包含所有鑽石功能</li>
-                        <li data-translate="cosmic-2">一對一私人諮詢</li>
-                        <li data-translate="cosmic-3">量子級算法預測</li>
-                        <li data-translate="cosmic-4">終身VIP會員</li>
-                    </ul>
-                    <button class="btn" onclick="purchase('cosmic')" data-translate="buy-cosmic">立即購買 - 主宰命運</button>
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Multi-Cultural Language</h3>
+                    <p class="feature-desc">Professional Chinese, Japanese, English support, integrating mystical wisdom traditions for culturally authentic spiritual guidance.</p>
                 </div>
                 
-                <div class="pricing-card">
-                    <h3 style="color: #10b981; font-size: 1.8rem; margin-bottom: 1rem;" data-translate="infinity-title">♾️ 無限神格</h3>
-                    <div class="price">$1299<span style="font-size: 1.5rem; color: #94a3b8;">/月</span></div>
-                    <ul class="features">
-                        <li data-translate="infinity-1">所有功能無限制</li>
-                        <li data-translate="infinity-2">24/7專屬團隊</li>
-                        <li data-translate="infinity-3">客製化AI模型</li>
-                        <li data-translate="infinity-4">平台投資分紅</li>
-                    </ul>
-                    <button class="btn" onclick="purchase('infinity')" data-translate="buy-infinity">立即購買 - 成就神格</button>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Real-Time Streaming</h3>
+                    <p class="feature-desc">Live streaming tarot readings, cosmic visualizations, offline PWA support for divine wisdom anytime, anywhere.</p>
                 </div>
             </div>
-        </section>
+            
+            <div class="cta-section">
+                <h2>Begin Your Sacred Journey</h2>
+                <p>Experience the world's premier AI tarot platform with unlimited divine guidance</p>
+                <button class="start-btn" onclick="startReading()">Start Reading ✨</button>
+            </div>
+        </div>
+        
+        <div class="content" id="content-ja">
+            <div class="hero">
+                <h1 class="hero-title">神聖なる予言AIシステム</h1>
+                <p class="hero-subtitle">無制限AI駆動タロット • 多文化適応 • リアルタイム神託ガイダンス</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🌟</div>
+                    <h3 class="feature-title">無制限AI智慧</h3>
+                    <p class="feature-desc">Monica AI無制限アクセス、GPT-4o、Claude、Gemini多モデル知能で最も正確な神託ガイダンスを提供。</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">多文化言語</h3>
+                    <p class="feature-desc">プロフェッショナルな中国語、日本語、英語サポート、神秘的な智慧の伝統を統合した文化的に本格的な霊的ガイダンス。</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">リアルタイムストリーミング</h3>
+                    <p class="feature-desc">ライブストリーミングタロットリーディング、宇宙ビジュアライゼーション、オフラインPWAサポートでいつでもどこでも神聖な智慧を。</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h2>神聖な旅を始めましょう</h2>
+                <p>世界最高のAIタロットプラットフォームで無制限の神託ガイダンスを体験</p>
+                <button class="start-btn" onclick="startReading()">リーディング開始 ✨</button>
+            </div>
+        </div>
     </div>
-
-    <footer class="footer">
-        <p style="font-size: 1.2rem;" data-translate="footer">© 2025 Night God Tarot - 全球最先進的AI塔羅平台</p>
-    </footer>
-
+    
     <script>
-        let currentLanguage = 'zh';
-        let dailySpent = 0;
-        const DAILY_LIMIT = 100;
-        
-        // Multilingual translations
-        const translations = {
-            zh: {
-                'subtitle': '全球最強AI塔羅占卜平台',
-                'hero-title': '探索您的命運之路',
-                'hero-desc': '結合古老智慧與AI科技，為您揭示無限未來可能',
-                'love-title': '愛情占卜',
-                'love-desc': '探索感情運勢與真愛指引',
-                'wealth-title': '財富密碼',
-                'wealth-desc': '解鎖財務自由之路',
-                'spiritual-title': '靈性成長',
-                'spiritual-desc': '覺醒高維度智慧',
-                'pricing-title': '💰 超級現金流系統',
-                'diamond-title': '💎 鑽石精英',
-                'cosmic-title': '🌌 宇宙主宰',
-                'infinity-title': '♾️ 無限神格',
-                'footer': '© 2025 Night God Tarot - 全球最先進的AI塔羅平台',
-                'love-reading': '💕 愛情塔羅顯示：真愛即將降臨，保持開放的心態迎接美好關係！',
-                'wealth-reading': '💰 財富密碼：投資運勢旺盛，理財規劃將帶來豐厚回報！',
-                'spiritual-reading': '✨ 靈性成長：覺醒時刻來臨，內在智慧正在覺醒！'
-            },
-            en: {
-                'subtitle': 'Global Leading AI Tarot Platform',
-                'hero-title': 'Explore Your Destiny',
-                'hero-desc': 'Combining ancient wisdom with AI technology to reveal infinite future possibilities',
-                'love-title': 'Love Reading',
-                'love-desc': 'Explore emotional fortune and true love guidance',
-                'wealth-title': 'Wealth Code',
-                'wealth-desc': 'Unlock the path to financial freedom',
-                'spiritual-title': 'Spiritual Growth',
-                'spiritual-desc': 'Awaken high-dimensional wisdom',
-                'pricing-title': '💰 Super Cash Flow System',
-                'diamond-title': '💎 Diamond Elite',
-                'cosmic-title': '🌌 Cosmic Master',
-                'infinity-title': '♾️ Infinite Divine',
-                'footer': '© 2025 Night God Tarot - Global Leading AI Tarot Platform',
-                'love-reading': '💕 Love Tarot reveals: True love is coming! Stay open to beautiful relationships!',
-                'wealth-reading': '💰 Wealth Code: Investment fortune is strong, financial planning will bring rich returns!',
-                'spiritual-reading': '✨ Spiritual Growth: Awakening moment arrives, inner wisdom is awakening!'
-            },
-            jp: {
-                'subtitle': '世界最強のAIタロット占いプラットフォーム',
-                'hero-title': 'あなたの運命を探索',
-                'hero-desc': '古代の知恵とAI技術を組み合わせ、無限の未来の可能性を明らかにします',
-                'love-title': '恋愛占い',
-                'love-desc': '感情運勢と真の愛の導きを探る',
-                'wealth-title': '財富の暗号',
-                'wealth-desc': '経済的自由への道を解放',
-                'spiritual-title': '精神的成長',
-                'spiritual-desc': '高次元の知恵を覚醒',
-                'pricing-title': '💰 スーパーキャッシュフローシステム',
-                'diamond-title': '💎 ダイヤモンドエリート',
-                'cosmic-title': '🌌 宇宙マスター',
-                'infinity-title': '♾️ 無限神格',
-                'footer': '© 2025 Night God Tarot - 世界最先端のAIタロットプラットフォーム',
-                'love-reading': '💕 恋愛タロットが示す：真の愛が訪れます！美しい関係に心を開いてください！',
-                'wealth-reading': '💰 財富の暗号：投資運勢が旺盛、資産計画が豊かな収益をもたらします！',
-                'spiritual-reading': '✨ 精神的成長：覚醒の瞬間が来ています、内なる知恵が目覚めています！'
-            }
-        };
-        
-        function setLanguage(lang) {
-            currentLanguage = lang;
+        function switchLanguage(lang) {
+            // Hide all content
+            document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
             
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(lang + '-btn').classList.add('active');
-            
-            // Update all translated elements
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            
-            // Update font family based on language
-            if (lang === 'jp') {
-                document.body.style.fontFamily = "'Noto Serif JP', serif";
-            } else {
-                document.body.style.fontFamily = "'Noto Serif TC', serif";
-            }
+            // Show selected content
+            document.getElementById('content-' + lang).classList.add('active');
+            event.target.classList.add('active');
         }
         
-        function acceptWarning() {
-            document.getElementById('warningModal').classList.add('hidden');
+        function startReading() {
+            // For now, this shows the working version
+            window.location.href = './working.html';
         }
         
-        function declineWarning() {
-            window.location.href = 'https://google.com';
+        // Auto-detect language based on browser
+        const userLang = navigator.language.toLowerCase();
+        if (userLang.includes('zh')) {
+            // Already showing Chinese by default
+        } else if (userLang.includes('ja')) {
+            switchLanguage('ja');
+        } else {
+            switchLanguage('en');
         }
-        
-        function checkSpendingLimit(amount) {
-            if (dailySpent + amount > DAILY_LIMIT) {
-                alert(getTranslation('spending-exceeded'));
-                return false;
-            }
-            return true;
-        }
-        
-        function getTranslation(key) {
-            return translations[currentLanguage][key] || translations['en'][key] || key;
-        }
-        
-        function showReading(type) {
-            const readingKey = type + '-reading';
-            const reading = getTranslation(readingKey);
-            alert(reading + "\\n\\n🎯 " + (currentLanguage === 'zh' ? '立即升級VIP獲得完整預測報告！' : 
-                  currentLanguage === 'en' ? 'Upgrade to VIP for complete prediction report!' : 
-                  'VIPにアップグレードして完全な予測レポートを取得！'));
-        }
-        
-        function purchase(plan) {
-            const prices = { diamond: 333, cosmic: 666, infinity: 1299 };
-            const amount = prices[plan];
-            
-            if (!checkSpendingLimit(amount)) return;
-            
-            const confirmMsg = currentLanguage === 'zh' ? 
-                `確認購買 ${plan} 方案 ($${amount})?\\n\\n⚠️ 今日已消費: $${dailySpent}\\n每日限額: $${DAILY_LIMIT}` :
-                currentLanguage === 'en' ? 
-                `Confirm purchase ${plan} plan ($${amount})?\\n\\n⚠️ Today spent: $${dailySpent}\\nDaily limit: $${DAILY_LIMIT}` :
-                `${plan}プランの購入を確認 ($${amount})?\\n\\n⚠️ 今日の支出: $${dailySpent}\\n一日の制限: $${DAILY_LIMIT}`;
-            
-            if (confirm(confirmMsg)) {
-                dailySpent += amount;
-                const successMsg = currentLanguage === 'zh' ? 
-                    `🎉 購買成功！歡迎成為 ${plan} 會員！` :
-                    currentLanguage === 'en' ? 
-                    `🎉 Purchase successful! Welcome ${plan} member!` :
-                    `🎉 購入成功！${plan}メンバーへようこそ！`;
-                alert(successMsg);
-            }
-        }
-        
-        // Initialize
-        console.log('🔮 Night God Tarot - Ultimate Global Platform Loaded!');
-        setLanguage('zh');
     </script>
 </body>
 </html>
