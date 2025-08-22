@@ -31,6 +31,43 @@
             background-clip: text;
         }
         
+        .monetization-bar {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .donation-btn, .premium-btn {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .donation-btn:hover, .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .user-counter {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -493,6 +530,18 @@
         <button class="lang-btn active" onclick="setLanguage('zh')" id="zh-btn">中文</button>
         <button class="lang-btn" onclick="setLanguage('en')" id="en-btn">English</button>
         <button class="lang-btn" onclick="setLanguage('jp')" id="jp-btn">日本語</button>
+    </div>
+
+    <!-- Monetization Bar -->
+    <div class="monetization-bar">
+        <div class="user-counter">✨ 10,247+ Divine Readings Today</div>
+        <div>
+            <span data-translate="support-msg">Support this sacred platform • このプラットフォームをサポート • 支持神聖平台</span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <button class="donation-btn" onclick="donate()">💝 Donate</button>
+            <button class="premium-btn" onclick="upgradePremium()">⭐ Premium Unlimited</button>
+        </div>
     </div>
 
     <!-- Weather & News Widget -->
@@ -1098,9 +1147,45 @@
             }
         }
         
+        // Monetization Functions
+        function donate() {
+            // PayPal donation redirect
+            const donations = {
+                small: 'https://paypal.me/divineoracle/5',
+                medium: 'https://paypal.me/divineoracle/15', 
+                large: 'https://paypal.me/divineoracle/25'
+            };
+            
+            const choice = prompt('Choose donation amount:\n1 = $5 (Coffee)\n2 = $15 (Lunch)\n3 = $25 (Premium Support)\n\nEnter 1, 2, or 3:');
+            
+            if (choice === '1') window.open(donations.small, '_blank');
+            else if (choice === '2') window.open(donations.medium, '_blank');
+            else if (choice === '3') window.open(donations.large, '_blank');
+            else if (choice) alert('Thank you for considering! Please enter 1, 2, or 3.');
+        }
+        
+        function upgradePremium() {
+            alert('🌟 PREMIUM FEATURES:\n\n✨ Unlimited daily readings\n🔮 Advanced AI interpretations\n🌙 Exclusive cosmic insights\n📱 Priority support\n💎 Special card spreads\n\nComing Soon! Join our waitlist by donating $25.');
+            donate();
+        }
+        
+        // User counter animation
+        function animateCounter() {
+            const counter = document.querySelector('.user-counter');
+            if (counter) {
+                const baseCount = 10247;
+                const randomAdd = Math.floor(Math.random() * 20);
+                counter.textContent = `✨ ${(baseCount + randomAdd).toLocaleString()}+ Divine Readings Today`;
+            }
+        }
+        
+        // Update counter every 30 seconds
+        setInterval(animateCounter, 30000);
+        
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initApp();
+            animateCounter();
         });
         
         // Initialize immediately if DOM is already ready
@@ -1108,6 +1193,7 @@
             document.addEventListener('DOMContentLoaded', initApp);
         } else {
             initApp();
+            animateCounter();
         }
     </script>
 </body>
