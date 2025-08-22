@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="manifest" href="/assets/manifest-COVxJIPm-COVxJIPm-COVxJIPm-COVxJIPm-COVxJIPm-COVxJIPm.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Night God Tarot - AI-Powered Divine Wisdom & Spiritual Guidance</title>
     <meta name="description" content="Unlock your destiny with AI-powered tarot readings. Get instant divine guidance, spiritual insights, and personalized wisdom from our mystical Night God Tarot system. Free readings available!">
@@ -21,7 +21,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Night God Tarot">
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="./icons/icon-192x192.png">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Night God Tarot - AI-Powered Divine Wisdom & Spiritual Guidance">
@@ -78,32 +78,61 @@
         min-height: 100vh;
       }
       
-      /* Remove loading screen styles - app loads directly */
-      #app {
-        min-height: 100vh;
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid #ffd700;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        color: #ffd700;
+        margin-top: 20px;
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-CJXs6CQX.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/vendor-BmeR_xij.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-OyVhRtPg.css">
-    <script>
-      // Remove any loading screens on page load
-      window.addEventListener('DOMContentLoaded', () => {
-        const loadingElements = document.querySelectorAll('.loading');
-        loadingElements.forEach(el => el.remove());
-      });
-    </script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-BmeR_xij-CnpW1EjQ-CnpW1EjQ-CnpW1EjQ-CnpW1EjQ-CnpW1EjQ-CnpW1EjQ.js">
+    <script type="module" crossorigin src="/assets/index-C6n0Bmlp.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-OyVhRtPg.css">
   </head>
   <body>
     <div id="app">
-      <!-- Vue app mounts here directly without loading screen -->
+      <div class="loading">
+        <div>
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Awakening Divine Wisdom...</div>
+        </div>
+      </div>
     </div>
     
     <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js')
+          navigator.serviceWorker.register('./service-worker.js')
             .then(registration => {
               console.log('Service Worker registered:', registration);
             })

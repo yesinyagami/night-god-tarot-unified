@@ -51,7 +51,8 @@
       "Bash(git branch:*)",
       "WebFetch(domain:yesinyagami.github.io)",
       "Bash(find:*)",
-      "WebFetch(domain:docs.github.com)"
+      "WebFetch(domain:docs.github.com)",
+      "Bash(npx vite:*)"
     ],
     "deny": []
   }
