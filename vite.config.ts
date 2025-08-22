@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     vue(),
     vueDevTools(),
@@ -13,7 +13,9 @@ export default defineConfig({
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
-  base: './',
+  base: process.env.GITHUB_ACTIONS === 'true' 
+    ? '/night-god-tarot-unified/' 
+    : './',
   server: {
     host: true,
     port: 5173,
@@ -35,4 +37,4 @@ export default defineConfig({
   define: {
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false',
   },
-})
+}))

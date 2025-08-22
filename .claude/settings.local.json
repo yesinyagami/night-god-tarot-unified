@@ -44,7 +44,10 @@
       "Bash(GITHUB_ACTIONS=true NODE_ENV=production npm run build)",
       "Bash(git rm:*)",
       "Bash(git merge:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm run pages:build:*)"
     ],
     "deny": []
   }

@@ -12,8 +12,9 @@
     "dev:full": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "build": "npm run build-only",
     "build:with-types": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
     "build-only": "vite build",
+    "preview": "vite preview",
+    "preview:dist": "npx serve dist",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "test": "vitest",
@@ -27,7 +28,8 @@
     "deploy": "npm run build && npm run docker:build",
     "start": "node server/index.js",
     "build:perfect": "node scripts/perfect-build.js",
-    "preview": "npx serve dist"
+    "pages:build": "cross-env NODE_ENV=production GITHUB_ACTIONS=true npm run build",
+    "pages:deploy": "npm run pages:build"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -63,6 +65,7 @@
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.1.0",
+    "cross-env": "^10.0.0",
     "eslint": "^9.31.0",
     "eslint-plugin-vue": "~10.3.0",
     "jiti": "^2.4.2",

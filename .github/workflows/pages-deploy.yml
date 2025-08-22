@@ -36,11 +36,12 @@ jobs:
       - name: 🏗️ Build Night God Tarot
         run: |
           echo "🌙 Building the divine Night God Tarot experience..."
-          npm run build
+          npm run pages:build
           echo "✨ Build complete - mystical energies contained!"
         env:
           NODE_ENV: production
           GITHUB_ACTIONS: true
+          VITE_APP_TITLE: "Night God Tarot - Divine AI Wisdom"
 
       - name: 📄 Setup Pages
         uses: actions/configure-pages@v4
