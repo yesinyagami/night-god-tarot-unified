@@ -50,7 +50,8 @@
       "Bash(npm run pages:build:*)",
       "Bash(git branch:*)",
       "WebFetch(domain:yesinyagami.github.io)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "WebFetch(domain:docs.github.com)"
     ],
     "deny": []
   }
