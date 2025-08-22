@@ -415,7 +415,7 @@
 
         <!-- Novel Tab -->
         <div v-if="activeTab === 'novel'" class="novel-realm">
-          <h2 class="realm-title">📖 夜神史詩</h2>
+          <h2 class="realm-title">📖 夜神小說</h2>
           <div class="novel-interface">
             <div class="chapter-selector">
               <div class="chapters-grid">
@@ -569,7 +569,7 @@ const staticTranslations = {
   zh: {
     // Main Page Elements
     title: '夜神塔羅',
-    subtitle: 'AI驅動神秘占卜宇宙 • 31萬字史詩小說',
+    subtitle: 'AI驅動神秘占卜宇宙 • 31萬字小說',
     activateOracle: '啟動神諭',
     askUniverse: '🕯️ 向宇宙提問',
     questionPlaceholder: '在這個神聖時刻，您最想了解什麼？讓宇宙的智慧為您指引方向...',
@@ -593,7 +593,7 @@ const staticTranslations = {
     resetReading: '重新占卜',
     // Tab names
     oracleTab: '神諭',
-    novelTab: '史詩',
+    novelTab: '小說',
     progressTab: '成長',
     // Chapter titles
     prologueTitle: '夜神的覺醒',
@@ -639,7 +639,7 @@ const staticTranslations = {
   en: {
     // Main Page Elements
     title: 'Night God Tarot',
-    subtitle: 'AI-Powered Mystical Divination Universe • 310,000-Word Epic Novel',
+    subtitle: 'AI-Powered Mystical Divination Universe • 310,000-Word Novel',
     activateOracle: 'Activate Oracle',
     askUniverse: '🕯️ Ask the Universe',
     questionPlaceholder: 'In this sacred moment, what do you most want to know? Let the wisdom of the universe guide you...',
@@ -1041,7 +1041,7 @@ const userAchievements = reactive([
   { id: 'first-reading', name: '初次神諭', description: '完成第一次塔羅占卜', icon: '✨', unlocked: true },
   { id: 'herele-unlock', name: '赫雷語啟示', description: '解鎖古老預言詩句', icon: '🌟', unlocked: userLevel.value >= 3 },
   { id: 'ai-master', name: 'AI占卜大師', description: '使用多個AI模型進行占卜', icon: '🤖', unlocked: userLevel.value >= 10 },
-  { id: 'novel-reader', name: '史詩探索者', description: '閱讀完整小說章節', icon: '📚', unlocked: userLevel.value >= 5 },
+  { id: 'novel-reader', name: '小說探索者', description: '閱讀完整小說章節', icon: '📚', unlocked: userLevel.value >= 5 },
   { id: 'soul-guide', name: '靈魂導師', description: '達到最高占卜等級', icon: '👑', unlocked: userLevel.value >= 20 }
 ])
 
