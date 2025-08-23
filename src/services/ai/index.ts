@@ -1,4 +1,8 @@
 // Frontend AI Service - Enhanced Monica AI Integration with Orchestration
+import { enhancedReadingEngine } from './enhancedReadingEngine'
+import { advancedMonicaService } from './advancedMonicaService'
+import { secureConfig } from '../../config/secureConfig'
+import { cacheService } from '../cacheService'
 import type { TarotReading, DrawnCard, TarotCard } from '../../types/tarot'
 import { monicaOrchestrator, type CustomerQuery, type OrchestrationResult, type TarotCard as OrchestratorTarotCard } from './monicaOrchestrator'
 
@@ -36,6 +40,10 @@ interface MonicaModels {
 class FrontendAISystem implements AISystem {
   private initialized = false
   private apiKey: string | null = null
+  
+  // Initialize enhanced services
+  private enhancedReading = enhancedReadingEngine
+  private advancedMonica = advancedMonicaService
   private monicaModels: MonicaModels = {
     'gpt-4': {
       icon: '🧠',

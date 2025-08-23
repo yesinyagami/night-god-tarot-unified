@@ -1,37 +1,25 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueDevTools from 'vite-plugin-vue-devtools';
-// https://vitejs.dev/config/
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
+
 export default defineConfig({
-    plugins: [
-        vue(),
-        vueDevTools(),
-    ],
-    resolve: {
-        alias: {
-            '@': new URL('./src', import.meta.url).pathname,
-        },
-    },
-    base: process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS ? './' : '/',
-    server: {
-        host: true,
-        port: 5173,
-        open: true,
-    },
-    build: {
-        outDir: 'dist',
-        assetsDir: 'assets',
-        sourcemap: false,
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    vendor: ['vue', 'vue-router', 'pinia']
-                }
-            }
-        },
-        chunkSizeWarningLimit: 1000
-    },
-    define: {
-        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false',
-    },
-});
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html')
+      }
+    }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 5173
+  }
+})

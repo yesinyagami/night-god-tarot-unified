@@ -51,13 +51,15 @@ export interface MultiModelReading {
   compareResponses: boolean
 }
 
+import { secureConfig } from '../../config/secureConfig'
+
 export class AdvancedMonicaService {
   private config: MonicaAdvancedConfig
   
   constructor() {
     this.config = {
-      baseUrl: 'https://openapi.monica.im',
-      apiKey: import.meta.env.VITE_MONICA_API_KEY || 'sk-S18SC7Y5bNxtb9hUX5A1aiYjAlsxkS7FclYkJq51IS4Qa2w9VS0v8rcIH4GlfqjakV3P1TtFSobfqpda5EjVekIg69Hd',
+      baseUrl: secureConfig.getApiUrl('monica'),
+      apiKey: secureConfig.getApiKey('monica'),
       models: {
         chat: [
           'gpt-4o',
@@ -315,7 +317,7 @@ Write as a master tarot reader with deep wisdom and compassion.
       })
 
       let webInsights: string[] = []
-      let sources: string[] = []
+      const sources: string[] = []
 
       if (webResponse.ok) {
         const webData = await webResponse.json()

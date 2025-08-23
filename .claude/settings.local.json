@@ -54,7 +54,8 @@
       "WebFetch(domain:docs.github.com)",
       "Bash(npx vite:*)",
       "WebFetch(domain:monica.im)",
-      "WebFetch(domain:localhost)"
+      "WebFetch(domain:localhost)",
+      "Bash(npm --version)"
     ],
     "deny": []
   }

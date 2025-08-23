@@ -361,7 +361,7 @@ Translate to English with these guidelines:
   }, 1000)
 
   private debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
-    let timeout: number
+    let timeout: NodeJS.Timeout
     return function executedFunction(...args: Parameters<T>) {
       const later = () => {
         clearTimeout(timeout)

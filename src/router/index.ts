@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import NightGodTarotComplete from '../components/NightGodTarotComplete.vue'
 import Demo from '../views/Demo.vue'
 import AboutView from '../views/AboutView.vue'
 
@@ -9,10 +9,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: NightGodTarotComplete,
       meta: {
-        title: 'Night God Tarot - Divine AI Wisdom',
-        description: 'Experience divine guidance through AI-powered tarot readings'
+        title: '🔮 Night God Tarot - Ultimate AI Oracle',
+        description: 'Experience divine guidance through advanced AI-powered tarot readings with multi-language support'
       }
     },
     {

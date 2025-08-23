@@ -4,6 +4,8 @@
  * for comprehensive tarot readings with deep research and poetic delivery
  */
 
+import { secureConfig } from '../../config/secureConfig'
+
 export interface TarotCard {
   id: string
   name: string
@@ -67,7 +69,7 @@ class MonicaAIOrchestrator {
   }
 
   async initialize(): Promise<void> {
-    this.monicaApiKey = import.meta.env.VITE_MONICA_API_KEY || 'sk-S18SC7Y5bNxtb9hUX5A1aiYjAlsxkS7FclYkJq51IS4Qa2w9VS0v8rcIH4GlfqjakV3P1TtFSobfqpda5EjVekIg69Hd'
+    this.monicaApiKey = secureConfig.getApiKey('monica')
     console.log('🌟 Monica AI initialized with UNLIMITED access!')
     
     // Test connection with all available models

@@ -181,7 +181,7 @@ const cancelReading = () => {
 }
 
 // Auto-complete when reading is done
-let checkCompleteInterval: number
+let checkCompleteInterval: NodeJS.Timeout | null = null
 
 onMounted(() => {
   checkCompleteInterval = setInterval(() => {

@@ -3,8 +3,8 @@
     <!-- Data Consent Modal (Shows on first visit) -->
     <DataConsentModal ref="consentModal" />
     
-    <!-- Ultimate Night God Tarot Interface -->
-    <UltimateNightGodTarot />
+    <!-- Complete Night God Tarot Interface -->
+    <NightGodTarotComplete />
     
     <!-- Route-based content overlay (if needed for specific pages) -->
     <router-view v-slot="{ Component }" class="route-overlay">
@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import UltimateNightGodTarot from './components/UltimateNightGodTarot.vue'
+import NightGodTarotComplete from './components/NightGodTarotComplete.vue'
 import DataConsentModal from './components/DataConsentModal.vue'
 
 const route = useRoute()

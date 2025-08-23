@@ -651,7 +651,7 @@ const updateTime = () => {
 }
 
 // Lifecycle
-let timeInterval: number
+let timeInterval: NodeJS.Timeout
 
 onMounted(() => {
   updateTime()
