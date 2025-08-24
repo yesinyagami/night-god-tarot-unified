@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #1a0033; 
+            color: white;
+        }
+        .test-btn { 
+            padding: 10px 20px; 
+            margin: 10px; 
+            background: #ffd700; 
+            color: black; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px;
+        }
+        .test-btn:hover { 
+            background: #ff8c00; 
+        }
+        .lang-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin: 5px;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a1a2e;
+            border-color: #ffd700;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Language Button Debug Test</h1>
+    
+    <h2>Basic Test Buttons:</h2>
+    <button class="test-btn" onclick="basicTest()">Basic Test</button>
+    <button class="test-btn" onclick="alert('Direct alert works!')">Direct Alert</button>
+    
+    <h2>Language Buttons:</h2>
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="switchLanguage('en', this)">English</button>
+        <button class="lang-btn" onclick="switchLanguage('zh-cn', this)">简体中文</button>
+        <button class="lang-btn" onclick="switchLanguage('zh-tw', this)">繁體中文</button>
+        <button class="lang-btn" onclick="switchLanguage('ja', this)">日本語</button>
+    </div>
+    
+    <div id="output">
+        <h3>Current Language: <span id="currentLang">en</span></h3>
+        <p id="testText">Hello World</p>
+    </div>
+
+    <script>
+        console.log('Script loading...');
+        
+        let currentLanguage = 'en';
+        
+        const translations = {
+            en: { text: 'Hello World' },
+            'zh-cn': { text: '你好世界' },
+            'zh-tw': { text: '你好世界' },
+            ja: { text: 'こんにちは世界' }
+        };
+        
+        function basicTest() {
+            console.log('Basic test function called');
+            alert('Basic test works!');
+            document.getElementById('output').innerHTML += '<p>Basic test executed at ' + new Date().toLocaleTimeString() + '</p>';
+        }
+        
+        function switchLanguage(lang, element) {
+            console.log('switchLanguage called with:', lang, element);
+            
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Update content
+            document.getElementById('currentLang').textContent = lang;
+            document.getElementById('testText').textContent = translations[lang].text;
+            
+            console.log('Language switched to:', lang);
+        }
+        
+        // Test on load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, ready for testing');
+            
+            // Test function accessibility
+            console.log('basicTest exists:', typeof basicTest === 'function');
+            console.log('switchLanguage exists:', typeof switchLanguage === 'function');
+            
+            // Add backup event listeners
+            const langButtons = document.querySelectorAll('.lang-btn');
+            console.log('Found language buttons:', langButtons.length);
+            
+            langButtons.forEach((button, index) => {
+                const langCode = ['en', 'zh-cn', 'zh-tw', 'ja'][index];
+                console.log('Adding listener for:', langCode);
+                
+                button.addEventListener('click', function(e) {
+                    console.log('Event listener clicked for:', langCode);
+                    switchLanguage(langCode, this);
+                });
+            });
+        });
+        
+        console.log('Script loaded successfully');
+    </script>
+</body>
+</html>

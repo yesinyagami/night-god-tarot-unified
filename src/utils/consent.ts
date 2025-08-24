@@ -117,14 +117,14 @@ export class ConsentManager {
 
     // Listen for consent granted
     document.addEventListener('consentGranted', () => {
-      console.log('🌟 Consent granted - enabling full features')
+      // Consent granted - enabling full features
       this.enableAnalytics()
       this.enablePersonalization()
     })
 
     // Listen for consent denied
     document.addEventListener('consentDenied', () => {
-      console.log('🌫️ Consent denied - limiting features')
+      // Consent denied - limiting features
       this.disableAnalytics()
       this.disablePersonalization()
     })
@@ -142,7 +142,7 @@ export class ConsentManager {
     }
 
     // Enable other analytics tools
-    console.log('📊 Analytics enabled')
+    // Analytics enabled
   }
 
   /**
@@ -156,7 +156,7 @@ export class ConsentManager {
       })
     }
 
-    console.log('📊 Analytics disabled')
+    // Analytics disabled
   }
 
   /**
@@ -166,7 +166,7 @@ export class ConsentManager {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('personalizationEnabled', 'true')
     }
-    console.log('🎭 Personalization enabled')
+    // Personalization enabled
   }
 
   /**
@@ -176,7 +176,7 @@ export class ConsentManager {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('personalizationEnabled', 'false')
     }
-    console.log('🎭 Personalization disabled')
+    // Personalization disabled
   }
 
   /**
@@ -235,7 +235,7 @@ export function initializeConsentSystem(): void {
   
   // Log current consent status for debugging
   const status = ConsentManager.getConsentStatus()
-  console.log('🔮 Consent System Initialized:', {
+  console.log('Consent System Initialized', {
     granted: status.granted,
     expired: status.expired,
     timestamp: status.timestamp

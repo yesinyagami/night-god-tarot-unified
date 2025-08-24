@@ -55,7 +55,10 @@
       "Bash(npx vite:*)",
       "WebFetch(domain:monica.im)",
       "WebFetch(domain:localhost)",
-      "Bash(npm --version)"
+      "Bash(npm --version)",
+      "Read(/C:\\Users\\rovin22\\AppData\\Roaming\\Code\\logs\\20250824T004919/**)",
+      "Read(/C:\\Users\\rovin22\\AppData\\Roaming\\Code\\logs\\20250824T004919\\window1\\exthost\\ms-vscode-remote.remote-containers/**)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }

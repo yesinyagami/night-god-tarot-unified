@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night God Tarot - We Look Forward to Seeing You Again</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Subtle star field background */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.2), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        .main-container {
+            text-align: center;
+            z-index: 10;
+            max-width: 600px;
+            padding: 40px 20px;
+        }
+
+        .mystical-symbol {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { 
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+                transform: scale(1.1);
+            }
+        }
+
+        .main-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #aaaaaa;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .khrael-section {
+            margin: 40px 0;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .khrael-text {
+            font-size: 16px;
+            color: #cccccc;
+            margin-bottom: 15px;
+        }
+
+        .khrael-symbol {
+            font-size: 24px;
+            color: #ffffff;
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .khrael-translation {
+            font-size: 16px;
+            color: #aaaaaa;
+            font-style: italic;
+        }
+
+        .return-message {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .return-text {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .return-link {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .return-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .mystical-symbol {
+                font-size: 60px;
+            }
+            
+            .main-container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <div class="main-container">
+        <div class="mystical-symbol">🌙</div>
+        
+        <h1 class="main-title">We Look Forward to Seeing You Again</h1>
+        
+        <p class="subtitle">
+            Your privacy and choice are deeply respected. The cosmic energies understand that not every soul is ready for the mystical journey at this moment.
+        </p>
+        
+        <div class="khrael-section">
+            <p class="khrael-text">In the ancient Khrael language, we say:</p>
+            <p class="khrael-symbol">𐍄𐌹𐌼𐌴 𐍃𐌷𐌰𐌻𐌻 𐍂𐌴𐍄𐌿𐍂𐌽</p>
+            <p class="khrael-translation">"Time shall return what destiny intends"</p>
+        </div>
+        
+        <div class="return-message">
+            <p class="return-text">When you're ready to explore the mysteries of the Night God Tarot, we'll be here waiting.</p>
+            <a href="https://yesinyagami.carrd.co/" class="return-link" target="_blank">
+                Visit Yesin Yagami's Universe
+            </a>
+        </div>
+        
+        <p class="footer-text">
+            Thank you for taking the time to consider your privacy choices.<br>
+            The Night God respects all paths, even those that lead away from the cards.
+        </p>
+    </div>
+
+    <script>
+        // Animate stars on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Record the disagreement for analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'privacy_disagreement', {
+                    'page_title': 'Disagree Page',
+                    'timestamp': new Date().toISOString()
+                });
+            }
+            
+            // Set up auto-redirect after 30 seconds
+            setTimeout(() => {
+                window.location.href = 'https://yesinyagami.carrd.co/';
+            }, 30000);
+        });
+    </script>
+</body>
+</html>

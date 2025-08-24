@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night God Tarot - AI Fortune Widget</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Main page content */
+        .main-content {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+
+        /* Floating Crystal Ball Widget */
+        .floating-widget {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Crystal Ball Icon */
+        .crystal-ball-icon {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(168, 85, 247, 0.6),
+                0 0 40px rgba(168, 85, 247, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .crystal-ball-icon:hover {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .crystal-ball-icon:active {
+            transform: scale(0.95);
+        }
+
+        /* Crystal ball inner glow */
+        .crystal-ball-icon::before {
+            content: '🔮';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            z-index: 2;
+        }
+
+        /* AI label */
+        .ai-label {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        /* Floating animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(168, 85, 247, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* Expanded Widget */
+        .widget-expanded {
+            width: 380px;
+            height: 520px;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 35, 0.98));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: expandWidget 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes expandWidget {
+            0% {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                opacity: 0;
+            }
+            100% {
+                width: 380px;
+                height: 520px;
+                border-radius: 20px;
+                opacity: 1;
+            }
+        }
+
+        /* Widget Header */
+        .widget-header {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .widget-title {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .widget-subtitle {
+            font-size: 12px;
+            color: #cccccc;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+            border-color: rgba(255, 107, 107, 0.5);
+            transform: rotate(90deg);
+        }
+
+        /* Widget Content */
+        .widget-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Zodiac Selection */
+        .zodiac-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .zodiac-btn {
+            padding: 8px 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 12px;
+            color: #cccccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .zodiac-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+        }
+
+        .zodiac-btn.selected {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .zodiac-emoji {
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        /* Fortune Section */
+        .fortune-section {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fortune-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fortune-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .fortune-btn:active {
+            transform: translateY(0);
+        }
+
+        .fortune-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Fortune Result */
+        .fortune-result {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+            max-height: 180px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #e0e0e0;
+            display: none;
+        }
+
+        .fortune-result.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffd700;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 10px;
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        /* Daily Status */
+        .daily-status {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #10b981;
+        }
+
+        .daily-status.used {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .widget-expanded {
+                width: calc(100vw - 40px);
+                max-width: 350px;
+                height: 480px;
+            }
+            
+            .floating-widget {
+                top: 15px;
+                left: 15px;
+            }
+        }
+
+        /* Demo content for main page */
+        .demo-content {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .demo-highlight {
+            color: #ffd700;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating AI Tarot Widget -->
+    <div class="floating-widget" id="floatingWidget">
+        <!-- Crystal Ball Icon -->
+        <div class="crystal-ball-icon" id="crystalBallIcon">
+            <div class="ai-label">AI</div>
+        </div>
+
+        <!-- Expanded Widget -->
+        <div class="widget-expanded" id="widgetExpanded">
+            <div class="widget-header">
+                <div class="close-btn" id="closeBtn">×</div>
+                <div class="widget-title">🌙 Night God AI Oracle</div>
+                <div class="widget-subtitle">Powered by Monica AI • by Yesin Yagami</div>
+            </div>
+
+            <div class="widget-content">
+                <!-- Daily Status -->
+                <div class="daily-status" id="dailyStatus">
+                    ✨ Free daily reading available!
+                </div>
+
+                <!-- Zodiac Selection -->
+                <div class="zodiac-section">
+                    <div class="section-title">
+                        ⭐ Select Your Zodiac Sign
+                    </div>
+                    <div class="zodiac-grid" id="zodiacGrid">
+                        <div class="zodiac-btn" data-sign="aries">
+                            <div class="zodiac-emoji">♈</div>
+                            <div>Aries</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="taurus">
+                            <div class="zodiac-emoji">♉</div>
+                            <div>Taurus</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="gemini">
+                            <div class="zodiac-emoji">♊</div>
+                            <div>Gemini</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="cancer">
+                            <div class="zodiac-emoji">♋</div>
+                            <div>Cancer</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="leo">
+                            <div class="zodiac-emoji">♌</div>
+                            <div>Leo</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="virgo">
+                            <div class="zodiac-emoji">♍</div>
+                            <div>Virgo</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="libra">
+                            <div class="zodiac-emoji">♎</div>
+                            <div>Libra</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="scorpio">
+                            <div class="zodiac-emoji">♏</div>
+                            <div>Scorpio</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="sagittarius">
+                            <div class="zodiac-emoji">♐</div>
+                            <div>Sagittarius</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="capricorn">
+                            <div class="zodiac-emoji">♑</div>
+                            <div>Capricorn</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="aquarius">
+                            <div class="zodiac-emoji">♒</div>
+                            <div>Aquarius</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="pisces">
+                            <div class="zodiac-emoji">♓</div>
+                            <div>Pisces</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fortune Section -->
+                <div class="fortune-section">
+                    <button class="fortune-btn" id="fortuneBtn" disabled>
+                        🔮 Generate AI Fortune Reading
+                    </button>
+
+                    <!-- Loading Animation -->
+                    <div class="loading" id="loadingDiv">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">Consulting the AI Oracle...</div>
+                    </div>
+
+                    <!-- Fortune Result -->
+                    <div class="fortune-result" id="fortuneResult">
+                        <!-- AI fortune will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="main-content">
+        <h1 class="main-title">🌙 Night God Tarot</h1>
+        <p class="main-subtitle">Experience the mystical power of AI-driven tarot readings</p>
+        
+        <div class="demo-content">
+            <div class="demo-card">
+                <p class="demo-text">
+                    Welcome to the <span class="demo-highlight">Night God Tarot</span> universe! 
+                    Click the <span class="demo-highlight">floating crystal ball 🔮</span> in the top-left corner 
+                    to access your personal AI-powered fortune readings.
+                </p>
+                <p class="demo-text">
+                    Powered by <span class="demo-highlight">Monica AI</span> and created by 
+                    <span class="demo-highlight">Yesin Yagami</span>, 
+                    fantasy novelist and AI instructor.
+                </p>
+                <p class="demo-text">
+                    Select your zodiac sign and receive personalized insights from the mystical realm. 
+                    Enjoy <span class="demo-highlight">one free reading per day</span>!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Night God Tarot AI Widget Loading...');
+
+        // Widget State
+        let isExpanded = false;
+        let selectedZodiac = null;
+        let dailyReadingUsed = false;
+
+        // Elements
+        const floatingWidget = document.getElementById('floatingWidget');
+        const crystalBallIcon = document.getElementById('crystalBallIcon');
+        const widgetExpanded = document.getElementById('widgetExpanded');
+        const closeBtn = document.getElementById('closeBtn');
+        const zodiacGrid = document.getElementById('zodiacGrid');
+        const fortuneBtn = document.getElementById('fortuneBtn');
+        const loadingDiv = document.getElementById('loadingDiv');
+        const fortuneResult = document.getElementById('fortuneResult');
+        const dailyStatus = document.getElementById('dailyStatus');
+
+        // Zodiac data
+        const zodiacData = {
+            aries: { name: 'Aries', dates: 'Mar 21 - Apr 19', element: 'Fire', traits: 'courageous, determined, confident' },
+            taurus: { name: 'Taurus', dates: 'Apr 20 - May 20', element: 'Earth', traits: 'reliable, patient, practical' },
+            gemini: { name: 'Gemini', dates: 'May 21 - Jun 20', element: 'Air', traits: 'adaptable, outgoing, intelligent' },
+            cancer: { name: 'Cancer', dates: 'Jun 21 - Jul 22', element: 'Water', traits: 'emotional, nurturing, intuitive' },
+            leo: { name: 'Leo', dates: 'Jul 23 - Aug 22', element: 'Fire', traits: 'generous, warm-hearted, cheerful' },
+            virgo: { name: 'Virgo', dates: 'Aug 23 - Sep 22', element: 'Earth', traits: 'loyal, analytical, kind' },
+            libra: { name: 'Libra', dates: 'Sep 23 - Oct 22', element: 'Air', traits: 'cooperative, diplomatic, gracious' },
+            scorpio: { name: 'Scorpio', dates: 'Oct 23 - Nov 21', element: 'Water', traits: 'resourceful, brave, passionate' },
+            sagittarius: { name: 'Sagittarius', dates: 'Nov 22 - Dec 21', element: 'Fire', traits: 'generous, idealistic, great sense of humor' },
+            capricorn: { name: 'Capricorn', dates: 'Dec 22 - Jan 19', element: 'Earth', traits: 'responsible, disciplined, self-control' },
+            aquarius: { name: 'Aquarius', dates: 'Jan 20 - Feb 18', element: 'Air', traits: 'progressive, original, independent' },
+            pisces: { name: 'Pisces', dates: 'Feb 19 - Mar 20', element: 'Water', traits: 'compassionate, artistic, intuitive' }
+        };
+
+        // Initialize widget
+        function initWidget() {
+            console.log('Initializing Night God Tarot Widget...');
+            
+            // Check if daily reading was used
+            const lastReading = localStorage.getItem('nightgod_last_reading');
+            const today = new Date().toDateString();
+            
+            if (lastReading === today) {
+                dailyReadingUsed = true;
+                dailyStatus.textContent = '⏰ Daily reading used. Come back tomorrow!';
+                dailyStatus.classList.add('used');
+            }
+
+            // Add event listeners
+            crystalBallIcon.addEventListener('click', toggleWidget);
+            closeBtn.addEventListener('click', toggleWidget);
+            
+            // Zodiac selection
+            zodiacGrid.addEventListener('click', handleZodiacSelection);
+            
+            // Fortune button
+            fortuneBtn.addEventListener('click', generateFortune);
+
+            console.log('Widget initialized successfully!');
+        }
+
+        // Toggle widget expansion
+        function toggleWidget() {
+            console.log('Toggling widget...');
+            
+            if (isExpanded) {
+                // Close widget
+                widgetExpanded.style.display = 'none';
+                crystalBallIcon.style.display = 'block';
+                isExpanded = false;
+            } else {
+                // Open widget
+                crystalBallIcon.style.display = 'none';
+                widgetExpanded.style.display = 'flex';
+                isExpanded = true;
+            }
+        }
+
+        // Handle zodiac selection
+        function handleZodiacSelection(e) {
+            const zodiacBtn = e.target.closest('.zodiac-btn');
+            if (!zodiacBtn) return;
+
+            // Remove previous selection
+            document.querySelectorAll('.zodiac-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Add selection to clicked button
+            zodiacBtn.classList.add('selected');
+            selectedZodiac = zodiacBtn.dataset.sign;
+            
+            // Enable fortune button
+            fortuneBtn.disabled = false;
+            fortuneBtn.textContent = `🔮 Get ${zodiacData[selectedZodiac].name} Fortune`;
+
+            console.log('Selected zodiac:', selectedZodiac);
+        }
+
+        // Generate AI fortune (Monica API integration)
+        async function generateFortune() {
+            if (!selectedZodiac || dailyReadingUsed) return;
+
+            console.log('Generating fortune for:', selectedZodiac);
+            
+            // Show loading
+            loadingDiv.style.display = 'block';
+            fortuneResult.style.display = 'none';
+            fortuneBtn.disabled = true;
+
+            try {
+                // Simulate AI fortune generation (replace with actual Monica API call)
+                const fortune = await generateAIFortune(selectedZodiac);
+                
+                // Hide loading, show result
+                loadingDiv.style.display = 'none';
+                fortuneResult.innerHTML = fortune;
+                fortuneResult.classList.add('show');
+
+                // Mark daily reading as used
+                dailyReadingUsed = true;
+                localStorage.setItem('nightgod_last_reading', new Date().toDateString());
+                dailyStatus.textContent = '⏰ Daily reading used. Come back tomorrow!';
+                dailyStatus.classList.add('used');
+                
+                // Update button
+                fortuneBtn.textContent = '✅ Fortune Revealed';
+
+            } catch (error) {
+                console.error('Fortune generation failed:', error);
+                loadingDiv.style.display = 'none';
+                fortuneResult.innerHTML = `
+                    <div style="color: #ef4444; text-align: center;">
+                        <strong>🌙 The Oracle is temporarily unavailable</strong><br>
+                        <small>Please try again later or contact support</small>
+                    </div>
+                `;
+                fortuneResult.classList.add('show');
+                fortuneBtn.disabled = false;
+            }
+        }
+
+        // AI Fortune Generation (Monica API Integration)
+        async function generateAIFortune(zodiacSign) {
+            console.log('Calling Monica AI for fortune generation...');
+            
+            const zodiac = zodiacData[zodiacSign];
+            const currentDate = new Date().toLocaleDateString();
+            
+            // Monica AI API Integration Point
+            // TODO: Replace with actual Monica AI API call
+            const prompt = `
+                As the mystical Night God Oracle created by Yesin Yagami, provide a personalized fortune reading for a ${zodiac.name} (${zodiac.dates}) on ${currentDate}.
+                
+                Consider their ${zodiac.element} element nature and ${zodiac.traits} traits.
+                
+                Provide insights on:
+                1. Today's energy and opportunities
+                2. Love & relationships guidance
+                3. Career & finance outlook
+                4. Personal growth advice
+                5. Lucky elements for today
+                
+                Write in a mystical, encouraging tone with specific actionable guidance.
+                Include Khrael blessing: "𐌼𐌰𐌹 𐌸𐌴 𐌽𐌹𐌲𐌷𐍄 𐌲𐍉𐌳 𐌲𐌿𐌹𐌳𐌴 𐌸𐌴𐌴" (May the Night God guide thee)
+            `;
+
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Sample fortune (replace with actual Monica AI response)
+            return `
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <strong style="color: #ffd700; font-size: 16px;">🌟 ${zodiac.name} Fortune Reading</strong>
+                    <div style="color: #cccccc; font-size: 12px;">${currentDate}</div>
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #8b5cf6;">🌙 Today's Energy:</strong><br>
+                    The Night God illuminates your path with ${zodiac.element} energy. Your ${zodiac.traits} nature will serve you well today. Embrace opportunities that align with your authentic self.
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #10b981;">💖 Love & Relationships:</strong><br>
+                    Venus whispers secrets of connection. Open your heart to meaningful conversations and show appreciation to those you cherish.
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #f59e0b;">💰 Career & Finances:</strong><br>
+                    Professional opportunities may present themselves unexpectedly. Trust your ${zodiac.element} instincts when making important decisions.
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: #ef4444;">🔮 Lucky Elements:</strong><br>
+                    Color: Deep Purple | Number: ${Math.floor(Math.random() * 9) + 1} | Time: ${Math.random() > 0.5 ? 'Evening' : 'Morning'}
+                </div>
+                
+                <div style="text-align: center; padding-top: 10px; border-top: 1px solid rgba(255,215,0,0.2); font-style: italic; color: #ffd700;">
+                    𐌼𐌰𐌹 𐌸𐌴 𐌽𐌹𐌲𐌷𐍄 𐌲𐍉𐌳 𐌲𐌿𐌹𐌳𐌴 𐌸𐌴𐌴<br>
+                    <small style="color: #cccccc;">May the Night God guide thee</small>
+                </div>
+            `;
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Night God Tarot page loaded');
+            initWidget();
+        });
+
+        // Monica AI API Integration (Advanced)
+        class MonicaAIIntegration {
+            constructor() {
+                this.apiKey = null; // Set your Monica AI API key
+                this.baseURL = 'https://api.monica.im'; // Monica AI API endpoint
+            }
+
+            async callMonicaAPI(prompt, zodiacSign) {
+                // TODO: Implement actual Monica AI API call
+                console.log('Monica AI API called with prompt:', prompt);
+                
+                try {
+                    // Example API structure (adjust based on Monica's actual API)
+                    const response = await fetch(`${this.baseURL}/chat`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${this.apiKey}`,
+                            'User-Agent': 'NightGodTarot/1.0'
+                        },
+                        body: JSON.stringify({
+                            message: prompt,
+                            context: `Zodiac: ${zodiacSign}`,
+                            temperature: 0.8,
+                            max_tokens: 500
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Monica API error: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    return data.response || data.message || 'Fortune unavailable';
+                    
+                } catch (error) {
+                    console.error('Monica AI API Error:', error);
+                    throw error;
+                }
+            }
+
+            // Format AI response for display
+            formatFortuneResponse(aiResponse, zodiacSign) {
+                const zodiac = zodiacData[zodiacSign];
+                const currentDate = new Date().toLocaleDateString();
+                
+                return `
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <strong style="color: #ffd700; font-size: 16px;">🌟 ${zodiac.name} AI Oracle</strong>
+                        <div style="color: #cccccc; font-size: 12px;">${currentDate}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px; line-height: 1.6;">
+                        ${aiResponse}
+                    </div>
+                    
+                    <div style="text-align: center; padding-top: 10px; border-top: 1px solid rgba(255,215,0,0.2); font-style: italic; color: #ffd700;">
+                        <div style="font-size: 14px;">𐌼𐌰𐌹 𐌸𐌴 𐌽𐌹𐌲𐌷𐍄 𐌲𐍉𐌳 𐌲𐌿𐌹𐌳𐌴 𐌸𐌴𐌴</div>
+                        <small style="color: #cccccc;">May the Night God guide thee</small>
+                        <div style="margin-top: 5px; font-size: 10px; color: #888;">
+                            Powered by Monica AI • Created by Yesin Yagami
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize Monica AI
+        const monicaAI = new MonicaAIIntegration();
+
+        console.log('🌙 Night God Tarot AI Widget Ready');
+    </script>
+</body>
+</html>

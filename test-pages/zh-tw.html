@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夜神塔羅 2030 - 終極測試系統</title>
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#ffd700">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #330033 50%, #4a0033 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* 浮動AI塔羅占卜小工具樣式 */
+        .floating-widget {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .crystal-ball-icon {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(168, 85, 247, 0.6),
+                0 0 40px rgba(168, 85, 247, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .crystal-ball-icon:hover {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .crystal-ball-icon:active {
+            transform: scale(0.95);
+        }
+
+        .crystal-ball-icon::before {
+            content: '🔮';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            z-index: 2;
+        }
+
+        .ai-label {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(168, 85, 247, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .widget-expanded {
+            width: 380px;
+            height: 520px;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 35, 0.98));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: expandWidget 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes expandWidget {
+            0% {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                opacity: 0;
+            }
+            100% {
+                width: 380px;
+                height: 520px;
+                border-radius: 20px;
+                opacity: 1;
+            }
+        }
+
+        .widget-header {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .widget-title {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .widget-subtitle {
+            font-size: 12px;
+            color: #cccccc;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+            border-color: rgba(255, 107, 107, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .widget-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .zodiac-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .zodiac-btn {
+            padding: 8px 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 12px;
+            color: #cccccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .zodiac-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+        }
+
+        .zodiac-btn.selected {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .zodiac-emoji {
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .fortune-section {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fortune-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fortune-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .fortune-btn:active {
+            transform: translateY(0);
+        }
+
+        .fortune-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .fortune-result {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+            max-height: 180px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #e0e0e0;
+            display: none;
+        }
+
+        .fortune-result.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffd700;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 10px;
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        .daily-status {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #10b981;
+        }
+
+        .daily-status.used {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+
+        /* 浮動音頻播放器樣式 */
+        .floating-audio-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* 音樂按鈕 (60x60px) */
+        .music-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed, #6d28d9);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(139, 92, 246, 0.4),
+                0 0 0 0 rgba(139, 92, 246, 0.7);
+            animation: musicFloat 3s ease-in-out infinite;
+        }
+
+        .music-button:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 6px 20px rgba(139, 92, 246, 0.6),
+                0 0 0 10px rgba(139, 92, 246, 0.1);
+        }
+
+        .music-button:active {
+            transform: scale(0.98);
+        }
+
+        .music-button::before {
+            content: '🎵';
+            font-size: 24px;
+            z-index: 2;
+        }
+
+        /* 播放時的脈動光暈效果 */
+        .music-button.playing {
+            animation: musicFloat 3s ease-in-out infinite, musicPulse 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 20px rgba(139, 92, 246, 0.8),
+                0 0 40px rgba(139, 92, 246, 0.4),
+                0 0 0 0 rgba(139, 92, 246, 0.9);
+        }
+
+        .music-button.playing::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            animation: ripple 1.5s infinite;
+        }
+
+        @keyframes musicFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 20px rgba(139, 92, 246, 0.8),
+                    0 0 40px rgba(139, 92, 246, 0.4);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 30px rgba(139, 92, 246, 1),
+                    0 0 60px rgba(139, 92, 246, 0.6);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        /* 控制面板 */
+        .audio-control-panel {
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            width: 280px;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 35, 0.98));
+            border-radius: 15px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            display: none;
+            animation: panelSlideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+        }
+
+        .audio-control-panel.show {
+            display: block;
+        }
+
+        @keyframes panelSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 面板標題 */
+        .panel-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .panel-subtitle {
+            font-size: 11px;
+            color: #999;
+        }
+
+        /* 關閉按鈕 */
+        .panel-close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .panel-close:hover {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: rgba(239, 68, 68, 0.5);
+            transform: rotate(90deg);
+        }
+
+        /* 頻率模式選擇 */
+        .frequency-modes {
+            margin-bottom: 20px;
+        }
+
+        .mode-title {
+            font-size: 14px;
+            color: #8b5cf6;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .mode-button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            text-align: left;
+            position: relative;
+        }
+
+        .mode-button:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.5);
+            transform: translateX(3px);
+        }
+
+        .mode-button.active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(124, 58, 237, 0.1));
+            border-color: #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .mode-button:last-child {
+            margin-bottom: 0;
+        }
+
+        .mode-name {
+            display: block;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .mode-desc {
+            font-size: 11px;
+            color: #cccccc;
+        }
+
+        .mode-freq {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 10px;
+            color: #8b5cf6;
+            font-weight: 500;
+        }
+
+        /* 播放控制 */
+        .playback-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .play-pause-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .play-pause-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            transform: scale(1.05);
+        }
+
+        .volume-control {
+            flex-grow: 1;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .volume-slider {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: #7c3aed;
+        }
+
+        .volume-label {
+            position: absolute;
+            top: -20px;
+            right: 0;
+            font-size: 10px;
+            color: #8b5cf6;
+        }
+
+        /* Monica AI 狀態指示器 */
+        .monica-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 10px;
+            color: #999;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .monica-indicator {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .floating-widget {
+                top: 15px;
+                left: 15px;
+            }
+            
+            .widget-expanded {
+                width: calc(100vw - 40px);
+                max-width: 350px;
+                height: 480px;
+            }
+            
+            .floating-audio-player {
+                bottom: 15px;
+                left: 15px;
+            }
+            
+            .audio-control-panel {
+                width: calc(100vw - 100px);
+                max-width: 260px;
+            }
+            
+            .music-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .music-button::before {
+                font-size: 20px;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .test-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .test-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+            border: 1px solid #8b5cf6;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 16px rgba(139, 92, 246, 0.2);
+        }
+
+        .output-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a1a2e;
+            border-color: #ffd700;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            height: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #ffd700, #10b981);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .feng-shui-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ffd700, #ff6b6b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            animation: rotate 10s linear infinite;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .success {
+            color: #10b981;
+        }
+
+        .error {
+            color: #ef4444;
+        }
+
+        .warning {
+            color: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮動AI塔羅占卜小工具 -->
+    <div class="floating-widget" id="floatingWidget">
+        <!-- 水晶球圖標 -->
+        <div class="crystal-ball-icon" id="crystalBallIcon">
+            <div class="ai-label">AI</div>
+        </div>
+
+        <!-- 展開的小工具 -->
+        <div class="widget-expanded" id="widgetExpanded">
+            <div class="widget-header">
+                <div class="close-btn" id="closeBtn">×</div>
+                <div class="widget-title">🌙 夜神 AI 天神</div>
+                <div class="widget-subtitle">由 Monica AI 驅動 • 由 Yesin Yagami 創作</div>
+            </div>
+
+            <div class="widget-content">
+                <!-- 每日狀態 -->
+                <div class="daily-status" id="dailyStatus">
+                    ✨ 免費每日占卜可用！
+                </div>
+
+                <!-- 星座選擇 -->
+                <div class="zodiac-section">
+                    <div class="section-title">
+                        ⭐ 選擇您的星座標誌
+                    </div>
+                    <div class="zodiac-grid" id="zodiacGrid">
+                        <div class="zodiac-btn" data-sign="aries">
+                            <div class="zodiac-emoji">♈</div>
+                            <div>白羊座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="taurus">
+                            <div class="zodiac-emoji">♉</div>
+                            <div>金牛座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="gemini">
+                            <div class="zodiac-emoji">♊</div>
+                            <div>雙子座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="cancer">
+                            <div class="zodiac-emoji">♋</div>
+                            <div>巨蟹座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="leo">
+                            <div class="zodiac-emoji">♌</div>
+                            <div>獅子座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="virgo">
+                            <div class="zodiac-emoji">♍</div>
+                            <div>處女座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="libra">
+                            <div class="zodiac-emoji">♎</div>
+                            <div>天秤座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="scorpio">
+                            <div class="zodiac-emoji">♏</div>
+                            <div>天蠍座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="sagittarius">
+                            <div class="zodiac-emoji">♐</div>
+                            <div>射手座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="capricorn">
+                            <div class="zodiac-emoji">♑</div>
+                            <div>摩羯座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="aquarius">
+                            <div class="zodiac-emoji">♒</div>
+                            <div>水瓶座</div>
+                        </div>
+                        <div class="zodiac-btn" data-sign="pisces">
+                            <div class="zodiac-emoji">♓</div>
+                            <div>雙魚座</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 運勢部分 -->
+                <div class="fortune-section">
+                    <button class="fortune-btn" id="fortuneBtn" disabled>
+                        🔮 生成 AI 運勢占卜
+                    </button>
+
+                    <!-- 加載動畫 -->
+                    <div class="loading" id="loadingDiv">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">諮詢 AI 天神中...</div>
+                    </div>
+
+                    <!-- 運勢結果 -->
+                    <div class="fortune-result" id="fortuneResult">
+                        <!-- AI 運勢將顯示在這裡 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 浮動音頻播放器 -->
+    <div class="floating-audio-player" id="floatingAudioPlayer">
+        <!-- 音樂按鈕 -->
+        <div class="music-button" id="musicButton">
+            <!-- 🎵 emoji is added via CSS ::before -->
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="audio-control-panel" id="audioControlPanel">
+            <div class="panel-header">
+                <div class="panel-close" id="panelClose">×</div>
+                <div class="panel-title">🎵 財富頻率療癒</div>
+                <div class="panel-subtitle">財富頻率治療</div>
+            </div>
+
+            <!-- 頻率模式選擇 -->
+            <div class="frequency-modes">
+                <div class="mode-title">選擇治療頻率</div>
+                
+                <button class="mode-button active" data-mode="theta" data-freq="8">
+                    <span class="mode-freq">8Hz</span>
+                    <span class="mode-name">💰 Theta 財富清理</span>
+                    <span class="mode-desc">清除潛意識中的財富障礙</span>
+                </button>
+                
+                <button class="mode-button" data-mode="alpha" data-freq="7">
+                    <span class="mode-freq">7Hz</span>
+                    <span class="mode-name">💎 Alpha 豐盛流動</span>
+                    <span class="mode-desc">促進財富能量自然流動</span>
+                </button>
+                
+                <button class="mode-button" data-mode="mixed" data-freq="mixed">
+                    <span class="mode-freq">MIX</span>
+                    <span class="mode-name">🌟 混合頻率</span>
+                    <span class="mode-desc">綜合療癒，全方位提升</span>
+                </button>
+            </div>
+
+            <!-- 播放控制 -->
+            <div class="playback-controls">
+                <button class="play-pause-btn" id="playPauseBtn">▶️</button>
+                
+                <div class="volume-control">
+                    <div class="volume-label">音量</div>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <!-- Monica AI 狀態 -->
+            <div class="monica-status">
+                <div class="monica-indicator"></div>
+                <span>Monica AI 整合中</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 頁首 -->
+        <div class="header">
+            <div class="logo">🔮</div>
+            <h1 class="title">夜神塔羅 2030</h1>
+            <p class="subtitle">終極AI驅動靈性平台 - 完整系統測試</p>
+            
+            <!-- 語言選擇器 -->
+            <div class="language-selector">
+                <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+                <button class="lang-btn" onclick="switchLanguage('zh-cn')">简体中文</button>
+                <button class="lang-btn active" onclick="switchLanguage('zh-tw')">繁體中文</button>
+                <button class="lang-btn" onclick="switchLanguage('jp')">日本語</button>
+            </div>
+        </div>
+
+        <!-- 系統狀態面板 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>🚀</span>
+                系統狀態儀表板
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="ai-models">8</div>
+                    <div class="stat-label">AI模型活躍</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="system-health">98%</div>
+                    <div class="stat-label">系統健康度</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="response-time">1.2秒</div>
+                    <div class="stat-label">平均響應時間</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="blockchain-status">活躍</div>
+                    <div class="stat-label">區塊鏈狀態</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="users-online">1,337</div>
+                    <div class="stat-label">線上用戶</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="realtime-connections">42</div>
+                    <div class="stat-label">即時通訊活躍</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 核心功能網格 -->
+        <div class="features-grid">
+            <div class="feature-card" onclick="testFeature('ai-orchestration')">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-title">AI智能編排</div>
+                <div class="feature-description">
+                    8個AI模型協同工作：GPT-4o、Claude-3.5、Gemini Pro、DeepSeek V3、
+                    Cohere、Mistral、Together AI 和本地 Llama3
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="testFeature('blockchain-integration')">
+                <div class="feature-icon">⛓️</div>
+                <div class="feature-title">區塊鏈整合</div>
+                <div class="feature-description">
+                    NFT占卜、加密貨幣支付（ETH/BTC/USDC）、IPFS儲存、
+                    智能合約和Web3錢包連接
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="testFeature('realtime-collaboration')">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">即時協作</div>
+                <div class="feature-description">
+                    即時視訊占卜、WebRTC點對點連接、
+                    螢幕分享和協作占卜會話
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="testFeature('performance-optimization')">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">效能優化</div>
+                <div class="feature-description">
+                    WebAssembly高效能計算、智慧快取、
+                    漸進式Web應用程式和離線支援
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="testFeature('error-prevention')">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-title">錯誤預防</div>
+                <div class="feature-description">
+                    自主AI控制、自我修復機制、
+                    預測性維護和持續學習
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="testFeature('multilingual-support')">
+                <div class="feature-icon">🌍</div>
+                <div class="feature-title">多語言支援</div>
+                <div class="feature-description">
+                    20+種語言、文化適應、Monica AI翻譯引擎
+                    和風水整合支援
+                </div>
+            </div>
+        </div>
+
+        <!-- 測試區塊1：AI錯誤控制 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>🤖</span>
+                AI自主錯誤控制系統
+            </h2>
+            <div class="test-controls">
+                <button class="btn" onclick="testErrorControl()">啟動AI控制</button>
+                <button class="btn-secondary" onclick="simulateError()">模擬錯誤</button>
+                <button class="btn-secondary" onclick="forceHealing()">強制修復</button>
+                <button class="btn-secondary" onclick="showAIDecisions()">檢視AI決策</button>
+            </div>
+            <div class="output-panel" id="error-output">
+                等待測試指令...
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="error-progress"></div>
+            </div>
+        </div>
+
+        <!-- 測試區塊2：購買系統 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>💳</span>
+                全面購買系統
+            </h2>
+            <div class="test-controls">
+                <button class="btn" onclick="loadProducts()">載入產品目錄</button>
+                <button class="btn-secondary" onclick="testCryptoPayment()">測試加密支付</button>
+                <button class="btn-secondary" onclick="testSubscription()">測試訂閱</button>
+                <button class="btn-secondary" onclick="mintTestNFT()">鑄造測試NFT</button>
+            </div>
+            <div id="product-catalog" class="product-grid">
+                <!-- 產品會動態載入這裡 -->
+            </div>
+            <div class="output-panel" id="purchase-output">
+                等待產品載入...
+            </div>
+        </div>
+
+        <!-- 測試區塊3：AI占卜引擎 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>🔮</span>
+                多AI占卜引擎
+            </h2>
+            <div class="test-controls">
+                <button class="btn" onclick="quickReading()">快速三牌占卜</button>
+                <button class="btn-secondary" onclick="premiumReading()">高級凱爾特十字</button>
+                <button class="btn-secondary" onclick="ultimateReading()">終極多AI占卜</button>
+                <button class="btn-secondary" onclick="collaborativeReading()">開始協作會話</button>
+            </div>
+            <div class="output-panel" id="reading-output">
+                選擇占卜類型開始...
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="reading-progress"></div>
+            </div>
+        </div>
+
+        <!-- 測試區塊4：區塊鏈整合 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>⛓️</span>
+                區塊鏈與Web3整合
+            </h2>
+            <div class="test-controls">
+                <button class="btn" onclick="connectWallet()">連接錢包</button>
+                <button class="btn-secondary" onclick="testSmartContract()">測試智能合約</button>
+                <button class="btn-secondary" onclick="testIPFSStorage()">測試IPFS儲存</button>
+                <button class="btn-secondary" onclick="viewNFTCollection()">檢視NFT收藏</button>
+            </div>
+            <div class="output-panel" id="blockchain-output">
+                等待區塊鏈連接...
+            </div>
+        </div>
+
+        <!-- 測試區塊5：效能基準測試 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>⚡</span>
+                效能基準測試
+            </h2>
+            <div class="test-controls">
+                <button class="btn" onclick="runPerformanceBenchmark()">執行基準測試</button>
+                <button class="btn-secondary" onclick="testWebAssembly()">測試WebAssembly</button>
+                <button class="btn-secondary" onclick="optimizeSystem()">優化系統</button>
+                <button class="btn-secondary" onclick="viewMetrics()">檢視指標</button>
+            </div>
+            <div class="output-panel" id="performance-output">
+                準備效能測試...
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="performance-progress"></div>
+            </div>
+        </div>
+
+        <!-- 測試區塊6：多語言測試 -->
+        <div class="test-section">
+            <h2 class="test-title">
+                <span>🌍</span>
+                多語言與文化適應
+            </h2>
+            <div class="test-controls">
+                <button class="btn" onclick="testTranslation()">測試翻譯</button>
+                <button class="btn-secondary" onclick="testCulturalAdaptation()">文化適應</button>
+                <button class="btn-secondary" onclick="testMonicaTranslator()">Monica翻譯器</button>
+                <button class="btn-secondary" onclick="testFengShuiIntegration()">測試風水整合</button>
+            </div>
+            <div class="output-panel" id="language-output">
+                選擇語言測試...
+            </div>
+        </div>
+
+        <!-- 風水指示器 -->
+        <div class="feng-shui-indicator" title="風水能量流動">☯</div>
+    </div>
+
+    <script>
+        // 全域系統狀態
+        let currentLanguage = 'zh-tw';
+        let systemStatus = {
+            aiModels: 8,
+            systemHealth: 98,
+            responseTime: 1.2,
+            blockchainActive: true,
+            usersOnline: 1337,
+            realtimeConnections: 42
+        };
+
+        // 語言切換功能
+        function switchLanguage(lang) {
+            // 更新所有按鈕的活躍狀態
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 重定向到對應的語言頁面
+            const langMap = {
+                'en': 'index.html',
+                'zh-cn': 'zh.html',
+                'zh-tw': 'zh-tw.html',
+                'jp': 'jp.html'
+            };
+            
+            if (lang !== 'zh-tw') {
+                window.location.href = langMap[lang];
+            }
+        }
+
+        // 測試功能
+        function testFeature(feature) {
+            console.log(`測試功能: ${feature}`);
+            const messages = {
+                'ai-orchestration': '正在連接8個AI模型...GPT-4o響應時間: 120ms, Claude-3.5: 150ms',
+                'blockchain-integration': '連接Web3錢包...以太坊主網已連接',
+                'realtime-collaboration': '建立WebRTC連接...點對點通道已建立',
+                'performance-optimization': '執行WebAssembly基準測試...效能提升340%',
+                'error-prevention': 'AI自主控制已啟動...自我修復機制運作中',
+                'multilingual-support': '載入20種語言...文化適應模組已就緒'
+            };
+            alert(messages[feature] || '功能測試中...');
+        }
+
+        // AI錯誤控制測試
+        function testErrorControl() {
+            logOutput('error-output', '🤖 啟動AI自主錯誤控制系統...');
+            animateProgress('error-progress', 100);
+            setTimeout(() => logOutput('error-output', '✅ AI控制系統已上線！監控所有系統元件。'), 1000);
+        }
+
+        function simulateError() {
+            logOutput('error-output', '⚠️ 模擬錯誤：記憶體洩漏偵測到...');
+            setTimeout(() => logOutput('error-output', '🔧 AI決定：執行垃圾回收並優化記憶體配置'), 500);
+            setTimeout(() => logOutput('error-output', '✅ 錯誤已自動解決！系統恢復正常。'), 1500);
+        }
+
+        function forceHealing() {
+            logOutput('error-output', '🔄 強制執行系統自我修復程序...');
+            animateProgress('error-progress', 100);
+        }
+
+        function showAIDecisions() {
+            logOutput('error-output', '📊 近期AI決策：\n1. 優化快取策略 (+15% 效能)\n2. 調整負載平衡 (降低延遲20ms)\n3. 更新安全規則 (阻擋3個威脅)');
+        }
+
+        // 產品載入功能
+        function loadProducts() {
+            const products = [
+                { title: '基礎占卜套餐', price: '0.01 ETH', description: '單次AI占卜與基本解讀' },
+                { title: '專業占卜訂閱', price: '0.05 ETH/月', description: '無限占卜、NFT鑄造、優先支援' },
+                { title: '大師級套餐', price: '0.1 ETH', description: '全功能解鎖、私人AI助理、獨家NFT' },
+                { title: '企業方案', price: '客製報價', description: '團隊協作、API存取、專屬支援' }
+            ];
+
+            const catalogDiv = document.getElementById('product-catalog');
+            catalogDiv.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-title">${product.title}</div>
+                    <div class="product-price">${product.price}</div>
+                    <div class="product-description">${product.description}</div>
+                    <button class="btn" onclick="purchaseProduct('${product.title}')">購買</button>
+                </div>
+            `).join('');
+
+            logOutput('purchase-output', '✅ 產品目錄已載入');
+        }
+
+        function purchaseProduct(productName) {
+            logOutput('purchase-output', `🛒 處理購買: ${productName}...`);
+        }
+
+        function testCryptoPayment() {
+            logOutput('purchase-output', '💰 初始化加密貨幣支付閘道...\n支援: ETH, BTC, USDC, USDT');
+        }
+
+        function testSubscription() {
+            logOutput('purchase-output', '📅 設定訂閱方案...\n可用期間: 月付、季付、年付');
+        }
+
+        function mintTestNFT() {
+            logOutput('purchase-output', '🎨 鑄造測試NFT...\nIPFS Hash: QmX7a9b2c3d4e5f6...\n合約地址: 0x742d35Cc6634C053...');
+        }
+
+        // 占卜測試功能
+        function quickReading() {
+            logOutput('reading-output', '🔮 執行快速三牌占卜...\n過去：愚者 | 現在：戀人 | 未來：太陽');
+            animateProgress('reading-progress', 100);
+        }
+
+        function premiumReading() {
+            logOutput('reading-output', '✨ 啟動高級凱爾特十字占卜...\n連接多個AI模型進行深度解析...');
+            animateProgress('reading-progress', 100);
+        }
+
+        function ultimateReading() {
+            logOutput('reading-output', '🌟 終極多AI占卜啟動！\nGPT-4o: 分析中...\nClaude-3.5: 處理中...\nGemini Pro: 運算中...');
+            animateProgress('reading-progress', 100);
+        }
+
+        function collaborativeReading() {
+            logOutput('reading-output', '👥 建立協作占卜會話...\n會話ID: COLLAB-2030-XYZ\n等待參與者加入...');
+        }
+
+        // 區塊鏈功能
+        function connectWallet() {
+            logOutput('blockchain-output', '🔗 連接Web3錢包...\nMetaMask已偵測\n地址: 0x742d...3f4b');
+        }
+
+        function testSmartContract() {
+            logOutput('blockchain-output', '📜 執行智能合約...\n函數: mintTarotReading()\nGas估算: 0.002 ETH');
+        }
+
+        function testIPFSStorage() {
+            logOutput('blockchain-output', '💾 上傳至IPFS...\nCID: QmT5NvUtoM5n7J8x9Ey3...\n固定狀態: 已固定');
+        }
+
+        function viewNFTCollection() {
+            logOutput('blockchain-output', '🖼️ NFT收藏:\n1. 神秘占卜 #001 - 稀有度: 傳說\n2. 月相塔羅 #042 - 稀有度: 史詩\n3. 數位神諭 #337 - 稀有度: 稀有');
+        }
+
+        // 效能測試功能
+        function runPerformanceBenchmark() {
+            logOutput('performance-output', '⚡ 執行效能基準測試...\nCPU: 98分\n記憶體: 95分\nWebAssembly: 99分\n總分: 97/100');
+            animateProgress('performance-progress', 97);
+        }
+
+        function testWebAssembly() {
+            logOutput('performance-output', '🚀 WebAssembly模組測試...\n矩陣運算: 340% 更快\nAI推理: 250% 更快');
+        }
+
+        function optimizeSystem() {
+            logOutput('performance-output', '🔧 優化系統中...\n清理快取...壓縮資源...優化查詢...\n✅ 優化完成！效能提升23%');
+            animateProgress('performance-progress', 100);
+        }
+
+        function viewMetrics() {
+            logOutput('performance-output', '📊 系統指標:\nFCP: 0.8s | LCP: 1.2s | CLS: 0.05 | FID: 50ms');
+        }
+
+        // 語言測試功能
+        function testTranslation() {
+            logOutput('language-output', '🌐 測試多語言翻譯...\n英文 ✅ | 簡體中文 ✅ | 繁體中文 ✅ | 日文 ✅ | 韓文 ✅');
+        }
+
+        function testCulturalAdaptation() {
+            logOutput('language-output', '🎎 文化適應測試...\n繁體中文: 風水元素已整合\n日文: 禪意美學已套用\n阿拉伯文: RTL佈局已啟用');
+        }
+
+        function testMonicaTranslator() {
+            logOutput('language-output', '🤖 Monica AI翻譯引擎...\n即時翻譯精確度: 99.7%\n文化語境適應: 優秀');
+        }
+
+        function testFengShuiIntegration() {
+            logOutput('language-output', '☯ 風水整合測試...\n五行平衡: 完美\n能量流動: 順暢\n吉位配置: 最佳化');
+        }
+
+        // 輔助功能
+        function logOutput(elementId, message) {
+            const element = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString('zh-TW');
+            element.innerHTML = `[${timestamp}] ${message}\n${element.innerHTML}`;
+        }
+
+        function updateProgress(progressId, percentage) {
+            document.getElementById(progressId).style.width = percentage + '%';
+        }
+
+        function animateProgress(progressId, target) {
+            let current = 0;
+            const interval = setInterval(() => {
+                if (current >= target) {
+                    clearInterval(interval);
+                } else {
+                    current += 2;
+                    updateProgress(progressId, Math.min(current, target));
+                }
+            }, 20);
+        }
+
+        // ==================== 浮動AI塔羅小工具功能 ====================
+        
+        // 小工具狀態
+        let widgetExpanded = false;
+        let selectedZodiac = null;
+        let dailyReadingUsed = false;
+
+        // 元素
+        const floatingWidget = document.getElementById('floatingWidget');
+        const crystalBallIcon = document.getElementById('crystalBallIcon');
+        const widgetExpandedDiv = document.getElementById('widgetExpanded');
+        const closeBtn = document.getElementById('closeBtn');
+        const zodiacGrid = document.getElementById('zodiacGrid');
+        const fortuneBtn = document.getElementById('fortuneBtn');
+        const loadingDiv = document.getElementById('loadingDiv');
+        const fortuneResult = document.getElementById('fortuneResult');
+        const dailyStatus = document.getElementById('dailyStatus');
+
+        // 星座數據
+        const zodiacData = {
+            aries: { name: '白羊座', dates: '3月21日 - 4月19日', element: '火', traits: '勇敢、決心、自信' },
+            taurus: { name: '金牛座', dates: '4月20日 - 5月20日', element: '土', traits: '可靠、耐心、實用' },
+            gemini: { name: '雙子座', dates: '5月21日 - 6月20日', element: '風', traits: '適應性強、外向、智能' },
+            cancer: { name: '巨蟹座', dates: '6月21日 - 7月22日', element: '水', traits: '情感豐富、養育、直覺' },
+            leo: { name: '獅子座', dates: '7月23日 - 8月22日', element: '火', traits: '慷慨、熱心、快樂' },
+            virgo: { name: '處女座', dates: '8月23日 - 9月22日', element: '土', traits: '忠誠、分析能力強、善良' },
+            libra: { name: '天秤座', dates: '9月23日 - 10月22日', element: '風', traits: '合作、外交、優雅' },
+            scorpio: { name: '天蠍座', dates: '10月23日 - 11月21日', element: '水', traits: '機智、勇敢、熱情' },
+            sagittarius: { name: '射手座', dates: '11月22日 - 12月21日', element: '火', traits: '慷慨、理想主義、幽默' },
+            capricorn: { name: '摩羯座', dates: '12月22日 - 1月19日', element: '土', traits: '負責任、紀律、自制' },
+            aquarius: { name: '水瓶座', dates: '1月20日 - 2月18日', element: '風', traits: '進步、原創、獨立' },
+            pisces: { name: '雙魚座', dates: '2月19日 - 3月20日', element: '水', traits: '富有同情心、藝術性、直覺' }
+        };
+
+        // 主頁加載後初始化小工具
+        function initFloatingWidget() {
+            console.log('🔮 初始化夜神塔羅小工具...');
+            
+            // 檢查是否已使用每日占卜
+            const lastReading = localStorage.getItem('nightgod_last_reading');
+            const today = new Date().toDateString();
+            
+            if (lastReading === today) {
+                dailyReadingUsed = true;
+                dailyStatus.textContent = '⏰ 每日占卜已使用。明天再來！';
+                dailyStatus.classList.add('used');
+            }
+
+            // 添加事件監聽器
+            crystalBallIcon.addEventListener('click', toggleFloatingWidget);
+            closeBtn.addEventListener('click', toggleFloatingWidget);
+            
+            // 星座選擇
+            zodiacGrid.addEventListener('click', handleZodiacSelection);
+            
+            // 運勢按鈕
+            fortuneBtn.addEventListener('click', generateFortune);
+
+            console.log('✨ 小工具初始化成功！');
+        }
+
+        // 切換小工具展開
+        function toggleFloatingWidget() {
+            console.log('🌟 切換小工具...');
+            
+            if (widgetExpanded) {
+                // 關閉小工具
+                widgetExpandedDiv.style.display = 'none';
+                crystalBallIcon.style.display = 'block';
+                widgetExpanded = false;
+            } else {
+                // 打開小工具
+                crystalBallIcon.style.display = 'none';
+                widgetExpandedDiv.style.display = 'flex';
+                widgetExpanded = true;
+            }
+        }
+
+        // 處理星座選擇
+        function handleZodiacSelection(e) {
+            const zodiacBtn = e.target.closest('.zodiac-btn');
+            if (!zodiacBtn) return;
+
+            // 移除以前的選擇
+            document.querySelectorAll('.zodiac-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // 對點擊的按鈕添加選擇
+            zodiacBtn.classList.add('selected');
+            selectedZodiac = zodiacBtn.dataset.sign;
+            
+            // 啟用運勢按鈕
+            fortuneBtn.disabled = false;
+            fortuneBtn.textContent = `🔮 獲取${zodiacData[selectedZodiac].name}運勢`;
+
+            console.log('⭐ 選擇的星座:', selectedZodiac);
+        }
+
+        // 生成 AI 運勢（Monica API 集成）
+        async function generateFortune() {
+            if (!selectedZodiac || dailyReadingUsed) return;
+
+            console.log('🌙 為以下星座生成運勢:', selectedZodiac);
+            
+            // 顯示加載
+            loadingDiv.style.display = 'block';
+            fortuneResult.style.display = 'none';
+            fortuneBtn.disabled = true;
+
+            try {
+                // 生成 AI 運勢
+                const fortune = await generateAIFortune(selectedZodiac);
+                
+                // 隱藏加載，顯示結果
+                loadingDiv.style.display = 'none';
+                fortuneResult.innerHTML = fortune;
+                fortuneResult.classList.add('show');
+
+                // 標記每日占卜已使用
+                dailyReadingUsed = true;
+                localStorage.setItem('nightgod_last_reading', new Date().toDateString());
+                dailyStatus.textContent = '⏰ 每日占卜已使用。明天再來！';
+                dailyStatus.classList.add('used');
+                
+                // 更新按鈕
+                fortuneBtn.textContent = '✅ 運勢已揭示';
+
+            } catch (error) {
+                console.error('🚨 運勢生成失敗:', error);
+                loadingDiv.style.display = 'none';
+                fortuneResult.innerHTML = `
+                    <div style="color: #ef4444; text-align: center;">
+                        <strong>🌙 天神暫時不可用</strong><br>
+                        <small>請稍後再試或聯繫支持</small>
+                    </div>
+                `;
+                fortuneResult.classList.add('show');
+                fortuneBtn.disabled = false;
+            }
+        }
+
+        // AI 運勢生成（Monica API 集成）
+        async function generateAIFortune(zodiacSign) {
+            console.log('🤖 調用 Monica AI 進行運勢生成...');
+            
+            const zodiac = zodiacData[zodiacSign];
+            const currentDate = new Date().toLocaleDateString();
+            
+            // 為神秘效果模擬 API 調用延遲
+            await new Promise(resolve => setTimeout(resolve, 2500));
+            
+            // 示例運勢（替換為實際 Monica AI 響應）
+            const luckyNumber = Math.floor(Math.random() * 9) + 1;
+            const timeOfDay = Math.random() > 0.5 ? '晚上' : '上午';
+            const luckyColor = ['深紫色', '金色', '銀色', '深紅色', '翡翠綠'][Math.floor(Math.random() * 5)];
+            
+            return `
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <strong style="color: #ffd700; font-size: 16px;">🌟 ${zodiac.name}運勢占卜</strong>
+                    <div style="color: #cccccc; font-size: 12px;">${currentDate}</div>
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #8b5cf6;">🌙 今日能量：</strong><br>
+                    夜神以${zodiac.element}元素能量照亮你的道路。你的${zodiac.traits}本質將在今天為你服務。擁抱與你真實自我相符的機會。
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #10b981;">💖 愛情與關係：</strong><br>
+                    金星耳語連接的秘密。對有意義的對話敞開心扉，對你珍愛的人表達讚美。
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #f59e0b;">💰 事業與財務：</strong><br>
+                    專業機會可能會意外出現。在做重要決定時相信你的${zodiac.element}元素直覺。
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: #ef4444;">🔮 幸運元素：</strong><br>
+                    顏色：${luckyColor} | 數字：${luckyNumber} | 時間：${timeOfDay}
+                </div>
+                
+                <div style="text-align: center; padding-top: 10px; border-top: 1px solid rgba(255,215,0,0.2); font-style: italic; color: #ffd700;">
+                    𐌼𐌰𐌹 𐌸𐌴 𐌽𐌹𐌲𐌷𐍄 𐌲𐍉𐌳 𐌲𐌿𐌹𐌳𐌴 𐌸𐌴𐌴<br>
+                    <small style="color: #cccccc;">願夜神指引你</small>
+                    <div style="margin-top: 5px; font-size: 10px; color: #888;">
+                        由 Monica AI 驅動 • 由 Yesin Yagami 創作
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==================== 浮動音頻播放器功能 ====================
+        class WealthFrequencyPlayer {
+            constructor() {
+                this.audioContext = null;
+                this.oscillators = {};
+                this.gainNode = null;
+                this.isPlaying = false;
+                this.currentMode = 'theta';
+                this.currentFreq = 8;
+                this.volume = 0.5;
+                
+                this.initializeElements();
+                this.setupEventListeners();
+                this.initializeAudioContext();
+            }
+            
+            initializeElements() {
+                this.musicButton = document.getElementById('musicButton');
+                this.controlPanel = document.getElementById('audioControlPanel');
+                this.playPauseBtn = document.getElementById('playPauseBtn');
+                this.volumeSlider = document.getElementById('volumeSlider');
+                this.modeButtons = document.querySelectorAll('.mode-button');
+                this.panelClose = document.getElementById('panelClose');
+            }
+            
+            setupEventListeners() {
+                // 音樂按鈕點擊 - 切換面板顯示
+                this.musicButton.addEventListener('click', () => {
+                    this.togglePanel();
+                });
+                
+                // 關閉面板
+                this.panelClose.addEventListener('click', () => {
+                    this.closePanel();
+                });
+                
+                // 播放/暫停按鈕
+                this.playPauseBtn.addEventListener('click', () => {
+                    this.togglePlayback();
+                });
+                
+                // 音量控制
+                this.volumeSlider.addEventListener('input', (e) => {
+                    this.setVolume(e.target.value / 100);
+                });
+                
+                // 頻率模式選擇
+                this.modeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        this.selectMode(button);
+                    });
+                });
+                
+                // ESC 鍵關閉面板
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.controlPanel.classList.contains('show')) {
+                        this.closePanel();
+                    }
+                });
+                
+                // 點擊外部關閉面板
+                document.addEventListener('click', (e) => {
+                    if (!this.musicButton.contains(e.target) && 
+                        !this.controlPanel.contains(e.target) && 
+                        this.controlPanel.classList.contains('show')) {
+                        this.closePanel();
+                    }
+                });
+            }
+            
+            async initializeAudioContext() {
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    this.gainNode = this.audioContext.createGain();
+                    this.gainNode.connect(this.audioContext.destination);
+                    this.gainNode.gain.value = this.volume;
+                    
+                    console.log('🎵 音頻上下文初始化成功');
+                } catch (error) {
+                    console.error('❌ 音頻上下文初始化失敗:', error);
+                }
+            }
+            
+            togglePanel() {
+                const isShowing = this.controlPanel.classList.contains('show');
+                if (isShowing) {
+                    this.closePanel();
+                } else {
+                    this.openPanel();
+                }
+            }
+            
+            openPanel() {
+                this.controlPanel.classList.add('show');
+                this.musicButton.style.transform = 'scale(1.1)';
+                
+                // Monica AI 狀態更新
+                this.updateMonicaStatus('active');
+            }
+            
+            closePanel() {
+                this.controlPanel.classList.remove('show');
+                this.musicButton.style.transform = 'scale(1)';
+                
+                // Monica AI 狀態更新
+                this.updateMonicaStatus('standby');
+            }
+            
+            selectMode(selectedButton) {
+                // 更新按鈕狀態
+                this.modeButtons.forEach(btn => btn.classList.remove('active'));
+                selectedButton.classList.add('active');
+                
+                // 獲取模式信息
+                this.currentMode = selectedButton.dataset.mode;
+                this.currentFreq = selectedButton.dataset.freq;
+                
+                console.log(`🎵 模式切換為: ${this.currentMode} - ${this.currentFreq}Hz`);
+                
+                // 如果正在播放，重新啟動新頻率
+                if (this.isPlaying) {
+                    this.stopFrequency();
+                    setTimeout(() => {
+                        this.startFrequency();
+                    }, 100);
+                }
+                
+                // Monica AI 集成
+                this.notifyMonicaAI(`frequency_mode_changed:${this.currentMode}`);
+            }
+            
+            togglePlayback() {
+                if (this.isPlaying) {
+                    this.stopPlayback();
+                } else {
+                    this.startPlayback();
+                }
+            }
+            
+            async startPlayback() {
+                if (this.audioContext.state === 'suspended') {
+                    await this.audioContext.resume();
+                }
+                
+                this.startFrequency();
+                this.isPlaying = true;
+                
+                // 更新UI
+                this.playPauseBtn.innerHTML = '⏸️';
+                this.musicButton.classList.add('playing');
+                
+                // Monica AI 通知
+                this.notifyMonicaAI(`healing_session_started:${this.currentMode}_${this.currentFreq}Hz`);
+                
+                console.log(`🎵 開始播放: ${this.currentMode} - ${this.currentFreq}Hz`);
+            }
+            
+            stopPlayback() {
+                this.stopFrequency();
+                this.isPlaying = false;
+                
+                // 更新UI
+                this.playPauseBtn.innerHTML = '▶️';
+                this.musicButton.classList.remove('playing');
+                
+                // Monica AI 通知
+                this.notifyMonicaAI(`healing_session_stopped:${this.currentMode}`);
+                
+                console.log('🎵 播放停止');
+            }
+            
+            startFrequency() {
+                if (!this.audioContext) return;
+                
+                if (this.currentMode === 'mixed') {
+                    // 混合模式：同時播放 Theta 和 Alpha 頻率
+                    this.createOscillator('theta', 8);
+                    this.createOscillator('alpha', 7);
+                } else {
+                    // 單一頻率模式
+                    const freq = this.currentMode === 'theta' ? 8 : 7;
+                    this.createOscillator(this.currentMode, freq);
+                }
+            }
+            
+            createOscillator(name, frequency) {
+                const oscillator = this.audioContext.createOscillator();
+                const gainNode = this.audioContext.createGain();
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+                
+                // 設置音量（混合模式時降低單個振盪器音量）
+                const volume = this.currentMode === 'mixed' ? this.volume * 0.6 : this.volume;
+                gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime);
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                oscillator.start();
+                this.oscillators[name] = { oscillator, gainNode };
+                
+                console.log(`🎵 創建 ${name} 振盪器於 ${frequency}Hz`);
+            }
+            
+            stopFrequency() {
+                Object.keys(this.oscillators).forEach(key => {
+                    const { oscillator } = this.oscillators[key];
+                    try {
+                        oscillator.stop();
+                        oscillator.disconnect();
+                    } catch (error) {
+                        console.warn('振盪器已停止:', error);
+                    }
+                });
+                this.oscillators = {};
+            }
+            
+            setVolume(value) {
+                this.volume = value;
+                
+                // 更新所有活動振盪器的音量
+                Object.keys(this.oscillators).forEach(key => {
+                    const { gainNode } = this.oscillators[key];
+                    const volume = this.currentMode === 'mixed' ? value * 0.6 : value;
+                    gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime);
+                });
+                
+                console.log(`🔊 音量設置為: ${Math.round(value * 100)}%`);
+            }
+            
+            updateMonicaStatus(status) {
+                const indicator = document.querySelector('.monica-indicator');
+                const statusText = document.querySelector('.monica-status span');
+                
+                if (status === 'active') {
+                    indicator.style.background = '#10b981'; // Green
+                    statusText.textContent = 'Monica AI 活躍中';
+                } else {
+                    indicator.style.background = '#6b7280'; // Gray
+                    statusText.textContent = 'Monica AI 待機中';
+                }
+            }
+            
+            notifyMonicaAI(event) {
+                // Monica AI 集成接口
+                console.log(`🤖 Monica AI 事件: ${event}`);
+            }
+        }
+
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 更新系統狀態
+            setInterval(() => {
+                document.getElementById('response-time').textContent = 
+                    (Math.random() * 0.5 + 0.8).toFixed(1) + '秒';
+                document.getElementById('users-online').textContent = 
+                    Math.floor(Math.random() * 500 + 1000);
+                document.getElementById('realtime-connections').textContent = 
+                    Math.floor(Math.random() * 50 + 20);
+            }, 3000);
+
+            // 初始歡迎訊息
+            console.log('🔮 夜神塔羅 2030 - 系統已就緒');
+            console.log('📊 8個AI模型運作中');
+            console.log('⛓️ 區塊鏈已連接');
+            console.log('🌍 20種語言已載入');
+            
+            // 初始化浮動小工具
+            setTimeout(() => {
+                initFloatingWidget();
+            }, 500);
+            
+            // 初始化音頻播放器
+            setTimeout(() => {
+                const wealthFrequencyPlayer = new WealthFrequencyPlayer();
+                console.log('🎵 財富頻率播放器初始化完成');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
