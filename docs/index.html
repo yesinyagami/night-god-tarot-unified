@@ -425,20 +425,7 @@
             .cta-section { padding: 2rem 1rem; }
         }
         
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        /* Removed loading animation to prevent stuck loading screen */
         
         /* Accessibility */
         .lang-btn:focus,
@@ -661,16 +648,7 @@
             cursor: not-allowed;
         }
         
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,0,0,0.3);
-            border-radius: 50%;
-            border-top-color: black;
-            animation: spin 1s ease-in-out infinite;
-            margin-left: 10px;
-        }
+        /* Removed loading spinner to prevent display issues */
         
         .horoscope-result {
             background: rgba(34, 197, 94, 0.1);
@@ -927,29 +905,43 @@
     </div>
 
     <script>
-        // Remove any loading screens and ensure content is visible
-        document.addEventListener('DOMContentLoaded', function() {
-            // Remove any loading elements
-            const loadingElements = document.querySelectorAll('.loading, .loading-spinner, [class*="loading"]');
-            loadingElements.forEach(el => {
-                el.style.display = 'none';
-                el.remove();
+        // Immediately ensure page is visible (no waiting for DOMContentLoaded)
+        document.body.style.visibility = 'visible';
+        document.body.style.opacity = '1';
+        document.body.style.display = 'block';
+        
+        // Also ensure visibility when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                ensurePageVisible();
             });
-            
-            // Ensure body and container are visible
+        } else {
+            ensurePageVisible();
+        }
+        
+        function ensurePageVisible() {
+            // Force visibility on all elements
             document.body.style.visibility = 'visible';
             document.body.style.opacity = '1';
             document.body.style.display = 'block';
             
-            // Make sure container is visible
+            // Ensure container is visible
             const container = document.querySelector('.container');
             if (container) {
                 container.style.visibility = 'visible';
                 container.style.opacity = '1';
+                container.style.display = 'block';
             }
             
-            console.log('Page loaded successfully!');
-        });
+            // Remove any element that might be blocking
+            const blockingElements = document.querySelectorAll('[class*="loading"], [class*="spinner"], .overlay, .loader');
+            blockingElements.forEach(el => {
+                el.style.display = 'none';
+                el.remove();
+            });
+            
+            console.log('✅ Night God Tarot is ready!');
+        }
 
         // Enhanced Language Switching with Analytics
         function switchLanguage(lang) {
@@ -1288,12 +1280,8 @@
             });
         }
         
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeApp);
-        } else {
-            initializeApp();
-        }
+        // Initialize immediately
+        initializeApp();
         
         // Error handling
         window.addEventListener('error', (e) => {
