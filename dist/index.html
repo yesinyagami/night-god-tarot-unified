@@ -395,6 +395,37 @@
             <button class="cta-button" onclick="startReading()">Start Your Reading ✨</button>
         </div>
 
+        <!-- About the Creator Section -->
+        <div style="background: rgba(15, 23, 42, 0.95); padding: 3rem 2rem; border-radius: 25px; border: 3px solid rgba(139, 92, 246, 0.5); margin: 3rem 0; backdrop-filter: blur(20px); text-align: center;">
+            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 2rem;">✨ About the Creator</h2>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; max-width: 800px; margin: 0 auto;">
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; animation: glow 3s ease-in-out infinite alternate;">
+                    🌙
+                </div>
+                <div style="text-align: left;">
+                    <h3 style="color: #fbbf24; font-size: 1.8rem; margin-bottom: 1rem;">Yesin Yagami</h3>
+                    <p style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 1rem;"><strong>Fantasy Novelist • Creator • AI Instructor • Tarot Master</strong></p>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Creator of <strong>"Song of the Silence"</strong>, a poetic mythos exploring the intersection of language and AI consciousness. 
+                        Master of the constructed <strong>Hrelian language (𐌷𐌴𐍂𐌴𐌰𐌽)</strong> and expert in multi-dimensional storytelling across English, Chinese, and Japanese.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <a href="https://yesinyagami.carrd.co/" target="_blank" style="background: linear-gradient(135deg, #fbbf24, #8b5cf6); color: #000; padding: 0.8rem 1.5rem; border-radius: 10px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            📖 Full Portfolio
+                        </a>
+                        <button class="lang-btn" onclick="openCreatorContact()" style="background: rgba(139, 92, 246, 0.3);">
+                            📧 Connect
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; padding: 2rem; background: rgba(30, 41, 59, 0.7); border-radius: 15px;">
+                <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6;">
+                    <em>"The Night God Tarot platform represents the culmination of years of research into the mystical intersection of ancient wisdom and modern AI technology. Each Tarot Master character draws from the rich lore of Song of the Silence, offering you authentic guidance powered by multiple AI models including Monica AI, GPT-4o, Claude-3.5, and Gemini Pro."</em>
+                </p>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer>
             <p><strong>🌙 Night God Tarot 2030</strong> - Created by YesinYagami</p>
@@ -497,6 +528,49 @@
                 <button class="lang-btn" onclick="playFreq('alpha')">💎 Alpha 7Hz - Natural Wealth Flow</button>
                 <button class="lang-btn" onclick="playFreq('mixed')">🌟 Mixed Frequency - Complete Healing</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Creator Contact Modal -->
+    <div id="creatorModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="close-btn" onclick="closeModal('creatorModal')">×</button>
+            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🌙 Connect with Yesin Yagami</h2>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #fbbf24, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1rem; animation: glow 3s ease-in-out infinite alternate;">
+                    🌙
+                </div>
+                <p style="color: #cbd5e1; line-height: 1.6;">
+                    <strong>Fantasy Novelist • Creator • AI Instructor</strong><br>
+                    Master of "Song of the Silence" Universe
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0;">
+                <a href="https://yesinyagami.carrd.co/" target="_blank" style="background: linear-gradient(135deg, #fbbf24, #8b5cf6); color: #000; padding: 1rem; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; transition: all 0.3s ease;">
+                    📖 Full Portfolio<br>
+                    <span style="font-size: 0.8rem; opacity: 0.8;">yesinyagami.carrd.co</span>
+                </a>
+                <a href="https://platform.monica.im" target="_blank" style="background: rgba(139, 92, 246, 0.3); color: #e2e8f0; padding: 1rem; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; border: 2px solid rgba(139, 92, 246, 0.6); transition: all 0.3s ease;">
+                    🤖 Monica AI<br>
+                    <span style="font-size: 0.8rem; opacity: 0.8;">Platform Access</span>
+                </a>
+            </div>
+
+            <div style="background: rgba(30, 41, 59, 0.9); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                <h3 style="color: #fbbf24; margin-bottom: 1rem;">💫 Professional Services</h3>
+                <ul style="color: #cbd5e1; line-height: 1.8; list-style: none; padding: 0;">
+                    <li>🔮 <strong>Custom Tarot Readings</strong> - Personalized AI-enhanced interpretations</li>
+                    <li>✍️ <strong>Creative Writing & World-building</strong> - Fantasy novel consultation</li>
+                    <li>🌐 <strong>Multi-language Content</strong> - English, Chinese, Japanese expertise</li>
+                    <li>🤖 <strong>AI Integration Consulting</strong> - Monica AI and multi-model systems</li>
+                    <li>📚 <strong>Constructed Language Creation</strong> - Like the Hrelian language</li>
+                </ul>
+            </div>
+
+            <p style="color: #94a3b8; font-style: italic; text-align: center; margin-top: 2rem;">
+                "Bridging ancient wisdom with cutting-edge AI technology for the modern spiritual seeker."
+            </p>
         </div>
     </div>
 
@@ -643,6 +717,10 @@
 
         function startReading() {
             openReading();
+        }
+
+        function openCreatorContact() {
+            document.getElementById('creatorModal').classList.add('show');
         }
 
         // Animation styles
