@@ -36,12 +36,16 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 1rem;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .header {
@@ -923,14 +927,28 @@
     </div>
 
     <script>
-        // Remove loading screen immediately
-        window.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.querySelector('.loading');
-            if (loadingScreen) {
-                loadingScreen.style.display = 'none';
-            }
-            // Show the main content
+        // Remove any loading screens and ensure content is visible
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove any loading elements
+            const loadingElements = document.querySelectorAll('.loading, .loading-spinner, [class*="loading"]');
+            loadingElements.forEach(el => {
+                el.style.display = 'none';
+                el.remove();
+            });
+            
+            // Ensure body and container are visible
             document.body.style.visibility = 'visible';
+            document.body.style.opacity = '1';
+            document.body.style.display = 'block';
+            
+            // Make sure container is visible
+            const container = document.querySelector('.container');
+            if (container) {
+                container.style.visibility = 'visible';
+                container.style.opacity = '1';
+            }
+            
+            console.log('Page loaded successfully!');
         });
 
         // Enhanced Language Switching with Analytics
