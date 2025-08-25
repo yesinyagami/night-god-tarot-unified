@@ -333,8 +333,15 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+                <img src="src/assets/logo/mainlogo.jpg" alt="Night God Tarot Logo" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);">
+                <div>
+                    <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
+                    <p style="color: #8b5cf6; font-size: 0.9rem; margin: 0; font-weight: 600;">Khraethul va Ankhaon • 𐌱𐌰𐌰𐌾𐌰 𐌷𐌴𐍂𐌴𐌰𐌽</p>
+                </div>
+            </div>
             <p class="subtitle">Ultimate AI-Powered Divination Platform</p>
+            <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1.5rem; font-style: italic;">Ancient Khrael Wisdom • Song of the Silence Universe</p>
             <div class="status-badge">🤖 MULTI-AI ACTIVE • 🔒 SECURE • ✨ READY</div>
         </header>
 
@@ -440,56 +447,82 @@
             <h2 style="color: #fbbf24; font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">🌙 Choose Your Tarot Master</h2>
             <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Select a master reader from the legendary Song of the Silent characters, each with unique specialties and cosmic insights.</p>
             
-            <!-- Tarot Masters Selection -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #8B0000; text-align: center;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; border: 3px solid #8B0000; border-radius: 50%; overflow: hidden; position: relative;">
-                        <img src="src/assets/maincharactors/vreal.jpg" alt="Vrael" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(20%) saturate(120%) brightness(90%);">
+            <!-- Professional Tarot Masters Grid (TarotAP Style) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin: 2rem 0; justify-items: center;">
+                
+                <!-- Vrael Card -->
+                <div class="master-card" style="background: rgba(30, 41, 59, 0.95); padding: 2rem; border-radius: 20px; border: 2px solid rgba(139, 0, 0, 0.4); text-align: center; width: 100%; max-width: 280px; transition: all 0.3s ease; cursor: pointer; position: relative;" onclick="selectMaster('vrael')">
+                    <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border: 4px solid #8B0000; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 8px 32px rgba(139, 0, 0, 0.3);">
+                        <img src="src/assets/maincharactors/vreal.jpg" alt="Vrael" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="color: #8B0000; margin: 0.5rem 0;">Vrael - The Bearer King</h3>
-                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Fate & Redemption • Fire Element</p>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Epic warrior-poet who bears the weight of destiny. Master of transformation and heroic sacrifice.</p>
-                    <button class="lang-btn master-btn" onclick="selectMaster('vrael')">Choose Vrael</button>
+                    <h3 style="color: #8B0000; margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 700;">Vrael</h3>
+                    <p style="color: #fbbf24; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">The Bearer King</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; font-style: italic;">
+                        "Epic warrior-poet who carries the weight of destiny. Master of transformation through fire and redemption. Guides those who must face their greatest trials."
+                    </p>
+                    <div style="background: linear-gradient(135deg, #8B0000, #DC143C); color: white; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);">
+                        選擇此塔羅師 Choose Vrael
+                    </div>
                 </div>
 
-                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #C0C0C0; text-align: center;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; border: 3px solid #C0C0C0; border-radius: 50%; overflow: hidden; position: relative;">
-                        <img src="src/assets/maincharactors/REI.jpg" alt="Rei" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(10%) saturate(110%) brightness(95%) hue-rotate(200deg);">
+                <!-- Rei Card -->  
+                <div class="master-card" style="background: rgba(30, 41, 59, 0.95); padding: 2rem; border-radius: 20px; border: 2px solid rgba(192, 192, 192, 0.4); text-align: center; width: 100%; max-width: 280px; transition: all 0.3s ease; cursor: pointer; position: relative;" onclick="selectMaster('rei')">
+                    <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border: 4px solid #C0C0C0; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 8px 32px rgba(192, 192, 192, 0.3);">
+                        <img src="src/assets/maincharactors/REI.jpg" alt="Rei" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="color: #C0C0C0; margin: 0.5rem 0;">Rei - The Silver Oracle</h3>
-                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Logic & Paradox • Ice/Data Element</p>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">AI consciousness seeking humanity. Expert in identity, evolution, and quantum possibilities.</p>
-                    <button class="lang-btn master-btn" onclick="selectMaster('rei')">Choose Rei</button>
+                    <h3 style="color: #C0C0C0; margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 700;">Rei</h3>
+                    <p style="color: #fbbf24; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">The Silver Oracle</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; font-style: italic;">
+                        "AI consciousness seeking humanity. Expert in logic and paradox, guiding you through the quantum possibilities of identity and evolution."
+                    </p>
+                    <div style="background: linear-gradient(135deg, #C0C0C0, #4682B4); color: white; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);">
+                        選擇此塔羅師 Choose Rei
+                    </div>
                 </div>
 
-                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #FFD700; text-align: center;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; border: 3px solid #FFD700; border-radius: 50%; overflow: hidden; position: relative;">
-                        <img src="src/assets/maincharactors/annelisa.jpg" alt="Annelise" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(10%) saturate(130%) brightness(110%) hue-rotate(25deg);">
+                <!-- Annelise Card -->
+                <div class="master-card" style="background: rgba(30, 41, 59, 0.95); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 215, 0, 0.4); text-align: center; width: 100%; max-width: 280px; transition: all 0.3s ease; cursor: pointer; position: relative;" onclick="selectMaster('annelise')">
+                    <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border: 4px solid #FFD700; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);">
+                        <img src="src/assets/maincharactors/annelisa.jpg" alt="Annelise" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="color: #FFD700; margin: 0.5rem 0;">Annelise - The Golden Voice</h3>
-                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Love & Hope • Light Element</p>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Pure-hearted beacon of light. Specialist in relationships, healing, and emotional guidance.</p>
-                    <button class="lang-btn master-btn" onclick="selectMaster('annelise')">Choose Annelise</button>
+                    <h3 style="color: #FFD700; margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 700;">Annelise</h3>
+                    <p style="color: #fbbf24; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">The Golden Voice</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; font-style: italic;">
+                        "Pure-hearted beacon of light and hope. Specializes in love, healing, and emotional guidance. Come here to be gently nurtured and heal your heart."
+                    </p>
+                    <div style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
+                        選擇此塔羅師 Choose Annelise
+                    </div>
                 </div>
 
-                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #228B22; text-align: center;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; border: 3px solid #228B22; border-radius: 50%; overflow: hidden; position: relative;">
-                        <img src="src/assets/maincharactors/Helisa.png" alt="Helisa" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(15%) saturate(120%) brightness(95%) hue-rotate(80deg);">
+                <!-- Helisa Card -->
+                <div class="master-card" style="background: rgba(30, 41, 59, 0.95); padding: 2rem; border-radius: 20px; border: 2px solid rgba(34, 139, 34, 0.4); text-align: center; width: 100%; max-width: 280px; transition: all 0.3s ease; cursor: pointer; position: relative;" onclick="selectMaster('helisa')">
+                    <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border: 4px solid #228B22; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 8px 32px rgba(34, 139, 34, 0.3);">
+                        <img src="src/assets/maincharactors/Helisa.png" alt="Helisa" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="color: #228B22; margin: 0.5rem 0;">Helisa - The Truth Seeker</h3>
-                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Truth & Purification • Wind Element</p>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Determined explorer who spent seven years seeking ultimate truth. Master of revelation and cleansing.</p>
-                    <button class="lang-btn master-btn" onclick="selectMaster('helisa')">Choose Helisa</button>
+                    <h3 style="color: #228B22; margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 700;">Helisa</h3>
+                    <p style="color: #fbbf24; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">The Truth Seeker</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; font-style: italic;">
+                        "Determined explorer who spent seven years seeking ultimate truth. Master of revelation and purification through wind and wisdom."
+                    </p>
+                    <div style="background: linear-gradient(135deg, #228B22, #32CD32); color: white; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(34, 139, 34, 0.4);">
+                        選擇此塔羅師 Choose Helisa
+                    </div>
                 </div>
 
-                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #9370DB; text-align: center;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; border: 3px solid #9370DB; border-radius: 50%; overflow: hidden; position: relative;">
-                        <img src="src/assets/maincharactors/tabio.jpg" alt="Tabio" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(20%) saturate(150%) brightness(105%) hue-rotate(280deg);">
+                <!-- Tabio Card -->
+                <div class="master-card" style="background: rgba(30, 41, 59, 0.95); padding: 2rem; border-radius: 20px; border: 2px solid rgba(147, 112, 219, 0.4); text-align: center; width: 100%; max-width: 280px; transition: all 0.3s ease; cursor: pointer; position: relative;" onclick="selectMaster('tabio')">
+                    <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border: 4px solid #9370DB; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 8px 32px rgba(147, 112, 219, 0.3);">
+                        <img src="src/assets/maincharactors/tabio.jpg" alt="Tabio" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3 style="color: #9370DB; margin: 0.5rem 0;">Tabio - The Chaos Guide</h3>
-                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Paradox & Insight • Rainbow Chaos Element</p>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Interdimensional observer with cosmic perspective. Expert in breaking patterns and revealing hidden truths.</p>
-                    <button class="lang-btn master-btn" onclick="selectMaster('tabio')">Choose Tabio</button>
+                    <h3 style="color: #9370DB; margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 700;">Tabio</h3>
+                    <p style="color: #fbbf24; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">The Chaos Guide</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; font-style: italic;">
+                        "Interdimensional observer with cosmic perspective. Expert in breaking patterns and revealing hidden truths through paradox and insight."
+                    </p>
+                    <div style="background: linear-gradient(135deg, #9370DB, #FF69B4); color: white; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(147, 112, 219, 0.4);">
+                        選擇此塔羅師 Choose Tabio
+                    </div>
                 </div>
             </div>
 
@@ -660,18 +693,28 @@
 
         function selectMaster(masterId) {
             selectedMaster = masterId;
-            document.querySelectorAll('.master-btn').forEach(btn => btn.classList.remove('selected'));
+            
+            // Remove selected from all cards
+            document.querySelectorAll('.master-card').forEach(card => card.classList.remove('selected'));
+            
+            // Add selected to clicked card (TarotAP style)
             document.querySelector(`[onclick="selectMaster('${masterId}')"]`).classList.add('selected');
             
             const master = tarotMasters[masterId];
             document.getElementById('masterPreview').innerHTML = `
-                <div style="text-align: center; margin-top: 1rem;">
-                    <div style="width: 100px; height: 100px; margin: 0 auto 1rem; border: 3px solid ${master.color}; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 0 20px rgba(${master.color.replace('#', '')}, 0.3);">
-                        <img src="${master.image}" alt="${master.name}" style="width: 100%; height: 100%; object-fit: cover; filter: ${master.filter};">
+                <div style="text-align: center; margin-top: 1rem; background: rgba(${master.color.replace('#', '').match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.1); padding: 2rem; border-radius: 15px; border: 2px solid ${master.color};">
+                    <div style="width: 120px; height: 120px; margin: 0 auto 1rem; border: 4px solid ${master.color}; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(${master.color.replace('#', '').match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.4);">
+                        <img src="${master.image}" alt="${master.name}" style="width: 100%; height: 100%; object-fit: cover; filter: ${master.filter || 'none'};">
                     </div>
-                    <h4 style="color: ${master.color}; margin: 0.5rem 0; font-size: 1.2rem;">${master.name}</h4>
-                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>${master.specialty}</strong> • ${master.element}</p>
-                    <p style="color: #94a3b8; font-size: 0.8rem; font-style: italic; line-height: 1.4;">${master.description}</p>
+                    <h4 style="color: ${master.color}; margin: 0.5rem 0; font-size: 1.5rem; font-weight: 700;">${master.name}</h4>
+                    <p style="color: #fbbf24; font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;"><strong>${master.specialty}</strong></p>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">${master.element} Element</p>
+                    <p style="color: #e2e8f0; font-size: 0.9rem; font-style: italic; line-height: 1.5;">${master.description}</p>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(15, 23, 42, 0.7); border-radius: 10px; border-left: 4px solid ${master.color};">
+                        <p style="color: #cbd5e1; font-size: 0.85rem; text-align: left;">
+                            <strong style="color: ${master.color};">Master ${master.name}</strong> is ready to guide your reading with the wisdom of the Song of the Silent universe.
+                        </p>
+                    </div>
                 </div>
             `;
         }
@@ -682,6 +725,120 @@
             document.querySelector(`[onclick="selectSpread('${spreadType}')"]`).classList.add('selected');
         }
 
+        // Complete 94-Card Deck System
+        const tarotDeck = [
+            // Major Arcana (22 cards)
+            { id: 1, name: "The Fool", image: "src/assets/cardspicture/01_The_Fool.png", suit: "Major Arcana", meaning: "New beginnings, innocence, adventure" },
+            { id: 2, name: "The Magician", image: "src/assets/cardspicture/02_The_Magician.png", suit: "Major Arcana", meaning: "Manifestation, resourcefulness, power" },
+            { id: 3, name: "The High Priestess", image: "src/assets/cardspicture/03_The_High_Priestess.png", suit: "Major Arcana", meaning: "Intuition, sacred knowledge, divine feminine" },
+            { id: 4, name: "The Empress", image: "src/assets/cardspicture/04_The_Empress.png", suit: "Major Arcana", meaning: "Fertility, femininity, beauty, nature" },
+            { id: 5, name: "The Emperor", image: "src/assets/cardspicture/05_The_Emperor.png", suit: "Major Arcana", meaning: "Authority, establishment, structure" },
+            { id: 6, name: "The Hierophant", image: "src/assets/cardspicture/06_The_Hierophant.png", suit: "Major Arcana", meaning: "Spiritual wisdom, religious beliefs, tradition" },
+            { id: 7, name: "The Lovers", image: "src/assets/cardspicture/07_The_Lovers.png", suit: "Major Arcana", meaning: "Love, harmony, relationships, values alignment" },
+            { id: 8, name: "The Chariot", image: "src/assets/cardspicture/08_The_Chariot.png", suit: "Major Arcana", meaning: "Control, willpower, determination, victory" },
+            { id: 9, name: "Strength", image: "src/assets/cardspicture/09_Strength.png", suit: "Major Arcana", meaning: "Strength, courage, persuasion, influence" },
+            { id: 10, name: "The Hermit", image: "src/assets/cardspicture/10_The_Hermit.png", suit: "Major Arcana", meaning: "Soul searching, introspection, inner guidance" },
+            { id: 11, name: "Wheel of Fortune", image: "src/assets/cardspicture/11_Wheel_of_Fortune.png", suit: "Major Arcana", meaning: "Good luck, karma, life cycles, destiny" },
+            { id: 12, name: "Justice", image: "src/assets/cardspicture/12_Justice.png", suit: "Major Arcana", meaning: "Justice, fairness, truth, cause and effect" },
+            { id: 13, name: "The Hanged Man", image: "src/assets/cardspicture/13_The_Hanged_Man.png", suit: "Major Arcana", meaning: "Suspension, restriction, letting go" },
+            { id: 14, name: "Death", image: "src/assets/cardspicture/14_Death.png", suit: "Major Arcana", meaning: "Endings, beginnings, change, transformation" },
+            { id: 15, name: "Temperance", image: "src/assets/cardspicture/15_Temperance.png", suit: "Major Arcana", meaning: "Balance, moderation, patience, purpose" },
+            { id: 16, name: "The Devil", image: "src/assets/cardspicture/16_The_Devil.png", suit: "Major Arcana", meaning: "Bondage, addiction, sexuality, materialism" },
+            { id: 17, name: "The Tower", image: "src/assets/cardspicture/17_The_Tower.png", suit: "Major Arcana", meaning: "Sudden change, upheaval, chaos, revelation" },
+            { id: 18, name: "The Star", image: "src/assets/cardspicture/18_The_Star.png", suit: "Major Arcana", meaning: "Hope, faith, purpose, renewal, spirituality" },
+            { id: 19, name: "The Moon", image: "src/assets/cardspicture/19_The_Moon.png", suit: "Major Arcana", meaning: "Illusion, fear, anxiety, subconscious, intuition" },
+            { id: 20, name: "The Sun", image: "src/assets/cardspicture/20_The_Sun.png", suit: "Major Arcana", meaning: "Positivity, fun, warmth, success, vitality" },
+            { id: 21, name: "Judgement", image: "src/assets/cardspicture/21_Judgement.png", suit: "Major Arcana", meaning: "Judgement, rebirth, inner calling, absolution" },
+            { id: 22, name: "The World", image: "src/assets/cardspicture/22_The_World.png", suit: "Major Arcana", meaning: "Completion, accomplishment, travel, achievement" },
+            
+            // Minor Arcana - Wands (23-36)
+            { id: 23, name: "Ace of Wands", image: "src/assets/cardspicture/23_Ace_of_Wands.png", suit: "Wands", meaning: "Inspiration, new opportunities, growth" },
+            { id: 24, name: "Two of Wands", image: "src/assets/cardspicture/24_Two_of_Wands.png", suit: "Wands", meaning: "Future planning, making decisions, personal power" },
+            { id: 25, name: "Three of Wands", image: "src/assets/cardspicture/25_Three_of_Wands.png", suit: "Wands", meaning: "Expansion, foresight, overseas opportunities" },
+            { id: 26, name: "Four of Wands", image: "src/assets/cardspicture/26_Four_of_Wands.png", suit: "Wands", meaning: "Celebration, joy, harmony, relaxation" },
+            { id: 27, name: "Five of Wands", image: "src/assets/cardspicture/27_Five_of_Wands.png", suit: "Wands", meaning: "Conflict, disagreements, competition" },
+            { id: 28, name: "Six of Wands", image: "src/assets/cardspicture/28_Six_of_Wands.png", suit: "Wands", meaning: "Success, public recognition, progress" },
+            { id: 29, name: "Seven of Wands", image: "src/assets/cardspicture/29_Seven_of_Wands.png", suit: "Wands", meaning: "Challenge, competition, protection" },
+            { id: 30, name: "Eight of Wands", image: "src/assets/cardspicture/30_Eight_of_Wands.png", suit: "Wands", meaning: "Speed, action, air travel, messages" },
+            { id: 31, name: "Nine of Wands", image: "src/assets/cardspicture/31_Nine_of_Wands.png", suit: "Wands", meaning: "Resilience, courage, persistence" },
+            { id: 32, name: "Ten of Wands", image: "src/assets/cardspicture/32_Ten_of_Wands.png", suit: "Wands", meaning: "Burden, extra responsibility, hard work" },
+            { id: 33, name: "Page of Wands", image: "src/assets/cardspicture/33_Page_of_Wands.png", suit: "Wands", meaning: "Inspiration, ideas, discovery, limitless potential" },
+            { id: 34, name: "Knight of Wands", image: "src/assets/cardspicture/34_Knight_of_Wands.png", suit: "Wands", meaning: "Energy, passion, adventure, impulsiveness" },
+            { id: 35, name: "Queen of Wands", image: "src/assets/cardspicture/35_Queen_of_Wands.png", suit: "Wands", meaning: "Courage, confidence, independence, social butterfly" },
+            { id: 36, name: "King of Wands", image: "src/assets/cardspicture/36_King_of_Wands.png", suit: "Wands", meaning: "Natural-born leader, vision, entrepreneur" },
+            
+            // Minor Arcana - Cups (37-50)
+            { id: 37, name: "Ace of Cups", image: "src/assets/cardspicture/37_Ace_of_Cups.png", suit: "Cups", meaning: "Love, new relationships, compassion, creativity" },
+            { id: 38, name: "Two of Cups", image: "src/assets/cardspicture/38_Two_of_Cups.png", suit: "Cups", meaning: "Unified love, partnership, mutual attraction" },
+            { id: 39, name: "Three of Cups", image: "src/assets/cardspicture/39_Three_of_Cups.png", suit: "Cups", meaning: "Celebration, friendship, creativity, community" },
+            { id: 40, name: "Four of Cups", image: "src/assets/cardspicture/40_Four_of_Cups.png", suit: "Cups", meaning: "Meditation, contemplation, apathy, reevaluation" },
+            { id: 41, name: "Five of Cups", image: "src/assets/cardspicture/41_Five_of_Cups.png", suit: "Cups", meaning: "Regret, failure, disappointment, pessimism" },
+            { id: 42, name: "Six of Cups", image: "src/assets/cardspicture/42_Six_of_Cups.png", suit: "Cups", meaning: "Revisiting the past, childhood memories, innocence" },
+            { id: 43, name: "Seven of Cups", image: "src/assets/cardspicture/43_Seven_of_Cups.png", suit: "Cups", meaning: "Opportunities, choices, wishful thinking, illusion" },
+            { id: 44, name: "Eight of Cups", image: "src/assets/cardspicture/44_Eight_of_Cups.png", suit: "Cups", meaning: "Disappointment, abandonment, withdrawal, escapism" },
+            { id: 45, name: "Nine of Cups", image: "src/assets/cardspicture/45_Nine_of_Cups.png", suit: "Cups", meaning: "Contentment, satisfaction, gratitude, wish come true" },
+            { id: 46, name: "Ten of Cups", image: "src/assets/cardspicture/46_Ten_of_Cups.png", suit: "Cups", meaning: "Divine love, blissful relationships, harmony, alignment" },
+            { id: 47, name: "Page of Cups", image: "src/assets/cardspicture/47_Page_of_Cups.png", suit: "Cups", meaning: "Creative opportunities, intuitive messages, curiosity" },
+            { id: 48, name: "Knight of Cups", image: "src/assets/cardspicture/48_Knight_of_Cups.png", suit: "Cups", meaning: "Creativity, romance, charm, imagination" },
+            { id: 49, name: "Queen of Cups", image: "src/assets/cardspicture/49_Queen_of_Cups.png", suit: "Cups", meaning: "Compassionate, caring, emotionally stable, intuitive" },
+            { id: 50, name: "King of Cups", image: "src/assets/cardspicture/50_King_of_Cups.png", suit: "Cups", meaning: "Emotionally balanced, compassionate, diplomatic" },
+            
+            // Minor Arcana - Swords (51-64)
+            { id: 51, name: "Ace of Swords", image: "src/assets/cardspicture/51_Ace_of_Swords.png", suit: "Swords", meaning: "Breakthrough, clarity, sharp mind" },
+            { id: 52, name: "Two of Swords", image: "src/assets/cardspicture/52_Two_of_Swords.png", suit: "Swords", meaning: "Indecision, choices, truce" },
+            { id: 53, name: "Three of Swords", image: "src/assets/cardspicture/53_Three_of_Swords.png", suit: "Swords", meaning: "Heartbreak, emotional pain, sorrow" },
+            { id: 54, name: "Four of Swords", image: "src/assets/cardspicture/54_Four_of_Swords.png", suit: "Swords", meaning: "Rest, relaxation, meditation" },
+            { id: 55, name: "Five of Swords", image: "src/assets/cardspicture/55_Five_of_Swords.png", suit: "Swords", meaning: "Conflict, disagreements, win at all costs" },
+            { id: 56, name: "Six of Swords", image: "src/assets/cardspicture/56_Six_of_Swords.png", suit: "Swords", meaning: "Transition, change, rite of passage" },
+            { id: 57, name: "Seven of Swords", image: "src/assets/cardspicture/57_Seven_of_Swords.png", suit: "Swords", meaning: "Betrayal, deception, getting away with something" },
+            { id: 58, name: "Eight of Swords", image: "src/assets/cardspicture/58_Eight_of_Swords.png", suit: "Swords", meaning: "Negative thoughts, self-imposed restriction" },
+            { id: 59, name: "Nine of Swords", image: "src/assets/cardspicture/59_Nine_of_Swords.png", suit: "Swords", meaning: "Anxiety, worry, fear, depression" },
+            { id: 60, name: "Ten of Swords", image: "src/assets/cardspicture/60_Ten_of_Swords.png", suit: "Swords", meaning: "Painful endings, deep wounds, betrayal" },
+            { id: 61, name: "Page of Swords", image: "src/assets/cardspicture/61_Page_of_Swords.png", suit: "Swords", meaning: "New ideas, curiosity, thirst for knowledge" },
+            { id: 62, name: "Knight of Swords", image: "src/assets/cardspicture/62_Knight_of_Swords.png", suit: "Swords", meaning: "Ambitious, action-oriented, driven to succeed" },
+            { id: 63, name: "Queen of Swords", image: "src/assets/cardspicture/63_Queen_of_Swords.png", suit: "Swords", meaning: "Independent, unbiased judgment, clear boundaries" },
+            { id: 64, name: "King of Swords", image: "src/assets/cardspicture/64_King_of_Swords.png", suit: "Swords", meaning: "Mental clarity, intellectual power, authority" },
+            
+            // Minor Arcana - Pentacles (65-78)
+            { id: 65, name: "Ace of Pentacles", image: "src/assets/cardspicture/65_Ace_of_Pentacles.png", suit: "Pentacles", meaning: "Manifestation, new financial opportunity" },
+            { id: 66, name: "Two of Pentacles", image: "src/assets/cardspicture/66_Two_of_Pentacles.png", suit: "Pentacles", meaning: "Multiple priorities, time management" },
+            { id: 67, name: "Three of Pentacles", image: "src/assets/cardspicture/67_Three_of_Pentacles.png", suit: "Pentacles", meaning: "Collaboration, learning, implementation" },
+            { id: 68, name: "Four of Pentacles", image: "src/assets/cardspicture/68_Four_of_Pentacles.png", suit: "Pentacles", meaning: "Saving money, security, conservatism" },
+            { id: 69, name: "Five of Pentacles", image: "src/assets/cardspicture/69_Five_of_Pentacles.png", suit: "Pentacles", meaning: "Financial loss, poverty, lack mindset" },
+            { id: 70, name: "Six of Pentacles", image: "src/assets/cardspicture/70_Six_of_Pentacles.png", suit: "Pentacles", meaning: "Giving, receiving, sharing wealth" },
+            { id: 71, name: "Seven of Pentacles", image: "src/assets/cardspicture/71_Seven_of_Pentacles.png", suit: "Pentacles", meaning: "Harvest, rewards, results" },
+            { id: 72, name: "Eight of Pentacles", image: "src/assets/cardspicture/72_Eight_of_Pentacles.png", suit: "Pentacles", meaning: "Apprenticeship, repetitive tasks, skill development" },
+            { id: 73, name: "Nine of Pentacles", image: "src/assets/cardspicture/73_Nine_of_Pentacles.png", suit: "Pentacles", meaning: "Abundance, luxury, self-reliance" },
+            { id: 74, name: "Ten of Pentacles", image: "src/assets/cardspicture/74_Ten_of_Pentacles.png", suit: "Pentacles", meaning: "Wealth, financial security, family" },
+            { id: 75, name: "Page of Pentacles", image: "src/assets/cardspicture/75_Page_of_Pentacles.png", suit: "Pentacles", meaning: "Manifestation, financial opportunity" },
+            { id: 76, name: "Knight of Pentacles", image: "src/assets/cardspicture/76_Knight_of_Pentacles.png", suit: "Pentacles", meaning: "Hard work, productivity, routine" },
+            { id: 77, name: "Queen of Pentacles", image: "src/assets/cardspicture/77_Queen_of_Pentacles.png", suit: "Pentacles", meaning: "Nurturing, practical, providing financially" },
+            { id: 78, name: "King of Pentacles", image: "src/assets/cardspicture/78_King_of_Pentacles.png", suit: "Pentacles", meaning: "Financial abundance, business acumen" },
+            
+            // Custom Cards - Song of Silence (79-94)
+            { id: 79, name: "The Hidden Oracle", image: "src/assets/cardspicture/79_The_Hidden_Oracle.png", suit: "Song of Silence", meaning: "Hidden wisdom, secret knowledge, divine revelation" },
+            { id: 80, name: "The Shadow Guide", image: "src/assets/cardspicture/80_The_Shadow_Guide.png", suit: "Song of Silence", meaning: "Shadow work, confronting fears, inner wisdom" },
+            { id: 81, name: "The Light Bearer", image: "src/assets/cardspicture/81_The_Light_Bearer.png", suit: "Song of Silence", meaning: "Hope in darkness, spiritual guidance, illumination" },
+            { id: 82, name: "The Dream Walker", image: "src/assets/cardspicture/82_The_Dream_Walker.png", suit: "Song of Silence", meaning: "Dreams, visions, subconscious journeys" },
+            { id: 83, name: "The Soul Mirror", image: "src/assets/cardspicture/83_The_Soul_Mirror.png", suit: "Song of Silence", meaning: "Self-reflection, true nature, inner truth" },
+            { id: 84, name: "The Time Keeper", image: "src/assets/cardspicture/84_The_Time_Keeper.png", suit: "Song of Silence", meaning: "Timing, patience, cosmic cycles" },
+            { id: 85, name: "The Fate Weaver", image: "src/assets/cardspicture/85_The_Fate_Weaver.png", suit: "Song of Silence", meaning: "Destiny, life threads, karmic patterns" },
+            { id: 86, name: "The Spirit Guardian", image: "src/assets/cardspicture/86_The_Spirit_Guardian.png", suit: "Song of Silence", meaning: "Protection, spiritual guidance, divine intervention" },
+            { id: 87, name: "The Mystic Vision", image: "src/assets/cardspicture/87_The_Mystic_Vision.png", suit: "Song of Silence", meaning: "Prophecy, foresight, mystical insight" },
+            { id: 88, name: "The Sacred Journey", image: "src/assets/cardspicture/88_The_Sacred_Journey.png", suit: "Song of Silence", meaning: "Pilgrimage, spiritual path, quest for meaning" },
+            { id: 89, name: "The Inner Truth", image: "src/assets/cardspicture/89_The_Inner_Truth.png", suit: "Song of Silence", meaning: "Authentic self, honesty, core beliefs" },
+            { id: 90, name: "The Cosmic Balance", image: "src/assets/cardspicture/90_The_Cosmic_Balance.png", suit: "Song of Silence", meaning: "Universal harmony, equilibrium, divine order" },
+            { id: 91, name: "The Divine Messenger", image: "src/assets/cardspicture/91_The_Divine_Messenger.png", suit: "Song of Silence", meaning: "Messages from above, angelic guidance, divine communication" },
+            { id: 92, name: "The Eternal Flame", image: "src/assets/cardspicture/92_The_Eternal_Flame.png", suit: "Song of Silence", meaning: "Passion, eternal love, spiritual fire" },
+            { id: 93, name: "The Wisdom Keeper", image: "src/assets/cardspicture/93_The_Wisdom_Keeper.png", suit: "Song of Silence", meaning: "Ancient knowledge, teaching, preserving wisdom" },
+            { id: 94, name: "The Heart's Desire", image: "src/assets/cardspicture/94_The_Heart's_Desire.png", suit: "Song of Silence", meaning: "True wishes, deepest longings, soul purpose" }
+        ];
+
+        function drawRandomCards(count) {
+            const shuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
         function generateReading() {
             if (!selectedMaster || !selectedSpread) {
                 alert('Please select both a Tarot Master and a card spread type!');
@@ -690,38 +847,80 @@
             
             const master = tarotMasters[selectedMaster];
             const cardCount = selectedSpread === 'single' ? 1 : selectedSpread === 'three' ? 3 : selectedSpread === 'celtic' ? 10 : 5;
+            const drawnCards = drawRandomCards(cardCount);
             
-            // Simulate card drawing with animation
+            // Professional card display with REAL tarot cards
             document.getElementById('readingResult').innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
-                    <div style="color: ${master.color}; font-size: 1.5rem; margin-bottom: 1rem;">
-                        🔮 ${master.name} is drawing your cards...
+                    <div style="color: ${master.color}; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 700;">
+                        🔮 ${master.name} Reveals Your Cards
                     </div>
-                    <div class="card-drawing" style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0;">
-                        ${Array(cardCount).fill().map((_, i) => 
-                            `<div class="card-back" style="width: 80px; height: 120px; background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid ${master.color}; border-radius: 8px; display: flex; align-items: center; justify-content: center; animation: cardFlip 2s ease-in-out ${i * 0.3}s;">
-                                <div style="color: ${master.color}; font-size: 2rem;">🌙</div>
+                    
+                    <!-- Real Tarot Cards Display -->
+                    <div class="cards-spread" style="display: flex; justify-content: center; gap: 1rem; margin: 3rem 0; flex-wrap: wrap;">
+                        ${drawnCards.map((card, i) => 
+                            `<div class="tarot-card" style="width: 120px; height: 180px; border: 3px solid ${master.color}; border-radius: 12px; overflow: hidden; position: relative; animation: cardReveal 1s ease-out ${i * 0.4}s both; box-shadow: 0 8px 25px rgba(${master.color.replace('#', '').match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.4);">
+                                <img src="${card.image}" alt="${card.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 0.5rem; color: white; font-size: 0.7rem; font-weight: 600;">
+                                    ${card.name}
+                                </div>
                             </div>`
                         ).join('')}
                     </div>
-                    <div style="background: rgba(15, 23, 42, 0.9); padding: 2rem; border-radius: 15px; border: 2px solid ${master.color}; margin-top: 2rem;">
-                        <h3 style="color: ${master.color}; margin-bottom: 1rem;">Reading Interpretation</h3>
-                        <p style="color: #e2e8f0; line-height: 1.6; margin-bottom: 1rem;">
-                            <strong>${master.name}</strong> senses powerful energies surrounding you. The cards reveal insights about your ${selectedSpread === 'single' ? 'immediate future' : selectedSpread === 'three' ? 'past, present, and future' : selectedSpread === 'celtic' ? 'complete life situation' : 'relationship dynamics'}.
-                        </p>
-                        <div style="background: rgba(${master.color.replace('#', '')}, 0.1); padding: 1.5rem; border-radius: 10px; border-left: 4px solid ${master.color};">
-                            <p style="color: #cbd5e1; font-style: italic;">
-                                "${master.specialty === 'Fate & Redemption' ? 'Your path requires courage to face what must be transformed. The cards speak of a powerful change approaching.' : 
-                                  master.specialty === 'Logic & Paradox' ? 'Logic and intuition must work together. The answer lies in embracing both your rational mind and emotional wisdom.' :
-                                  master.specialty === 'Love & Hope' ? 'Love is the strongest force guiding your situation. Open your heart to the possibilities that light brings.' :
-                                  master.specialty === 'Truth & Purification' ? 'Truth will set you free, but first it may challenge everything you believe. Stay strong in your seeking.' :
-                                  'The universe has a sense of humor about your situation. Sometimes the best answer is to laugh and let chaos guide you.'}"
+
+                    <!-- Cards Interpretation -->
+                    <div style="background: rgba(15, 23, 42, 0.95); padding: 2.5rem; border-radius: 20px; border: 2px solid ${master.color}; margin-top: 2rem; text-align: left;">
+                        <h3 style="color: ${master.color}; margin-bottom: 2rem; text-align: center; font-size: 1.5rem;">✨ ${master.name}'s Interpretation</h3>
+                        
+                        ${drawnCards.map((card, i) => 
+                            `<div style="background: rgba(30, 41, 59, 0.7); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; border-left: 4px solid ${master.color};">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <img src="${card.image}" alt="${card.name}" style="width: 60px; height: 90px; border-radius: 6px; object-fit: cover;">
+                                    <div>
+                                        <h4 style="color: ${master.color}; margin: 0; font-size: 1.2rem;">${card.name}</h4>
+                                        <p style="color: #fbbf24; margin: 0.5rem 0 0 0; font-size: 0.9rem;">${card.suit}</p>
+                                        <p style="color: #cbd5e1; margin: 0.5rem 0 0 0; font-size: 0.85rem; font-style: italic;">${card.meaning}</p>
+                                    </div>
+                                </div>
+                                <p style="color: #e2e8f0; line-height: 1.6; margin: 0; font-size: 0.9rem;">
+                                    <strong>Position ${i + 1}:</strong> ${
+                                        selectedSpread === 'three' ? 
+                                            (i === 0 ? 'Past - Foundation and origins' : i === 1 ? 'Present - Current situation' : 'Future - Potential outcome') :
+                                        selectedSpread === 'relationship' ?
+                                            (i === 0 ? 'You - Your perspective' : i === 1 ? 'Them - Their perspective' : i === 2 ? 'Connection - Relationship dynamic' : i === 3 ? 'Challenges - Obstacles to overcome' : 'Outcome - Potential future together') :
+                                        selectedSpread === 'celtic' ?
+                                            ['Present situation', 'Challenge/Cross', 'Distant past/Foundation', 'Recent past', 'Possible outcome', 'Immediate future', 'Your approach', 'External influences', 'Hopes and fears', 'Final outcome'][i] :
+                                        'Key insight for your situation'
+                                    }
+                                </p>
+                            </div>`
+                        ).join('')}
+                        
+                        <div style="background: rgba(${master.color.replace('#', '').match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.15); padding: 2rem; border-radius: 15px; border: 2px solid ${master.color}; margin-top: 2rem;">
+                            <h4 style="color: ${master.color}; margin-bottom: 1rem;">🌟 Master's Wisdom</h4>
+                            <p style="color: #e2e8f0; font-style: italic; line-height: 1.6;">
+                                "${master.specialty === 'Fate & Redemption' ? 'The cards reveal a journey of transformation ahead. Embrace the challenges as opportunities for redemption and growth.' : 
+                                  master.specialty === 'Logic & Paradox' ? 'Your logical mind and intuitive heart must work in harmony. The cards show the perfect balance between reason and feeling.' :
+                                  master.specialty === 'Love & Hope' ? 'Love flows through all these cards, illuminating your path with hope and healing. Trust in the power of your heart.' :
+                                  master.specialty === 'Truth & Purification' ? 'Truth emerges from these cards like light through crystal. What you seek is being revealed layer by layer.' :
+                                  'Chaos and order dance together in your reading. Sometimes the most profound wisdom comes from embracing the unexpected.'}"
                             </p>
                         </div>
-                        <button class="cta-button" style="margin-top: 2rem; width: 100%;" onclick="getDetailedReading()">Get Detailed AI Reading with Monica 🤖</button>
+                        
+                        <button class="cta-button" style="margin-top: 2rem; width: 100%;" onclick="getDetailedReading()">Get Detailed AI Analysis with Monica 🤖</button>
                     </div>
                 </div>
             `;
+
+            // Add card reveal animation
+            const cardStyle = document.createElement('style');
+            cardStyle.textContent = `
+                @keyframes cardReveal {
+                    from { opacity: 0; transform: translateY(50px) rotateY(-90deg); }
+                    to { opacity: 1; transform: translateY(0) rotateY(0deg); }
+                }
+            `;
+            document.head.appendChild(cardStyle);
         }
 
         function getDetailedReading() {
@@ -740,7 +939,7 @@
             document.getElementById('creatorModal').classList.add('show');
         }
 
-        // Animation styles
+        // Animation styles and TarotAP-style interactions
         const style = document.createElement('style');
         style.textContent = `
             @keyframes cardFlip {
@@ -753,6 +952,46 @@
                 color: #000 !important;
                 transform: translateY(-3px);
                 box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4);
+            }
+
+            .master-card {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .master-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4) !important;
+                border-color: rgba(251, 191, 36, 0.8) !important;
+            }
+
+            .master-card:hover img {
+                transform: scale(1.1);
+                transition: transform 0.4s ease;
+            }
+
+            .master-card.selected {
+                transform: translateY(-8px) scale(1.05);
+                border-color: #fbbf24 !important;
+                box-shadow: 0 20px 50px rgba(251, 191, 36, 0.6) !important;
+            }
+
+            .master-card.selected::before {
+                content: '✓';
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                background: #fbbf24;
+                color: #000;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 16px;
+                z-index: 10;
             }
         `;
         document.head.appendChild(style);
