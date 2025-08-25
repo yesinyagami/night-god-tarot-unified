@@ -923,6 +923,16 @@
     </div>
 
     <script>
+        // Remove loading screen immediately
+        window.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.querySelector('.loading');
+            if (loadingScreen) {
+                loadingScreen.style.display = 'none';
+            }
+            // Show the main content
+            document.body.style.visibility = 'visible';
+        });
+
         // Enhanced Language Switching with Analytics
         function switchLanguage(lang) {
             // Hide all content with fade effect
