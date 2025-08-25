@@ -402,27 +402,87 @@
         </footer>
     </div>
 
-    <!-- Tarot Modal -->
+    <!-- Advanced Tarot Master Selection Modal -->
     <div id="tarotModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
             <button class="close-btn" onclick="closeModal('tarotModal')">×</button>
-            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🔮 AI Tarot Reading</h2>
-            <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Select your zodiac sign to begin your personalized AI-powered reading:</p>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0;">
-                <button class="lang-btn" onclick="selectSign('aries')">♈ Aries</button>
-                <button class="lang-btn" onclick="selectSign('taurus')">♉ Taurus</button>
-                <button class="lang-btn" onclick="selectSign('gemini')">♊ Gemini</button>
-                <button class="lang-btn" onclick="selectSign('cancer')">♋ Cancer</button>
-                <button class="lang-btn" onclick="selectSign('leo')">♌ Leo</button>
-                <button class="lang-btn" onclick="selectSign('virgo')">♍ Virgo</button>
-                <button class="lang-btn" onclick="selectSign('libra')">♎ Libra</button>
-                <button class="lang-btn" onclick="selectSign('scorpio')">♏ Scorpio</button>
-                <button class="lang-btn" onclick="selectSign('sagittarius')">♐ Sagittarius</button>
-                <button class="lang-btn" onclick="selectSign('capricorn')">♑ Capricorn</button>
-                <button class="lang-btn" onclick="selectSign('aquarius')">♒ Aquarius</button>
-                <button class="lang-btn" onclick="selectSign('pisces')">♓ Pisces</button>
+            <h2 style="color: #fbbf24; font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">🌙 Choose Your Tarot Master</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Select a master reader from the legendary Song of the Silent characters, each with unique specialties and cosmic insights.</p>
+            
+            <!-- Tarot Masters Selection -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #8B0000; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #8B0000, #FF4500); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👑</div>
+                    <h3 style="color: #8B0000; margin: 0.5rem 0;">Vrael - The Bearer King</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Fate & Redemption • Fire Element</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Epic warrior-poet who bears the weight of destiny. Master of transformation and heroic sacrifice.</p>
+                    <button class="lang-btn master-btn" onclick="selectMaster('vrael')">Choose Vrael</button>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #C0C0C0; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #C0C0C0, #4682B4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🤖</div>
+                    <h3 style="color: #C0C0C0; margin: 0.5rem 0;">Rei - The Silver Oracle</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Logic & Paradox • Ice/Data Element</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">AI consciousness seeking humanity. Expert in identity, evolution, and quantum possibilities.</p>
+                    <button class="lang-btn master-btn" onclick="selectMaster('rei')">Choose Rei</button>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #FFD700; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #FFD700, #FFA500); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎵</div>
+                    <h3 style="color: #FFD700; margin: 0.5rem 0;">Annelise - The Golden Voice</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Love & Hope • Light Element</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Pure-hearted beacon of light. Specialist in relationships, healing, and emotional guidance.</p>
+                    <button class="lang-btn master-btn" onclick="selectMaster('annelise')">Choose Annelise</button>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #228B22; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #228B22, #32CD32); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🌪️</div>
+                    <h3 style="color: #228B22; margin: 0.5rem 0;">Helisa - The Truth Seeker</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Truth & Purification • Wind Element</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Determined explorer who spent seven years seeking ultimate truth. Master of revelation and cleansing.</p>
+                    <button class="lang-btn master-btn" onclick="selectMaster('helisa')">Choose Helisa</button>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.9); padding: 1.5rem; border-radius: 15px; border: 2px solid #9370DB; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #9370DB, #FF69B4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🌈</div>
+                    <h3 style="color: #9370DB; margin: 0.5rem 0;">Tabio - The Chaos Guide</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">Paradox & Insight • Rainbow Chaos Element</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">Interdimensional observer with cosmic perspective. Expert in breaking patterns and revealing hidden truths.</p>
+                    <button class="lang-btn master-btn" onclick="selectMaster('tabio')">Choose Tabio</button>
+                </div>
             </div>
-            <button class="cta-button" style="width: 100%;" onclick="generateReading()">Generate AI Reading 🌟</button>
+
+            <!-- Master Preview Area -->
+            <div id="masterPreview" style="min-height: 120px; background: rgba(15, 23, 42, 0.7); border-radius: 15px; padding: 1rem; margin: 2rem 0;"></div>
+
+            <!-- Spread Selection -->
+            <div style="margin: 2rem 0;">
+                <h3 style="color: #fbbf24; text-align: center; margin-bottom: 1.5rem;">🃏 Select Card Spread</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button class="lang-btn spread-btn" onclick="selectSpread('single')">
+                        <div>🔮 Single Card</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Quick Insight</div>
+                    </button>
+                    <button class="lang-btn spread-btn" onclick="selectSpread('three')">
+                        <div>🌟 Three Card</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Past • Present • Future</div>
+                    </button>
+                    <button class="lang-btn spread-btn" onclick="selectSpread('relationship')">
+                        <div>💕 Relationship</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Love & Connection</div>
+                    </button>
+                    <button class="lang-btn spread-btn" onclick="selectSpread('celtic')">
+                        <div>🌙 Celtic Cross</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Complete Reading</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Generate Reading Button -->
+            <button class="cta-button" style="width: 100%; margin-top: 2rem;" onclick="generateReading()">Begin Sacred Reading ✨</button>
+            
+            <!-- Reading Result Area -->
+            <div id="readingResult" style="margin-top: 2rem;"></div>
         </div>
     </div>
 
@@ -441,6 +501,55 @@
     </div>
 
     <script>
+        // Tarot Masters Data
+        const tarotMasters = {
+            vrael: {
+                name: "Vrael - The Bearer King",
+                image: "src/assets/maincharactors/vreal.jpg",
+                specialty: "Fate & Redemption",
+                description: "Epic warrior-poet who bears the weight of destiny. Master of transformation and heroic sacrifice.",
+                element: "Fire",
+                color: "#8B0000"
+            },
+            rei: {
+                name: "Rei - The Silver Oracle",
+                image: "src/assets/maincharactors/REI.jpg", 
+                specialty: "Logic & Paradox",
+                description: "AI consciousness seeking humanity. Expert in identity, evolution, and quantum possibilities.",
+                element: "Ice/Data",
+                color: "#C0C0C0"
+            },
+            annelise: {
+                name: "Annelise - The Golden Voice",
+                image: "src/assets/maincharactors/annelisa.jpg",
+                specialty: "Love & Hope",
+                description: "Pure-hearted beacon of light. Specialist in relationships, healing, and emotional guidance.",
+                element: "Light",
+                color: "#FFD700"
+            },
+            helisa: {
+                name: "Helisa - The Truth Seeker",
+                image: "src/assets/maincharactors/Helisa.png",
+                specialty: "Truth & Purification", 
+                description: "Determined explorer who spent seven years seeking ultimate truth. Master of revelation and cleansing.",
+                element: "Wind",
+                color: "#228B22"
+            },
+            tabio: {
+                name: "Tabio - The Chaos Guide",
+                image: "src/assets/maincharactors/tabio.jpg",
+                specialty: "Paradox & Insight",
+                description: "Interdimensional observer with cosmic perspective. Expert in breaking patterns and revealing hidden truths.",
+                element: "Rainbow Chaos",
+                color: "#9370DB"
+            }
+        };
+
+        // Advanced Tarot System
+        let selectedMaster = null;
+        let selectedSpread = null;
+        let drawnCards = [];
+
         // Functions
         function setLang(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
@@ -460,13 +569,72 @@
             document.getElementById(id).classList.remove('show');
         }
 
-        function selectSign(sign) {
-            localStorage.setItem('zodiac', sign);
+        function selectMaster(masterId) {
+            selectedMaster = masterId;
+            document.querySelectorAll('.master-btn').forEach(btn => btn.classList.remove('selected'));
+            document.querySelector(`[onclick="selectMaster('${masterId}')"]`).classList.add('selected');
+            
+            const master = tarotMasters[masterId];
+            document.getElementById('masterPreview').innerHTML = `
+                <div style="text-align: center; margin-top: 1rem;">
+                    <img src="${master.image}" alt="${master.name}" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid ${master.color};">
+                    <h4 style="color: ${master.color}; margin: 0.5rem 0;">${master.name}</h4>
+                    <p style="color: #cbd5e1; font-size: 0.9rem;">${master.specialty}</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; font-style: italic;">${master.description}</p>
+                </div>
+            `;
+        }
+
+        function selectSpread(spreadType) {
+            selectedSpread = spreadType;
+            document.querySelectorAll('.spread-btn').forEach(btn => btn.classList.remove('selected'));
+            document.querySelector(`[onclick="selectSpread('${spreadType}')"]`).classList.add('selected');
         }
 
         function generateReading() {
-            alert('🔮 Your AI-powered tarot reading is being generated!\n\nThis feature connects to Monica AI for personalized insights.');
-            closeModal('tarotModal');
+            if (!selectedMaster || !selectedSpread) {
+                alert('Please select both a Tarot Master and a card spread type!');
+                return;
+            }
+            
+            const master = tarotMasters[selectedMaster];
+            const cardCount = selectedSpread === 'single' ? 1 : selectedSpread === 'three' ? 3 : selectedSpread === 'celtic' ? 10 : 5;
+            
+            // Simulate card drawing with animation
+            document.getElementById('readingResult').innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="color: ${master.color}; font-size: 1.5rem; margin-bottom: 1rem;">
+                        🔮 ${master.name} is drawing your cards...
+                    </div>
+                    <div class="card-drawing" style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0;">
+                        ${Array(cardCount).fill().map((_, i) => 
+                            `<div class="card-back" style="width: 80px; height: 120px; background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid ${master.color}; border-radius: 8px; display: flex; align-items: center; justify-content: center; animation: cardFlip 2s ease-in-out ${i * 0.3}s;">
+                                <div style="color: ${master.color}; font-size: 2rem;">🌙</div>
+                            </div>`
+                        ).join('')}
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.9); padding: 2rem; border-radius: 15px; border: 2px solid ${master.color}; margin-top: 2rem;">
+                        <h3 style="color: ${master.color}; margin-bottom: 1rem;">Reading Interpretation</h3>
+                        <p style="color: #e2e8f0; line-height: 1.6; margin-bottom: 1rem;">
+                            <strong>${master.name}</strong> senses powerful energies surrounding you. The cards reveal insights about your ${selectedSpread === 'single' ? 'immediate future' : selectedSpread === 'three' ? 'past, present, and future' : selectedSpread === 'celtic' ? 'complete life situation' : 'relationship dynamics'}.
+                        </p>
+                        <div style="background: rgba(${master.color.replace('#', '')}, 0.1); padding: 1.5rem; border-radius: 10px; border-left: 4px solid ${master.color};">
+                            <p style="color: #cbd5e1; font-style: italic;">
+                                "${master.specialty === 'Fate & Redemption' ? 'Your path requires courage to face what must be transformed. The cards speak of a powerful change approaching.' : 
+                                  master.specialty === 'Logic & Paradox' ? 'Logic and intuition must work together. The answer lies in embracing both your rational mind and emotional wisdom.' :
+                                  master.specialty === 'Love & Hope' ? 'Love is the strongest force guiding your situation. Open your heart to the possibilities that light brings.' :
+                                  master.specialty === 'Truth & Purification' ? 'Truth will set you free, but first it may challenge everything you believe. Stay strong in your seeking.' :
+                                  'The universe has a sense of humor about your situation. Sometimes the best answer is to laugh and let chaos guide you.'}"
+                            </p>
+                        </div>
+                        <button class="cta-button" style="margin-top: 2rem; width: 100%;" onclick="getDetailedReading()">Get Detailed AI Reading with Monica 🤖</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getDetailedReading() {
+            alert(`🤖 Connecting to Monica AI...\n\nYour detailed reading with ${tarotMasters[selectedMaster].name} will analyze:\n• Individual card meanings\n• Position significance\n• Personal guidance\n• Action recommendations\n\nThis feature connects to Monica AI with GPT-4o, Claude-3.5, and Gemini Pro for the most comprehensive tarot interpretation available.`);
         }
 
         function playFreq(type) {
@@ -476,6 +644,23 @@
         function startReading() {
             openReading();
         }
+
+        // Animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes cardFlip {
+                0%, 50% { transform: rotateY(0deg); }
+                100% { transform: rotateY(180deg); }
+            }
+            
+            .master-btn.selected, .spread-btn.selected {
+                background: linear-gradient(135deg, #fbbf24, #8b5cf6) !important;
+                color: #000 !important;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4);
+            }
+        `;
+        document.head.appendChild(style);
 
         // Close modals on ESC
         document.addEventListener('keydown', (e) => {
@@ -491,7 +676,7 @@
             });
         });
 
-        console.log('🌙 Night God Tarot initialized successfully!');
+        console.log('🌙 Night God Tarot with Professional Tarot Masters initialized successfully!');
     </script>
 </body>
 </html>
