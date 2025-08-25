@@ -75,14 +75,15 @@
             50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
         }
         
-        /* Floating Crystal Ball Widget */
+        /* AI Bot Widget - Professional Logo */
         .crystal-ball {
             position: fixed;
             top: 20px;
             left: 20px;
             width: 60px;
             height: 60px;
-            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
+            background: rgba(30, 41, 59, 0.95);
+            border: 2px solid rgba(139, 92, 246, 0.6);
             border-radius: 50%;
             cursor: pointer;
             z-index: 1000;
@@ -91,7 +92,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .crystal-ball img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
         
         .ai-badge {
@@ -319,9 +327,9 @@
     </style>
 </head>
 <body>
-    <!-- Floating Crystal Ball Widget -->
+    <!-- AI Bot Widget -->
     <div class="crystal-ball" onclick="openReading()">
-        <span>🔮</span>
+        <img src="assets/aibotlogo.png" alt="AI Bot">
         <span class="ai-badge">AI</span>
     </div>
     
@@ -338,7 +346,7 @@
                 <div>
                     <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
                     <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                        <img src="assets/khrael.png" alt="Khrael Language" style="width: 20px; height: 20px; opacity: 0.8;">
+                        <img src="src/assets/khrael.png" alt="Khrael Language" style="width: 20px; height: 20px; opacity: 0.8;">
                         <p style="color: #8b5cf6; font-size: 0.9rem; margin: 0; font-weight: 600;">Khraethul va Ankhaon • 𐌱𐌰𐌰𐌾𐌰 𐌷𐌴𐍂𐌴𐌰𐌽</p>
                     </div>
                 </div>
@@ -558,6 +566,14 @@
             <!-- Generate Reading Button -->
             <button class="cta-button" style="width: 100%; margin-top: 2rem;" onclick="generateReading()">Begin Sacred Reading ✨</button>
             
+            <!-- Daily Reading Status (TarotAP Style) -->
+            <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(15, 23, 42, 0.8); border-radius: 15px; border: 2px solid rgba(34, 197, 94, 0.4); text-align: center;">
+                <p style="color: #22c55e; font-size: 0.9rem; margin: 0;">
+                    🎯 <strong>Daily Free Readings:</strong> <span id="dailyCount">1</span> reading remaining today • 
+                    <span style="color: #fbbf24; cursor: pointer;" onclick="openMembershipInfo()">Upgrade to Premium</span> for unlimited access
+                </p>
+            </div>
+            
             <!-- Reading Result Area -->
             <div id="readingResult" style="margin-top: 2rem;"></div>
         </div>
@@ -573,6 +589,11 @@
                 <button class="lang-btn" onclick="playFreq('theta')">💰 Theta 8Hz - Clear Wealth Obstacles</button>
                 <button class="lang-btn" onclick="playFreq('alpha')">💎 Alpha 7Hz - Natural Wealth Flow</button>
                 <button class="lang-btn" onclick="playFreq('mixed')">🌟 Mixed Frequency - Complete Healing</button>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(15, 23, 42, 0.8); border-radius: 10px; border: 2px solid rgba(251, 191, 36, 0.3);">
+                <p style="color: #fbbf24; font-size: 0.9rem; margin: 0; text-align: center;">
+                    🎯 <strong>Daily Free Healing:</strong> 1 session per day • Unlimited with Night God Premium
+                </p>
             </div>
         </div>
     </div>
@@ -617,6 +638,63 @@
             <p style="color: #94a3b8; font-style: italic; text-align: center; margin-top: 2rem;">
                 "Bridging ancient wisdom with cutting-edge AI technology for the modern spiritual seeker."
             </p>
+        </div>
+    </div>
+
+    <!-- Membership Info Modal (TarotAP Style) -->
+    <div id="membershipModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-btn" onclick="closeModal('membershipModal')">×</button>
+            <h2 style="color: #fbbf24; font-size: 2.5rem; margin-bottom: 1.5rem; text-align: center;">⭐ Night God Premium</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Unlock the full power of the Song of the Silent universe</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <!-- Free Tier -->
+                <div style="background: rgba(30, 41, 59, 0.7); padding: 2rem; border-radius: 15px; border: 2px solid rgba(139, 92, 246, 0.3);">
+                    <h3 style="color: #8b5cf6; margin-bottom: 1rem;">🔮 Free Mystic</h3>
+                    <ul style="color: #cbd5e1; line-height: 2; list-style: none; padding: 0;">
+                        <li>✅ 1 Tarot Reading/day</li>
+                        <li>✅ All 5 Tarot Masters</li>
+                        <li>✅ 4 Spread Types</li>
+                        <li>✅ 94-Card Deck</li>
+                        <li>✅ Basic AI Analysis</li>
+                        <li>❌ Detailed Monica AI</li>
+                        <li>❌ Unlimited Readings</li>
+                        <li>❌ Premium Spreads</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(139, 92, 246, 0.2); border-radius: 10px; text-align: center;">
+                        <strong style="color: #8b5cf6;">FREE</strong>
+                    </div>
+                </div>
+
+                <!-- Premium Tier -->
+                <div style="background: rgba(30, 41, 59, 0.7); padding: 2rem; border-radius: 15px; border: 2px solid rgba(251, 191, 36, 0.6); position: relative;">
+                    <div style="position: absolute; top: -10px; right: 15px; background: linear-gradient(135deg, #fbbf24, #8b5cf6); color: #000; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
+                        RECOMMENDED
+                    </div>
+                    <h3 style="color: #fbbf24; margin-bottom: 1rem;">⭐ Night God Premium</h3>
+                    <ul style="color: #cbd5e1; line-height: 2; list-style: none; padding: 0;">
+                        <li>🌟 Unlimited Daily Readings</li>
+                        <li>🤖 Full Monica AI Integration</li>
+                        <li>🎯 GPT-4o, Claude-3.5, Gemini</li>
+                        <li>🔥 Advanced Spread Types</li>
+                        <li>💎 Priority Reading Queue</li>
+                        <li>🎵 Unlimited Healing Frequencies</li>
+                        <li>📚 Khrael Language Lessons</li>
+                        <li>✨ Song of Silence Lore Access</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(251, 191, 36, 0.2); border-radius: 10px; text-align: center;">
+                        <strong style="color: #fbbf24; font-size: 1.2rem;">$9.99/month</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="cta-button" onclick="upgradePremium()">🌟 Upgrade to Premium ✨</button>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 1rem;">
+                    Join thousands who have unlocked their spiritual potential with Night God Premium
+                </p>
+            </div>
         </div>
     </div>
 
@@ -670,10 +748,45 @@
             }
         };
 
-        // Advanced Tarot System
+        // Advanced Tarot System with Daily Limits (TarotAP Style)
         let selectedMaster = null;
         let selectedSpread = null;
         let drawnCards = [];
+        let dailyReadings = 0;
+        const maxDailyReadings = 1;
+        let isPremium = false;
+
+        // Initialize daily reading tracking
+        function initDailyTracking() {
+            const today = new Date().toDateString();
+            const storedDate = localStorage.getItem('lastReadingDate');
+            const storedCount = parseInt(localStorage.getItem('dailyReadingCount')) || 0;
+            
+            if (storedDate !== today) {
+                // New day, reset counter
+                dailyReadings = 0;
+                localStorage.setItem('dailyReadingCount', '0');
+                localStorage.setItem('lastReadingDate', today);
+            } else {
+                dailyReadings = storedCount;
+            }
+            
+            updateDailyCounter();
+        }
+
+        function updateDailyCounter() {
+            const remaining = isPremium ? '∞' : Math.max(0, maxDailyReadings - dailyReadings);
+            const counterElement = document.getElementById('dailyCount');
+            if (counterElement) {
+                counterElement.textContent = remaining;
+                if (!isPremium && dailyReadings >= maxDailyReadings) {
+                    counterElement.parentElement.innerHTML = `
+                        <span style="color: #ef4444;">🚫 Daily limit reached</span> • 
+                        <span style="color: #fbbf24; cursor: pointer;" onclick="openMembershipInfo()">Upgrade to Premium</span> for unlimited access
+                    `;
+                }
+            }
+        }
 
         // Functions
         function setLang(lang) {
@@ -848,6 +961,12 @@
                 return;
             }
             
+            // Check daily reading limit (TarotAP Style)
+            if (!isPremium && dailyReadings >= maxDailyReadings) {
+                openMembershipInfo();
+                return;
+            }
+            
             const master = tarotMasters[selectedMaster];
             const cardCount = selectedSpread === 'single' ? 1 : selectedSpread === 'three' ? 3 : selectedSpread === 'celtic' ? 10 : 5;
             const drawnCards = drawRandomCards(cardCount);
@@ -915,6 +1034,9 @@
                 </div>
             `;
 
+            // Increment reading count for non-premium users
+            incrementReadingCount();
+
             // Add card reveal animation
             const cardStyle = document.createElement('style');
             cardStyle.textContent = `
@@ -940,6 +1062,24 @@
 
         function openCreatorContact() {
             document.getElementById('creatorModal').classList.add('show');
+        }
+
+        // TarotAP-Style Membership Functions
+        function openMembershipInfo() {
+            document.getElementById('membershipModal').classList.add('show');
+        }
+
+        function upgradePremium() {
+            alert(`🌟 Premium Upgrade Coming Soon!\n\n✨ Night God Premium will launch with:\n• Unlimited daily readings\n• Full Monica AI integration\n• Advanced spread types\n• Khrael language lessons\n• Song of Silence lore access\n\nStay connected for the launch announcement!`);
+        }
+
+        // Update reading count and tracking
+        function incrementReadingCount() {
+            if (!isPremium) {
+                dailyReadings++;
+                localStorage.setItem('dailyReadingCount', dailyReadings.toString());
+                updateDailyCounter();
+            }
         }
 
         // Animation styles and TarotAP-style interactions
@@ -1014,6 +1154,9 @@
         });
 
         console.log('🌙 Night God Tarot with Professional Tarot Masters initialized successfully!');
+        
+        // Initialize daily tracking on page load
+        initDailyTracking();
     </script>
 </body>
 </html>
