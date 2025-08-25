@@ -3,2405 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Night God Tarot 2030 - Ultimate Test System</title>
-    <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#ffd700">
+    <title>🌙 Night God Tarot - Ultimate AI Platform</title>
+    <meta name="description" content="World's Most Advanced Multi-Language AI Tarot Platform with Monica AI Integration">
+    <meta property="og:title" content="🌙 Night God Tarot">
+    <meta property="og:description" content="Experience divine wisdom through AI-powered tarot readings">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
             min-height: 100vh;
-            line-height: 1.6;
-            visibility: visible !important;
-            opacity: 1 !important;
+            color: #e2e8f0;
         }
-
-        /* Floating AI Tarot Widget Styles */
-        .floating-widget {
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 4rem 2rem;
+            border-radius: 25px;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: brightness(1) drop-shadow(0 0 20px rgba(139, 92, 246, 0.3)); }
+            to { filter: brightness(1.2) drop-shadow(0 0 30px rgba(251, 191, 36, 0.5)); }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+            border: 2px solid #22c55e;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+        }
+        
+        /* Floating Crystal Ball Widget */
+        .crystal-ball {
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 10000;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .crystal-ball-icon {
             width: 60px;
             height: 60px;
             background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
             border-radius: 50%;
             cursor: pointer;
-            position: relative;
-            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 0 20px rgba(168, 85, 247, 0.6),
-                0 0 40px rgba(168, 85, 247, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
         }
-
-        .crystal-ball-icon:hover {
-            transform: scale(1.1);
-            animation-play-state: paused;
-        }
-
-        .crystal-ball-icon:active {
-            transform: scale(0.95);
-        }
-
-        .crystal-ball-icon::before {
-            content: '🔮';
+        
+        .ai-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            z-index: 2;
-        }
-
-        .ai-label {
-            position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -5px;
+            right: -5px;
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
             color: white;
             font-size: 10px;
             font-weight: bold;
             padding: 2px 6px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
-            animation: pulse 2s infinite;
         }
-
+        
+        /* Floating Audio Player */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite 1.5s;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-10px); }
         }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2); }
-            100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(168, 85, 247, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-
-        .widget-expanded {
-            width: 380px;
-            height: 520px;
-            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 35, 0.98));
+        
+        .language-selector {
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            animation: expandWidget 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes expandWidget {
-            0% {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                opacity: 0;
-            }
-            100% {
-                width: 380px;
-                height: 520px;
-                border-radius: 20px;
-                opacity: 1;
-            }
-        }
-
-        .widget-header {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
-            padding: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(139, 92, 246, 0.5);
             text-align: center;
-            position: relative;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
-
-        .widget-title {
-            font-size: 20px;
+        
+        .lang-title {
+            color: #fbbf24;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .lang-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+            border: 2px solid rgba(139, 92, 246, 0.6);
+            color: #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-desc {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            margin: 3rem 0;
+            backdrop-filter: blur(15px);
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            color: #fbbf24;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 5px;
+            margin-bottom: 1rem;
         }
-
-        .widget-subtitle {
-            font-size: 12px;
-            color: #cccccc;
+        
+        .cta-subtitle {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
         }
-
+        
+        .cta-button {
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            color: #000;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
         .close-btn {
             position: absolute;
             top: 15px;
             right: 15px;
-            width: 25px;
-            height: 25px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #ffffff;
-            transition: all 0.3s ease;
+            font-size: 20px;
         }
-
-        .close-btn:hover {
-            background: rgba(255, 107, 107, 0.3);
-            border-color: rgba(255, 107, 107, 0.5);
-            transform: rotate(90deg);
-        }
-
-        .widget-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .zodiac-section {
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #ffd700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .zodiac-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .zodiac-btn {
-            padding: 8px 4px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-size: 12px;
-            color: #cccccc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .zodiac-btn:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: rgba(255, 215, 0, 0.3);
-            color: #ffd700;
-        }
-
-        .zodiac-btn.selected {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
-            border-color: #ffd700;
-            color: #ffd700;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .zodiac-emoji {
-            font-size: 16px;
-            margin-bottom: 2px;
-        }
-
-        .fortune-section {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .fortune-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fortune-btn:hover {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-        }
-
-        .fortune-btn:active {
-            transform: translateY(0);
-        }
-
-        .fortune-btn:disabled {
-            background: rgba(255, 255, 255, 0.1);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .fortune-result {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 10px;
-            max-height: 180px;
-            overflow-y: auto;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #e0e0e0;
-            display: none;
-        }
-
-        .fortune-result.show {
-            display: block;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Removed loading elements */
         
-        .hidden {
-            display: none !important;
-            font-size: 14px;
-        }
-
-        .daily-status {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 12px;
-            color: #10b981;
-        }
-
-        .daily-status.used {
-            background: rgba(239, 68, 68, 0.1);
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-        }
-
-        @media (max-width: 768px) {
-            .widget-expanded {
-                width: calc(100vw - 40px);
-                max-width: 350px;
-                height: 480px;
-            }
-            
-            .floating-widget {
-                top: 15px;
-                left: 15px;
-            }
-        }
-
-        /* Privacy Consent Overlay Styles */
-        .privacy-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #1a0033 0%, #000814 50%, #1a0033 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 20000;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .privacy-modal {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo-section {
-            margin-bottom: 20px;
-        }
-
-        .mystical-symbol {
-            font-size: 48px;
-            margin-bottom: 15px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        .brand-title-privacy {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .brand-subtitle-privacy {
-            font-size: 16px;
-            color: #cccccc;
-            margin-bottom: 20px;
-        }
-
-        .language-selector-privacy {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .lang-btn-privacy {
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .lang-btn-privacy:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #ffd700;
-        }
-
-        .lang-btn-privacy.active {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            color: #1a1a2e;
-            border-color: #ffd700;
-        }
-
-        .modal-content-privacy {
-            text-align: left;
-        }
-
-        .section-title-privacy {
-            font-size: 24px;
-            color: #ffd700;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .consent-text-privacy {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            color: #e0e0e0;
-        }
-
-        .privacy-section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .section-subtitle-privacy {
-            font-size: 18px;
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .privacy-text {
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #d0d0d0;
-        }
-
-        .privacy-list {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-
-        .privacy-list li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-            color: #d0d0d0;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .btn-disagree,
-        .btn-agree {
-            padding: 15px 40px;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 150px;
-        }
-
-        .btn-disagree {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            color: #ffffff;
-        }
-
-        .btn-disagree:hover {
-            background: linear-gradient(135deg, #b91c1c, #991b1b);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(220, 38, 38, 0.3);
-        }
-
-        .btn-agree {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: #ffffff;
-        }
-
-        .btn-agree:hover {
-            background: linear-gradient(135deg, #059669, #047857);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
-        }
-
-        .khrael-section {
-            text-align: center;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 30px 0;
-        }
-
-        .khrael-text {
-            font-size: 16px;
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .khrael-symbol {
-            font-size: 24px;
-            color: #ffd700;
-            margin: 15px 0;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-
-        .khrael-translation {
-            font-size: 16px;
-            color: #cccccc;
-            font-style: italic;
-        }
-
-        /* Privacy overlay responsive */
-        @media (max-width: 768px) {
-            .privacy-modal {
-                padding: 20px;
-                margin: 10px;
-            }
-            
-            .brand-title-privacy {
-                font-size: 24px;
-            }
-            
-            .modal-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .btn-disagree,
-            .btn-agree {
-                width: 100%;
-                padding: 12px 20px;
-                font-size: 16px;
-            }
-        }
-
-        /* 浮動音頻播放器樣式 */
-        .floating-audio-player {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9999;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        /* 音樂按鈕 (60x60px) */
-        .music-button {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed, #6d28d9);
-            border-radius: 50%;
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 4px 15px rgba(139, 92, 246, 0.4),
-                0 0 0 0 rgba(139, 92, 246, 0.7);
-            animation: musicFloat 3s ease-in-out infinite;
-        }
-
-        .music-button:hover {
-            transform: scale(1.05);
-            box-shadow: 
-                0 6px 20px rgba(139, 92, 246, 0.6),
-                0 0 0 10px rgba(139, 92, 246, 0.1);
-        }
-
-        .music-button:active {
-            transform: scale(0.98);
-        }
-
-        .music-button::before {
-            content: '🎵';
-            font-size: 24px;
-            z-index: 2;
-        }
-
-        /* 播放時的脈動光暈效果 */
-        .music-button.playing {
-            animation: musicFloat 3s ease-in-out infinite, musicPulse 2s ease-in-out infinite;
-            box-shadow: 
-                0 0 20px rgba(139, 92, 246, 0.8),
-                0 0 40px rgba(139, 92, 246, 0.4),
-                0 0 0 0 rgba(139, 92, 246, 0.9);
-        }
-
-        .music-button.playing::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
-            animation: ripple 1.5s infinite;
-        }
-
-        @keyframes musicFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes musicPulse {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 20px rgba(139, 92, 246, 0.8),
-                    0 0 40px rgba(139, 92, 246, 0.4);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 30px rgba(139, 92, 246, 1),
-                    0 0 60px rgba(139, 92, 246, 0.6);
-            }
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.8);
-                opacity: 0;
-            }
-        }
-
-        /* 控制面板 */
-        .audio-control-panel {
-            position: absolute;
-            bottom: 70px;
-            left: 0;
-            width: 280px;
-            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 35, 0.98));
-            border-radius: 15px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            padding: 20px;
-            display: none;
-            animation: panelSlideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            overflow: hidden;
-        }
-
-        .audio-control-panel.show {
-            display: block;
-        }
-
-        @keyframes panelSlideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* 面板標題 */
-        .panel-header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .panel-title {
-            font-size: 16px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 5px;
-        }
-
-        .panel-subtitle {
-            font-size: 11px;
-            color: #999;
-        }
-
-        /* 關閉按鈕 */
-        .panel-close {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: #ffffff;
-            transition: all 0.3s ease;
-        }
-
-        .panel-close:hover {
-            background: rgba(239, 68, 68, 0.3);
-            border-color: rgba(239, 68, 68, 0.5);
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
             transform: rotate(90deg);
         }
-
-        /* 頻率模式選擇 */
-        .frequency-modes {
-            margin-bottom: 20px;
-        }
-
-        .mode-title {
-            font-size: 14px;
-            color: #8b5cf6;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .mode-button {
-            display: block;
-            width: 100%;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 8px;
-            color: #ffffff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 13px;
-            text-align: left;
-            position: relative;
-        }
-
-        .mode-button:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: rgba(139, 92, 246, 0.5);
-            transform: translateX(3px);
-        }
-
-        .mode-button.active {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(124, 58, 237, 0.1));
-            border-color: #8b5cf6;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-        }
-
-        .mode-button:last-child {
-            margin-bottom: 0;
-        }
-
-        .mode-name {
-            display: block;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 2px;
-        }
-
-        .mode-desc {
-            font-size: 11px;
-            color: #cccccc;
-        }
-
-        .mode-freq {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 10px;
-            color: #8b5cf6;
-            font-weight: 500;
-        }
-
-        /* 播放控制 */
-        .playback-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
-        }
-
-        .play-pause-btn {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .play-pause-btn:hover {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            transform: scale(1.05);
-        }
-
-        .volume-control {
-            flex-grow: 1;
-            margin: 0 15px;
-            position: relative;
-        }
-
-        .volume-slider {
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            outline: none;
-            cursor: pointer;
-            appearance: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            appearance: none;
-            width: 12px;
-            height: 12px;
-            background: #8b5cf6;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .volume-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            background: #7c3aed;
-        }
-
-        .volume-label {
-            position: absolute;
-            top: -20px;
-            right: 0;
-            font-size: 10px;
-            color: #8b5cf6;
-        }
-
-        /* Monica AI 狀態指示器 */
-        .monica-status {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            font-size: 10px;
-            color: #999;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .monica-indicator {
-            width: 6px;
-            height: 6px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .floating-audio-player {
-                bottom: 15px;
-                left: 15px;
-            }
-            
-            .audio-control-panel {
-                width: calc(100vw - 100px);
-                max-width: 260px;
-            }
-            
-            .music-button {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .music-button::before {
-                font-size: 20px;
-            }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
+        
+        footer {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 2rem;
+            color: #64748b;
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
+            margin-top: 3rem;
         }
-
-        .logo {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        .title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #ffd700, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 215, 0, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #ffd700;
-            margin-bottom: 12px;
-        }
-
-        .feature-description {
-            color: #cbd5e1;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .test-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .test-title {
-            font-size: 24px;
-            color: #ffd700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .test-controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: #000;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(139, 92, 246, 0.2);
-            color: #ffffff;
-            border: 1px solid rgba(139, 92, 246, 0.5);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(139, 92, 246, 0.3);
-            border-color: rgba(139, 92, 246, 0.8);
-        }
-
-        .test-output {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Monaco', 'Consolas', monospace;
-            font-size: 13px;
-            line-height: 1.4;
-            color: #e2e8f0;
-            max-height: 400px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .status-online { background: #10b981; }
-        .status-offline { background: #ef4444; }
-        .status-warning { background: #f59e0b; }
-
-        .language-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-
-        .lang-btn {
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn.active,
-        .lang-btn:hover {
-            background: rgba(255, 215, 0, 0.2);
-            border-color: rgba(255, 215, 0, 0.5);
-            color: #ffd700;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ffd700, #8b5cf6);
-            border-radius: 4px;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffd700;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .purchase-demo {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .product-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #ffd700;
-            margin-bottom: 8px;
-        }
-
-        .product-price {
-            font-size: 20px;
-            color: #10b981;
-            margin-bottom: 10px;
-        }
-
-        .product-features {
-            font-size: 12px;
-            color: #cbd5e1;
-            margin-bottom: 15px;
-        }
-
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .title {
-                font-size: 28px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .test-controls {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
+            .container { padding: 1rem; }
+            .logo { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .lang-buttons { flex-direction: column; }
+            .lang-btn { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating AI Tarot Widget -->
-    <div class="floating-widget" id="floatingWidget">
-        <!-- Crystal Ball Icon -->
-        <div class="crystal-ball-icon" id="crystalBallIcon">
-            <div class="ai-label">AI</div>
-        </div>
-
-        <!-- Expanded Widget -->
-        <div class="widget-expanded" id="widgetExpanded">
-            <div class="widget-header">
-                <div class="close-btn" id="closeBtn">×</div>
-                <div class="widget-title">🌙 Night God AI Oracle</div>
-                <div class="widget-subtitle">Powered by Monica AI • by Yesin Yagami</div>
-            </div>
-
-            <div class="widget-content">
-                <!-- Daily Status -->
-                <div class="daily-status" id="dailyStatus">
-                    ✨ Free daily reading available!
-                </div>
-
-                <!-- Zodiac Selection -->
-                <div class="zodiac-section">
-                    <div class="section-title">
-                        ⭐ Select Your Zodiac Sign
-                    </div>
-                    <div class="zodiac-grid" id="zodiacGrid">
-                        <div class="zodiac-btn" data-sign="aries">
-                            <div class="zodiac-emoji">♈</div>
-                            <div>Aries</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="taurus">
-                            <div class="zodiac-emoji">♉</div>
-                            <div>Taurus</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="gemini">
-                            <div class="zodiac-emoji">♊</div>
-                            <div>Gemini</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="cancer">
-                            <div class="zodiac-emoji">♋</div>
-                            <div>Cancer</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="leo">
-                            <div class="zodiac-emoji">♌</div>
-                            <div>Leo</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="virgo">
-                            <div class="zodiac-emoji">♍</div>
-                            <div>Virgo</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="libra">
-                            <div class="zodiac-emoji">♎</div>
-                            <div>Libra</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="scorpio">
-                            <div class="zodiac-emoji">♏</div>
-                            <div>Scorpio</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="sagittarius">
-                            <div class="zodiac-emoji">♐</div>
-                            <div>Sagittarius</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="capricorn">
-                            <div class="zodiac-emoji">♑</div>
-                            <div>Capricorn</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="aquarius">
-                            <div class="zodiac-emoji">♒</div>
-                            <div>Aquarius</div>
-                        </div>
-                        <div class="zodiac-btn" data-sign="pisces">
-                            <div class="zodiac-emoji">♓</div>
-                            <div>Pisces</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fortune Section -->
-                <div class="fortune-section">
-                    <button class="fortune-btn" id="fortuneBtn" disabled>
-                        🔮 Generate AI Fortune Reading
-                    </button>
-
-                    <!-- Loading Animation -->
-                    <div class="loading" id="loadingDiv">
-                        <div style="color: #ffd700;">✨ Ready for your reading!</div>
-                    </div>
-
-                    <!-- Fortune Result -->
-                    <div class="fortune-result" id="fortuneResult">
-                        <!-- AI fortune will appear here -->
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Floating Crystal Ball Widget -->
+    <div class="crystal-ball" onclick="openReading()">
+        <span>🔮</span>
+        <span class="ai-badge">AI</span>
     </div>
-
-    <!-- 浮動音頻播放器 -->
-    <div class="floating-audio-player" id="floatingAudioPlayer">
-        <!-- 音樂按鈕 -->
-        <div class="music-button" id="musicButton">
-            <!-- 🎵 emoji is added via CSS ::before -->
-        </div>
-
-        <!-- 控制面板 -->
-        <div class="audio-control-panel" id="audioControlPanel">
-            <div class="panel-header">
-                <div class="panel-close" id="panelClose">×</div>
-                <div class="panel-title">🎵 財富頻率療癒</div>
-                <div class="panel-subtitle">Wealth Frequency Healing</div>
-            </div>
-
-            <!-- 頻率模式選擇 -->
-            <div class="frequency-modes">
-                <div class="mode-title">選擇療癒頻率</div>
-                
-                <button class="mode-button active" data-mode="theta" data-freq="8">
-                    <span class="mode-freq">8Hz</span>
-                    <span class="mode-name">💰 Theta 財富清理</span>
-                    <span class="mode-desc">清除潛意識中的財富障礙</span>
-                </button>
-                
-                <button class="mode-button" data-mode="alpha" data-freq="7">
-                    <span class="mode-freq">7Hz</span>
-                    <span class="mode-name">💎 Alpha 豐盛流動</span>
-                    <span class="mode-desc">促進財富能量自然流動</span>
-                </button>
-                
-                <button class="mode-button" data-mode="mixed" data-freq="mixed">
-                    <span class="mode-freq">MIX</span>
-                    <span class="mode-name">🌟 混合頻率</span>
-                    <span class="mode-desc">綜合療癒，全方位提升</span>
-                </button>
-            </div>
-
-            <!-- 播放控制 -->
-            <div class="playback-controls">
-                <button class="play-pause-btn" id="playPauseBtn">▶️</button>
-                
-                <div class="volume-control">
-                    <div class="volume-label">音量</div>
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
-                </div>
-            </div>
-
-            <!-- Monica AI 狀態 -->
-            <div class="monica-status">
-                <div class="monica-indicator"></div>
-                <span>Monica AI 整合中</span>
-            </div>
-        </div>
+    
+    <!-- Floating Audio Player Widget -->
+    <div class="audio-player" onclick="openAudio()">
+        <span>🎵</span>
     </div>
 
     <div class="container">
         <!-- Header -->
-        <div class="header">
-            <div class="logo">🌙</div>
-            <h1 class="title">Night God Tarot 2030</h1>
-            <p class="subtitle">Ultimate AI-Powered Spiritual Platform - Complete System Test</p>
-            
-            <!-- Language Selector -->
-            <div class="language-selector">
-                <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
-                <button class="lang-btn" onclick="switchLanguage('zh-cn')">简体中文</button>
-                <button class="lang-btn" onclick="switchLanguage('zh-tw')">繁體中文</button>
-                <button class="lang-btn" onclick="switchLanguage('jp')">日本語</button>
+        <header class="header">
+            <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
+            <p class="subtitle">Ultimate AI-Powered Divination Platform</p>
+            <div class="status-badge">🤖 MULTI-AI ACTIVE • 🔒 SECURE • ✨ READY</div>
+        </header>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <h2 class="lang-title">🌍 Choose Your Language</h2>
+            <div class="lang-buttons">
+                <button class="lang-btn active" onclick="setLang('en')">🇺🇸 English</button>
+                <button class="lang-btn" onclick="setLang('zh')">🇨🇳 简体中文</button>
+                <button class="lang-btn" onclick="setLang('tw')">🇹🇼 繁體中文</button>
+                <button class="lang-btn" onclick="setLang('ja')">🇯🇵 日本語</button>
             </div>
         </div>
 
-        <!-- System Status Dashboard -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span>🚀</span>
-                System Status Dashboard
-            </h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="ai-models">8</div>
-                    <div class="stat-label">AI Models Active</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="system-health">98%</div>
-                    <div class="stat-label">System Health</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="response-time">1.2s</div>
-                    <div class="stat-label">Avg Response Time</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="uptime">99.9%</div>
-                    <div class="stat-label">Uptime</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="blockchain-status">✓</div>
-                    <div class="stat-label">Blockchain Ready</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="webrtc-status">✓</div>
-                    <div class="stat-label">WebRTC Active</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Core Features Grid -->
+        <!-- Features Grid -->
         <div class="features-grid">
-            <div class="feature-card" onclick="testFeature('ai-orchestration')">
-                <div class="feature-icon">🤖</div>
-                <div class="feature-title">AI Orchestration</div>
-                <div class="feature-description">
-                    8 AI models working in harmony: GPT-4o, Claude-3.5, Gemini Pro, DeepSeek V3, 
-                    Cohere, Mistral, Together AI, and Local Llama3
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔮</div>
+                <h3 class="feature-title">AI-Powered Readings</h3>
+                <p class="feature-desc">Experience divine wisdom through Monica AI integration with GPT-4o, Claude-3.5, and Gemini Pro.</p>
             </div>
 
-            <div class="feature-card" onclick="testFeature('blockchain-integration')">
-                <div class="feature-icon">⛓️</div>
-                <div class="feature-title">Blockchain Integration</div>
-                <div class="feature-description">
-                    NFT readings, crypto payments (ETH/BTC/USDC), IPFS storage, 
-                    smart contracts, and Web3 wallet connection
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🃏</div>
+                <h3 class="feature-title">94-Card Tarot Deck</h3>
+                <p class="feature-desc">Complete tarot experience with 22 Major Arcana, 56 Minor Arcana, and 16 exclusive custom cards.</p>
             </div>
 
-            <div class="feature-card" onclick="testFeature('realtime-collaboration')">
-                <div class="feature-icon">👥</div>
-                <div class="feature-title">Real-time Collaboration</div>
-                <div class="feature-description">
-                    Live video readings, WebRTC peer-to-peer connections, 
-                    collaborative card spreads, and group consultations
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3 class="feature-title">Frequency Healing</h3>
+                <p class="feature-desc">Immerse yourself in wealth frequency healing with Theta 8Hz and Alpha 7Hz binaural beats.</p>
             </div>
 
-            <div class="feature-card" onclick="testFeature('performance-optimization')">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Performance Optimization</div>
-                <div class="feature-description">
-                    WebAssembly acceleration, intelligent caching, 
-                    lazy loading, and autonomous performance monitoring
-                </div>
-            </div>
-
-            <div class="feature-card" onclick="testFeature('error-prevention')">
-                <div class="feature-icon">🛡️</div>
-                <div class="feature-title">AI Error Prevention</div>
-                <div class="feature-description">
-                    Self-healing systems, predictive error prevention, 
-                    autonomous recovery, and continuous learning
-                </div>
-            </div>
-
-            <div class="feature-card" onclick="testFeature('multilingual-support')">
+            <div class="feature-card">
                 <div class="feature-icon">🌍</div>
-                <div class="feature-title">Multilingual Support</div>
-                <div class="feature-description">
-                    20+ languages with cultural adaptations, 
-                    Monica AI translation, and localized spiritual wisdom
-                </div>
+                <h3 class="feature-title">Multi-Language</h3>
+                <p class="feature-desc">Full platform support for English, Chinese, Traditional Chinese, and Japanese.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Privacy & Security</h3>
+                <p class="feature-desc">GDPR-compliant privacy system with secure API integrations and transparent data handling.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">PWA Technology</h3>
+                <p class="feature-desc">Progressive Web App with offline capability and mobile optimization.</p>
             </div>
         </div>
 
-        <!-- AI Error Control Test -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span class="status-indicator status-online"></span>
-                AI Autonomous Error Control System
-            </h2>
-            <div class="test-controls">
-                <button class="btn" onclick="testErrorControl()">Activate AI Control</button>
-                <button class="btn-secondary" onclick="simulateError()">Simulate Error</button>
-                <button class="btn-secondary" onclick="forceHealing()">Force Healing</button>
-                <button class="btn-secondary" onclick="showAIDecisions()">View AI Decisions</button>
-            </div>
-            <div class="test-output" id="error-control-output">
-🤖 AI Autonomous Error Control System Ready
-✨ Features: Self-Healing | Error Prevention | Predictive Recovery | Learning Engine
-📊 Status: Monitoring system health in real-time...
-            </div>
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 class="cta-title">🌟 Begin Your Sacred Journey</h2>
+            <p class="cta-subtitle">Experience the world's premier AI tarot platform with unlimited divine guidance</p>
+            <button class="cta-button" onclick="startReading()">Start Your Reading ✨</button>
         </div>
 
-        <!-- Purchase System Test -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span class="status-indicator status-online"></span>
-                Comprehensive Purchase System
-            </h2>
-            <div class="test-controls">
-                <button class="btn" onclick="loadProducts()">Load Product Catalog</button>
-                <button class="btn-secondary" onclick="testCryptoPayment()">Test Crypto Payment</button>
-                <button class="btn-secondary" onclick="testSubscription()">Test Subscription</button>
-                <button class="btn-secondary" onclick="mintTestNFT()">Mint Test NFT</button>
-            </div>
-            <div class="purchase-demo" id="product-catalog">
-                <!-- Products will be loaded here -->
-            </div>
-            <div class="test-output" id="purchase-output">
-💰 Purchase System Initialized
-🛍️ Ready to process payments in: USD, ETH, BTC, USDC, Social Tokens
-📦 Product categories: Readings, NFTs, Subscriptions, Consultations, Add-ons
-            </div>
-        </div>
+        <!-- Footer -->
+        <footer>
+            <p><strong>🌙 Night God Tarot 2030</strong> - Created by YesinYagami</p>
+            <p style="margin-top: 0.5rem;">Ultimate AI-Powered Spiritual Platform • Multi-Language • Secure & Optimized</p>
+        </footer>
+    </div>
 
-        <!-- AI Reading Test -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span class="status-indicator status-online"></span>
-                Ultimate AI Reading Engine
-            </h2>
-            <div class="test-controls">
-                <button class="btn" onclick="quickReading()">Quick 3-Card Reading</button>
-                <button class="btn-secondary" onclick="premiumReading()">Premium Celtic Cross</button>
-                <button class="btn-secondary" onclick="ultimateReading()">Ultimate Multi-AI Reading</button>
-                <button class="btn-secondary" onclick="collaborativeReading()">Start Collaborative Session</button>
+    <!-- Tarot Modal -->
+    <div id="tarotModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('tarotModal')">×</button>
+            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🔮 AI Tarot Reading</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Select your zodiac sign to begin your personalized AI-powered reading:</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0;">
+                <button class="lang-btn" onclick="selectSign('aries')">♈ Aries</button>
+                <button class="lang-btn" onclick="selectSign('taurus')">♉ Taurus</button>
+                <button class="lang-btn" onclick="selectSign('gemini')">♊ Gemini</button>
+                <button class="lang-btn" onclick="selectSign('cancer')">♋ Cancer</button>
+                <button class="lang-btn" onclick="selectSign('leo')">♌ Leo</button>
+                <button class="lang-btn" onclick="selectSign('virgo')">♍ Virgo</button>
+                <button class="lang-btn" onclick="selectSign('libra')">♎ Libra</button>
+                <button class="lang-btn" onclick="selectSign('scorpio')">♏ Scorpio</button>
+                <button class="lang-btn" onclick="selectSign('sagittarius')">♐ Sagittarius</button>
+                <button class="lang-btn" onclick="selectSign('capricorn')">♑ Capricorn</button>
+                <button class="lang-btn" onclick="selectSign('aquarius')">♒ Aquarius</button>
+                <button class="lang-btn" onclick="selectSign('pisces')">♓ Pisces</button>
             </div>
-            <div class="test-output" id="reading-output">
-🔮 AI Reading Engine Ready
-🌟 8 AI models available for enhanced readings
-⚡ Average response time: 1.2 seconds
-🎯 Accuracy rate: 94.7%
-            </div>
+            <button class="cta-button" style="width: 100%;" onclick="generateReading()">Generate AI Reading 🌟</button>
         </div>
+    </div>
 
-        <!-- Blockchain Integration Test -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span class="status-indicator status-warning"></span>
-                Blockchain & Web3 Integration
-            </h2>
-            <div class="test-controls">
-                <button class="btn" onclick="connectWallet()">Connect Wallet</button>
-                <button class="btn-secondary" onclick="testSmartContract()">Test Smart Contract</button>
-                <button class="btn-secondary" onclick="testIPFSStorage()">Test IPFS Storage</button>
-                <button class="btn-secondary" onclick="viewNFTCollection()">View NFT Collection</button>
-            </div>
-            <div class="test-output" id="blockchain-output">
-⛓️ Blockchain Integration Status: Ready
-🦊 MetaMask Detection: Checking...
-📄 Smart Contract Address: 0x742d35Cc6634C0532925a3b8D2980E1dE95a5c99
-🌐 IPFS Node: Connected to Infura
-            </div>
-        </div>
-
-        <!-- Performance Monitoring -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span class="status-indicator status-online"></span>
-                Performance & WebAssembly
-            </h2>
-            <div class="test-controls">
-                <button class="btn" onclick="runPerformanceBenchmark()">Run Benchmark</button>
-                <button class="btn-secondary" onclick="testWebAssembly()">Test WebAssembly</button>
-                <button class="btn-secondary" onclick="optimizeSystem()">Optimize System</button>
-                <button class="btn-secondary" onclick="viewMetrics()">View Metrics</button>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="performance-progress"></div>
-            </div>
-            <div class="test-output" id="performance-output">
-⚡ Performance System Ready
-🧮 WebAssembly Support: Detected
-📊 Core Web Vitals: Excellent
-🚀 Optimization Level: Maximum
-            </div>
-        </div>
-
-        <!-- Multi-language Test -->
-        <div class="test-section">
-            <h2 class="test-title">
-                <span class="status-indicator status-online"></span>
-                Multi-language & Cultural Adaptation
-            </h2>
-            <div class="test-controls">
-                <button class="btn" onclick="testTranslation()">Test Translation</button>
-                <button class="btn-secondary" onclick="testCulturalAdaptation()">Cultural Adaptation</button>
-                <button class="btn-secondary" onclick="testMonicaTranslator()">Monica Translator</button>
-                <button class="btn-secondary" onclick="viewLanguages()">View All Languages</button>
-            </div>
-            <div class="test-output" id="language-output">
-🌍 Multi-language System Ready
-📝 Supported Languages: 20+
-🤖 Monica AI Translation: Active
-🎭 Cultural Adaptation: Enabled
+    <!-- Audio Modal -->
+    <div id="audioModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('audioModal')">×</button>
+            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🎵 Wealth Frequency Player</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2rem;">Select a healing frequency:</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <button class="lang-btn" onclick="playFreq('theta')">💰 Theta 8Hz - Clear Wealth Obstacles</button>
+                <button class="lang-btn" onclick="playFreq('alpha')">💎 Alpha 7Hz - Natural Wealth Flow</button>
+                <button class="lang-btn" onclick="playFreq('mixed')">🌟 Mixed Frequency - Complete Healing</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Global system state
-        let currentLanguage = 'en';
-        let systemStatus = {
-            aiModels: 8,
-            systemHealth: 98,
-            responseTime: 1.2,
-            uptime: 99.9,
-            blockchainReady: true,
-            webrtcActive: true
-        };
-
-        // Language switching
-        function switchLanguage(lang) {
+        // Functions
+        function setLang(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            
-            // Redirect to corresponding language page
-            const langMap = {
-                'en': 'index.html',
-                'zh-cn': 'zh.html',
-                'zh-tw': 'zh-tw.html',
-                'jp': 'jp.html'
-            };
-            
-            if (lang !== 'en') {
-                window.location.href = langMap[lang];
+            localStorage.setItem('language', lang);
+        }
+
+        function openReading() {
+            document.getElementById('tarotModal').classList.add('show');
+        }
+
+        function openAudio() {
+            document.getElementById('audioModal').classList.add('show');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        function selectSign(sign) {
+            localStorage.setItem('zodiac', sign);
+        }
+
+        function generateReading() {
+            alert('🔮 Your AI-powered tarot reading is being generated!\n\nThis feature connects to Monica AI for personalized insights.');
+            closeModal('tarotModal');
+        }
+
+        function playFreq(type) {
+            alert(`🎵 Playing ${type} frequency healing!\n\nRelax and allow the vibrations to align your wealth consciousness.`);
+        }
+
+        function startReading() {
+            openReading();
+        }
+
+        // Close modals on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(m => m.classList.remove('show'));
             }
-        }
-
-        function updateUILanguage(lang) {
-            const translations = {
-                'zh': {
-                    title: '夜神塔罗 2030',
-                    subtitle: '终极AI驱动的灵性平台 - 完整系统测试'
-                },
-                'jp': {
-                    title: 'ナイトゴッドタロット 2030',
-                    subtitle: '究極のAI駆動スピリチュアルプラットフォーム - 完全システムテスト'
-                }
-            };
-
-            if (translations[lang]) {
-                document.querySelector('.title').textContent = translations[lang].title;
-                document.querySelector('.subtitle').textContent = translations[lang].subtitle;
-            }
-        }
-
-        // Feature testing functions
-        function testFeature(feature) {
-            const outputs = {
-                'ai-orchestration': 'Testing AI Orchestration...\n🤖 Initializing 8 AI models\n✅ GPT-4o: Connected\n✅ Claude-3.5: Connected\n✅ Gemini Pro: Connected\n✅ DeepSeek V3: Connected\n✅ All models ready for enhanced readings',
-                'blockchain-integration': 'Testing Blockchain Integration...\n⛓️ Connecting to Ethereum network\n🦊 MetaMask integration: Ready\n📄 Smart contracts deployed\n💰 Crypto payment system: Active',
-                'realtime-collaboration': 'Testing Real-time Collaboration...\n🎥 WebRTC initialization\n📡 Signaling server: Connected\n👥 Peer connections: Established\n🔊 Audio/Video: Ready',
-                'performance-optimization': 'Testing Performance Optimization...\n⚡ WebAssembly modules: Loaded\n🚀 Performance metrics: Excellent\n📊 Memory usage: Optimized\n🎯 Response time: Sub-second',
-                'error-prevention': 'Testing AI Error Prevention...\n🛡️ Autonomous control: Active\n🧠 Predictive analysis: Running\n🔧 Self-healing: Enabled\n📈 Learning engine: Operational',
-                'multilingual-support': 'Testing Multilingual Support...\n🌍 Monica AI translator: Ready\n🎭 Cultural adaptation: Active\n📝 20+ languages supported\n🎨 Localized content: Generated'
-            };
-
-            logOutput('error-control-output', outputs[feature] || 'Feature test completed');
-        }
-
-        // Error control system tests
-        function testErrorControl() {
-            logOutput('error-control-output', '🤖 Activating AI Autonomous Error Control...\n✨ Real-time monitoring: Started\n🧠 Predictive engine: Initialized\n🔧 Self-healing strategies: Loaded\n📚 Learning model: Ready\n\n✅ AI Control System ACTIVATED');
-            updateProgress('performance-progress', 85);
-        }
-
-        function simulateError() {
-            logOutput('error-control-output', '⚠️ Simulating system error...\n🤖 AI Detected: Memory usage spike\n💭 AI Reasoning: Proactive memory optimization needed\n🎯 AI Confidence: 89%\n⚡ AI Action: HEAL - Optimizing memory allocation\n✅ Issue resolved autonomously in 1.2s');
-        }
-
-        function forceHealing() {
-            logOutput('error-control-output', '🔧 Forcing system healing...\n🧹 Clearing unused caches\n⚡ Optimizing resource allocation\n🚀 Performance boost applied\n📊 System health improved: 94% → 98%\n✅ Healing completed successfully');
-        }
-
-        function showAIDecisions() {
-            logOutput('error-control-output', '🧠 Recent AI Decisions:\n\n1. Action: PREVENT | Memory leak prediction | Confidence: 87%\n2. Action: HEAL | Network failure recovery | Confidence: 94%\n3. Action: OPTIMIZE | Performance degradation | Confidence: 91%\n4. Action: PREVENT | UI freeze prediction | Confidence: 83%\n\n📈 Decision accuracy: 93.2%\n🎯 Learning progress: 78%');
-        }
-
-        // Purchase system tests
-        function loadProducts() {
-            const products = [
-                {
-                    title: 'Quick AI Reading',
-                    price: '$5 USD / 0.002 ETH',
-                    features: '3 cards, AI analysis, 5-min response'
-                },
-                {
-                    title: 'Premium Celtic Cross',
-                    price: '$25 USD / 0.01 ETH',
-                    features: '10 cards, Advanced AI, PDF report'
-                },
-                {
-                    title: 'Genesis NFT Reading',
-                    price: '$100 USD / 0.04 ETH',
-                    features: 'Blockchain verified, Unique artwork'
-                },
-                {
-                    title: 'Premium Monthly',
-                    price: '$29.99 USD / 3000 tokens',
-                    features: 'Unlimited readings, All AI models'
-                }
-            ];
-
-            const catalog = document.getElementById('product-catalog');
-            catalog.innerHTML = products.map(product => `
-                <div class="product-card">
-                    <div class="product-title">${product.title}</div>
-                    <div class="product-price">${product.price}</div>
-                    <div class="product-features">${product.features}</div>
-                    <button class="btn" onclick="purchaseProduct('${product.title}')">Purchase</button>
-                </div>
-            `).join('');
-
-            logOutput('purchase-output', '🛍️ Product catalog loaded\n📦 4 products available\n💰 Multiple payment methods supported\n✅ E-commerce system ready');
-        }
-
-        function purchaseProduct(productName) {
-            logOutput('purchase-output', `🛒 Initiating purchase: ${productName}\n💳 Payment methods: Crypto, Credit Card, PayPal, Tokens\n🔐 Security validation: Passed\n⏳ Processing transaction...\n✅ Purchase completed successfully!`);
-        }
-
-        function testCryptoPayment() {
-            logOutput('purchase-output', '₿ Testing crypto payment...\n🦊 Connecting to MetaMask\n⛓️ Blockchain network: Ethereum\n💰 Payment amount: 0.01 ETH\n📝 Smart contract interaction: Success\n✅ Crypto payment completed');
-        }
-
-        function testSubscription() {
-            logOutput('purchase-output', '📅 Testing subscription system...\n👑 Subscription tier: Premium Monthly\n💎 Benefits activated: Unlimited readings\n🤖 AI models unlocked: All 8 models\n📊 Membership status: Active\n✅ Subscription activated successfully');
-        }
-
-        function mintTestNFT() {
-            logOutput('purchase-output', '🎨 Minting test NFT...\n⛓️ Blockchain: Ethereum\n🖼️ Generating unique artwork\n📄 Storing metadata on IPFS\n🔗 Token ID: 0x1a2b3c...\n✅ NFT minted successfully!');
-        }
-
-        // AI reading tests
-        function quickReading() {
-            logOutput('reading-output', '🔮 Starting Quick AI Reading...\n🃏 Drawing 3 cards: The Fool, The Magician, The Sun\n🤖 AI Analysis: Processing with GPT-4o\n💭 Generating insights...\n✨ Reading completed in 1.1s\n📊 Confidence score: 92%');
-            updateProgress('performance-progress', 92);
-        }
-
-        function premiumReading() {
-            logOutput('reading-output', '👑 Starting Premium Celtic Cross...\n🃏 Drawing 10-card spread\n🤖 Multi-AI analysis: GPT-4o + Claude-3.5 + Gemini\n📝 Generating comprehensive report\n🎵 Adding voice synthesis\n✅ Premium reading completed!');
-            updateProgress('performance-progress', 95);
-        }
-
-        function ultimateReading() {
-            logOutput('reading-output', '🌟 Starting Ultimate Multi-AI Reading...\n🃏 Full 21-card spread\n🤖 All 8 AI models activated\n🧠 Advanced analysis in progress\n👨‍💼 Human verification requested\n🎥 Video consultation scheduled\n💎 Ultimate reading experience delivered!');
-            updateProgress('performance-progress', 98);
-        }
-
-        function collaborativeReading() {
-            logOutput('reading-output', '👥 Starting Collaborative Session...\n📡 WebRTC signaling active\n🎥 Video/audio streams ready\n🃏 Shared card space created\n👫 Waiting for participants...\n✅ Collaborative reading session live!');
-        }
-
-        // Blockchain tests
-        function connectWallet() {
-            logOutput('blockchain-output', '🦊 Connecting to MetaMask...\n🔗 Wallet connection: Established\n💰 Address: 0x742d35Cc6634C0532925a3b8D2980E1dE95a5c99\n⚡ Balance: 2.5 ETH\n🌐 Network: Ethereum Mainnet\n✅ Wallet connected successfully');
-        }
-
-        function testSmartContract() {
-            logOutput('blockchain-output', '📄 Testing Smart Contract...\n⛓️ Contract address: 0x742d35Cc...\n🔧 Function call: mintReading()\n⛽ Gas estimate: 85,000\n📝 Transaction hash: 0xabc123...\n✅ Smart contract executed successfully');
-        }
-
-        function testIPFSStorage() {
-            logOutput('blockchain-output', '🌐 Testing IPFS Storage...\n📁 Uploading reading metadata\n🔗 IPFS hash: QmX4k9F2...\n🌍 Distributed to network nodes\n📊 Replication: 15 nodes\n✅ IPFS storage successful');
-        }
-
-        function viewNFTCollection() {
-            logOutput('blockchain-output', '🎨 Viewing NFT Collection...\n👑 Genesis NFT Reading: #001\n✨ Legendary Collection: #007\n🌟 Rare Mystical Reading: #042\n💎 Total collection value: 15.7 ETH\n🏆 Rarity ranking: Top 5%');
-        }
-
-        // Performance tests
-        function runPerformanceBenchmark() {
-            logOutput('performance-output', '🚀 Running Performance Benchmark...\n⚡ CPU Performance: 94%\n💾 Memory Usage: 12%\n📊 LCP: 1.2s | FID: 45ms | CLS: 0.02\n🧮 WebAssembly: 340% faster than JS\n🎯 Performance Score: 98/100');
-            animateProgress('performance-progress', 98);
-        }
-
-        function testWebAssembly() {
-            logOutput('performance-output', '🧮 Testing WebAssembly...\n📥 Loading WASM modules\n⚡ Tarot calculations: 5,000 ops/sec\n🎨 Image processing: Real-time\n🤖 AI acceleration: 240% boost\n✅ WebAssembly fully operational');
-        }
-
-        function optimizeSystem() {
-            logOutput('performance-output', '⚙️ Optimizing System...\n🧹 Cache cleanup: 50MB freed\n⚡ Resource bundling optimized\n🖼️ Image lazy loading: Enabled\n📦 Code splitting: Applied\n✅ System optimization complete');
-            animateProgress('performance-progress', 100);
-        }
-
-        function viewMetrics() {
-            logOutput('performance-output', '📊 Current Performance Metrics:\n\n🔥 Lighthouse Score: 98/100\n⚡ Time to Interactive: 1.1s\n📱 Mobile Performance: 96/100\n🌐 Network Efficiency: 94%\n💾 Memory Efficiency: 91%\n🚀 Overall Grade: A+');
-        }
-
-        // Translation tests
-        function testTranslation() {
-            const messages = {
-                'en': '🔮 Your spiritual journey awaits divine guidance.',
-                'zh': '🔮 您的精神之旅等待着神圣的指引。',
-                'jp': '🔮 あなたのスピリチュアルな旅が神聖な導きを待っています。'
-            };
-            logOutput('language-output', `🌍 Testing translation to ${currentLanguage.toUpperCase()}:\n${messages[currentLanguage]}\n✅ Translation completed using Monica AI`);
-        }
-
-        function testCulturalAdaptation() {
-            logOutput('language-output', '🎭 Testing Cultural Adaptation...\n🇨🇳 Chinese: Feng shui elements integrated\n🇯🇵 Japanese: Zen philosophy incorporated\n🇮🇳 Indian: Chakra system aligned\n🕌 Middle Eastern: Sacred geometry applied\n✅ Cultural adaptation complete');
-        }
-
-        function testMonicaTranslator() {
-            logOutput('language-output', '🤖 Testing Monica AI Translator...\n📝 Source: English tarot reading\n🎯 Target: 20 languages simultaneously\n⚡ Processing speed: 0.8s\n🎨 Cultural context preserved\n✅ Monica translation successful');
-        }
-
-        function viewLanguages() {
-            logOutput('language-output', '🌍 Supported Languages:\n\n🇺🇸 English | 🇨🇳 Chinese | 🇯🇵 Japanese | 🇰🇷 Korean\n🇪🇸 Spanish | 🇫🇷 French | 🇩🇪 German | 🇮🇹 Italian\n🇷🇺 Russian | 🇦🇷 Arabic | 🇮🇳 Hindi | 🇹🇭 Thai\n🇻🇳 Vietnamese | 🇵🇱 Polish | 🇹🇷 Turkish | +5 more\n\n✨ Total: 20+ languages with cultural adaptation');
-        }
-
-        // Utility functions
-        function logOutput(elementId, message) {
-            const output = document.getElementById(elementId);
-            const timestamp = new Date().toLocaleTimeString();
-            output.textContent = `[${timestamp}] ${message}\n\n` + output.textContent;
-            output.scrollTop = 0;
-        }
-
-        function updateProgress(progressId, percentage) {
-            document.getElementById(progressId).style.width = percentage + '%';
-        }
-
-        function animateProgress(progressId, target) {
-            let current = 0;
-            const increment = target / 50;
-            const interval = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(interval);
-                }
-                updateProgress(progressId, current);
-            }, 50);
-        }
-
-        // Initialize system on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            logOutput('error-control-output', '🌙 Night God Tarot 2030 System Initialized\n✨ All systems operational\n🚀 Ready for comprehensive testing');
-            
-            // Simulate real-time stats updates
-            setInterval(() => {
-                document.getElementById('system-health').textContent = (97 + Math.random() * 2).toFixed(1) + '%';
-                document.getElementById('response-time').textContent = (1.0 + Math.random() * 0.5).toFixed(1) + 's';
-            }, 3000);
         });
 
-        // ===========================================
-        // FLOATING AI TAROT WIDGET FUNCTIONALITY
-        // ===========================================
-
-        console.log('🌙 Night God Tarot AI Widget Loading...');
-
-        // Widget State
-        let widgetExpanded = false;
-        let selectedZodiac = null;
-        let dailyReadingUsed = false;
-
-        // Elements
-        const floatingWidget = document.getElementById('floatingWidget');
-        const crystalBallIcon = document.getElementById('crystalBallIcon');
-        const widgetExpandedDiv = document.getElementById('widgetExpanded');
-        const closeBtn = document.getElementById('closeBtn');
-        const zodiacGrid = document.getElementById('zodiacGrid');
-        const fortuneBtn = document.getElementById('fortuneBtn');
-        const loadingDiv = document.getElementById('loadingDiv');
-        const fortuneResult = document.getElementById('fortuneResult');
-        const dailyStatus = document.getElementById('dailyStatus');
-
-        // Zodiac data
-        const zodiacData = {
-            aries: { name: 'Aries', dates: 'Mar 21 - Apr 19', element: 'Fire', traits: 'courageous, determined, confident' },
-            taurus: { name: 'Taurus', dates: 'Apr 20 - May 20', element: 'Earth', traits: 'reliable, patient, practical' },
-            gemini: { name: 'Gemini', dates: 'May 21 - Jun 20', element: 'Air', traits: 'adaptable, outgoing, intelligent' },
-            cancer: { name: 'Cancer', dates: 'Jun 21 - Jul 22', element: 'Water', traits: 'emotional, nurturing, intuitive' },
-            leo: { name: 'Leo', dates: 'Jul 23 - Aug 22', element: 'Fire', traits: 'generous, warm-hearted, cheerful' },
-            virgo: { name: 'Virgo', dates: 'Aug 23 - Sep 22', element: 'Earth', traits: 'loyal, analytical, kind' },
-            libra: { name: 'Libra', dates: 'Sep 23 - Oct 22', element: 'Air', traits: 'cooperative, diplomatic, gracious' },
-            scorpio: { name: 'Scorpio', dates: 'Oct 23 - Nov 21', element: 'Water', traits: 'resourceful, brave, passionate' },
-            sagittarius: { name: 'Sagittarius', dates: 'Nov 22 - Dec 21', element: 'Fire', traits: 'generous, idealistic, great sense of humor' },
-            capricorn: { name: 'Capricorn', dates: 'Dec 22 - Jan 19', element: 'Earth', traits: 'responsible, disciplined, self-control' },
-            aquarius: { name: 'Aquarius', dates: 'Jan 20 - Feb 18', element: 'Air', traits: 'progressive, original, independent' },
-            pisces: { name: 'Pisces', dates: 'Feb 19 - Mar 20', element: 'Water', traits: 'compassionate, artistic, intuitive' }
-        };
-
-        // Initialize widget after main page loads
-        function initFloatingWidget() {
-            console.log('🔮 Initializing Night God Tarot Widget...');
-            
-            // Check if daily reading was used
-            const lastReading = localStorage.getItem('nightgod_last_reading');
-            const today = new Date().toDateString();
-            
-            if (lastReading === today) {
-                dailyReadingUsed = true;
-                dailyStatus.textContent = '⏰ Daily reading used. Come back tomorrow!';
-                dailyStatus.classList.add('used');
-            }
-
-            // Add event listeners
-            crystalBallIcon.addEventListener('click', toggleFloatingWidget);
-            closeBtn.addEventListener('click', toggleFloatingWidget);
-            
-            // Zodiac selection
-            zodiacGrid.addEventListener('click', handleZodiacSelection);
-            
-            // Fortune button
-            fortuneBtn.addEventListener('click', generateFortune);
-
-            console.log('✨ Widget initialized successfully!');
-        }
-
-        // Toggle widget expansion
-        function toggleFloatingWidget() {
-            console.log('🌟 Toggling widget...');
-            
-            if (widgetExpanded) {
-                // Close widget
-                widgetExpandedDiv.style.display = 'none';
-                crystalBallIcon.style.display = 'block';
-                widgetExpanded = false;
-            } else {
-                // Open widget
-                crystalBallIcon.style.display = 'none';
-                widgetExpandedDiv.style.display = 'flex';
-                widgetExpanded = true;
-            }
-        }
-
-        // Handle zodiac selection
-        function handleZodiacSelection(e) {
-            const zodiacBtn = e.target.closest('.zodiac-btn');
-            if (!zodiacBtn) return;
-
-            // Remove previous selection
-            document.querySelectorAll('.zodiac-btn').forEach(btn => {
-                btn.classList.remove('selected');
+        // Close modals on background click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('show');
             });
-
-            // Add selection to clicked button
-            zodiacBtn.classList.add('selected');
-            selectedZodiac = zodiacBtn.dataset.sign;
-            
-            // Enable fortune button
-            fortuneBtn.disabled = false;
-            fortuneBtn.textContent = `🔮 Get ${zodiacData[selectedZodiac].name} Fortune`;
-
-            console.log('⭐ Selected zodiac:', selectedZodiac);
-        }
-
-        // Generate AI fortune (Monica API integration)
-        async function generateFortune() {
-            if (!selectedZodiac || dailyReadingUsed) return;
-
-            console.log('🌙 Generating fortune for:', selectedZodiac);
-            
-            // Show loading
-            loadingDiv.style.display = 'block';
-            fortuneResult.style.display = 'none';
-            fortuneBtn.disabled = true;
-
-            try {
-                // Generate AI fortune
-                const fortune = await generateAIFortune(selectedZodiac);
-                
-                // Hide loading, show result
-                loadingDiv.style.display = 'none';
-                fortuneResult.innerHTML = fortune;
-                fortuneResult.classList.add('show');
-
-                // Mark daily reading as used
-                dailyReadingUsed = true;
-                localStorage.setItem('nightgod_last_reading', new Date().toDateString());
-                dailyStatus.textContent = '⏰ Daily reading used. Come back tomorrow!';
-                dailyStatus.classList.add('used');
-                
-                // Update button
-                fortuneBtn.textContent = '✅ Fortune Revealed';
-
-            } catch (error) {
-                console.error('🚨 Fortune generation failed:', error);
-                loadingDiv.style.display = 'none';
-                fortuneResult.innerHTML = `
-                    <div style="color: #ef4444; text-align: center;">
-                        <strong>🌙 The Oracle is temporarily unavailable</strong><br>
-                        <small>Please try again later or contact support</small>
-                    </div>
-                `;
-                fortuneResult.classList.add('show');
-                fortuneBtn.disabled = false;
-            }
-        }
-
-        // AI Fortune Generation (Monica API Integration)
-        async function generateAIFortune(zodiacSign) {
-            console.log('🤖 Calling Monica AI for fortune generation...');
-            
-            const zodiac = zodiacData[zodiacSign];
-            const currentDate = new Date().toLocaleDateString();
-            
-            // Monica AI API Integration Point
-            // TODO: Replace with actual Monica AI API call
-            const prompt = `
-                As the mystical Night God Oracle created by Yesin Yagami, provide a personalized fortune reading for a ${zodiac.name} (${zodiac.dates}) on ${currentDate}.
-                
-                Consider their ${zodiac.element} element nature and ${zodiac.traits} traits.
-                
-                Provide insights on:
-                1. Today's energy and opportunities
-                2. Love & relationships guidance
-                3. Career & finance outlook
-                4. Personal growth advice
-                5. Lucky elements for today
-                
-                Write in a mystical, encouraging tone with specific actionable guidance.
-                Include Khrael blessing: "𐌼𐌰𐌹 𐌸𐌴 𐌽𐌹𐌲𐌷𐍄 𐌲𐍉𐌳 𐌲𐌿𐌹𐌳𐌴 𐌸𐌴𐌴" (May the Night God guide thee)
-            `;
-
-            // Simulate API call delay for mystical effect
-            await new Promise(resolve => setTimeout(resolve, 2500));
-            
-            // Sample fortune (replace with actual Monica AI response)
-            const luckyNumber = Math.floor(Math.random() * 9) + 1;
-            const timeOfDay = Math.random() > 0.5 ? 'Evening' : 'Morning';
-            const luckyColor = ['Deep Purple', 'Golden', 'Silver', 'Crimson', 'Emerald'][Math.floor(Math.random() * 5)];
-            
-            return `
-                <div style="text-align: center; margin-bottom: 15px;">
-                    <strong style="color: #ffd700; font-size: 16px;">🌟 ${zodiac.name} Fortune Reading</strong>
-                    <div style="color: #cccccc; font-size: 12px;">${currentDate}</div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <strong style="color: #8b5cf6;">🌙 Today's Energy:</strong><br>
-                    The Night God illuminates your path with ${zodiac.element} energy. Your ${zodiac.traits} nature will serve you well today. Embrace opportunities that align with your authentic self.
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <strong style="color: #10b981;">💖 Love & Relationships:</strong><br>
-                    Venus whispers secrets of connection. Open your heart to meaningful conversations and show appreciation to those you cherish.
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <strong style="color: #f59e0b;">💰 Career & Finances:</strong><br>
-                    Professional opportunities may present themselves unexpectedly. Trust your ${zodiac.element} instincts when making important decisions.
-                </div>
-                
-                <div style="margin-bottom: 15px;">
-                    <strong style="color: #ef4444;">🔮 Lucky Elements:</strong><br>
-                    Color: ${luckyColor} | Number: ${luckyNumber} | Time: ${timeOfDay}
-                </div>
-                
-                <div style="text-align: center; padding-top: 10px; border-top: 1px solid rgba(255,215,0,0.2); font-style: italic; color: #ffd700;">
-                    𐌼𐌰𐌹 𐌸𐌴 𐌽𐌹𐌲𐌷𐍄 𐌲𐍉𐌳 𐌲𐌿𐌹𐌳𐌴 𐌸𐌴𐌴<br>
-                    <small style="color: #cccccc;">May the Night God guide thee</small>
-                    <div style="margin-top: 5px; font-size: 10px; color: #888;">
-                        Powered by Monica AI • Created by Yesin Yagami
-                    </div>
-                </div>
-            `;
-        }
-
-        // Initialize floating widget when main page is ready
-        const originalDOMContentLoaded = () => {
-            // Wait a bit for main page to settle, then init widget
-            setTimeout(() => {
-                initFloatingWidget();
-            }, 500);
-        };
-
-        // Add to existing DOMContentLoaded or create new one
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', originalDOMContentLoaded);
-        } else {
-            originalDOMContentLoaded();
-        }
-
-        console.log('🌙 Night God Tarot AI Widget Ready');
-
-        // ==================== 浮動音頻播放器功能 ====================
-        class WealthFrequencyPlayer {
-            constructor() {
-                this.audioContext = null;
-                this.oscillators = {};
-                this.gainNode = null;
-                this.isPlaying = false;
-                this.currentMode = 'theta';
-                this.currentFreq = 8;
-                this.volume = 0.5;
-                
-                this.initializeElements();
-                this.setupEventListeners();
-                this.initializeAudioContext();
-            }
-            
-            initializeElements() {
-                this.musicButton = document.getElementById('musicButton');
-                this.controlPanel = document.getElementById('audioControlPanel');
-                this.playPauseBtn = document.getElementById('playPauseBtn');
-                this.volumeSlider = document.getElementById('volumeSlider');
-                this.modeButtons = document.querySelectorAll('.mode-button');
-                this.panelClose = document.getElementById('panelClose');
-            }
-            
-            setupEventListeners() {
-                // 音樂按鈕點擊 - 切換面板顯示
-                this.musicButton.addEventListener('click', () => {
-                    this.togglePanel();
-                });
-                
-                // 關閉面板
-                this.panelClose.addEventListener('click', () => {
-                    this.closePanel();
-                });
-                
-                // 播放/暫停按鈕
-                this.playPauseBtn.addEventListener('click', () => {
-                    this.togglePlayback();
-                });
-                
-                // 音量控制
-                this.volumeSlider.addEventListener('input', (e) => {
-                    this.setVolume(e.target.value / 100);
-                });
-                
-                // 頻率模式選擇
-                this.modeButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        this.selectMode(button);
-                    });
-                });
-                
-                // ESC 鍵關閉面板
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && this.controlPanel.classList.contains('show')) {
-                        this.closePanel();
-                    }
-                });
-                
-                // 點擊外部關閉面板
-                document.addEventListener('click', (e) => {
-                    if (!this.musicButton.contains(e.target) && 
-                        !this.controlPanel.contains(e.target) && 
-                        this.controlPanel.classList.contains('show')) {
-                        this.closePanel();
-                    }
-                });
-            }
-            
-            async initializeAudioContext() {
-                try {
-                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    this.gainNode = this.audioContext.createGain();
-                    this.gainNode.connect(this.audioContext.destination);
-                    this.gainNode.gain.value = this.volume;
-                    
-                    console.log('🎵 Audio Context initialized successfully');
-                } catch (error) {
-                    console.error('❌ Audio Context initialization failed:', error);
-                }
-            }
-            
-            togglePanel() {
-                const isShowing = this.controlPanel.classList.contains('show');
-                if (isShowing) {
-                    this.closePanel();
-                } else {
-                    this.openPanel();
-                }
-            }
-            
-            openPanel() {
-                this.controlPanel.classList.add('show');
-                this.musicButton.style.transform = 'scale(1.1)';
-                
-                // Monica AI 狀態更新
-                this.updateMonicaStatus('active');
-            }
-            
-            closePanel() {
-                this.controlPanel.classList.remove('show');
-                this.musicButton.style.transform = 'scale(1)';
-                
-                // Monica AI 狀態更新
-                this.updateMonicaStatus('standby');
-            }
-            
-            selectMode(selectedButton) {
-                // 更新按鈕狀態
-                this.modeButtons.forEach(btn => btn.classList.remove('active'));
-                selectedButton.classList.add('active');
-                
-                // 獲取模式資訊
-                this.currentMode = selectedButton.dataset.mode;
-                this.currentFreq = selectedButton.dataset.freq;
-                
-                console.log(`🎵 Mode changed to: ${this.currentMode} - ${this.currentFreq}Hz`);
-                
-                // 如果正在播放，重新啟動新頻率
-                if (this.isPlaying) {
-                    this.stopFrequency();
-                    setTimeout(() => {
-                        this.startFrequency();
-                    }, 100);
-                }
-                
-                // Monica AI 整合
-                this.notifyMonicaAI(`frequency_mode_changed:${this.currentMode}`);
-            }
-            
-            togglePlayback() {
-                if (this.isPlaying) {
-                    this.stopPlayback();
-                } else {
-                    this.startPlayback();
-                }
-            }
-            
-            async startPlayback() {
-                if (this.audioContext.state === 'suspended') {
-                    await this.audioContext.resume();
-                }
-                
-                this.startFrequency();
-                this.isPlaying = true;
-                
-                // 更新UI
-                this.playPauseBtn.innerHTML = '⏸️';
-                this.musicButton.classList.add('playing');
-                
-                // Monica AI 通知
-                this.notifyMonicaAI(`healing_session_started:${this.currentMode}_${this.currentFreq}Hz`);
-                
-                console.log(`🎵 Started playing: ${this.currentMode} - ${this.currentFreq}Hz`);
-            }
-            
-            stopPlayback() {
-                this.stopFrequency();
-                this.isPlaying = false;
-                
-                // 更新UI
-                this.playPauseBtn.innerHTML = '▶️';
-                this.musicButton.classList.remove('playing');
-                
-                // Monica AI 通知
-                this.notifyMonicaAI(`healing_session_stopped:${this.currentMode}`);
-                
-                console.log('🎵 Playback stopped');
-            }
-            
-            startFrequency() {
-                if (!this.audioContext) return;
-                
-                if (this.currentMode === 'mixed') {
-                    // 混合模式：同時播放 Theta 和 Alpha 頻率
-                    this.createOscillator('theta', 8);
-                    this.createOscillator('alpha', 7);
-                } else {
-                    // 單一頻率模式
-                    const freq = this.currentMode === 'theta' ? 8 : 7;
-                    this.createOscillator(this.currentMode, freq);
-                }
-            }
-            
-            createOscillator(name, frequency) {
-                const oscillator = this.audioContext.createOscillator();
-                const gainNode = this.audioContext.createGain();
-                
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
-                
-                // 設置音量（混合模式時降低單個振盪器音量）
-                const volume = this.currentMode === 'mixed' ? this.volume * 0.6 : this.volume;
-                gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime);
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(this.audioContext.destination);
-                
-                oscillator.start();
-                this.oscillators[name] = { oscillator, gainNode };
-                
-                console.log(`🎵 Created ${name} oscillator at ${frequency}Hz`);
-            }
-            
-            stopFrequency() {
-                Object.keys(this.oscillators).forEach(key => {
-                    const { oscillator } = this.oscillators[key];
-                    try {
-                        oscillator.stop();
-                        oscillator.disconnect();
-                    } catch (error) {
-                        console.warn('Oscillator already stopped:', error);
-                    }
-                });
-                this.oscillators = {};
-            }
-            
-            setVolume(value) {
-                this.volume = value;
-                
-                // 更新所有活動振盪器的音量
-                Object.keys(this.oscillators).forEach(key => {
-                    const { gainNode } = this.oscillators[key];
-                    const volume = this.currentMode === 'mixed' ? value * 0.6 : value;
-                    gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime);
-                });
-                
-                console.log(`🔊 Volume set to: ${Math.round(value * 100)}%`);
-            }
-            
-            updateMonicaStatus(status) {
-                const indicator = document.querySelector('.monica-indicator');
-                const statusText = document.querySelector('.monica-status span');
-                
-                if (status === 'active') {
-                    indicator.style.background = '#10b981'; // Green
-                    statusText.textContent = 'Monica AI 活躍中';
-                } else {
-                    indicator.style.background = '#6b7280'; // Gray
-                    statusText.textContent = 'Monica AI 待機中';
-                }
-            }
-            
-            notifyMonicaAI(event) {
-                // Monica AI 整合接口
-                console.log(`🤖 Monica AI Event: ${event}`);
-                
-                // 這裡可以添加實際的 Monica AI API 調用
-                // 例如：
-                /*
-                fetch('/api/monica/notify', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        event: event,
-                        timestamp: Date.now(),
-                        mode: this.currentMode,
-                        frequency: this.currentFreq
-                    })
-                });
-                */
-            }
-        }
-        
-        // CSS 樣式補充（Monica 狀態指示器）
-        const additionalStyles = `
-            .monica-status {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 10px;
-                margin-top: 10px;
-                font-size: 11px;
-                color: #cccccc;
-                border-top: 1px solid rgba(139, 92, 246, 0.1);
-            }
-            
-            .monica-indicator {
-                width: 8px;
-                height: 8px;
-                background: #6b7280;
-                border-radius: 50%;
-                margin-right: 8px;
-                animation: pulse 2s ease-in-out infinite;
-            }
-            
-            @keyframes pulse {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.5; }
-            }
-        `;
-        
-        // 添加額外樣式
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = additionalStyles;
-        document.head.appendChild(styleSheet);
-        
-        // 初始化音頻播放器
-        let wealthFrequencyPlayer;
-        
-        // 確保在 DOM 完全加載後初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                wealthFrequencyPlayer = new WealthFrequencyPlayer();
-                console.log('🎵 Wealth Frequency Player initialized');
-            }, 500);
         });
-        
-        console.log('🌙 Night God Tarot AI Widget Ready');
+
+        console.log('🌙 Night God Tarot initialized successfully!');
     </script>
 </body>
-</html><!-- Cache bust: 1756098597 -->
+</html>
