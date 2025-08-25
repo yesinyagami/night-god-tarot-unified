@@ -3,8 +3,17 @@
     <!-- Data Consent Modal (Shows on first visit) -->
     <DataConsentModal ref="consentModal" />
     
+    <!-- Professional Header -->
+    <ProfessionalHeader />
+    
     <!-- Complete Night God Tarot Interface -->
     <NightGodTarotComplete />
+    
+    <!-- Tarot Masters Section -->
+    <TarotMasters />
+    
+    <!-- Professional Footer with Sitemap -->
+    <ProfessionalFooter />
     
     <!-- Route-based content overlay (if needed for specific pages) -->
     <router-view v-slot="{ Component }" class="route-overlay">
@@ -20,6 +29,9 @@ import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import NightGodTarotComplete from './components/NightGodTarotComplete.vue'
 import DataConsentModal from './components/DataConsentModal.vue'
+import TarotMasters from './components/TarotMasters.vue'
+import ProfessionalFooter from './components/ProfessionalFooter.vue'
+import ProfessionalHeader from './components/ProfessionalHeader.vue'
 
 const route = useRoute()
 

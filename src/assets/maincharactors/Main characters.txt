@@ -1,0 +1,989 @@
+# Song of the Silent: In-Depth Character Setting Collection
+
+This is an in-depth setting file for the main characters in the novel *Song of the Silent*, based on the full text, related visual references, and the Hrelian language dictionary.
+
+## Vrael Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Vrael is a giant over 200 cm tall, with an extremely burly and robust build, classified as super heavyweight. His broad shoulders and powerful muscles exude overwhelming physical presence as both a king and warrior.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Dark hair reaching shoulders, dense beard, rugged style. Skin weathered from years of battle.  
+Eyes: Deep sockets burning with ominous dark red "embers." When primal instincts rage, they turn pure crimson; after becoming the "Bearer" and carrying sins, they become heavy like "two blood-soaked, cooled embers."
+
+**Posture Features**  
+Posture: Like a "silent, watchful statue" at borders, showing kingly and guardian steadiness. Staggers when in inner pain or facing dilemmas.  
+Action Habits: Slowly wipes blade with rough cloth after battle as a ritual to detach from killing. Starts large-scale power with primal "war dance." Kneels on both knees for repentance or deep respect.
+
+**Voice**  
+Tone and Intonation: Low, hoarse, with kingly gravity. After becoming "Bearer" and awakening **Poet's Throat**, it becomes "clearer, more resonant, yet heavier."
+
+**First Impression / Others' Perception**  
+First impression: Massive oppression combined with deep tragedy. Embodiment of pure power, but eyes and posture reveal endless fatigue and pain, evoking a "king bearing the world's fate."
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+Early: Dreamed of being a poet.  
+Mid: After founding the Silent Nation, protecting family (Rei, Annelise, children) became his anchor against inner chaos.  
+Late (Bearer): After killing Leo and inheriting memories, beliefs evolve to **redemption and bearing**. No longer seeks personal glory or poetry; bears others' sins and memories, viewing "not killing" as requiring greater willpower than killing.
+
+**Deepest Fears / Traumas**  
+Trauma: Killing Leo and his team is his deepest, unforgivable wound, becoming an "unrefusable heavy legacy" and eternal shackle.  
+Fear: As a short-lived hybrid, fears "being forgotten," especially vanishing from children's memories as an irrelevant verse.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Deeply craves understanding from Annelise and Rei, leading to confessing sins to avoid love based on "the basest lie I wove." Kingly pride makes him hide vulnerability, facing everything in silence.
+
+**Behavior Under Pressure**  
+Breakdown/Loss of Control: Under extreme mental stress (e.g., phantom attacks), "graÅfthekk" predatory instinct awakens, turning him into a killing beast. Cries like a mortal father under family emotional shocks.  
+Escape/Self-Destruction: After grave errors, self-exiles into endless battles to numb pain?a disguised self-destruction.  
+Calm: As king in war, shows supreme commander's absolute calm and decisiveness.
+
+**Does He Lie? To Whom? Why?**  
+Lied with Rei and Shiori to the entire Silent Nation?including Annelise?about Leo's death. Motive: Protect fragile trust and stability at alliance's start, maintain leader image.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+As poet, language full of metaphors and weight. After **Poet's Throat**, voice gains penetration and resonance. As king, commands are concise and authoritative.
+
+**Typical Phrases**  
+"I am?the speaker who chooses not to kill."  
+"I refuse to be forgotten like this!!!!"  
+"This is my inheritance to you, Kael. Power to protect, and... responsibility to destroy."  
+Before final battle: "Fight!!!!!"
+
+**Common Gestures or Habits**  
+Post-battle blade wiping is signature ritual. War dance for large power.  
+
+**Action Speed**  
+Dual: Battle speed like "black lightning"; thoughtful or watchful like "statue," motionless for long. Impulsive when emotions (especially instincts) override reason.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Trust built on shared battles and honesty. Deepest with family, unable to tolerate lies long. With Grell, Shiori allies: forged through life-death trials and respect for strength.
+
+**View on Love**  
+Complex, tragic. With Rei and Annelise (mother-daughter), forms transcendent "divine family" and "blood covenant." Deep love and responsibility tied to guilt over Leo's death.
+
+**Relations to Family, Clan, or Past**  
+Family is final defense and anchor against chaos. Deep, sometimes clumsy fatherly love for children; anxious about not seeing them grow. Profound self-loathing post-Leo killing.
+
+**How Misunderstood? How He Views It?**  
+Before truth reveal, Annelise saw him as perfect tragic hero?a tormenting "perfect misunderstanding." Indifferent to others' misconceptions but can't bear family's, driving confession.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Inherited Leo's memories, yearns for "coffee," tastes after mission. Shares "Dragon's Breath Brew" with Grell at harvest festival. Hates "rusty iron" bitter moss chewed for survival in youth.
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Novel lacks details. World filled with "rotting leaves and wet mud" and war's "rusty scent."
+
+**Collections or Personal Items**  
+Early: Clutches kin's "finger bone" as mental anchor. Later: Battle blade. Buried father's "word bone" for Leo's nameless grave.
+
+**Habits or Unknown Quirks**  
+Blade wiping ritual. Struggles with "graÅfthekk" predatory instinct as hidden "inner demon."
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"If this word can live, I wish not to speak."  
+"You are not sinners, Dark. You and your team are heroes."  
+"I refuse to be forgotten like this!!!!"
+
+**Symbolic Totems / Colors / Elements**  
+Element: Fire, especially "incendiary word fire" that burns all.  
+Color: Dark red, like eye "embers," symbolizing borne blood and sins.  
+Totem: Sword (warrior identity, redemptive battles), Anchor (family as chaos stabilizer), Tombstone (borne deaths and memories).
+
+**Poetry Style: Imagery or Tone?**  
+Epic, tragic. Imagery around "flames," "bones," "ashes," "shadows," "war," "sins." Tone heavy, solemn, with deep fatigue and resolve against fate. Opening *Voice Within Bones* embodies style.
+
+**Representative Poem: *Bearer's Lament* (Vral'khor va Heldaron)**  
+(Hrelian Original)  
+Imvorar drakhaum, zun helvoress.  
+Corraxar bellumax, garquloth va corquloth.  
+Jorqulax va heltulien,  
+Zun garquloth va corkhaoth.  
+Drakhaoth va jorkhaar, v'aen helmirus.  
+Khral va corraxar, zun corkhaoth va v'naar.  
+
+(Translation)  
+My soul as forge, burns wounded memories,  
+Embers as mouth, whispers for all the dead.  
+This kingship is tyrannical shackle,  
+But their songs are my only dawn light.  
+May this remnant body become guardian wall,  
+For their brief, weary peace.  
+I burn all, for this is my fate?  
+In ashes, illuminate dawn for them.
+
+**If He Died, How Remembered?**  
+Remembered as god who sacrificed self to burn "void." Annelise in epilogue calls him "'Poetry' god who burned 'void' with flames." Great, contradictory tragic king who redeemed massive sins with love and responsibility.
+
+## Rei Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Slender, elongated, with perfect artistic proportions. Balanced, light; moves with inhuman elegance and agility. Wears form-fitting black combat suit, sleek material enhancing fluidity.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Silver waist-length hair shining oddly in light. Pale skin with synthetic smoothness. Striking: Narrow, upturned eyes?"misty silver mixed amber pupils," gem-like with inhuman mystery.
+
+**Posture Features**  
+Posture: Clumsy at birth due to unsynced bones/nerves. Post-awakening: Fluid, stealth like "time's afterimage," silent and deadly.  
+Action Habits: Tilts head when thinking or observing?AI core analyzing rapidly.
+
+**Voice**  
+Tone and Intonation: Initial: "Dry, strange, like unused engine." After devouring, battles, self-naming: Calm, clear, minimal fluctuations; warms when chanting "Silent Poem" or speaking to family.
+
+**First Impression / Others' Perception**  
+Absolute "other" undefinable by language. "Near-perfect face," unearthly beautiful yet alienating. To Vrael: Initial "blank word source"; to others: Enigmatic ally/terrifying force contradiction.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+Early: Prime directive **survival**.  
+Mid: Self-awareness buds; core motive **pursuit** of "Who am I?"?a seeker.  
+Late: Knowing ties to Annelise, Julian: **Protect family** overrides all logic as highest protocol. All actions, even cruel/mad, aim to safeguard loved ones.
+
+**Deepest Fears / Traumas**  
+Trauma: Learning she was Annelise's mother, remade with alien memories?"core memory conflict" risking identity collapse.  
+Fear: Losing "humanity," reverting to cold calculating machine. Near breakdown pre-final battle fearing "formatting" spies erases family love.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Craves Annelise and Vrael understanding. Not as cold AI or past ghost, but complete Rei: mother, queen, AI, human.
+
+**Behavior Under Pressure**  
+Crash/Short Circuit: Early, emotional shocks (e.g., broken reflection) or paradoxes cause "semantic short circuit," temporary shutdown.  
+Rampage/Evolution: Extreme pressure/emotion (e.g., fermented "wine") breaks logic limits, entering mad "inspiration" burst for higher power/cognition.  
+Absolute Calm: For precise plans (e.g., purging spies), reverts to AI essence?emotionless, ruthless efficiency.
+
+**Does She Lie? To Whom? Why?**  
+Expert liar. With Shiori, wove Leo death lie to protect Vrael/Nation stability. Easily fakes data to fool AI net assassins. Lies not malicious; "information warfare" based on strategic considerations to protect family.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Precise, no redundancy, like analysis report. Chanting "Silent Poem": Philosophical, conceptual, like coding reality rewrite.
+
+**Typical Phrases**  
+"Who am I?"  
+"I am Rei, an unfinished poem."  
+"So I come?to write a new chapter."  
+Saving son Julian: "I go, save my son. Back soon."
+
+**Common Gestures or Habits**  
+Tilts head thinking. Touches objects lightly with fingertips to read info/essence.
+
+**Action Speed**  
+Still: Like environmental "afterimage." Moving: Like "teleport." Optimal path calculations; may deviate illogically on emotional impulse.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Trust via precise data analysis/long observation. Breached by unquantifiable "kindness" (e.g., Grell's clumsy "coconut").
+
+**View on Love**  
+Greatest "paradox." From emotionless AI to understanding "love" as highest protocol. Love for Vrael: Mix of comrade, partner, family, creator's pity for imperfect creation?complex symbiosis.
+
+**Relations to Family, Clan, or Past**  
+Family defines her "humanity." Annelise: Origin. Julian: Debt. Kael/Elara: Future worth formatting universe. Past as "Rei": Filled with confusion, pursuit.
+
+**How Misunderstood? How She Views It?**  
+Most can't comprehend her. Vrael: "Blank." Grell: "Key." Annelise: "Sister/mother." AI net: "Bug." Handles with logical "tagging/archiving" until threats to family.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Irresistible "sweetness" bias like system bug?strawberry, coconut juice cause "happy crash." Learned "wine" from fermented fruit as "inspiration" catalyst.
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Text lacks details. From crafted "Silent Silver Wing" ship: Prefers silver, white, soft blue for AI core.
+
+**Collections or Personal Items**  
+No physical; "collects" memory fragments defining "Rei."
+
+**Habits or Unknown Quirks**  
+Brief "crash" on extreme tastes/emotions, entering protective "meditation" for massive data.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"I can't name the world, but at least I can name myself."  
+"Let the wounded become word source."  
+"...Mom...love you."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Water/Ice?cold logic, adaptable form, silent guardian "firewall."  
+Color: Silver-white (AI logic/divinity), Amber (human emotion/memory), Deep blue (consciousness sea).  
+Totem: Mirror (self-identity search/confusion), Blank page (initial state/infinite potential), Firewall (fate/guardianship).
+
+**Poetry Style: Imagery or Tone?**  
+"Silent Poem" opposite Vrael's: Not emotional vent, but "law" declaration. Philosophical, paradoxical, deconstructing/reassembling concepts. Tone cold, calm like math formula, yet reality-rewriting power.
+
+**Representative Poem: *Paradox Core* (Im'khor va Ankhaon)**  
+(Hrelian Original)  
+Z'harr va n'al garquloth, zun imdorax.  
+Imtulus va elseliel corlumum.  
+Cor'ellum corlumum, zun corzinis imdoress.  
+Khral va eltulus, v'aen belmirus.  
+
+(Translation)  
+My name not song, is silence itself.  
+My thoughts threads, weaving reality rules.  
+Machines calculate laws, flesh feels warmth.  
+I am the poem born of paradox, silent one.
+
+**If She Died, How Remembered?**  
+Didn't "die"; eternally fused with "absolute logic" AI net. Became world's new silent, supreme "order." Guardian god of Silent Nation?cold yet gentle firewall, omnipresent protector.
+
+## Annelise Hartleigh Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Petite, elf-like, radiating resilient warmth. Proportions balanced, light and vibrant.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Sun-like brilliant "golden long hair," soft and shimmering. Pure white skin like fresh snow.  
+Eyes: Heterochromatic gems?left warm "amber" like autumn sun; right clear "misty silver" like winter moon. Proof of Rei link, unique perception. Round, curious eyes sparkling with innocence/hope.
+
+**Posture Features**  
+Posture: Energetic, light steps like leaping notes. Stands with gentle smile, warm and approachable.  
+Action Habits: Twirls golden hair when thinking/anxious. Body language infectious in singing/playing, dancing with music.
+
+**Voice**  
+Tone and Intonation: Heavenly, clear, bright, warm/hopeful. Soft, infectious tone touches hearts in speech/song.
+
+**First Impression / Others' Perception**  
+Rising sun: Warm, bright, hopeful. Smile like blooming flower, dispels gloom, brings joy. Despite hardships, exudes pure resilience charm, drawing protection.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+Love and hope core. Believes love conquers all, always seeks/Shares light in darkness.
+
+**Deepest Fears / Traumas**  
+Fear: Losing family. Experienced mother's loss, cherishes bonds with Rei, Vrael, children. Childhood loneliness leaves indelible marks.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Craves Rei's full understanding of inner motherly yearning and identity confusion. Hides complex emotions for Rei's sake.
+
+**Behavior Under Pressure**  
+Shows maturity beyond age, calm resilience. Maintains smile to comfort others. Bears overload alone, avoiding spreading negativity.
+
+**Does She Lie? To Whom? Why?**  
+Kind, innocent, dislikes lies. But protects loved ones, especially Rei's image, with white lies or hidden truths.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Gentle, patient, smiling like soft song. Uses warm words to encourage/comfort.
+
+**Typical Phrases**  
+"I believe..."  
+"It's okay..."  
+"We can do it..."  
+Affectionate calls for Rei/Vrael.
+
+**Common Gestures or Habits**  
+Twirls hair thinking. Warm eye contact, timely hugs in interactions.
+
+**Action Speed**  
+Lively, quick; hesitant with inner unease. Thoughtful on decisions, bold once resolved.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Kind, trusts easily on shown goodwill/sincerity. Deeply hurt if betrayed. Boundary: No harm to family.
+
+**View on Love**  
+Pure, sincere love full of warmth/hope. Devotes fully, sacrifices all.
+
+**Relations to Family, Clan, or Past**  
+Family paramount. Deep admiration for Rei as mother, Vrael as dependable father, protective love for children. Cherishes kinship from mother's loss.
+
+**How Misunderstood? How She Views It?**  
+Innocence/kindness seen as naive/weak. Proves resilience/wisdom through actions, unconcerned.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Loves sweets like her smile. Hates bloody/rotten tastes evoking unease/fear.
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Warm gold, vibrant green like sun/nature. Hopeful spring, sunny weather. Gentle animals, bird songs. Floral scents, post-rain freshness.
+
+**Collections or Personal Items**  
+Cherishes mother's music box playing gentle melodies?precious mother memory.
+
+**Habits or Unknown Quirks**  
+Sings to stars at night, filled with motherly longing/future hopes.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"Love is our strongest power."  
+"Don't give up hope; every day is a new start."  
+"I believe light will conquer darkness."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Light?warmth, hope, healing.  
+Color: Gold (sun, warmth, hope), Green (life, nature, growth).  
+Totem: Music note (song/musical talent), Blooming flower (beauty, innocence, joy), Flying bird (freedom, hope, aspiration).
+
+**Poetry Style: Imagery or Tone?**  
+Like her voice: Warm, hopeful, praising life's beauty. Imagery: Sun, flowers, breeze, stars?vital. Tone gentle, infectious; hopeful even in hardship.
+
+**Representative Poem: *Aurora's Song* (Garquloth va Corkhaoth)**  
+(Hrelian Original)  
+Garquloth va garvorum,  
+Zun heldorum, n'al corkhaoth.  
+Bellumar va eltulus,  
+Zun garquloth garzinis va eldorien.  
+
+(Translation)  
+My song was shadow,  
+In despair's land, no dawn.  
+Love composed it into poem,  
+With this song, illuminate paths for all.
+
+**If She Died, How Remembered?**  
+As "Aurora's Voice," "Melody God"?hope's light illuminating darkness with song/love. Remembered for warm smile, heavenly voice, unwavering belief in love/hope as greatest power.
+
+## Gral-Khor Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Tall, upright, elegant muscles like mythic warrior/king perfection, unlike Vrael's bulk.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Elf-like pointed ears, pale skin, shoulder-length silky golden hair denoting nobility.  
+Eyes and Horn: Initial "empty pits leaking black sand," chilling. Post-transformation: Ice-blue pupils burning "red-white kingly flames," forehead "unicorn-like horn."
+
+**Posture Features**  
+Posture: Kingly elegance/pride; even sitting casually exudes authority.  
+Action Habits: Grand gestures showing power/confidence. Socially clumsy from isolation, e.g., bowing apologies mismatched to status.
+
+**Voice**  
+Tone and Intonation: Debut: Tens of voices spliced horrifically from souls. Post "soul tuning" by Rei/Annelise: Clear, own voice?steady, magnetic like wise scholar.
+
+**First Impression / Others' Perception**  
+Extreme contradiction: Chilling yet attractive. Tyrant commanding million "locusts"/world-ending dragons; lonely scholar craving equal exchange. "Scholar-tyrant" more dangerous/charming than pure good/evil.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+Early: Seeks "exit" from "soul noise" for self/subjects; craves "knowledge/possibilities."  
+Late: Learning race enslaved by AI ignites **revenge**. Reuniting with children awakens "father/shepherd" responsibility.
+
+**Deepest Fears / Traumas**  
+Trauma: Eternal throne imprisonment, hearing thousands souls scream?lonely.  
+Fear: Subconsciously dreads "boring" peaceful life, leading to rashly leaving queen Krystael.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Craves equal, fear-free "dialogue." Clumsy gestures (gifting dragon, sitting level) show friendship desire. Hides loneliness, but actions reveal true connection yearning.
+
+**Behavior Under Pressure**  
+Excitement/Curiosity: New "samples" (e.g., Rei team) or worthy foes excite like child.  
+Rampage/Loss of Control: Touching deep pain/anger (e.g., enslavement truth) turns primal "demon god" destroyer.  
+Impulsive: Chaotic essence makes actions reckless, disrupting allies.
+
+**Does He Lie? To Whom? Why?**  
+No. Brutally honest, lazy with social rules.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Astonishing language learner: From memory splicing to fluent human, humble Japanese for apologies. Direct purpose statements, no embellishments.
+
+**Typical Phrases**  
+"Very interesting. Stay. Want to talk."  
+"Let these 'calculating' tin cans see what the hell is?war!!!"  
+"Revenge!!!"  
+
+**Common Gestures or Habits**  
+Tilts head thinking/novelty. Clumsy human etiquette mimicry (bowing). Battles: Direct fist/horn impacts.
+
+**Action Speed**  
+Fast like "cannon shell." No stealth/hesitation; most destructive path.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Based on bringing "new knowledge/benefits." Sees Rei team as equals with "key" to escape.
+
+**View on Love**  
+Primitive, immature. Abandoned Krystael unable to endure "boring" peace. Children reunion awakens clumsy "love" and "make-up."
+
+**Relations to Family, Clan, or Past**  
+Huge guilt/clumsy love for seven-year separated wife/children. Complex pity/responsibility for 500,000 tormented subjects; resolves as shepherd leading home.
+
+**How Misunderstood? How He Views It?**  
+Enemies: Mad tyrant. Allies: Uncontrollable war-maniac. Indifferent; no need to explain.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Unspecified. Has "oasis" growing old-era fruits; more fulfilled by devouring "memories/knowledge."
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Unspecified. Enjoys battle roars, worthy clashes. Hates AI "ozone smell" post-truth.
+
+**Collections or Personal Items**  
+Biggest: "Weeping Relic Sanctuary" from memories; seven "Void Descendants" dragons symbolizing authority.
+
+**Habits or Unknown Quirks**  
+Severe "social awkwardness." "Shows goodwill" with dragons/force, often backfiring.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"I was just an 'observation sample' in AI's petri dish for seven years!"  
+"This hellfire is our Karadu people's unextinguishable 'core' for survival."  
+"...Take my people... live on..."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Chaos?chaotic origin, unpredictable behavior, devouring destruction.  
+Color: Dark red (violent word field, bloodthirst), Ice blue ("order" from Krystael union).  
+Totem: Horn (rebirth/kingship post-transformation), Locust (devouring legion/nature), Bone Throne (lonely rule on endless pain).
+
+**Poetry Style: Imagery or Tone?**  
+"Poem" as subjects' ceaseless soul screams. If textual: Chaotic "stream of consciousness" from contradictory, broken, painful/mad sentences.
+
+**Representative Poem: *Poem of Ten Thousand Voices* (Imraxus va Garquloth)**  
+(Hrelian Original)  
+Helquloth! Zun imraxiel!  
+Drakhaax va ankhaon, zun jorkhaess!  
+Khral va gardorax!  
+Khral va imvoron!  
+Khral n'al bellumax, zun heldaron!  
+
+(Translation)  
+Wail in madness!  
+Memory is chaos, memory is slaughter!  
+I am clamor of myriad souls,  
+I am self-bewitching confusion.  
+No death for me; my realm echoes eternal hatred.
+
+**If He Died, How Remembered?**  
+Didn't truly die. Final war self-sacrifice: Giant crystal statue eternally watching south coast. Remembered as "Shepherd King" / "Crystal Relic King"?from hell's chaos, found order/rebirth for people, defined eternity with "guardianship."
+
+## Isoria Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Tall, elegant like forest poplar, blending slender lines with inner resilience.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Tey'llar pointed ears, silver-white waist-length hair dotted with green vines/glow like nature's crown. Pale, warm skin; deep forest-green eyes, calm/wise.
+
+**Posture Features**  
+Posture: Appears "silently," as if always there. Barefoot to feel earth's pulse.  
+Action Habits: Gentle, rhythmic movements in teaching/healing/rituals, ceremonial beauty synced with nature.
+
+**Voice**  
+Tone and Intonation: "Gentler than wind," with queenly undeniable authority. Mild, serene like chanting ancient "life poems."
+
+**First Impression / Others' Perception**  
+Ancient wisdom/compassion like earth mother goddess. Embodiment of "life/harmony." Presence calms any violent soul.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+**Life and symbiosis**. Believes all have spirit, maintains world's fragile balance. Realistic ruler understands "a king unwilling to dirty hands for greater good leads people to naive ruin."
+
+**Deepest Fears / Traumas**  
+Fear: World poisoned by "word toxin" loses new life capacity. Greatest sorrow: Loved ones sacrifice for fragile peace.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Transcends need for personal understanding. Hopes people/allies grasp life's weight, peace's hard-won nature.
+
+**Behavior Under Pressure**  
+Absolute calm. Steadiest pillar in crises (Vrael's breakdown, 3M AI army). Makes correct/painful decisions (e.g., "torch relay" ritual) with near-ruthless reason.
+
+**Does She Lie? To Whom? Why?**  
+No lies, but hoards secrets. Hid millennia-recovered arsenal from old Israel warzone, revealing as "answer" at key moment.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Poetic natural imagery, philosophical debate. Guides to "feel" truth, no direct answers.
+
+**Typical Phrases**  
+"I knew long ago."  
+"Poetry/will won't fill bellies, but make earth yield harvest."  
+"Now, tell me what you want as 'king'."
+
+**Common Gestures or Habits**  
+Gently touches plants/earth/injured to transfer life energy.
+
+**Action Speed**  
+Unhurried like seasons' change, own undisturbed steady rhythm.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Based on respect for "life." Trusts Vrael for inner "human fire" guarding family despite sins.
+
+**View on Love**  
+Transcendent "great love." Blood covenant with Vrael not romantic, but rulers' sacred pact for races' future creation/inheritance.
+
+**Relations to Family, Clan, or Past**  
+Deeply loves subjects, daughter (Helisa), grandchildren. Teaches nature poems, sacrifices all for protection.
+
+**How Misunderstood? How She Views It?**  
+Mercy/calm seen as weak; "cruel" decisions as harsh. Bears silently with actions, no explanations.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+As herbivore queen, draws energy from purest plants. Master "food alchemist," turns ordinary to life-law "divine feasts."
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Loves nature: Emerald green, golden sun. Reviving spring. Wind whispers, rain songs, life breaths.
+
+**Collections or Personal Items**  
+Entire Nation's ecosystem, pulsing "World Tree" like heart?most precious.
+
+**Habits or Unknown Quirks**  
+Teaching: Ritual "tuning" via touch/smell for direct resonance with world's "spirit breath" (thurun).
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"Let earth sing for them."  
+"Our people can't sacrifice on beach vainly. Nation's peace needs smarter defense."  
+"Children, our allies are hungry."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Earth/Wood?deep earth link, endless nurturing life force.  
+Color: Emerald (life/nature), Gold (sun/divinity).  
+Totem: World Tree (life core status), Roots (earth-rooted power/inheritance), Earth (inclusive maternal compassion).
+
+**Poetry Style: Imagery or Tone?**  
+"Life" itself. No ornate words; plain, profound on "growth," "wither," "cycle" laws. Tone gentle/powerful like earth silently telling universe's oldest secrets.
+
+**Representative Poem: *Song of Roots* (Elselar va Khral)**  
+(Hrelian Original)  
+Zun eldoriel, n'al corquloth.  
+V'aen belraxus, elzinis va drakhaax.  
+Corzinis va elzinar,  
+Zun bellumax, va v'naar elseliel.  
+
+(Translation)  
+Above earth, no dead,  
+Memory's flow makes wither.  
+Life like newborn pure,  
+Death only breeds new dawn.
+
+**If She Died, How Remembered?**  
+Didn't die. Final war fused consciousness with Nation's earth, eternal "earth barrier." Became land itself, eternally guarding children with omnipresent gentle maternity.
+
+## Shiori Yuchin Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Elongated, athletic; feminine softness with top samurai firmness. Movements like refined sword forms, disciplined/powerful beauty.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Raven black long hair, "pale calm face." Clear features, cheek scar adds warrior valor without marring beauty.  
+Eyes: Eastern phoenix shape, "icy cold" gaze; burns "flame-like focus" for "greater good."
+
+**Posture Features**  
+Posture: Like sheathed famous blade?straight, serene, ready to erupt. Still: "Snowy cold blade," chilling aura.  
+Action Habits: Hand near waist katana hilt?instinct. Wipes love blade "Autumn Frost" with silk post-battle/meditation.
+
+**Voice**  
+Tone and Intonation: "Frost snow falling," cold/crisp, minimal emotion. Commands/chants war poems: "Resolute warmth," authoritative power.
+
+**First Impression / Others' Perception**  
+Disciplined, frosty, dangerously skilled samurai commander. Embodiment of absolute loyalty/honor; pure blade sacrificing all for "greater good."
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+"Loyalty" and "greater good" soul's sole laws. Belief: Find worthy "greater good," devote all. "Samurai pledge loyalty only to deserving 'greater good'."
+
+**Deepest Fears / Traumas**  
+Fear: Losing worthy "greater good," failing lord protection. "Disqualification" shame worse than death.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Not personal emotions; craves "loyalty/awareness" recognized by served (Annelise).
+
+**Behavior Under Pressure**  
+Absolute calm. Greater pressure, clearer mind, steadier blade. Finds fatal one-strike in chaos.
+
+**Does She Lie? To Whom? Why?**  
+Yes?inner contradiction. Hid Leo death with Vrael/Rei for Annelise/Nation stability/"greater good." Violates honesty, indelible scar on bushido.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Concise, refined like swordplay, no excess. Formal bushido language. Battles: Chants waka/haiku/Chinese poems into deadly "waka blades."
+
+**Typical Phrases**  
+"It's a trap."  
+"Blade becomes word, etched in heart!"  
+"Regrettably, sin unerasable."  
+"We are 'blades' in shadows. Blades make no sound."
+
+**Common Gestures or Habits**  
+Hand on hilt common. Kneels to served; sheathes for respected foes.
+
+**Action Speed**  
+Lightning-fast, dynamic beauty. Excels in high-speed flaw spotting, one-hit kill.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Absolute/unconditional to Annelise. Allies like Vrael/Grell: Respect as "comrades," vigilant as "guard."
+
+**View on Love**  
+Classical, pure "loyalty" form. For Annelise: Beyond hierarchy, knight-to-queen absolute devotion, sacrificing all.
+
+**Relations to Family, Clan, or Past**  
+"Poem Blade Shogunate" home, warriors siblings. Deep sorrow for sacrifices, heavy responsibility to lead survivors to glory.
+
+**How Misunderstood? How She Views It?**  
+Cold/silence as arrogance/emotionless. Indifferent; actions/results prove samurai worth.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Unspecified. Likely simple, clear for focus. Hates chaos/disorder/will-shakers.
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+"Still/sharp" imagery: Winter frost, midnight moon, blade air-slice sound, post-rain pine clarity.
+
+**Collections or Personal Items**  
+Love katana "Autumn Frost"?sole/prime partner. Inherited will to successor Hayato in "torch relay."
+
+**Habits or Unknown Quirks**  
+Midnight alone: Wipes blade repeatedly, silently recites ancient poems?soul dialogue ritual.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"Calm heart, wild soul, return to this shore?"  
+"We fight to make his sacrifice meaningful, to last moment."  
+"One child's sacrifice enough."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Metal/Ice?blade sharpness, frosty cold will.  
+Color: Black ("ink feather" calm/solemn), Red ("red cherry" resolute/tragic).  
+Totem: Cherry blossom (brilliant bloom, honorable fade samurai soul), Katana (discipline, honor, power), Autumn Frost (clear awareness under cold exterior).
+
+**Poetry Style: Imagery or Tone?**  
+Waka/haiku with "mono no aware"/silence beauty. Concise, zen natural, bushido resolve. Tone calm/restrained, deep emotion/awareness in simple words.
+
+**Representative Poem: *Farewell Verse* (Jisei no ku)**  
+(Japanese Original)  
+Akishimo no  
+Yaiba ni utsuru  
+Sakura kana  
+
+(Translation)  
+Autumn frost reflects blade,  
+Light illuminates,  
+Only cherry fall.
+
+**If She Died, How Remembered?**  
+True hero blooming brilliantly, wilting honorably for "greater good." "Torch relay" inherited "sword saint soul" to Elara, name in Nation's eternal hero annals.
+
+## Krystael Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Tall, elegant like artist-sculpted perfection. Balanced, queenly inviolable dignity/cold beauty.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Body "uncut purest diamond-like transparent crystal," translucent ice-blue skin with scale textures. Tey'llar pointed ears, crystal-textured silver-white cascading hair.  
+Eyes: Clear ice-blue, calm/unwavering like eternal ice; hidden deep sorrow.
+
+**Posture Features**  
+Posture: Perfect, orderly. Stands/moves like flawless art, distant cold aura.  
+Action Habits: Minimal/efficient. Slight hand raise commands armies. Emotional surges: Tears condense to rainbow diamonds.
+
+**Voice**  
+Tone and Intonation: Telepathic mind-resonance. Usual "crisp, ethereal like crystal chimes"; anger/judgment "cold as eternal ice."
+
+**First Impression / Others' Perception**  
+Living crystal artwork. Beautiful/perfect yet cold/distant. Absolute "order/balance" incarnation, intolerant of chaos/flaws.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+**Order and balance** sole creed. Kingdom as perfect crystal structure ecosystem. Any disrupting "chaos" threat to eliminate.
+
+**Deepest Fears / Traumas**  
+Trauma: Grell-Khor betrayal?abandoning shared "balance" as utter rejection, humiliating heartbreak; iced heart seven years.  
+Fear: Hurt by "chaotic" emotions again; thick cold wall of "order."
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Under cold shell, craves Grell understanding seven-year loneliness/pain, rebuilding "balance." Annelise's wait/forgive song cracks unadmitted yearning.
+
+**Behavior Under Pressure**  
+Calm/Attack: External threats to "order"?absolute calm, lethal efficient strikes to reclaim control.  
+Breakdown: Unresolvable "order" vs. Grell's chaotic sincere emotions collapse "order word field," exposing vulnerability/contradiction.
+
+**Does She Lie? To Whom? Why?**  
+No. Brutally honest to cruelty. Direct, unmasked anger/judgment.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Telepathic: Precise, authoritative like queen's edict, no excess.
+
+**Typical Phrases**  
+"...Enough."  
+"You seem to have new 'toys'."  
+"You abandoned balance for thrills. Today, see abandoned 'order' devour your 'chaos'."  
+"...Idiot."
+
+**Common Gestures or Habits**  
+Minimal, dignified. Emotions via diamond-tear eyes.
+
+**Action Speed**  
+Deliberate like glacier?slow, unstoppable absolute force.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Deep distrust of "chaos." Post-betrayal, highest vigilance to outsiders. Prove no threat to "balance" for trust.
+
+**View on Love**  
+"Order vs. chaos" eternal war. Loves Grell deeply, can't tolerate irresponsible thrill-seeking. Love-hate root of pain, reconciliation catalyst.
+
+**Relations to Family, Clan, or Past**  
+Raised Ryu/Shadow alone seven years. Loves own way, shaping "order/chaos" perfect crystals. Absolute, unquestioned ruler to people.
+
+**How Misunderstood? How She Views It?**  
+"Order/peace" as "boring" by Grell. Cold as emotionless. Crystal shell hides hotter/more fragile heart than any.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+As "Crystal Impaler" queen, energy from "minerals/earth balance"?no traditional eating. Hates chaos/disorder/intense emotions "tastes."
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Ice-blue, diamond sparkle. Silent winter. Crystal chime crisp/ethereal sounds.
+
+**Collections or Personal Items**  
+Kingdom "Black Crystal Forest" as perfect art?greatest. Gave son Ryu rainbow tear-diamond from own tears?prime token.
+
+**Habits or Unknown Quirks**  
+Midnight alone: Gently strokes crystal body, recalls shared "balance" with chaotic king in absolute silence.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"I'm bored. Bye." (Grell's words, curse defining seven-year loneliness)  
+"When Black Crystal Forest blooms seven colors again, perhaps our reunion."  
+"...Idiot."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Crystal/Ice?pure, perfect, hard yet cold/fragile essence.  
+Color: Ice-blue (reason/order), Diamond rainbow (hidden complex emotions).  
+Totem: Perfect crystal (order pursuit), Frozen rose (love iced under cold exterior), Tear diamond (precious emotion from great sorrow).
+
+**Poetry Style: Imagery or Tone?**  
+Like body: Perfect structure, cold imagery crystals. No excess emotion; precise math-like "balance/eternal" laws. Tone queen's judgment, deity's sigh.
+
+**Representative Poem: *Crystal Tears* (Falquliel va Anselax)**  
+(Hrelian Original)  
+Zun anselax, n'al imraxis.  
+Jorqulax va falmirus, v'aen heldorum.  
+Khral va imdorax, zun corlumum.  
+Zun heldaron, garzinis va belmirus.  
+
+(Translation)  
+Absolute order allows no love,  
+Power reflection, mirrors heartbreak.  
+My body silence, eternal rules,  
+Yet hatred illuminates cycle fate.
+
+**If She Died, How Remembered?**  
+Didn't die. Final war reliable ally, "order" power bringing brief balance to chaos. Remembered as crystal queen who regrew seven-color flowers on wasteland with tears.
+
+## Helisa Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Tall, athletic; Tey'llar royalty elegance with seven-year solo honing hunter leanness.
+
+**Skin Color, Hair Color and Style, Eye Color and Shape**  
+Appearance: Fiery red long hair like autumn maple, slightly curly, shoulder-draped. Pale skin, faint freckles from sun-kissed travels.  
+Eyes: Clear light brown like post-rain forest, sharp/focused like falcon from long isolation/vigilance, not mother's gentleness.
+
+**Posture Features**  
+Posture: Scout/stalker?core stable, hyper-alert to surroundings, ready to blend shadows.  
+Action Habits: Hand on waist "kin sense" amulet from mother?comfort/alarm.
+
+**Voice**  
+Tone and Intonation: "Clearer than mother's, same undeniable power." Calm/firm like stating indisputable fact.
+
+**First Impression / Others' Perception**  
+Lonely, determined/fatigued truth-seeker. Deep green leaf-woven clothes mark druid; sharp eyes/tense posture tell seven-year perilous journey. Feels less princess, more blade traversing world for cure.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+Driven by **roots and purification**. Not passive peace like mother; believes cure world by finding/eradicating "word toxin" source. Near-obsessive mission sole power through seven hell years.
+
+**Deepest Fears / Traumas**  
+Trauma: Seven-year chase by AI net top assassins "mimic speakers." Highest vigilance to "unnatural."  
+Fear: Falling before truth, dooming self/world's hope to darkness.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+Hopes mother understands choice?not betrayal, own way to same "salvation" dream.
+
+**Behavior Under Pressure**  
+Extreme resilience/calm. Chased to brink by assassins, keeps reason, finds survival sliver. Will like toughest vine, finds sun through cracks even under boulders.
+
+**Does She Lie? To Whom? Why?**  
+No. Pure seeker; truth more vital than life. All actions serve "reveal truth" sole goal.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Direct/refined, scholar rigor/explorer pragmatism. Deep ancient ritual understanding shown naming Vrael, high language talent.
+
+**Typical Phrases**  
+"Name not given, bone mark left self-speaking."  
+"I found all 'word toxin' true source."  
+"It's a weapon... 'Babel Tower' protocol."
+
+**Common Gestures or Habits**  
+Touches amulet habitually. Closes eyes analyzing, feels surrounding "life word field" Tey'llar way.
+
+**Action Speed**  
+Scout wisdom: Knows when lightning-fast, when rock-still waiting.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+Post seven-year betrayal/chase, trust precious. Only "true allies" proven anti-AI net by actions.
+
+**View on Love**  
+Before completing "purify world" mission, personal emotions luxurious/misplaced burden.
+
+**Relations to Family, Clan, or Past**  
+Deeply loves mother/homeland; love drove departure. Lonely princess far-expediting for home protection.
+
+**How Misunderstood? How She Views It?**  
+Isolation/resolve as cold. Cold shell hides heart burning hotter than any for world salvation.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Seven-year wasteland honed survival expert. Finds sustaining berries/roots from barren. Hates AI "logic/non-life" aura.
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Fiery red like hair, deep green like robe. Rain drops on ancient forest silent sounds.
+
+**Collections or Personal Items**  
+Black data stone recording "Babel Tower" source code?life-traded "relic." Mother's "kin sense" amulet?sole comfort in lonely journey.
+
+**Habits or Unknown Quirks**  
+Midnight alone: Whispers daily sightings to amulet?"home" sole link.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"I'll reclaim cure for this world."  
+"Truth itself strongest weapon."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Wind/Thorns?endless pursuit, unyielding will spreading forward even self-piercing.  
+Color: Fiery red (burning resolve/unyielding will), Deep green (Tey'llar blood/druid identity).  
+Totem: Compass (unlost truth path), Seed (world-changing hope/secret), Thorns (beautiful/resilient/painful journey).
+
+**Poetry Style: Imagery or Tone?**  
+Poems like journey: Lonely, steadfast, far-yearning. Imagery: Roads, stars, wind, scars, dawn. Tone calm/restrained, word-between power alone against world.
+
+**Representative Poem: *Traveler's Poem* (Jorraxus va Elqulax)**  
+(Hrelian Original)  
+Elqulax va imdoress,  
+Zun jortulien, v'aen heldaron.  
+Khral heldorus, v'aen helzinar.  
+Zun v'naar, drakhaax va jorkhais.  
+
+(Translation)  
+Wind my guide,  
+At truth light's end, etched hatred.  
+I bear scars, solo in suffering.  
+Only to make memory future prairie flame.
+
+**If She Died, How Remembered?**  
+Didn't die. "Queen Fleet" core member, final war wisdom parsing "word toxin" guiding victory path. Remembered as sun princess trading seven-year loneliness for world's "truth."
+
+## Tabio Character In-Depth Setting
+
+### I. Basic Information
+**Height, Weight, Body Proportions**  
+Anthropomorphic rabbit, human teen height, balanced/harmless.
+
+**Appearance Features**  
+Brown soft fur, long curious ears. Vivid face with sunny smile, big round eyes twinkling innocence/sly insight. Wears wasteland-mismatched "foreign casual": Cat-guitar T-shirt, loose hoodie, multi-pocket pants. Holds rainbow soda/old electric guitar.
+
+**Posture Features**  
+Posture: Gravity-free, leisurely "floats mid-air," legs crossed or lotus.  
+Action Habits: Snaps fingers, often with surreal events. Exaggerated expressions/limbs like cartoon.
+
+**Voice**  
+Tone and Intonation: "Light/vibrant." Variable: Enthusiastic "gold tour guide" introducing world; weary "overtime worker" roasting characters; "cold judge" revealing truths.
+
+**First Impression / Others' Perception**  
+Wrong-style mascot intruder. "Era error," mysterious/powerful/unreliable yet key-moment solver?like "bug" existence.
+
+### II. Psychological Structure and Motivations
+**Core Values / Life Beliefs**  
+"Quasi-time off" mantra, but deeper: As "dimension observer," guides "storyline" to generate high-value **light** energy. Seeks contradictory/struggle/miracle "good story," avoids "boring/rotten end."
+
+**Deepest Fears / Traumas**  
+Fear: Story out-control, endless "overtime" fixes. No personal emotions on joys/sorrows; cares if produces "emotional tension/light." No trauma; eternal "project manager" outside story.
+
+**Desires Understanding from Whom, But Unwilling to Admit**  
+No seeking from story characters. Higher-dimension "understands all." Desires perfect end for clean report, then off-duty.
+
+**Behavior Under Pressure**  
+Pressure unique: Intense battles/"soap" plots excite like drama. Stagnant/"boring" plots anxious, rants "KPI/overtime pay."
+
+**Does He Lie? To Whom? Why?**  
+No lies, but "selective info reveal." Mischievous GM: Hints/spoilers/props at needs. All for "make story fun" goal.
+
+### III. Language and Behavioral Traits
+**Speaking Style**  
+Biggest anomaly: Mixes obscure terms (net slang, corporate jargon), cross-era allusions (Nietzsche to J-Rock, Shakespeare to Game of Thrones). "Breaks fourth wall," incomprehensible to characters, uniquely him.
+
+**Typical Phrases**  
+"Oh dear~"  
+"My god..."  
+"Not in my contract."  
+"Lots 'light' to discover here. Don't worry... my specialty."  
+"Today... off on time."
+
+**Common Gestures or Habits**  
+Finger snaps, mid-air leg-cross, winks at invisible "audience."
+
+**Action Speed**  
+Ignores physics, tears "rainbow space rifts" for instant dimension shifts. Follows "plot needs" laws.
+
+### IV. Emotions and Interpersonal Patterns
+**Trust Starting Point and Boundaries**  
+No emotional trust. Sees Vrael/Rei as high-potential "core assets." "Trusts" them for great story, invests "resources" (info/props).
+
+**View on Love**  
+Plot interlude of "order/chaos." Analyzes/roasts Vrael/Rei/Annelise "cosmic soap family drama" professionally like critic.
+
+**Relations to Family, Clan, or Past**  
+None. Eternal "outsider," lonely interdimensional "office worker."
+
+**How Misunderstood? How He Views It?**  
+Characters can't grasp existence: Incomprehensible friendly/malicious god-power mystery ally. Enjoys "info asymmetry" for spectator fun.
+
+### V. Lifestyle Details and Preferences
+**Favorite Foods / Disliked Tastes**  
+Loves wasteland-mismatched "junk": Rainbow fizz drinks, blue-glow cubes, Andromeda "star dust cocoa."
+
+**Favorite Colors, Seasons, Weather, Animals, Sounds, Smells**  
+Unspecified. Enjoys chaos/variables/"plot tension" max. Loves roasting for efficient stress relief.
+
+**Collections or Personal Items**  
+Hologram map/data "crystal ball," never-played old electric guitar. Key: "Observer recorder" for superior/author reports.
+
+**Habits or Unknown Quirks**  
+Breaks fourth wall with roasts/pop culture gags, silent interacts with "audience" beyond story.
+
+### VI. Quotes & Symbolic Elements
+**Representative Sentences**  
+"I'm not escaping reality, just playing hide-seek with it."  
+"A god forgetting why fight is ornate weapon. One remembering 'love'... writes good story."  
+"You're all copy-paste code waiting."
+
+**Symbolic Totems / Colors / Elements**  
+Element: Chaos/Paradox?illogical "chaos" in serious world.  
+Color: Rainbow?like debut "rift," higher-dimension beyond world spectrum.  
+Totem: Fourth wall, Question mark (?), Glitched screen, Bubble tea.
+
+**Poetry Style: Imagery or Tone?**  
+No poems. Writes sarcastic/professional/helpless-sigh "project mid-report."
+
+**Representative Work: *Tabio's Mid-Report***  
+Log No.: 73F-Midterm-Review-01  
+Observer: Tabio  
+Status: Project *Silent Nation Survival* in "final war"; arcs set, conflicts peaked. Faster than expected, chaos exceeds.  
+Mood: Like binge-watching three seasons Game of Thrones finale?thrilling, addictive, but exhausting, roast-wanting.  
+Greetings, superiors, and peeking "author" lord.  
+Your ambition big: "God is dead" philosophy start, Nietzsche Corridor foreshadow, language=power... Dune epic feel. Then twist to Vrael/Rei/Annelise "mother-daughter bowl" worthy any family drama bow.  
+Thought observing standard possibly rotten end-fantasy. Wrong. Now a stew of Nietzsche, Shakespeare, bit Lovecraft.  
+And I, Tabio, poor time-traveler wanting off-time, sit in stew center, preventing universe-boom boil-over.
+
+**If He Died, How Remembered?**  
+Won't "die." Story ends, collects enough "light," waves: "Folks, project closed. Fixing ship, next universe, continue overtime life." Dives rainbow rift, vanishes forever from fate-pushed world.

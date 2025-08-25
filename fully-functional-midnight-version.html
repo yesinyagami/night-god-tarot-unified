@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 夜神塔羅 2030 - 終極AI神諭系統</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* 浮動水晶球小工具 */
+        .floating-widget {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .crystal-ball {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(168, 85, 247, 0.6),
+                0 0 40px rgba(168, 85, 247, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .crystal-ball:hover {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .ai-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(168, 85, 247, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* 擴展小工具面板 */
+        .widget-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 400px;
+            height: 600px;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 35, 0.98));
+            border-radius: 20px;
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10001;
+            overflow: hidden;
+        }
+
+        .widget-panel.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .widget-header {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .widget-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .widget-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .widget-content {
+            padding: 20px;
+            height: calc(100% - 100px);
+            overflow-y: auto;
+        }
+
+        .language-selector {
+            margin-bottom: 20px;
+        }
+
+        .lang-title {
+            font-size: 16px;
+            color: #fbbf24;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .lang-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            color: #e2e8f0;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .tarot-section {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: #fbbf24;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tarot-question {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 15px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .tarot-question:focus {
+            outline: none;
+            border-color: #fbbf24;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+        }
+
+        .tarot-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            border: none;
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .tarot-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .tarot-btn:disabled {
+            background: rgba(139, 92, 246, 0.3);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .result-area {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid rgba(251, 191, 36, 0.5);
+            border-radius: 12px;
+            padding: 15px;
+            min-height: 120px;
+            margin-top: 15px;
+        }
+
+        .result-title {
+            color: #fbbf24;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .result-text {
+            color: #e2e8f0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 音頻播放器 */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite 1.5s;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .audio-player:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+        }
+
+        /* 主要內容 */
+        .main-content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+            border-color: #fbbf24;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-desc {
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* 載入動畫 */
+        .loading {
+            display: none;
+            text-align: center;
+            color: #fbbf24;
+            font-size: 14px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            border-top: 2px solid #fbbf24;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .widget-panel {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 40px);
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮動水晶球小工具 -->
+    <div class="floating-widget" id="floatingWidget">
+        <div class="crystal-ball" id="crystalBall">
+            🔮
+            <div class="ai-badge">AI</div>
+        </div>
+    </div>
+
+    <!-- 小工具面板 -->
+    <div class="widget-panel" id="widgetPanel">
+        <div class="widget-header">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="widget-title">🔮 夜神AI神諭</div>
+            <div class="widget-subtitle">探索命運的奧秘</div>
+        </div>
+        <div class="widget-content">
+            <div class="language-selector">
+                <div class="lang-title">🌍 選擇語言</div>
+                <div class="lang-buttons">
+                    <button class="lang-btn active" data-lang="zh-tw">🇹🇼 繁體中文</button>
+                    <button class="lang-btn" data-lang="zh-cn">🇨🇳 简体中文</button>
+                    <button class="lang-btn" data-lang="en">🇺🇸 English</button>
+                    <button class="lang-btn" data-lang="ja">🇯🇵 日本語</button>
+                </div>
+            </div>
+
+            <div class="tarot-section">
+                <div class="section-title">✨ 塔羅占卜</div>
+                <textarea 
+                    class="tarot-question" 
+                    id="tarotQuestion" 
+                    placeholder="請輸入您想要詢問的問題...&#10;例如：我的愛情運勢如何？&#10;例如：我的事業發展方向？&#10;例如：我應該如何做出這個決定？"
+                ></textarea>
+                <button class="tarot-btn" id="tarotBtn">🎯 開始占卜</button>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    正在連接宇宙能量...
+                </div>
+
+                <div class="result-area" id="resultArea" style="display: none;">
+                    <div class="result-title" id="resultTitle">🌟 神諭指引</div>
+                    <div class="result-text" id="resultText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音頻播放器 -->
+    <div class="audio-player" id="audioPlayer" title="頻率療癒音樂">
+        🎵
+    </div>
+
+    <!-- 主要內容 -->
+    <div class="main-content">
+        <h1 class="hero-title">夜神塔羅 2030</h1>
+        <p class="hero-subtitle">終極AI驅動的神諭系統 • 多語言文化適配 • 即時神聖指引</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <div class="feature-title">無限AI智慧</div>
+                <div class="feature-desc">結合多個AI模型的智慧，提供最精準的塔羅解讀和人生指引。</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <div class="feature-title">多語言文化</div>
+                <div class="feature-desc">支援繁體中文、簡體中文、英文、日文，融入各文化的神秘智慧傳統。</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">即時神諭</div>
+                <div class="feature-desc">實時生成塔羅解讀，搭配宇宙視覺效果和頻率療癒音樂。</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔮</div>
+                <div class="feature-title">浮動水晶球</div>
+                <div class="feature-desc">隨時可用的AI占卜小工具，讓神聖智慧始終伴隨您。</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <div class="feature-title">頻率療癒</div>
+                <div class="feature-desc">整合財富頻率音樂，清除能量障礙，促進正面能量流動。</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <div class="feature-title">完整體驗</div>
+                <div class="feature-desc">從提問到解讀的完整塔羅體驗，專業級的神諭指引服務。</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 語言包
+        const translations = {
+            'zh-tw': {
+                title: '🔮 夜神AI神諭',
+                subtitle: '探索命運的奧秘',
+                questionPlaceholder: '請輸入您想要詢問的問題...\n例如：我的愛情運勢如何？\n例如：我的事業發展方向？\n例如：我應該如何做出這個決定？',
+                startReading: '🎯 開始占卜',
+                loading: '正在連接宇宙能量...',
+                resultTitle: '🌟 神諭指引'
+            },
+            'zh-cn': {
+                title: '🔮 夜神AI神谕',
+                subtitle: '探索命运的奥秘',
+                questionPlaceholder: '请输入您想要询问的问题...\n例如：我的爱情运势如何？\n例如：我的事业发展方向？\n例如：我应该如何做出这个决定？',
+                startReading: '🎯 开始占卜',
+                loading: '正在连接宇宙能量...',
+                resultTitle: '🌟 神谕指引'
+            },
+            'en': {
+                title: '🔮 Night God AI Oracle',
+                subtitle: 'Explore the Mysteries of Fate',
+                questionPlaceholder: 'Enter your question...\nE.g.: How is my love fortune?\nE.g.: What direction should my career take?\nE.g.: How should I make this decision?',
+                startReading: '🎯 Start Reading',
+                loading: 'Connecting to cosmic energy...',
+                resultTitle: '🌟 Divine Guidance'
+            },
+            'ja': {
+                title: '🔮 ナイトゴッドAI神託',
+                subtitle: '運命の神秘を探る',
+                questionPlaceholder: 'あなたの質問を入力してください...\n例：私の恋愛運はいかがですか？\n例：私のキャリアの方向性は？\n例：この決断をどうすべきでしょうか？',
+                startReading: '🎯 占い開始',
+                loading: '宇宙エネルギーに接続中...',
+                resultTitle: '🌟 神託指導'
+            }
+        };
+
+        // 塔羅卡牌和解釋
+        const tarotCards = [
+            { name: '愚者', meaning: '新的開始、純真、冒險精神', advice: '相信直覺，勇敢踏出第一步' },
+            { name: '魔術師', meaning: '創造力、意志力、行動力', advice: '運用你的才能和資源實現目標' },
+            { name: '女祭司', meaning: '直覺、智慧、內在知識', advice: '傾聽內心的聲音，相信直覺' },
+            { name: '皇后', meaning: '豐饒、母性、創造', advice: '滋養自己和他人，享受生活的美好' },
+            { name: '皇帝', meaning: '權威、結構、穩定', advice: '建立秩序和規則，承擔責任' },
+            { name: '教皇', meaning: '傳統、精神指導、學習', advice: '尊重傳統智慧，尋求指導' },
+            { name: '戀人', meaning: '選擇、關係、和諧', advice: '做出重要選擇，追求平衡' },
+            { name: '戰車', meaning: '意志力、勝利、前進', advice: '保持專注和決心，克服障礙' },
+            { name: '力量', meaning: '勇氣、耐心、內在力量', advice: '以愛和耐心面對挑戰' },
+            { name: '隱士', meaning: '內省、指導、尋找答案', advice: '向內尋求智慧和答案' },
+            { name: '命運之輪', meaning: '變化、循環、機遇', advice: '接受變化，把握機會' },
+            { name: '正義', meaning: '公平、真理、平衡', advice: '以公正和誠實行事' }
+        ];
+
+        // DOM 元素
+        let crystalBall, widgetPanel, closeBtn, audioPlayer, tarotBtn, tarotQuestion, resultArea, loading;
+        let isAudioPlaying = false;
+        let audioContext, oscillator, gainNode;
+        let currentLanguage = 'zh-tw';
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeElements();
+            setupEventListeners();
+            console.log('🌙 夜神塔羅 AI 系統已啟動');
+        });
+
+        function initializeElements() {
+            crystalBall = document.getElementById('crystalBall');
+            widgetPanel = document.getElementById('widgetPanel');
+            closeBtn = document.getElementById('closeBtn');
+            audioPlayer = document.getElementById('audioPlayer');
+            tarotBtn = document.getElementById('tarotBtn');
+            tarotQuestion = document.getElementById('tarotQuestion');
+            resultArea = document.getElementById('resultArea');
+            loading = document.getElementById('loading');
+        }
+
+        function setupEventListeners() {
+            // 水晶球點擊事件
+            crystalBall.addEventListener('click', toggleWidget);
+            closeBtn.addEventListener('click', toggleWidget);
+
+            // 語言切換
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+            });
+
+            // 塔羅占卜
+            tarotBtn.addEventListener('click', startTarotReading);
+
+            // 音頻播放器
+            audioPlayer.addEventListener('click', toggleAudio);
+
+            // ESC 鍵關閉面板
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && widgetPanel.classList.contains('active')) {
+                    toggleWidget();
+                }
+            });
+        }
+
+        function toggleWidget() {
+            const isActive = widgetPanel.classList.contains('active');
+            if (isActive) {
+                widgetPanel.classList.remove('active');
+                crystalBall.style.display = 'flex';
+            } else {
+                widgetPanel.classList.add('active');
+                crystalBall.style.display = 'none';
+            }
+        }
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+            // 更新界面文字
+            const t = translations[lang];
+            document.querySelector('.widget-title').textContent = t.title;
+            document.querySelector('.widget-subtitle').textContent = t.subtitle;
+            document.getElementById('tarotQuestion').placeholder = t.questionPlaceholder;
+            document.getElementById('tarotBtn').textContent = t.startReading;
+
+            console.log(`🌍 語言已切換至: ${lang}`);
+        }
+
+        async function startTarotReading() {
+            const question = tarotQuestion.value.trim();
+            if (!question) {
+                alert('請先輸入您的問題！');
+                return;
+            }
+
+            // 顯示載入狀態
+            tarotBtn.disabled = true;
+            loading.classList.add('active');
+            resultArea.style.display = 'none';
+
+            try {
+                // 模擬AI思考時間
+                await new Promise(resolve => setTimeout(resolve, 2000 + Math.random() * 2000));
+
+                // 隨機選擇塔羅牌
+                const selectedCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+                
+                // 生成AI解讀
+                const reading = generateTarotReading(question, selectedCard);
+
+                // 顯示結果
+                displayResult(reading);
+
+            } catch (error) {
+                console.error('占卜過程發生錯誤:', error);
+                displayResult({
+                    card: '神秘卡牌',
+                    interpretation: '宇宙的能量暫時無法完全傳達，但請相信您內心的直覺和智慧。',
+                    advice: '靜心冥想，答案自然會顯現。'
+                });
+            } finally {
+                // 隱藏載入狀態
+                loading.classList.remove('active');
+                tarotBtn.disabled = false;
+            }
+        }
+
+        function generateTarotReading(question, card) {
+            const themes = {
+                love: ['愛情', '感情', '戀愛', '伴侶', '結婚', '分手'],
+                career: ['事業', '工作', '職業', '升職', '轉職', '創業'],
+                money: ['金錢', '財運', '投資', '理財', '收入', '支出'],
+                health: ['健康', '身體', '疾病', '醫療', '養生', '運動'],
+                family: ['家庭', '親情', '父母', '孩子', '家人', '關係']
+            };
+
+            let questionType = 'general';
+            for (const [type, keywords] of Object.entries(themes)) {
+                if (keywords.some(keyword => question.includes(keyword))) {
+                    questionType = type;
+                    break;
+                }
+            }
+
+            const interpretations = {
+                love: `在感情方面，${card.name}提醒您${card.meaning.split('、')[0]}是關鍵。您的愛情能量正在${Math.random() > 0.5 ? '上升' : '調整'}中。`,
+                career: `在事業發展上，${card.name}象徵著${card.meaning.split('、')[1] || card.meaning.split('、')[0]}。您的專業能力正在被宇宙認可。`,
+                money: `財運方面，${card.name}暗示著${card.meaning.split('、')[2] || card.meaning.split('、')[0]}將影響您的金錢流向。`,
+                health: `健康層面，${card.name}提醒您注意${card.meaning.split('、')[0]}的重要性。身心平衡是關鍵。`,
+                family: `家庭關係中，${card.name}顯示${card.meaning.split('、')[1] || card.meaning.split('、')[0]}是改善關係的要素。`,
+                general: `${card.name}為您帶來的訊息是：${card.meaning}。這是宇宙為您準備的重要指引。`
+            };
+
+            return {
+                card: card.name,
+                interpretation: interpretations[questionType],
+                advice: `💫 ${card.advice}。宇宙建議您在接下來的${Math.floor(Math.random() * 30) + 1}天內特別關注這個指引。`,
+                energy: Math.floor(Math.random() * 100) + 1
+            };
+        }
+
+        function displayResult(reading) {
+            const t = translations[currentLanguage];
+            
+            document.getElementById('resultTitle').textContent = t.resultTitle;
+            document.getElementById('resultText').innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <strong>🎴 塔羅牌:</strong> ${reading.card}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>🔍 解讀:</strong><br>
+                    ${reading.interpretation}
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>💡 建議:</strong><br>
+                    ${reading.advice}
+                </div>
+                <div style="text-align: center; padding: 10px; background: rgba(139, 92, 246, 0.2); border-radius: 8px; margin-top: 15px;">
+                    <strong>⚡ 能量指數:</strong> ${reading.energy}%
+                    <div style="background: rgba(0,0,0,0.3); height: 8px; border-radius: 4px; margin: 8px 0; overflow: hidden;">
+                        <div style="background: linear-gradient(90deg, #fbbf24, #8b5cf6); height: 100%; width: ${reading.energy}%; transition: width 0.5s ease;"></div>
+                    </div>
+                </div>
+            `;
+            
+            resultArea.style.display = 'block';
+        }
+
+        function toggleAudio() {
+            if (!isAudioPlaying) {
+                startFrequencyHealing();
+            } else {
+                stopFrequencyHealing();
+            }
+        }
+
+        function startFrequencyHealing() {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+
+                // 創建8Hz財富頻率
+                oscillator = audioContext.createOscillator();
+                gainNode = audioContext.createGain();
+
+                oscillator.frequency.setValueAtTime(8, audioContext.currentTime);
+                oscillator.type = 'sine';
+
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.start();
+
+                audioPlayer.style.background = 'linear-gradient(45deg, #fbbf24, #8b5cf6)';
+                audioPlayer.style.color = '#000';
+                audioPlayer.innerHTML = '🎵';
+                audioPlayer.title = '頻率療癒中... (點擊停止)';
+
+                isAudioPlaying = true;
+
+                console.log('🎵 8Hz財富頻率療癒已啟動');
+            } catch (error) {
+                console.error('音頻啟動失敗:', error);
+                alert('音頻功能需要用戶互動才能啟動');
+            }
+        }
+
+        function stopFrequencyHealing() {
+            if (oscillator) {
+                oscillator.stop();
+                oscillator = null;
+            }
+
+            audioPlayer.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+            audioPlayer.style.color = '#fff';
+            audioPlayer.innerHTML = '🎵';
+            audioPlayer.title = '頻率療癒音樂 (點擊播放)';
+
+            isAudioPlaying = false;
+
+            console.log('🎵 頻率療癒已停止');
+        }
+
+        // 水晶球動畫效果
+        function animateCrystalBall() {
+            if (crystalBall) {
+                crystalBall.style.transform = 'scale(1.1) rotate(5deg)';
+                setTimeout(() => {
+                    crystalBall.style.transform = 'scale(1) rotate(0deg)';
+                }, 200);
+            }
+        }
+
+        // 每3秒執行水晶球動畫
+        setInterval(animateCrystalBall, 3000);
+
+        // 鍵盤快捷鍵
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'o') {
+                e.preventDefault();
+                toggleWidget();
+            }
+            if (e.ctrlKey && e.key === 'm') {
+                e.preventDefault();
+                toggleAudio();
+            }
+        });
+
+        // 添加頁面載入完成提示
+        window.addEventListener('load', () => {
+            console.log('🌟 夜神塔羅AI平台完全載入完成');
+            console.log('💡 快捷鍵: Ctrl+O 開啟占卜面板, Ctrl+M 播放療癒音樂');
+            
+            // 顯示歡迎動畫
+            setTimeout(() => {
+                animateCrystalBall();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

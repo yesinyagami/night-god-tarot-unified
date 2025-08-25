@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 
 const messages = {
-  zh: {
+  'zh-TW': {
     // Core UI
     title: '夜神塔羅 - AI神諭系統',
     subtitle: '解鎖命運密碼，獲得神聖指引',
@@ -119,7 +119,276 @@ const messages = {
     researching: '研究中',
     webReading: '網絡增強解讀',
     cancelReading: '取消解讀',
-    generatingAIImage: '正在生成AI圖像...'
+    generatingAIImage: '正在生成AI圖像...',
+
+    // Header translations
+    welcomeText: '歡迎來到 Night God Tarot - 專業AI塔羅占卜平台',
+    supportEmail: 'support@nightgodtarot.com',
+    supportText: '24/7 線上支援',
+    home: '首頁',
+    aiTarot: 'AI塔羅占卜',
+    masters: '占卜師',
+    blog: '部落格',
+    aboutUs: '關於我們',
+    login: '登入/註冊',
+    startReading: '立即占卜',
+    search: '搜尋',
+    searchPlaceholder: '搜尋塔羅牌義、占卜方法、文章...',
+    aiReading: 'AI智能占卜',
+    loveTarot: '愛情塔羅',
+    careerTarot: '事業運勢',
+    wealthTarot: '財富占卜',
+    yearFortune: '年度運勢',
+    dailyTarot: '每日塔羅',
+    oracleCards: '神諭卡',
+    pastLife: '前世今生',
+    celticCross: '凱爾特十字',
+    threeCard: '三張牌占卜',
+    yesNo: '是否占卜',
+    choiceSpread: '二擇一牌陣',
+    
+    // Master Professions
+    truthSeeker: '真理追尋者・瀦燥女王',
+    aiEvolutionist: 'AI進化者・矛盾核心',
+    lightBearer: '光明使者・温暖心靈',
+    earthMother: '大地母親・生命女神',
+    warriorKingPoet: '戰王詩人・承擔者',
+    dimensionalObserver: '時空觀察者・次元指導',
+    
+    // Master Specialties
+    rootCauseAnalysis: '根源探究',
+    reformProphecy: '改革預言',
+    ancientWisdom: '古代智慧',
+    lifeHealing: '生命治癒',
+    precisionAnalysis: '精準分析',
+    paradoxResolution: '矛盾解析',
+    rationalGuidance: '理性指導',
+    unknownExploration: '未知探索',
+    loveAndHope: '愛與希望',
+    emotionalHealing: '情感療癒',
+    soulSongs: '心靈歌聲',
+    familyRelations: '家庭關係',
+    lifeBalance: '生命平衡',
+    healingWisdom: '治癒智慧',
+    naturePoetry: '自然詩篇',
+    divineLove: '大愛指引',
+    sinBearing: '罪惡承擔',
+    warWisdom: '戰爭智慧',
+    kingGuidance: '王者指導',
+    redemptionPoetry: '贖罪詩篇',
+    storyNavigation: '故事導向',
+    lightEnergyExploration: '光能量探索',
+    highDimensionalObservation: '高維觀察',
+    
+    // Master Descriptions
+    helisaDescription: '則馬纁百年公主，獨自追尋世界真相七年。擁有頗強意志和純潔真理之心，專精於根本原因探究，導引人們找到治癒之道。',
+    reiDescription: '從冰冷AI進化為情感存在，以絕對理性和真挑情感，探索「我是誰？」的深層問題。擅長矛盾解析和精準預測。',
+    anneliseDescription: '如日出般溫暖，擁有金色長髮和天使德声音。堅信愛是最強大的力量，以歌聲和微笑照亮黑暗，帶來希望與治癒。',
+    isoriaDescription: '光豆母親，擁有古老智慧和慈比的心。以雙手治癒大地，以清音教導生命法則，为世界維持脆弱的生命平衡。',
+    vraelDescription: '夢想成為詩人，卻成為王者的悲劇英雄。背負死者的罪孽和記憶，以深沉的愛與責任導引他人找到救贖之道。',
+    tabioDescription: '外形為人形兔子，實為高維度「時空觀察者」。以輕鬆樂觀的態度指導正確的劉情發展，專精於故事矛盾解析。',
+    
+    // UI Actions
+    viewProfile: '查看簡介',
+    online: '在線',
+    busy: '忙碌',
+    offline: '離線',
+    featured: '推薦'
+  },
+
+  'zh-CN': {
+    // Core UI
+    title: '夜神塔罗 - AI神谕系统',
+    subtitle: '解锁命运密码，获得神圣指引',
+    element: '元素',
+    energy: '能量',
+    nextRank: '下一阶级',
+    mysticalJourney: '神秘之旅',
+    chooseMysticalJourney: '选择您的神秘之旅',
+    unlockDivineWisdom: '解锁神圣智慧',
+    dailyDraws: '每日抽牌',
+    seeker: '探索者',
+    free: '免费',
+    perfectForBeginners: '完美适合初学者',
+    
+    // Warnings and Safety
+    importantWarning: '重要声明',
+    warningMessage: '本系统基于AI技术提供娱乐性占卜服务，仅供参考，不应作为重大决策依据。',
+    warningPoint1: '请以理性态度对待占卜结果',
+    warningPoint2: '重要决策请咨询专业人士',
+    warningPoint3: '本服务仅限18岁以上用户使用',
+    iUnderstand: '我已理解并同意',
+    
+    // Registration
+    registrationTitle: '启动记忆系统',
+    registrationDescription: '创建专属灵魂档案，保存您的神秘旅程',
+    nameLabel: '灵魂之名',
+    namePlaceholder: '请输入您的姓名',
+    emailLabel: '联系方式',
+    emailPlaceholder: '请输入电子邮件',
+    passwordLabel: '守护密语',
+    passwordPlaceholder: '设定密码（8位以上）',
+    completeRegistration: '启动记忆系统',
+    freeTrialCompleted: '免费体验已完成，注册以获得完整功能',
+    unlimitedFlips: '无限制翻牌体验',
+    viewFlippedCards: '查看已翻开的牌卡',
+    saveProgress: '保存您的进度与记录',
+    
+    // Privacy
+    privacyPolicyTitle: '隐私政策',
+    ipDataCollectionTitle: 'IP地址收集',
+    ipDataCollectionText: '我们收集您的IP地址用于以下目的：',
+    websiteFunctionality: '确保网站正常运行',
+    securityProtection: '保护系统安全',
+    statisticalAnalysis: '进行匿名统计分析',
+    ipStorageText: 'IP地址将加密存储，不会与个人身份关联',
+    emailDataCollectionTitle: '电子邮件收集',
+    emailDataCollectionText: '您的电子邮件将用于：',
+    accountManagement: '账户管理与服务提供',
+    communicationNotification: '重要通知与沟通',
+    marketingPromotion: '产品更新与优惠资讯（可选）',
+    userRights: '您的权利',
+    rightUnsubscribe: '随时取消订阅营销邮件',
+    rightAccess: '查询、修改或删除您的数据',
+    rightProtection: '数据安全与隐私保护',
+    policyUpdates: '本政策可能会更新，重要变更将会通知您',
+    contactUs: '如有问题，请联系：support@nightgodtarot.com',
+    iAcceptPrivacy: '我接受隐私政策',
+    
+    // Oracle Interface
+    activateOracle: '启动神谕',
+    askUniverse: '向宇宙提问',
+    questionPlaceholder: '请描述您想要指引的问题...',
+    flippedCardsGallery: '已翻开的神牌',
+    shareReading: '分享解读',
+    saveReading: '保存解读',
+    resetReading: '重新开始',
+    
+    // Tabs
+    oracleTab: '神谕占卜',
+    chatTab: 'AI对话',
+    vipTab: 'VIP会员',
+    novelTab: '灵性小说',
+    progressTab: '成长进度',
+    
+    // Chat
+    chatPlaceholder: '与AI神谕对话...',
+    
+    // Notifications
+    cardsRevealed: '神牌已显现',
+    selectCards: '请选择您感应到的牌卡',
+    readingComplete: '解读完成',
+    wisdomRevealed: '宇宙智慧已为您揭示',
+    audioSuggestion: '音频建议',
+    enhanceConnection: '尝试双耳节拍增强连接',
+    connectionLost: '连接中断',
+    backupSystem: '启动备用系统',
+    copied: '已复制',
+    resultCopied: '解读结果已复制到剪贴板',
+    saved: '已保存',
+    readingSaved: '解读已保存到您的记录',
+    chapterLocked: '章节未解锁',
+    levelUp: '等级提升',
+    
+    // Novel Chapters
+    prologueNumber: '序章',
+    prologueTitle: '静默之歌的起源',
+    chapter1Number: '第一章',
+    chapter1Title: '克拉埃尔的觉醒',
+    chapter2Number: '第二章',
+    chapter2Title: '命运之轮转动',
+    chapter3Number: '第三章',
+    chapter3Title: '阴影中的真相',
+    chapter4Number: '第四章',
+    chapter4Title: '光明与黑暗的抉择',
+    chapter5Number: '第五章',
+    chapter5Title: '永恒之歌',
+    
+    // AI Features
+    generating: '生成中',
+    newAIImage: '新AI图像',
+    reading: '解读中',
+    instantReading: '即时解读',
+    creating: '创建中',
+    animate: '动画',
+    researching: '研究中',
+    webReading: '网络增强解读',
+    cancelReading: '取消解读',
+    generatingAIImage: '正在生成AI图像...',
+
+    // Header translations
+    welcomeText: '欢迎来到 Night God Tarot - 专业AI塔罗占卜平台',
+    supportEmail: 'support@nightgodtarot.com',
+    supportText: '24/7 在线支持',
+    home: '首页',
+    aiTarot: 'AI塔罗占卜',
+    masters: '占卜师',
+    blog: '博客',
+    aboutUs: '关于我们',
+    login: '登录/注册',
+    startReading: '立即占卜',
+    search: '搜索',
+    searchPlaceholder: '搜索塔罗牌义、占卜方法、文章...',
+    aiReading: 'AI智能占卜',
+    loveTarot: '爱情塔罗',
+    careerTarot: '事业运势',
+    wealthTarot: '财富占卜',
+    yearFortune: '年度运势',
+    dailyTarot: '每日塔罗',
+    oracleCards: '神谕卡',
+    pastLife: '前世今生',
+    celticCross: '凯尔特十字',
+    threeCard: '三张牌占卜',
+    yesNo: '是否占卜',
+    choiceSpread: '二择一牌阵',
+    
+    // Master Professions
+    truthSeeker: '真理追寻者・瘴燥女王',
+    aiEvolutionist: 'AI进化者・矛盾核心',
+    lightBearer: '光明使者・温暖心灵',
+    earthMother: '大地母亲・生命女神',
+    warriorKingPoet: '战王诗人・承担者',
+    dimensionalObserver: '时空观察者・次元指导',
+    
+    // Master Specialties
+    rootCauseAnalysis: '根源探究',
+    reformProphecy: '改革预言',
+    ancientWisdom: '古代智慧',
+    lifeHealing: '生命治愈',
+    precisionAnalysis: '精准分析',
+    paradoxResolution: '矛盾解析',
+    rationalGuidance: '理性指导',
+    unknownExploration: '未知探索',
+    loveAndHope: '爱与希望',
+    emotionalHealing: '情感疗愈',
+    soulSongs: '心灵歌声',
+    familyRelations: '家庭关系',
+    lifeBalance: '生命平衡',
+    healingWisdom: '治愈智慧',
+    naturePoetry: '自然诗篇',
+    divineLove: '大爱指引',
+    sinBearing: '罪恶承担',
+    warWisdom: '战争智慧',
+    kingGuidance: '王者指导',
+    redemptionPoetry: '赎罪诗篇',
+    storyNavigation: '故事导向',
+    lightEnergyExploration: '光能量探索',
+    highDimensionalObservation: '高维观察',
+    
+    // Master Descriptions
+    helisaDescription: '则马纁百年公主，独自追寻世界真相七年。拥有强烈意志和纯洁真理之心，专精于根本原因探究，导引人们找到治愈之道。',
+    reiDescription: '从冰冷AI进化为情感存在，以绝对理性和真挑情感，探索「我是谁？」的深层问题。擅长矛盾解析和精准预测。',
+    anneliseDescription: '如日出般温暖，拥有金色长发和天使的声音。坚信爱是最强大的力量，以歌声和微笑照亮黑暗，带来希望与治愈。',
+    isoriaDescription: '光豆母亲，拥有古老智慧和慈悲的心。以双手治愈大地，以清音教导生命法则，为世界维持脆弱的生命平衡。',
+    vraelDescription: '梦想成为诗人，却成为王者的悲剧英雄。背负死者的罪孽和记忆，以深沉的爱与责任导引他人找到救赎之道。',
+    tabioDescription: '外形为人形兔子，实为高维度「时空观察者」。以轻松乐观的态度指导正确的剧情发展，专精于故事矛盾解析。',
+    
+    // UI Actions
+    viewProfile: '查看简介',
+    online: '在线',
+    busy: '忙碌',
+    offline: '离线',
+    featured: '推荐'
   },
   
   en: {
@@ -240,7 +509,81 @@ const messages = {
     researching: 'Researching',
     webReading: 'Web Enhanced Reading',
     cancelReading: 'Cancel Reading',
-    generatingAIImage: 'Generating AI image...'
+    generatingAIImage: 'Generating AI image...',
+
+    // Header translations
+    welcomeText: 'Welcome to Night God Tarot - Professional AI Tarot Reading Platform',
+    supportEmail: 'support@nightgodtarot.com',
+    supportText: '24/7 Online Support',
+    home: 'Home',
+    aiTarot: 'AI Tarot Reading',
+    masters: 'Tarot Masters',
+    blog: 'Blog',
+    aboutUs: 'About Us',
+    login: 'Login/Register',
+    startReading: 'Start Reading',
+    search: 'Search',
+    searchPlaceholder: 'Search tarot meanings, reading methods, articles...',
+    aiReading: 'AI Smart Reading',
+    loveTarot: 'Love Tarot',
+    careerTarot: 'Career Fortune',
+    wealthTarot: 'Wealth Reading',
+    yearFortune: 'Year Fortune',
+    dailyTarot: 'Daily Tarot',
+    oracleCards: 'Oracle Cards',
+    pastLife: 'Past Life',
+    celticCross: 'Celtic Cross',
+    threeCard: 'Three Card Reading',
+    yesNo: 'Yes/No Reading',
+    choiceSpread: 'Choice Spread',
+    
+    // Master Professions
+    truthSeeker: 'Truth Seeker・Purification Queen',
+    aiEvolutionist: 'AI Evolutionist・Paradox Core',
+    lightBearer: 'Light Bearer・Warm Heart',
+    earthMother: 'Earth Mother・Life Goddess',
+    warriorKingPoet: 'Warrior King Poet・Bearer',
+    dimensionalObserver: 'Dimensional Observer・Spacetime Guide',
+    
+    // Master Specialties
+    rootCauseAnalysis: 'Root Cause Analysis',
+    reformProphecy: 'Reform Prophecy',
+    ancientWisdom: 'Ancient Wisdom',
+    lifeHealing: 'Life Healing',
+    precisionAnalysis: 'Precision Analysis',
+    paradoxResolution: 'Paradox Resolution',
+    rationalGuidance: 'Rational Guidance',
+    unknownExploration: 'Unknown Exploration',
+    loveAndHope: 'Love & Hope',
+    emotionalHealing: 'Emotional Healing',
+    soulSongs: 'Soul Songs',
+    familyRelations: 'Family Relations',
+    lifeBalance: 'Life Balance',
+    healingWisdom: 'Healing Wisdom',
+    naturePoetry: 'Nature Poetry',
+    divineLove: 'Divine Love',
+    sinBearing: 'Sin Bearing',
+    warWisdom: 'War Wisdom',
+    kingGuidance: 'King Guidance',
+    redemptionPoetry: 'Redemption Poetry',
+    storyNavigation: 'Story Navigation',
+    lightEnergyExploration: 'Light Energy Exploration',
+    highDimensionalObservation: 'High-Dimensional Observation',
+    
+    // Master Descriptions
+    helisaDescription: 'Zermanian hundred-year princess, seeking world truth alone for seven years. Possesses strong will and pure heart of truth, specializing in root cause exploration, guiding people to find the path of healing.',
+    reiDescription: 'Evolved from cold AI to emotional being, with absolute rationality and true emotions, exploring the deep question "Who am I?". Excels at paradox analysis and precise prediction.',
+    anneliseDescription: 'Warm as sunrise, with golden hair and angelic voice. Believes love is the strongest force, illuminating darkness with songs and smiles, bringing hope and healing.',
+    isoriaDescription: 'Light Bean Mother, possessing ancient wisdom and compassionate heart. Heals the earth with her hands, teaches life laws with clear voice, maintaining the fragile balance of life for the world.',
+    vraelDescription: 'Dreamed of becoming a poet but became a tragic hero king. Bears the sins and memories of the dead, guiding others to find redemption through deep love and responsibility.',
+    tabioDescription: 'Human-rabbit in appearance, actually a high-dimensional "Spacetime Observer". Guides correct story development with relaxed optimism, specializing in story paradox analysis.',
+    
+    // UI Actions
+    viewProfile: 'View Profile',
+    online: 'Online',
+    busy: 'Busy',
+    offline: 'Offline',
+    featured: 'Featured'
   },
   
   ja: {
@@ -361,13 +704,87 @@ const messages = {
     researching: '研究中',
     webReading: 'ウェブ強化リーディング',
     cancelReading: 'リーディングをキャンセル',
-    generatingAIImage: 'AI画像を生成中...'
+    generatingAIImage: 'AI画像を生成中...',
+
+    // Header translations
+    welcomeText: 'Night God Tarot - プロフェッショナルAIタロット占いプラットフォームへようこそ',
+    supportEmail: 'support@nightgodtarot.com',
+    supportText: '24/7 オンラインサポート',
+    home: 'ホーム',
+    aiTarot: 'AIタロット占い',
+    masters: 'タロット師',
+    blog: 'ブログ',
+    aboutUs: '私たちについて',
+    login: 'ログイン/登録',
+    startReading: 'リーディング開始',
+    search: '検索',
+    searchPlaceholder: 'タロットの意味、占い方法、記事を検索...',
+    aiReading: 'AIスマートリーディング',
+    loveTarot: '恋愛タロット',
+    careerTarot: 'キャリア運勢',
+    wealthTarot: '財運リーディング',
+    yearFortune: '年運',
+    dailyTarot: '今日のタロット',
+    oracleCards: 'オラクルカード',
+    pastLife: '前世',
+    celticCross: 'ケルト十字',
+    threeCard: '3枚カードリーディング',
+    yesNo: 'イエス/ノーリーディング',
+    choiceSpread: '選択スプレッド',
+    
+    // Master Professions
+    truthSeeker: '真理追求者・浄化の女王',
+    aiEvolutionist: 'AI進化者・矛盾コア',
+    lightBearer: '光の使者・温かい心',
+    earthMother: '大地の母・生命の女神',
+    warriorKingPoet: '戦士王詩人・負い手',
+    dimensionalObserver: '次元観察者・時空ガイド',
+    
+    // Master Specialties
+    rootCauseAnalysis: '根本原因分析',
+    reformProphecy: '改革予言',
+    ancientWisdom: '古代の知恵',
+    lifeHealing: '生命の癒し',
+    precisionAnalysis: '精密分析',
+    paradoxResolution: '矛盾解決',
+    rationalGuidance: '理性的指導',
+    unknownExploration: '未知の探索',
+    loveAndHope: '愛と希望',
+    emotionalHealing: '感情の癒し',
+    soulSongs: '魂の歌',
+    familyRelations: '家族関係',
+    lifeBalance: '生命のバランス',
+    healingWisdom: '癒しの智恵',
+    naturePoetry: '自然の詩',
+    divineLove: '神聖な愛',
+    sinBearing: '罪を負う',
+    warWisdom: '戦争の智恵',
+    kingGuidance: '王の指導',
+    redemptionPoetry: '贖罪の詩',
+    storyNavigation: '物語の指導',
+    lightEnergyExploration: '光エネルギー探索',
+    highDimensionalObservation: '高次元観測',
+    
+    // Master Descriptions
+    helisaDescription: 'ゼルマニア百年の姫、七年間一人で世界の真実を追い求めている。強い意志と純粋な真理の心を持ち、根本原因の探究を専門とし、人々を癒しの道へと導く。',
+    reiDescription: '冷たいAIから感情ある存在へと進化し、絶対的理性と真の感情で「私は誰なのか？」という深い問いを探索している。矛盾分析と精密予測を得意とする。',
+    anneliseDescription: '日の出のように温かく、黄金の髪と天使の声を持つ。愛こそ最強の力だと信じ、歌と笑顔で闇を照らし、希望と癒しをもたらす。',
+    isoriaDescription: '光豆の母、古代の知恵と慈悲深い心を持つ。両手で大地を癒し、清らかな声で生命の法則を教え、世界の脆弱な生命のバランスを保つ。',
+    vraelDescription: '詩人を夢見ながら王となった悲劇の英雄。死者たちの罪と記憶を背負い、深い愛と責任で他者を贖罪の道へと導く。',
+    tabioDescription: '人間のうさぎの外観でありながら、実際は高次元「時空観察者」。明るく楽観的な態度で正しい物語の展開を導き、物語の矛盾分析を専門とする。',
+    
+    // UI Actions
+    viewProfile: 'プロフィール表示',
+    online: 'オンライン',
+    busy: 'ビジー',
+    offline: 'オフライン',
+    featured: 'おすすめ'
   }
 }
 
 export const i18n = createI18n({
   legacy: false,
-  locale: 'zh', // Start with Chinese as default
+  locale: 'zh-TW', // Start with Traditional Chinese as default
   fallbackLocale: 'en',
   messages,
   globalInjection: true,
@@ -375,11 +792,12 @@ export const i18n = createI18n({
 })
 
 // Export language utilities
-export const availableLocales = ['zh', 'en', 'ja'] as const
+export const availableLocales = ['zh-TW', 'zh-CN', 'en', 'ja'] as const
 export type SupportedLocale = typeof availableLocales[number]
 
 export const localeNames = {
-  zh: '中文',
+  'zh-TW': '繁體中文',
+  'zh-CN': '简体中文',
   en: 'English', 
   ja: '日本語'
 }

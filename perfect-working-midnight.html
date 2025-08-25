@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night God Tarot - The World's Most Advanced AI Tarot Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Cosmic Background */
+        .cosmic-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 12px;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3));
+        }
+
+        .vip-btn {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0f0f1e;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+        }
+
+        /* Card Section */
+        .card-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tarot-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(30, 41, 59, 0.9));
+            border: 2px solid rgba(139, 92, 246, 0.4);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarot-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .tarot-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+            border-color: #fbbf24;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fbbf24;
+        }
+
+        .card-description {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Premium Section */
+        .premium-section {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .premium-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.95));
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: #fbbf24;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+
+        .price-period {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .premium-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .premium-features li {
+            padding: 0.5rem 0;
+            color: #cbd5e1;
+        }
+
+        .premium-features li::before {
+            content: '✅ ';
+            color: #10b981;
+        }
+
+        .purchase-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .purchase-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .diamond-btn {
+            background: linear-gradient(135deg, #a855f7, #06b6d4);
+        }
+
+        .cosmic-btn {
+            background: linear-gradient(135deg, #8b5cf6, #fbbf24);
+        }
+
+        .infinity-btn {
+            background: linear-gradient(135deg, #10b981, #a855f7);
+        }
+
+        /* Chat Section */
+        .chat-section {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(30, 41, 59, 0.95));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .chat-title {
+            font-size: 2rem;
+            color: #06b6d4;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .chat-window {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 16px;
+            padding: 2rem;
+            min-height: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            text-align: right;
+        }
+
+        .ai-message {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(34, 211, 238, 0.2));
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            color: #e2e8f0;
+            font-size: 1rem;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .send-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            margin-top: 5rem;
+        }
+
+        .footer-text {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .footer-link {
+            color: #8b5cf6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #fbbf24;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-canvas">
+        <div class="stars" id="stars"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🔮 Night God Tarot</div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="scrollToSection('reading')">開始占卜</button>
+                <button class="nav-btn" onclick="scrollToSection('chat')">AI對話</button>
+                <button class="nav-btn vip-btn" onclick="scrollToSection('premium')">👑 VIP會員</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">夜神塔羅 - 全球最強AI占卜平台</h1>
+            <p class="hero-subtitle">結合古老智慧與尖端AI科技，為您揭示命運的奧秘</p>
+            
+            <!-- Card Showcase -->
+            <div class="card-showcase" id="reading">
+                <div class="tarot-card" onclick="startReading('love')">
+                    <div class="card-icon">💕</div>
+                    <div class="card-title">愛情占卜</div>
+                    <div class="card-description">探索感情的未來走向</div>
+                </div>
+                <div class="tarot-card" onclick="startReading('career')">
+                    <div class="card-icon">💼</div>
+                    <div class="card-title">事業運勢</div>
+                    <div class="card-description">掌握職業發展機遇</div>
+                </div>
+                <div class="tarot-card" onclick="startReading('wealth')">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">財富密碼</div>
+                    <div class="card-description">解鎖財務自由之路</div>
+                </div>
+                <div class="tarot-card" onclick="startReading('health')">
+                    <div class="card-icon">🏥</div>
+                    <div class="card-title">健康指引</div>
+                    <div class="card-description">身心靈平衡建議</div>
+                </div>
+                <div class="tarot-card" onclick="startReading('spiritual')">
+                    <div class="card-icon">✨</div>
+                    <div class="card-title">靈性成長</div>
+                    <div class="card-description">連接更高維度智慧</div>
+                </div>
+                <div class="tarot-card" onclick="startReading('daily')">
+                    <div class="card-icon">🌟</div>
+                    <div class="card-title">每日指引</div>
+                    <div class="card-description">今日運勢與建議</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Section -->
+        <section class="premium-section" id="premium">
+            <h2 class="premium-title">💰 超級現金流系統 - 頂級會員計畫</h2>
+            
+            <div class="pricing-grid">
+                <!-- Diamond Elite -->
+                <div class="pricing-card">
+                    <h3 style="color: #a855f7;">💎 鑽石精英</h3>
+                    <div class="price">$333<span class="price-period">/30天</span></div>
+                    <ul class="premium-features">
+                        <li>無限AI占卜次數</li>
+                        <li>專屬AI靈性導師</li>
+                        <li>每日個人化報告</li>
+                        <li>優先客服支援</li>
+                        <li>獨家小說內容</li>
+                        <li>企業團隊服務</li>
+                    </ul>
+                    <button class="purchase-btn diamond-btn" onclick="purchase('diamond')">
+                        成為鑽石精英
+                    </button>
+                </div>
+
+                <!-- Cosmic Master -->
+                <div class="pricing-card featured">
+                    <h3 style="color: #fbbf24;">🌌 宇宙主宰</h3>
+                    <div class="price">$666<span class="price-period">/30天</span></div>
+                    <ul class="premium-features">
+                        <li>所有鑽石精英功能</li>
+                        <li>每週私人諮詢</li>
+                        <li>量子算法占卜</li>
+                        <li>參與產品決策</li>
+                        <li>終身VIP保證</li>
+                        <li>專屬社群交流</li>
+                    </ul>
+                    <button class="purchase-btn cosmic-btn" onclick="purchase('cosmic')">
+                        登上宇宙王座
+                    </button>
+                </div>
+
+                <!-- Infinity God -->
+                <div class="pricing-card">
+                    <h3 style="color: #10b981;">♾️ 無限神格</h3>
+                    <div class="price">$1299<span class="price-period">/30天</span></div>
+                    <ul class="premium-features">
+                        <li>所有功能無限制</li>
+                        <li>24/7專屬團隊</li>
+                        <li>客製化AI算法</li>
+                        <li>品牌合作機會</li>
+                        <li>投資分紅權益</li>
+                        <li>神格專屬徽章</li>
+                    </ul>
+                    <button class="purchase-btn infinity-btn" onclick="purchase('infinity')">
+                        超越人類極限
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section class="chat-section" id="chat">
+            <h2 class="chat-title">🤖 AI神諭對話系統</h2>
+            <div class="chat-window" id="chatWindow">
+                <div class="chat-message ai-message">
+                    歡迎來到夜神塔羅！我是您的專屬AI靈性導師。請問有什麼可以為您解答的嗎？
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="輸入您的問題..." onkeypress="handleChatKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">發送</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">
+            © 2025 Night God Tarot - 全球最先進的AI塔羅平台<br>
+            <a href="https://yesinyagami.github.io/night-god-tarot-unified/" class="footer-link">官方網站</a> |
+            <a href="#" class="footer-link">服務條款</a> |
+            <a href="#" class="footer-link">隱私政策</a>
+        </p>
+    </footer>
+
+    <script>
+        // Create starfield
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Start reading
+        function startReading(type) {
+            const messages = {
+                love: '💕 正在為您解析愛情運勢...',
+                career: '💼 正在分析您的事業發展...',
+                wealth: '💰 正在揭示您的財富密碼...',
+                health: '🏥 正在檢視您的健康狀態...',
+                spiritual: '✨ 正在連接高維度智慧...',
+                daily: '🌟 正在獲取今日指引...'
+            };
+            
+            alert(messages[type] + '\n\n占卜結果將在幾秒後顯示...\n\n💫 您的未來充滿無限可能！');
+        }
+
+        // Purchase function
+        function purchase(tier) {
+            const prices = {
+                diamond: 333,
+                cosmic: 666,
+                infinity: 1299
+            };
+            
+            const tierNames = {
+                diamond: '💎 鑽石精英',
+                cosmic: '🌌 宇宙主宰',
+                infinity: '♾️ 無限神格'
+            };
+            
+            if (confirm(`確認購買 ${tierNames[tier]} 方案？\n\n價格：$${prices[tier]} USD/30天\n\n這是對您靈性成長的最佳投資！`)) {
+                alert(`✨ 恭喜！您已成功訂閱 ${tierNames[tier]}！\n\n您的專屬功能已全部解鎖！`);
+            }
+        }
+
+        // Chat functions
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const chatWindow = document.getElementById('chatWindow');
+            
+            if (input.value.trim() === '') return;
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user-message';
+            userMsg.textContent = input.value;
+            chatWindow.appendChild(userMsg);
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'chat-message ai-message';
+                aiMsg.textContent = '🔮 根據宇宙能量分析，您的問題涉及深層的靈性議題。建議您進行完整的塔羅占卜以獲得更詳細的指引。升級VIP可獲得無限次專業解答！';
+                chatWindow.appendChild(aiMsg);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 1000);
+            
+            input.value = '';
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            console.log('🔮 Night God Tarot - FULLY LOADED AND OPERATIONAL');
+        });
+    </script>
+</body>
+</html>

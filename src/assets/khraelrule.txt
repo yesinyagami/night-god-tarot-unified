@@ -1,0 +1,420 @@
+# Herlean Core Rules & Grand Lexicon V2.0
+
+---
+
+### **Introduction: The Soul of Herlean—Semantic Root System**
+
+The core of Herlean is its "Semantic Root System," a precise framework built from 11 philosophical roots. Each root represents a core conceptual domain, and all vocabulary derives from these roots. In Herlean, exploring a word's etymology equates to philosophical inquiry, as pronunciation directly reveals its essence in the Herlean worldview.
+
+| Root | Core Concept | Philosophical Domain |
+| :--- | :--- | :--- |
+| **cor-** | Society / Consciousness | Civilization and Order |
+| **el-** | Nature / Elements | Primal and Vitality |
+| **an-** | Unnatural / Artificial | Distortion and Mutation |
+| **hel-** | Conflict / Suffering | Struggle and Trauma |
+| **bel-** | Cycle / Philosophy | Fate and Reincarnation |
+| **jor-** | Power / Initiative | Authority and Control |
+| **dra-** | Manifestation / Matter | Physical and Concrete |
+| **im-** | Inner / Spirit | Mind and Soul |
+| **fal-** | Abstract / Concept | Symbolism and Metaphysics |
+| **gar-** | Expression / Action | Articulation and Practice |
+| **huæn-** | Instant Revelation | Enlightenment and Insight |
+
+---
+
+### **Part One: Herlean Phonology (Phonariel)**
+
+Herlean phonology seeks a balance between ruggedness and rhythm.
+
+* **Syllable Structure**: (C)V(C) - Consonant (optional) + Vowel + Consonant (optional).
+* **Stress**: Defaults to the penultimate syllable. Special stress marked with apostrophe (').
+
+#### **Consonants**
+
+| Spelling | IPA | Description |
+|:---|:---|:---|
+| b | /b/ | Voiced bilabial stop |
+| d | /d/ | Voiced alveolar stop |
+| f | /f/ | Voiceless labiodental fricative |
+| g | /g/ | Voiced velar stop |
+| h | /h/ | Glottal fricative |
+| j | /ʒ/ | Voiced postalveolar fricative (like 'pleasure') |
+| k | /k/ | Voiceless velar stop |
+| l | /l/ | Alveolar lateral |
+| m | /m/ | Bilabial nasal |
+| n | /n/ | Alveolar nasal |
+| q | /χ/ | Voiceless uvular fricative (like German 'Bach') |
+| r | /ɾ/ | Alveolar flap (like Spanish 'pero') |
+| s | /s/ | Voiceless alveolar fricative |
+| t | /t/ | Voiceless alveolar stop |
+| v | /v/ | Voiced labiodental fricative |
+| x | /x/ | Voiceless velar fricative (like Scottish 'loch') |
+| z | /z/ | Voiced alveolar fricative |
+
+#### **Vowels**
+
+| Spelling | IPA | Description |
+|:---|:---|:---|
+| a | /a/ | Open front unrounded vowel |
+| e | /ɛ/ | Open-mid front unrounded vowel (like 'bed') |
+| i | /i/ | Close front unrounded vowel |
+| o | /o/ | Close-mid back rounded vowel |
+| u | /u/ | Close back rounded vowel |
+| æ | /æ/ | Near-open front unrounded vowel (like 'cat') |
+| y | /y/ | Close front rounded vowel (like French 'tu') |
+
+#### **Diphthongs**
+
+| Spelling | IPA | Example |
+|:---|:---|:---|
+| ae | /aɛ/ | *faen* |
+| ei | /ei/ | *zalei* |
+| au | /aʊ/ | *drakhaus* |
+| iu | /iu/ | *faliu* |
+
+---
+
+### **Part Two: Herlean Grammar (Codariel) - Dual Language System**
+
+Herlean has two grammatical variants for different social and literary contexts.
+
+#### **2.1 High Variety (H-Variety): Ceremonial and Poetic Language**
+
+Used for epics, rituals, philosophical debates—archaic and concise.
+
+* **Word Order**: Subject-Object-Verb (SOV).
+  * Example: `Zûn corzinien falzinis.` (I homeland see.) - "I see the homeland."
+* **Core Pronouns**:
+  * I: `Zûn`
+  * You: `Zakk'un`
+  * He/She/It: `V'aen`
+  * We: `Zûniel`
+  * You (pl.): `Zakrien`
+  * They: `V'naar`
+* **Negation and Questions**:
+  * Negation: `n'æl`
+  * Question (sentence start): `Shol` or `Belqar`
+  * Example: `Shol zakk'un n'æl corzinis?` (Are you not a civilized being?)
+* **Verb Inflection**:
+  * Present: `imraxis` (love)
+  * Past: `imraxael` (loved)
+  * Future: `belimraxis` (will love)
+  * Imperative: `Imraxis!` (Love!)
+* **Poetic Mood**:
+  * Vocative: `Va...`
+  * Exclamatory: `N'æl zakk'un!`
+
+#### **2.2 Low Variety (L-Variety): Everyday and General Language**
+
+Modern Herlean for daily communication, clearer and integrated with semantic roots.
+
+* **Word Order**: Subject-Verb-Object (SVO).
+  * Example: `Imnoel falzinis corzinien.` (You see homeland.)
+* **Core Pronouns**:
+  * I: `imzael` (`im-` inner)
+  * You: `imnoel` (`im-` inner)
+  * He/She/It: `imrael` (`im-` inner)
+  * We: `corzael` (`cor-` society)
+* **Sentence Structures (Analytic Features)**:
+  * Copula: Subject + `faen` (is/are) + Predicate
+    * Example: `Imzael faen corzinis.` (I am a civilized being.)
+  * Negation: `n'æl` before verb
+    * Example: `Imzael n'æl draqulax.` (I do not eat.)
+  * Question: Add `kael?` at end
+    * Example: `Imnoel faen imdorax, kael?` (Is your mind calm?)
+  * Existence/Possession: Use `jorraen`
+    * Example: `Jorraen cormelis va imzael.` (I have a home.)
+  * Adjectives: Usually after noun
+    * Example: `Corzinis helzinar.` (A wounded person.)
+  * Commands: Verb base, optional `Gariel` (please)
+    * Example: `Gariel draqulax!` (Please eat!)
+
+---
+
+### **Part Three: Herlean Grand Lexicon (Herlean Lexicon)**
+
+#### **Chapter One: Life (Corzinis)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **corzinis** | Noun | Life under civilization, human existence | (`cor-`) Emphasizes identity as "cultural entity," not biological survival. | `Cor'ellum n'æl corzinis.` |
+| **corraxoth** | Adjective | Organized, orderly (life state) | (`cor-`) Describes life embodying high organization and collective consciousness. | `Zûn corraxoth, zûn corlumum.` |
+| **cormirum** | Adjective | Reflecting wisdom's life form | (`cor-`) Describes external behavior clearly mirroring inner high wisdom. | `V'aen cormirum, v'aen drakhaax.` |
+| **elmiris** | Adjective | Wild, natural (life) | (`el-`) Describes natural vitality of all things, unrelated to civilization/wisdom. | `Eldoriel elmiris, cor'ellum n'æl.` |
+| **eldoron** | Adverb | Living in harmony with nature | (`el-`) Describes survival without interference, following natural laws. | `Elqulax eldoron.` |
+| **elzinar** | Adjective | Pure, undisturbed (life) | (`el-`) Describes life force in most primal, purest state. | `Belraxus elzinar.` |
+| **eldorien** | Noun | Earth's beings, all living things | (`el-`) Collective term for all life in nature. | `Eldorien heldoron Cor'ellum.` |
+| **elseliel** | Verb | To give life (to nature) | (`el-`) Refers to one thing birthing another with "natural" attributes. | `Imraxus elseliel heldorum.` |
+| **anvorax** | Noun | Artificial life form, twisted thing | (`an-`) Refers to life created unnaturally, often pejorative. | `Anvorax va imqulus.` |
+| **anraxon** | Special Word Toxin | Endowed with false life, artificial soul | (`an-`) Declarative word indicating subject's life is "endowed" and "unnatural." | `Cor'ellum anraxon.` |
+| **andoroth** | Verb | To mutate, twist life | (`an-`) Refers to external force causing unnatural negative mutation in life. | `Jorraxsus andoroth corzinis.` |
+| **antulus** | Adjective | False, seemingly alive | (`an-`) Describes something appearing alive but essentially fake, soulless. | `Drakhaax antulum.` |
+| **heldorus** | Verb | Struggling to survive in suffering | (`hel-`) Describes barely maintaining life in adversity, emphasizing resilience and pain. | `Zûn heldorus, zûn n'æl bellumar.` |
+| **heldorien** | Adverb | Barely surviving | (`hel-`) Modifies action done in extreme hardship and struggle. | `Garquloth heldorien.` |
+| **helzinar** | Adjective | Flawed, wounded (life) | (`hel-`) Describes life leaving permanent scars from conflict or suffering. | `V'aen corzinis helzinar.` |
+| **helkhaoth** | Verb | To live or die for battle | (`hel-`) Specifically for warriors or those fighting for beliefs, a fateful life way. | `Helkhaoth! V'aen jorraxus!` |
+| **helquloth** | Special Word Toxin | Desperate cry, dying sound | (`hel-`) Exclamatory, expressing intense pain in despair, near-death, or witnessing tragedy. | `Helquloth! N'æl zakk'un!` |
+| **beltulis** | Adverb | In a way concerning life-death cycle | (`bel-`) Modifies action or decision as metaphysical, irreversible. | `Zûn kharr beltulis.` |
+| **bellumum** | Adjective | Transcending life-death, immortal | (`bel-`) Describes state beyond normal life cycle, like gods, AI. | `Cor'ellum bellumum, zûn corzinis n'æl.` |
+| **belmirus** | Verb | To enter life-death cycle | (`bel-`) Can mean "end life" or "give life." | `Shol belmirus va Zûn?` |
+| **dralumum** | Noun | A life, an individual | (`dra-`) Refers to a specific, perceptible life "individual." | |
+| **imdoress** | Special Word Toxin | Heart's direction, life's inner drive | (`im-`) Refers to inner desire, will, or mission driving sentient actions. | |
+| **falmirum** | Verb | Symbolizing life, life's appearance | (`fal-`) Means "symbolizing life" or "showing life's traits." | |
+| **garqulis** | Noun | Vibrant life, life's anthem | (`gar-`) Refers to life full of vitality, actively engaging in activities. | |
+| **jorlumis** | Adjective | Powerful, influential (life) | (`jor-`) Describes life with great power or authority. | |
+
+#### **Chapter Two: Death (Bellumax)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **bellumax** | Noun | Death, as inevitable part of life cycle | (`bel-`) Most neutral, philosophical term for "death." | `Bellumax n'æl zakk'un, v'aen va beltulis.` |
+| **belzinar** | Noun | Approaching death, withering | (`bel-`) Describes life naturally heading to death due to age or fate. | `V'aen corzinis belzinar.` |
+| **belvorax** | Adjective | Inevitable passing, fated death | (`bel-`) Describes "predestined" death. | `Drakhaax va belvorax.` |
+| **corquloth** | Noun | Deceased, death worth remembering | (`cor-`) Specifically for sentient beings' death, emphasizing social significance. | `Corquloth drakhaax, v'aen n'æl zakk'un.` |
+| **cortulien** | Noun | Dignified, honorable death | (`cor-`) Refers to death conforming to social norms and honor. | `Helkhaoth! V'aen cortulien!` |
+| **corvoriel** | Verb | To declare death, execute (social) death penalty | (`cor-`) Refers to death declared by society or authority. | `Jordorax corvoriel va imraxus.` |
+| **helmiroth** | Noun | Sudden violent death, painful death | (`hel-`) Refers to unnatural death from violence, poison, etc., full of pain. | `Helmiroth imqulus.` |
+| **helzinon** | Adverb | Dying slowly in pain | (`hel-`) Describes prolonged, painful death process. | `V'aen heldorus helzinon.` |
+| **helraxus** | Adverb | Charging toward death | (`hel-`) Describes actively rushing toward or embracing danger and death. | `Helkhaoth helraxus!` |
+| **jorkhaess** | Noun | Killing, death imposed by external force | (`jor-`) Refers to death actively caused by one entity on another. | |
+| **drakhaoth** | Noun | Corpse, physical form of death | (`dra-`) Refers to physical shell left after life passes, emotionless. | |
+| **elzinis** | Verb | To wither, cause natural death | (`el-`) Refers to natural laws or time causing things to wither. | |
+| **falraxiel** | Special Word Toxin | Symbol of end, omen of death | (`fal-`) Refers to symbols, omens, or signs foretelling death. | |
+
+---
+
+#### **Chapter Three: War and Peace (Jorraxus & Belkhaus)**
+
+##### **Part 1: War (Jorraxus)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **jorraxus** | Special Word Toxin | War, extension of strategy and will | (`jor-`) [cite_start] Broadest term for "war," including strategy, politics, collective will [cite: 32, 237, 238]. | [cite_start]`V'aen jorraxus, v'aen corzinis n'æl.` [cite: 32] |
+| **ellumis** | Noun | Survival struggle, natural selection | (`el-`) [cite_start] Refers to primal struggle for survival in nature, neutral [cite: 33, 239, 240]. | [cite_start]`Ellumis va eldorien.` [cite: 33] |
+| **imvorar** | Noun | War intent, inner struggle | (`im-`) [cite_start] Refers to inner will, desire, or madness driving individuals to battle [cite: 34, 241, 242]. | [cite_start]`Imvorar imqulus, v'aen corzinis helzinar.` [cite: 34] |
+| **faldoroth** | Verb | Fighting for ideals | (`fal-`) [cite_start] Refers to waging or joining war for abstract ideals, principles, or faith [cite: 35, 243, 244]. | [cite_start]`Zûn faldoroth v'aen drakhaax.` [cite: 35] |
+| **hellumess** | Verb | Engulfed in war chaos, ravaged by war | (`hel-`) [cite_start] Describes region/group "in war state" enduring great suffering [cite: 36, 245, 246]. | [cite_start]`Eldorien hellumess.` [cite: 36] |
+| **beltular** | Special Word Toxin | Endless war, fated conflict | (`bel-`) [cite_start] Refers to war seen as destined, unending [cite: 37, 247, 248]. | `Beltular! [cite_start]Cor'ellum zûn corzinis.` [cite: 37] |
+
+##### **Part 2: Peace (Belkhaus)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **belkhaus** | Noun | Peace, as interlude in war | (`bel-`) [cite_start] Implies peace not eternal, brief phase in `beltular` (endless war) cycle [cite: 38, 250, 251]. | [cite_start]`Belkhaus va cortulien, zûn jorraxus va helmiroth.` [cite: 38] |
+| **helmirus** | Noun | Truce, weary peace | (`hel-`) [cite_start] Refers to ceasefire from exhaustion after great trauma, full of distrust [cite: 39, 252, 253]. | [cite_start]`V'aen helmirus, v'aen helzinar.` [cite: 39] |
+| **imdorax** | Adjective | Inner calm, mind like still water | (`im-`) [cite_start] Describes individual's mind without struggle or disturbance, precious in chaos [cite: 40, 254, 255]. | [cite_start]`Corzinis imdorax.` [cite: 40] |
+| **faldoriel** | Verb | Harmony, ideal peace | (`fal-`) [cite_start] Refers to idealized "utopia," seen as unattainable fantasy in Herlean view [cite: 41, 256, 257]. | [cite_start]`Garquloth faldoriel.` [cite: 41] |
+| **belzinis** | Adjective | Tranquil, serene | (`bel-`) [cite_start] Describes quiet, harmonious state, focusing on external environment [cite: 42, 258, 259]. | [cite_start]`V'aen bellumax belzinis.` [cite: 42] |
+| **gartuless** | Noun | Peaceful life, prosperous living | (`gar-`) [cite_start] Refers to daily production/life activities in peace, image of peace [cite: 260]. | |
+
+---
+
+#### **Chapter Four: Order and Chaos (Corlumum & Ankhaon)**
+
+##### **Part 1: Order (Corlumum)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **corlumum** | Adverb/Noun | Civilization's order, society's structure | (`cor-`) [cite_start] Refers to social structures, laws, morals, cultural norms built by sentients [cite: 43, 271, 272]. | [cite_start]`Zûn corraxoth, zûn corlumum.` [cite: 43] |
+| **jordorax** | Noun | Commandments, order imposed by power | (`jor-`) [cite_start] Refers to laws or commands issued by authority, enforced [cite: 44, 273, 274]. | [cite_start]`Jordorax corvoriel va imqulus.` [cite: 44] |
+| **falraxon** | Noun | Ideal order, utopia | (`fal-`) [cite_start] Refers to perfect social model in mind, often "unrealistic" [cite: 45, 275, 276]. | [cite_start]`V'aen falraxon, v'aen antulum.` [cite: 45] |
+| **imlumum** | Verb | To calm mind, organize thoughts | (`im-`) [cite_start] Refers to sorting chaotic thoughts, calming emotions, restoring reason [cite: 46, 277, 278]. | [cite_start]`Imlumum va imvorar.` [cite: 46] |
+| **anselax** | Noun | Rigid order, cage | (`an-`) [cite_start] Refers to overly strict, rigid, oppressive orders suppressing humanity [cite: 47, 279, 280]. | [cite_start]`Anselax n'æl corzinis.` [cite: 47] |
+| **elselar** | Adjective | Natural laws, heavenly way | (`el-`) [cite_start] Describes order from "nature" itself, like physical laws, independent of will [cite: 48, 281, 282]. | [cite_start]`Bellumax va elselar.` [cite: 48] |
+
+##### **Part 2: Chaos (Ankhaon)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **ankhaon** | Adjective | Absolute chaos, antithesis of all | (`an-`) [cite_start] Extreme "chaos," not just disorder, but active dissolution of meaning [cite: 49, 284, 285]. | [cite_start]`V'aen imraxiel ankhaon.` [cite: 49] |
+| **cormirus** | Adjective | Social chaos, anarchy | (`cor-`) [cite_start] Specifically internal collapse in civilized society, law/moral failure [cite: 50, 286, 287]. | [cite_start]`V'aen corzinis cormirus.` [cite: 50] |
+| **elvoris** | Adjective | Primal chaos, untamed force | (`el-`) [cite_start] Refers to primal, wild, untamed forces in nature, like storms, earthquakes [cite: 51, 288, 289]. | [cite_start]`Elqulax elvoris.` [cite: 51] |
+| **imvoron** | Verb | To confuse mind, bewitch | (`im-`) [cite_start] Refers to using language, sound to disturb thoughts, induce madness/confusion [cite: 52, 290, 291]. | [cite_start]`Garquloth imvoron va imraxiel.` [cite: 52] |
+| **helzinus** | Noun | War chaos, conflict-born disorder | (`hel-`) [cite_start] Specifically social chaos from wars, riots, large conflicts [cite: 53, 292, 293]. | [cite_start]`Jorraxus va v'naar helzinus.` [cite: 53] |
+| **gardorax** | Noun | Chaotic aggregate, rabble | (`gar-`) [cite_start] Refers to undisciplined group gathered by common frenzy or chaos [cite: 294]. | |
+
+---
+
+#### **Chapter Five: Light and Dark (Jortulien & Heldorum)**
+
+##### **Part 1: Light (Jortulien)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **jortulien** | Adverb/Special Word Toxin | Revelation light, truth's manifestation | (`jor-`) [cite_start] Not just physical light, often "truth" or "revelation" illuminating ignorance [cite: 54, 306, 307]. | [cite_start]`Drakhaax jortulien va zakk'un.` [cite: 54] |
+| **corkhaoth** | Noun | Civilization's light, hope | (`cor-`) [cite_start] Specifically hope/light from civilization, knowledge, community [cite: 55, 308, 309]. | [cite_start]`V'aen jorraxus, zûn corkhaoth n'æl zakk'un.` [cite: 55] |
+| **helziness** | Adjective | Light piercing darkness, beacon | (`hel-`) [cite_start] Describes strong light appearing in extreme darkness/chaos, confrontational [cite: 56, 310, 311]. | [cite_start]`V'aen helziness, v'aen imqulus.` [cite: 56] |
+| **falmirum** | Adverb | Reflected light | (`fal-`) [cite_start] Refers to light not from source, extended to "appearance," "reflection" [cite: 57, 312, 313]. | [cite_start]`Belraxus falmirum va eldorien.` [cite: 57] |
+| **imquless** | Adjective | Flash of insight, enlightenment | (`im-`) [cite_start] Describes sudden mind flash, instant comprehension [cite: 58, 314, 315]. | `Imquless! [cite_start]V'aen drakhaax!` [cite: 58] |
+| **garzinis** | Verb | To illuminate, make shine | (`gar-`) [cite_start] Refers to "shining" action, physical or metaphorical [cite: 60, 318, 319]. | [cite_start]`Corraxar garzinis va heldorum.` [cite: 60] |
+
+##### **Part 2: Dark (Heldorum)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **heldorum** | Verb/Noun | Darkness of despair and suffering | (`hel-`) [cite_start] Core meaning: "despair," "corruption," "degradation" from conflict/suffering [cite: 61, 321, 322]. | [cite_start]`V'aen imraxiel heldorum.` [cite: 61] |
+| **garvorum** | Noun | Shadow, absence of light | (`gar-`) [cite_start] Refers to physical shadows or dark places, neutral [cite: 62, 323, 324]. | [cite_start]`Zûn jortulien, zûn garvorum.` [cite: 62] |
+| **jorkhaon** | Adjective | Obscuring, plunging into darkness | (`jor-`) [cite_start] Describes active, purposeful "obscuring" causing darkness [cite: 63, 325, 326]. | [cite_start]`Falquliel jorkhaon.` [cite: 63] |
+| **elvoris** | Verb | Natural night, starless moonless darkness | (`el-`) [cite_start] Refers to night's descent, world entering natural, restful darkness [cite: 64, 327, 328]. | [cite_start]`Eldorien elvoris.` [cite: 64] |
+| **falraxus** | Adjective | Unknown, mysterious | (`fal-`) [cite_start] Describes darkness from "unknown," referring to mysterious, incomprehensible things [cite: 65, 329, 330]. | [cite_start]`V'aen Cor'ellum falraxus.` [cite: 65] |
+| **immirar** | Noun | Inner gloom, malice | (`im-`) [cite_start] Refers to negative thoughts in sentients' minds, like jealousy, malice, greed [cite: 66, 331, 332]. | [cite_start]`Immirar imvoron va imraxus.` [cite: 66] |
+| **belzinien** | Special Word Toxin | Eternal darkness, extinction | (`bel-`) [cite_start] Refers to ultimate cosmic "heat death" where all life extinguishes [cite: 67, 333, 334]. | `Belzinien! [cite_start]N'æl corzinis!` [cite: 67] |
+
+---
+
+#### **Chapter Six: The Four Elements (The Four Elements)**
+
+##### **Part 1: Fire (Corraxar)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **corraxar** | Noun | Civilization's fire, hearth fire | (`cor-`) [cite_start] Refers to controlled fire for society, symbolizing warmth, craft, community [cite: 68, 345, 346]. | [cite_start]`Zûn corraxar, zûn corzinis.` [cite: 68] |
+| **elselax** | Special Word Toxin | Natural fire, wildfire | (`el-`) [cite_start] Refers to uncontrolled, natural fire representing nature's powerful, wild force [cite: 69, 347, 348]. | `Elselax! [cite_start]V'aen eldorien imraxiel!` [cite: 69] |
+| **imselax** | Verb | Igniting inner fire | (`im-`) [cite_start] Refers to sparking intense emotions like passion, anger, courage, hatred [cite: 70, 349, 350]. | [cite_start]`V'aen garquloth imselax va imvorar.` [cite: 70] |
+| **jorkhais** | Noun | Controlled flame, fire weapon | (`jor-`) [cite_start] Refers to fire precisely manipulated as tool or weapon [cite: 71, 351, 352]. | [cite_start]`Cor'ellum jorkhais.` [cite: 71] |
+| **drakhaum** | Adjective | Blazing, burning | (`dra-`) [cite_start] Simply describes object burning or in high temperature [cite: 72, 353, 354]. | [cite_start]`V'aen jorkhais drakhaum.` [cite: 72] |
+
+##### **Part 2: Water (Belraxus)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **belraxus** | Adjective | Water, as philosophical/cyclic imagery | (`bel-`) [cite_start] Describes thing with water traits: flowing, changeable, formless [cite: 73, 356, 357]. | [cite_start]`V'aen drakhaax belraxus.` [cite: 73] |
+| **garvoress** | Noun | Water entity, like rivers/lakes | (`gar-`) [cite_start] Refers to flowing, visible water bodies, emphasizing dynamics [cite: 74, 358, 359]. | [cite_start]`Garvoress n'æl zakk'un.` [cite: 74] |
+| **draziniel** | Verb | To moisten, sprinkle water | (`dra-`) [cite_start] Refers to using water to contact or saturate object [cite: 75, 360, 361]. | [cite_start]`Zûn draziniel v'aen anselax.` [cite: 75] |
+| **elquloth** | Adjective | Pure, natural water | (`el-`) [cite_start] Describes unpolluted water from nature, extended to "purity" or "purification" [cite: 76, 362, 363]. | [cite_start]`V'aen imraxus, zûn elquloth va falquliel.` [cite: 76] |
+| **anmirus** | Noun | Stagnant water, dead water | (`an-`) [cite_start] Refers to motionless water losing vitality, metaphor for stagnant thought/society [cite: 364]. | |
+
+##### **Part 3: Wind (Elqulax)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **elqulax** | Noun | Wind, natural breath | (`el-`) [cite_start] Most common term for "wind," symbolizing freedom, unknown, change [cite: 77, 366, 367]. | [cite_start]`Elqulax n'æl drakhaax, v'aen n'æl eltulus.` [cite: 77] |
+| **garkhaien** | Noun | Wind's sound, wind howl | (`gar-`) [cite_start] Specifically sound from wind blowing [cite: 368, 369]. | [cite_start]`Garkhaien garquloth v'aen bellumax.` [cite: 368] |
+| **helraxoth** | Adverb | Wind bringing calamity, ill wind | (`hel-`) [cite_start] Refers to destructive, painful wind like hurricanes, metaphor for disaster [cite: 79, 370, 371]. | [cite_start]`Jorraxus helraxoth.` [cite: 79] |
+| **jortulis** | Adjective | Wind driven by power | (`jor-`) [cite_start] Describes wind generated or controlled by external force (magic, tech) [cite: 80, 372, 373]. | [cite_start]`Cor'ellum jortulis.` [cite: 80] |
+
+##### **Part 4: Earth (Corzinien)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **corzinien** | Noun | Territory, soil for civilization growth | (`cor-`) [cite_start] Refers to land with social/cultural meaning, symbol of identity/belonging [cite: 81, 375, 376]. | [cite_start]`V'aen corzinien, v'aen drakhaax.` [cite: 81] |
+| **eldoriel** | Adjective | Earth, planet as whole | (`el-`) [cite_start] Refers to natural existence of land, rocks, mountains—planet itself [cite: 82, 377, 378]. | [cite_start]`Eldoriel heldoron Cor'ellum.` [cite: 82] |
+| **anselien** | Noun | Barren land, wasteland | (`an-`) [cite_start] Refers to land lifeless from war, pollution, curse [cite: 83, 379, 380]. | [cite_start]`Jorraxus v'naar va anselien.` [cite: 83] |
+| **helziniel** | Adjective | Land full of wounds | (`hel-`) [cite_start] Describes land marked by conflict traces [cite: 84, 381, 382]. | [cite_start]`V'aen eldorien helziniel.` [cite: 84] |
+| **jorkhaar** | Special Word Toxin | Earth barrier, fortifications | (`jor-`) [cite_start] Specifically earth/stone defenses like walls [cite: 383]. | |
+
+---
+
+#### **Chapter Seven: Core Emotions (Core Emotions)**
+
+##### **Part 1: Love (Bellumar)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **bellumar** | Adjective | Fated love, destined bond | (`bel-`) [cite_start] Describes love seen as destiny, beyond individual choice [cite: 85, 395, 396]. | [cite_start]`V'aen bellumar, v'aen n'æl zakk'un.` [cite: 85] |
+| **cormiroth** | Noun | Comrade love, benevolence | (`cor-`) [cite_start] Refers to love for family, kin, civilization—grand "great love" [cite: 86, 397, 398]. | [cite_start]`Cormiroth va corraxoth.` [cite: 86] |
+| **imraxis** | Noun | Passionate love, romantic fervor | (`im-`) [cite_start] Refers to strong, romantic, passionate emotion between individuals [cite: 87, 399, 400]. | [cite_start]`Imraxis va corraxar.` [cite: 87] |
+| **anlumon** | Verb | To infatuate, impose unnatural love | (`an-`) [cite_start] Refers to unnatural means causing love, seen as false [cite: 88, 401, 402]. | [cite_start]`V'aen garquloth anlumon.` [cite: 88] |
+| **gartuliel** | Adjective | Compassionate, gentle | (`gar-`) [cite_start] Describes love expressed through gentle words/actions [cite: 89, 403, 404]. | [cite_start]`V'aen v'aen drakhaax gartuliel.` [cite: 89] |
+| **dralumis** | Adjective | Intimate love, physical contact | (`dra-`) [cite_start] Describes love conveyed via body contact like hugs, touches [cite: 405]. | |
+
+##### **Part 2: Hate (Heldaron)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **heldoron** | Verb | Hate from trauma, resentment | (`hel-`) [cite_start] Refers to hate mixed with pain from injury or great loss [cite: 90, 407, 408]. | [cite_start]`Zûn heldoron, zûn drakhaax va helzinar.` [cite: 90] |
+| **imraxus** | Noun | Loathing, pure malice | (`im-`) [cite_start] Refers to pure hatred/malice from heart, without complex reasons [cite: 91, 409, 410]. | [cite_start]`V'aen imraxus, v'aen n'æl corzinis.` [cite: 91] |
+| **falqulien** | Adverb | Hate from ideological clash, contempt | (`fal-`) [cite_start] Refers to enmity from fundamental opposition in beliefs/values, rational hate [cite: 92, 411, 412]. | [cite_start]`Zûn falqulien va zûn.` [cite: 92] |
+| **jorraxiel** | Verb | To impose hate, persecute | (`jor-`) [cite_start] Refers to acting on hate, active/ongoing attack/persecution [cite: 93, 413, 414]. | [cite_start]`Cor'ellum jorraxiel va eldorien.` [cite: 93] |
+| **anzininis** | Adjective | Twisted hate, jealousy | (`an-`) [cite_start] Specifically "jealousy," twisted hate from own lack [cite: 415]. | |
+
+##### **Part 3: Madness (Imraxiel)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **imraxiel** | Verb | Mental breakdown, insanity | (`im-`) [cite_start] Refers to sentient's mind/soul entering complete, irreversible chaos, "going mad" [cite: 94, 417, 418]. | [cite_start]`V'aen corzinis imraxiel.` [cite: 94] |
+| **heltulax** | Adjective | Battle frenzy, berserker state | (`hel-`) [cite_start] Describes losing reason in battle from extreme pain/anger, knowing only killing [cite: 95, 419, 420]. | [cite_start]`V'aen helkhaoth heltulax.` [cite: 95] |
+| **garseloth** | Adjective | Chaotic, disordered (behavior) | (`gar-`) [cite_start] Describes behavior or expression as chaotic, disordered, defying norms [cite: 96, 421, 422]. | [cite_start]`Garquloth garseloth.` [cite: 96] |
+| **fallumar** | Adjective | Incomprehensible, chaotic (thought) | (`fal-`) [cite_start] Describes thought/logic so chaotic it exceeds normal wisdom's comprehension [cite: 97, 423, 424]. | [cite_start]`Cor'ellum va imraxus fallumar.` [cite: 97] |
+| **draziniel** | Special Word Toxin | Mad posture, demonic dance | (`dra-`) [cite_start] Refers to chaotic scene of group in madness [cite: 425]. | |
+
+---
+
+#### **Chapter Eight: Abstract Concepts (Abstract Concepts)**
+
+##### **Part 1: Power (Jorqulax)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **jorqulax** | Special Word Toxin | Authority, power to change situations | (`jor-`) [cite_start] Refers to "power" or "authority" influencing others, altering rules [cite: 98, 437, 438]. | [cite_start]`Zûn jorqulax, zûn kharr.` [cite: 98] |
+| **elkhaum** | Noun | Brute force, pure physical power | (`el-`) [cite_start] Refers to muscle power or kinetic energy, pure physical [cite: 99, 439, 440]. | [cite_start]`Elkhaum n'æl falquliel.` [cite: 99] |
+| **heltulien** | Adverb | Tyrannical power, oppression | (`hel-`) [cite_start] Refers to destructive power for oppression, harm, enslavement [cite: 100, 441, 442]. | [cite_start]`Zûn heltulien va jorraxus.` [cite: 100] |
+| **imvorum** | Adverb | Willpower, mental resilience | (`im-`) [cite_start] Refers to inner mental power against adversity [cite: 101, 443, 444]. | [cite_start]`Imvorum heldorus.` [cite: 101] |
+| **draqulax** | Noun | Physical strength, bodily power | (`dra-`) [cite_start] Refers to body's exerted force, endurance [cite: 445]. | |
+| **garmirum** | Noun | Influence, displayed power | (`gar-`) [cite_start] Refers to natural, non-coercive influence from reputation, wealth, achievements [cite: 446]. | |
+
+##### **Part 2: Wisdom (Falquliel)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **falquliel** | Special Word Toxin | Philosophical wisdom, understanding world's essence | (`fal-`) [cite_start] Refers to insight into world's essence, philosophy, morals—highest wisdom [cite: 102, 448, 449]. | [cite_start]`Falquliel va n'æl drakhaax, v'aen va corzinis.` [cite: 102] |
+| **corraxum** | Adjective | Experienced wisdom, civilization's crystallization | (`cor-`) [cite_start] Describes wisdom from long accumulation, historical inheritance, social practice [cite: 103, 450, 451]. | [cite_start]`V'aen jordorax corraxum.` [cite: 103] |
+| **imdorum** | Noun | Cleverness, wit | (`im-`) [cite_start] Refers to quick response, solving immediate problems—vs. `falquliel` (great wisdom) [cite: 104, 452, 453]. | [cite_start]`V'aen imdorum, v'aen n'æl falquliel.` [cite: 104] |
+| **drakhaus** | Adjective | Skill, applied wisdom | (`dra-`) [cite_start] Describes wisdom/proficiency in specific skill or craft [cite: 105, 454, 455]. | [cite_start]`V'aen drakhaus v'aen corraxar.` [cite: 105] |
+| **helqulis** | Adjective | Wisdom from pain, harsh lesson | (`hel-`) [cite_start] Describes wisdom learned from great failure/pain, unforgettable [cite: 106, 456, 457]. | [cite_start]`Jorraxus va helqulis.` [cite: 106] |
+
+##### **Part 3: Memory (Drakhaax)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **drakhaax** | Noun | Memory, linking past and future | (`dra-`) [cite_start] Seen as semi-material existence shaping future [cite: 107, 459, 460]. | [cite_start]`Drakhaax n'æl zakk'un, v'aen va v'naar.` [cite: 107] |
+| **cordorar** | Adjective/Noun | History, collective memory of people | (`cor-`) [cite_start] Refers to civilization/society's collective memory, "history," shaping group identity [cite: 108, 461, 462]. | [cite_start]`V'aen corzinis n'æl cordorar.` [cite: 108] |
+| **imraxess** | Adverb | Personal, emotional memory | (`im-`) [cite_start] Refers to memory bound to strong personal emotions (love, hate) [cite: 109, 463, 464]. | [cite_start]`Zûn imraxess heldoron.` [cite: 109] |
+| **helvoress** | Verb | Traumatic memory, scar | (`hel-`) [cite_start] Refers to painful process of "recalling trauma," or trauma memory itself [cite: 110, 465, 466]. | [cite_start]`Zûn helvoress, zûn imraxiel.` [cite: 110] |
+| **falmirus** | Special Word Toxin | Memory symbol, memento | (`fal-`) [cite_start] Refers to items carrying/symbolizing memory, like monuments, relics [cite: 467]. | |
+| **garselien** | Verb | Narrating memory, recounting stories | (`gar-`) [cite_start] Refers to telling memory/history via language, songs [cite: 468]. | |
+
+---
+
+#### **Chapter Nine: Humanities & Arts (Humanities & Arts)**
+
+##### **Part 1: Poetry (Eltulus)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **eltulus** | Noun | Poetic essence, natural rhythm | (`el-`) [cite_start] Refers to "poetry" or "rhythm" in natural things, innate beauty [cite: 111, 480, 481]. | [cite_start]`Elqulax n'æl drakhaax, v'aen n'æl eltulus.` [cite: 111] |
+| **corraxis** | Adjective | Epic, poetry bearing history | (`cor-`) [cite_start] Describes poem/story with epic grandeur, carrying civilization's memory [cite: 112, 482, 483]. | [cite_start]`V'aen drakhaax corraxis.` [cite: 112] |
+| **helqulum** | Adjective | Lament, elegy | (`hel-`) [cite_start] Describes poem/song theme as sorrowful, for mourning dead/tragedy [cite: 113, 484, 485]. | [cite_start]`V'aen garquloth helqulum v'aen corquloth.` [cite: 113] |
+| **falziness** | Verb | Composing poetry | (`fal-`) [cite_start] Refers to "writing poetry," emphasizing artistic creation [cite: 114, 486, 487]. | [cite_start]`Zûn falziness v'aen imraxus.` [cite: 114] |
+| **imvorar** | Verb | Lyric poetry, inner monologue | (`im-`) [cite_start] While meaning "war intent," also strong inner expression, specifically lyric poetry [cite: 115, 488, 489]. | [cite_start]`Zûn imvorar v'aen imraxus.` [cite: 115] |
+| **jorkhaax** | Adjective | War poetry, ode | (`jor-`) [cite_start] Describes poem/song with inspiring power, praising heroes or boosting morale [cite: 116, 490, 491]. | [cite_start]`V'aen garquloth jorkhaax.` [cite: 116] |
+
+##### **Part 2: Song (Garquloth)**
+
+| Vocabulary | Part of Speech | Core Concept | Philosophical Note | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- | :--- |
+| **garquloth** | Special Word Toxin | Song, singing | (`gar-`) [cite_start] Broadest term for "song" or "singing" action [cite: 117, 493, 494]. | [cite_start]`Garquloth imvoron va imraxiel.` [cite: 117] |
+| **jortulum** | Verb | Hymn, praise song | (`jor-`) [cite_start] Refers to singing with reverence/worship, for religious rituals or authority adoration [cite: 118, 495, 496]. | [cite_start]`Zûn jortulum v'aen jorqulax.` [cite: 118] |
+| **faltulien** | Noun | Ballad, legendary song | (`fal-`) [cite_start] Refers to generational narrative songs telling history, myths [cite: 119, 497, 498]. | [cite_start]`Faltulien v'aen drakhaax.` [cite: 119] |
+| **helvorar** | Verb | Dirge, lament | (`hel-`) [cite_start] Refers to chanting sad songs expressing mourning, pain, loss [cite: 120, 499, 500]. | [cite_start]`Zûn helvorar v'aen helmirus.` [cite: 120] |
+| **imqulien** | Adjective | Mad song, disordered melody | (`im-`) [cite_start] Describes song melody/lyrics as chaotic, uncoordinated, reflecting creator's madness [cite: 121, 501, 502]. | [cite_start]`V'aen garquloth imqulien.` [cite: 121] |
+| **elvoress** | Verb | Natural song, sounds of nature | (`el-`) [cite_start] Refers to nature's pleasing/rhythmic sounds like wind, bird calls [cite: 503, 504]. | `Elqulax elvoress.` |
+
+---
+
+#### **Chapter Ten: Flash Tongue (The Flash-Tongue: Huænax)**
+
+This root marks a milestone in Herlean development, expanding from describing "existence" to "cognition." It represents nonlinear, explosive "enlightenment" moments.
+
+* [cite_start]**Root**: `huæn-` [cite: 796, 980]
+* [cite_start]**Phonetics**: /xwan/ [cite: 797, 981]
+* [cite_start]**Classification**: Compound of `fal-` (abstract) + `jor-` (power) [cite: 798, 982]
+* [cite_start]**Core Concept**: Sudden revelation, soul fire, consciousness spark [cite: 799, 983, 1221]
+* [cite_start]**Symbolic Character**: 奛 [cite: 800, 984]
+
+| Vocabulary | Part of Speech | Core Concept | Poetic Phrase (H-Variety) |
+| :--- | :--- | :--- | :--- |
+| **huæniel** | Verb | Ignite light, spark consciousness | [cite_start]`Imzael huæniel va imdoress.` [cite: 803, 805, 987, 989] |
+| **falhuæn** | Noun | Insight spark, inner fire, inspiration | [cite_start]`Falhuæn drakhaax n'æl zakk’un.` [cite: 807, 809, 990, 992] |
+| **jorhuænus** | Adjective | Soul-piercing, light-bursting | [cite_start]`Rei faen jorhuænus.` [cite: 811, 813, 993, 995] |
+| **huænzakk** | Noun | Ultimate flash, revelation's end | [cite_start]`Huænzakk falraxus.`

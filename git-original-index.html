@@ -75,15 +75,14 @@
             50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
         }
         
-        /* AI Bot Widget - Professional Logo */
+        /* Floating Crystal Ball Widget */
         .crystal-ball {
             position: fixed;
             top: 20px;
             left: 20px;
             width: 60px;
             height: 60px;
-            background: rgba(30, 41, 59, 0.95);
-            border: 2px solid rgba(139, 92, 246, 0.6);
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
             border-radius: 50%;
             cursor: pointer;
             z-index: 1000;
@@ -92,14 +91,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        
-        .crystal-ball img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
+            font-size: 30px;
         }
         
         .ai-badge {
@@ -179,81 +171,6 @@
             color: #000;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
-        }
-
-        /* Enhanced Cultural Language Buttons */
-        .cultural-btn {
-            padding: 1.5rem !important;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cultural-btn .flag-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .cultural-btn .lang-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-        
-        .cultural-btn .cultural-subtitle {
-            font-size: 0.8rem;
-            color: #cbd5e1;
-            line-height: 1.4;
-        }
-
-        /* Special Khrael Button */
-        .khrael-btn {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(251, 191, 36, 0.2)) !important;
-            border: 2px solid rgba(251, 191, 36, 0.6) !important;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .khrael-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(251, 191, 36, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .khrael-icon {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .premium-badge {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.2rem 0.5rem;
-            border-radius: 8px;
-            text-shadow: none;
-        }
-
-        .khrael-btn:hover {
-            background: linear-gradient(135deg, #fbbf24, #8b5cf6) !important;
-            border-color: #fbbf24 !important;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.5);
         }
         
         .features-grid {
@@ -402,9 +319,9 @@
     </style>
 </head>
 <body>
-    <!-- AI Bot Widget -->
+    <!-- Floating Crystal Ball Widget -->
     <div class="crystal-ball" onclick="openReading()">
-        <img src="src/assets/logo/aibotlogo.png" alt="AI Bot">
+        <span>🔮</span>
         <span class="ai-badge">AI</span>
     </div>
     
@@ -420,10 +337,7 @@
                 <img src="src/assets/logo/mainlogo.jpg" alt="Night God Tarot Logo" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);">
                 <div>
                     <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                        <img src="src/assets/khrael.png" alt="Khrael Language" style="width: 20px; height: 20px; opacity: 0.8;">
-                        <p style="color: #8b5cf6; font-size: 0.9rem; margin: 0; font-weight: 600;">Khraethul va Ankhaon • 𐌱𐌰𐌰𐌾𐌰 𐌷𐌴𐍂𐌴𐌰𐌽</p>
-                    </div>
+                    <p style="color: #8b5cf6; font-size: 0.9rem; margin: 0; font-weight: 600;">Khraethul va Ankhaon • 𐌱𐌰𐌰𐌾𐌰 𐌷𐌴𐍂𐌴𐌰𐌽</p>
                 </div>
             </div>
             <p class="subtitle">Ultimate AI-Powered Divination Platform</p>
@@ -431,59 +345,14 @@
             <div class="status-badge">🤖 MULTI-AI ACTIVE • 🔒 SECURE • ✨ READY</div>
         </header>
 
-        <!-- Advanced Language Selector with Cultural Elements -->
+        <!-- Language Selector -->
         <div class="language-selector">
-            <h2 class="lang-title">🌍 选择您的语言 • Choose Your Language • 言語を選択</h2>
-            <p style="color: #cbd5e1; text-align: center; margin-bottom: 2rem;">Experience authentic cultural wisdom in your native language</p>
-            
-            <div class="lang-buttons-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-                <!-- English -->
-                <button class="lang-btn cultural-btn active" onclick="setLang('en')" data-lang="en">
-                    <div class="flag-icon">🇺🇸</div>
-                    <div class="lang-name">English</div>
-                    <div class="cultural-subtitle">Universal Wisdom</div>
-                </button>
-                
-                <!-- Traditional Chinese -->
-                <button class="lang-btn cultural-btn" onclick="setLang('zh-TW')" data-lang="zh-TW">
-                    <div class="flag-icon">🇹🇼</div>
-                    <div class="lang-name">繁體中文</div>
-                    <div class="cultural-subtitle">古典智慧 • 東方神韻</div>
-                </button>
-                
-                <!-- Simplified Chinese -->
-                <button class="lang-btn cultural-btn" onclick="setLang('zh-CN')" data-lang="zh-CN">
-                    <div class="flag-icon">🇨🇳</div>
-                    <div class="lang-name">简体中文</div>
-                    <div class="cultural-subtitle">现代解读 • 智慧传承</div>
-                </button>
-                
-                <!-- Japanese -->
-                <button class="lang-btn cultural-btn" onclick="setLang('ja')" data-lang="ja">
-                    <div class="flag-icon">🇯🇵</div>
-                    <div class="lang-name">日本語</div>
-                    <div class="cultural-subtitle">和の心 • 神道の智慧</div>
-                </button>
-                
-                <!-- Khrael (Special) -->
-                <button class="lang-btn khrael-btn" onclick="setLang('khrael')" data-lang="khrael">
-                    <div class="khrael-icon">
-                        <img src="src/assets/khrael.png" alt="Khrael" style="width: 30px; height: 30px; filter: brightness(1.2);">
-                    </div>
-                    <div class="lang-name">𐌷𐌴𐍂𐌴𐌰𐌽</div>
-                    <div class="cultural-subtitle">Khraethul va Ankhaon</div>
-                    <div class="premium-badge">✨ UNIQUE</div>
-                </button>
-            </div>
-            
-            <!-- Creator Philosophy Integration -->
-            <div class="philosophy-section" style="margin-top: 2rem; padding: 2rem; background: rgba(15, 23, 42, 0.8); border-radius: 15px; border-left: 4px solid #fbbf24;">
-                <p id="philosophy-text" style="color: #e2e8f0; font-style: italic; line-height: 1.8; text-align: center;">
-                    "Language is the bridge between souls, and wisdom knows no boundaries. Through the Song of the Silence, we unite all cultures in divine understanding."
-                </p>
-                <p style="color: #8b5cf6; text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    — Yesin Yagami, Creator of the Khrael Language
-                </p>
+            <h2 class="lang-title">🌍 Choose Your Language</h2>
+            <div class="lang-buttons">
+                <button class="lang-btn active" onclick="setLang('en')">🇺🇸 English</button>
+                <button class="lang-btn" onclick="setLang('zh')">🇨🇳 简体中文</button>
+                <button class="lang-btn" onclick="setLang('tw')">🇹🇼 繁體中文</button>
+                <button class="lang-btn" onclick="setLang('ja')">🇯🇵 日本語</button>
             </div>
         </div>
 
@@ -686,14 +555,6 @@
             <!-- Generate Reading Button -->
             <button class="cta-button" style="width: 100%; margin-top: 2rem;" onclick="generateReading()">Begin Sacred Reading ✨</button>
             
-            <!-- Daily Reading Status (TarotAP Style) -->
-            <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(15, 23, 42, 0.8); border-radius: 15px; border: 2px solid rgba(34, 197, 94, 0.4); text-align: center;">
-                <p style="color: #22c55e; font-size: 0.9rem; margin: 0;">
-                    🎯 <strong>Daily Free Readings:</strong> <span id="dailyCount">1</span> reading remaining today • 
-                    <span style="color: #fbbf24; cursor: pointer;" onclick="openMembershipInfo()">Upgrade to Premium</span> for unlimited access
-                </p>
-            </div>
-            
             <!-- Reading Result Area -->
             <div id="readingResult" style="margin-top: 2rem;"></div>
         </div>
@@ -709,11 +570,6 @@
                 <button class="lang-btn" onclick="playFreq('theta')">💰 Theta 8Hz - Clear Wealth Obstacles</button>
                 <button class="lang-btn" onclick="playFreq('alpha')">💎 Alpha 7Hz - Natural Wealth Flow</button>
                 <button class="lang-btn" onclick="playFreq('mixed')">🌟 Mixed Frequency - Complete Healing</button>
-            </div>
-            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(15, 23, 42, 0.8); border-radius: 10px; border: 2px solid rgba(251, 191, 36, 0.3);">
-                <p style="color: #fbbf24; font-size: 0.9rem; margin: 0; text-align: center;">
-                    🎯 <strong>Daily Free Healing:</strong> 1 session per day • Unlimited with Night God Premium
-                </p>
             </div>
         </div>
     </div>
@@ -758,63 +614,6 @@
             <p style="color: #94a3b8; font-style: italic; text-align: center; margin-top: 2rem;">
                 "Bridging ancient wisdom with cutting-edge AI technology for the modern spiritual seeker."
             </p>
-        </div>
-    </div>
-
-    <!-- Membership Info Modal (TarotAP Style) -->
-    <div id="membershipModal" class="modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <button class="close-btn" onclick="closeModal('membershipModal')">×</button>
-            <h2 style="color: #fbbf24; font-size: 2.5rem; margin-bottom: 1.5rem; text-align: center;">⭐ Night God Premium</h2>
-            <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Unlock the full power of the Song of the Silent universe</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
-                <!-- Free Tier -->
-                <div style="background: rgba(30, 41, 59, 0.7); padding: 2rem; border-radius: 15px; border: 2px solid rgba(139, 92, 246, 0.3);">
-                    <h3 style="color: #8b5cf6; margin-bottom: 1rem;">🔮 Free Mystic</h3>
-                    <ul style="color: #cbd5e1; line-height: 2; list-style: none; padding: 0;">
-                        <li>✅ 1 Tarot Reading/day</li>
-                        <li>✅ All 5 Tarot Masters</li>
-                        <li>✅ 4 Spread Types</li>
-                        <li>✅ 94-Card Deck</li>
-                        <li>✅ Basic AI Analysis</li>
-                        <li>❌ Detailed Monica AI</li>
-                        <li>❌ Unlimited Readings</li>
-                        <li>❌ Premium Spreads</li>
-                    </ul>
-                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(139, 92, 246, 0.2); border-radius: 10px; text-align: center;">
-                        <strong style="color: #8b5cf6;">FREE</strong>
-                    </div>
-                </div>
-
-                <!-- Premium Tier -->
-                <div style="background: rgba(30, 41, 59, 0.7); padding: 2rem; border-radius: 15px; border: 2px solid rgba(251, 191, 36, 0.6); position: relative;">
-                    <div style="position: absolute; top: -10px; right: 15px; background: linear-gradient(135deg, #fbbf24, #8b5cf6); color: #000; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
-                        RECOMMENDED
-                    </div>
-                    <h3 style="color: #fbbf24; margin-bottom: 1rem;">⭐ Night God Premium</h3>
-                    <ul style="color: #cbd5e1; line-height: 2; list-style: none; padding: 0;">
-                        <li>🌟 Unlimited Daily Readings</li>
-                        <li>🤖 Full Monica AI Integration</li>
-                        <li>🎯 GPT-4o, Claude-3.5, Gemini</li>
-                        <li>🔥 Advanced Spread Types</li>
-                        <li>💎 Priority Reading Queue</li>
-                        <li>🎵 Unlimited Healing Frequencies</li>
-                        <li>📚 Khrael Language Lessons</li>
-                        <li>✨ Song of Silence Lore Access</li>
-                    </ul>
-                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(251, 191, 36, 0.2); border-radius: 10px; text-align: center;">
-                        <strong style="color: #fbbf24; font-size: 1.2rem;">$9.99/month</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <button class="cta-button" onclick="upgradePremium()">🌟 Upgrade to Premium ✨</button>
-                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 1rem;">
-                    Join thousands who have unlocked their spiritual potential with Night God Premium
-                </p>
-            </div>
         </div>
     </div>
 
@@ -868,220 +667,16 @@
             }
         };
 
-        // Advanced Tarot System with Daily Limits (TarotAP Style)
+        // Advanced Tarot System
         let selectedMaster = null;
         let selectedSpread = null;
         let drawnCards = [];
-        let dailyReadings = 0;
-        const maxDailyReadings = 1;
-        let isPremium = false;
 
-        // Initialize daily reading tracking
-        function initDailyTracking() {
-            const today = new Date().toDateString();
-            const storedDate = localStorage.getItem('lastReadingDate');
-            const storedCount = parseInt(localStorage.getItem('dailyReadingCount')) || 0;
-            
-            if (storedDate !== today) {
-                // New day, reset counter
-                dailyReadings = 0;
-                localStorage.setItem('dailyReadingCount', '0');
-                localStorage.setItem('lastReadingDate', today);
-            } else {
-                dailyReadings = storedCount;
-            }
-            
-            updateDailyCounter();
-        }
-
-        function updateDailyCounter() {
-            const remaining = isPremium ? '∞' : Math.max(0, maxDailyReadings - dailyReadings);
-            const counterElement = document.getElementById('dailyCount');
-            if (counterElement) {
-                counterElement.textContent = remaining;
-                if (!isPremium && dailyReadings >= maxDailyReadings) {
-                    counterElement.parentElement.innerHTML = `
-                        <span style="color: #ef4444;">🚫 Daily limit reached</span> • 
-                        <span style="color: #fbbf24; cursor: pointer;" onclick="openMembershipInfo()">Upgrade to Premium</span> for unlimited access
-                    `;
-                }
-            }
-        }
-
-        // Advanced i18n System with Cultural Integration
-        const culturalTranslations = {
-            'en': {
-                philosophy: "\"Language is the bridge between souls, and wisdom knows no boundaries. Through the Song of the Silence, we unite all cultures in divine understanding.\"",
-                greeting: "Welcome to the ultimate AI tarot platform",
-                culturalNote: "Universal wisdom accessible to all"
-            },
-            'zh-TW': {
-                philosophy: "「語言是靈魂間的橋樑，智慧無國界。透過《靜默之歌》，我們在神聖理解中團結所有文化。」",
-                greeting: "歡迎來到終極AI塔羅平台",
-                culturalNote: "融合東方古典智慧與現代AI科技"
-            },
-            'zh-CN': {
-                philosophy: "「语言是灵魂间的桥梁，智慧无国界。通过《静默之歌》，我们在神圣理解中团结所有文化。」",
-                greeting: "欢迎来到终极AI塔罗平台", 
-                culturalNote: "传承中华智慧，拥抱现代科技"
-            },
-            'ja': {
-                philosophy: "「言語は魂の架け橋であり、智慧に境界はない。『静寂の歌』を通じて、我々は神聖な理解においてすべての文化を統合する。」",
-                greeting: "究極のAIタロット・プラットフォームへようこそ",
-                culturalNote: "和の心と神道の智慧を現代AIに融合"
-            },
-            'khrael': {
-                philosophy: "\"Khraethul va ankhaon theruvel kaeth, vel thuvelan kael vorthak. Ankheon-vel-silith tharos, vael kulthen thuverai kael ankheon-luthien.\"",
-                greeting: "Ankheon thuverai vel Night God Tarot",
-                culturalNote: "𐌷𐌴𐍂𐌴𐌰𐌽 𐌸𐌿𐍀𐌹 • Khrael Original Language"
-            }
-        };
-
-        let currentLanguage = 'en';
-
-        // Enhanced language switching with cultural adaptation
+        // Functions
         function setLang(lang) {
-            // Update visual state
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            
-            // Store language preference
-            localStorage.setItem('nightGodTarotLanguage', lang);
-            currentLanguage = lang;
-            
-            // Update philosophy text with cultural adaptation
-            const philosophyElement = document.getElementById('philosophy-text');
-            if (philosophyElement && culturalTranslations[lang]) {
-                philosophyElement.innerHTML = culturalTranslations[lang].philosophy;
-            }
-            
-            // Update cultural elements based on language
-            updateCulturalElements(lang);
-            
-            // Special handling for Khrael language
-            if (lang === 'khrael') {
-                activateKhraelMode();
-            } else {
-                deactivateKhraelMode();
-            }
-            
-            // Update tarot master descriptions with cultural context
-            updateMasterDescriptions(lang);
-        }
-
-        function updateCulturalElements(lang) {
-            const culturalElements = {
-                'zh-TW': {
-                    tarotMasterTitle: '神諭師 • 靈魂導師',
-                    readingStyle: '古典東方智慧解讀',
-                    spiritualElement: '天地人和諧統一'
-                },
-                'zh-CN': {
-                    tarotMasterTitle: '神谕师 • 灵魂导师', 
-                    readingStyle: '现代智慧解读',
-                    spiritualElement: '阴阳五行调和'
-                },
-                'ja': {
-                    tarotMasterTitle: '神託師 • 魂の導師',
-                    readingStyle: '和の心による解読',
-                    spiritualElement: '八百万の神々の智慧'
-                },
-                'khrael': {
-                    tarotMasterTitle: 'Ankheon-Thuverai • Kael-Luthien',
-                    readingStyle: 'Silith-vel-Ankheon Thuvelan',
-                    spiritualElement: 'Khraethul va Ankhaon'
-                }
-            };
-
-            // Update UI elements based on selected culture
-            if (culturalElements[lang]) {
-                // Update modal title if it exists
-                const modalTitle = document.querySelector('#tarotModal h2');
-                if (modalTitle && lang !== 'en') {
-                    modalTitle.innerHTML = `🌙 ${culturalElements[lang].tarotMasterTitle}`;
-                }
-            }
-        }
-
-        function activateKhraelMode() {
-            // Add special Khrael styling
-            document.body.classList.add('khrael-mode');
-            
-            // Show special Khrael reading options
-            const khraelModeIndicator = document.createElement('div');
-            khraelModeIndicator.id = 'khrael-mode-indicator';
-            khraelModeIndicator.innerHTML = `
-                <div style="position: fixed; top: 80px; left: 20px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(139, 92, 246, 0.9)); padding: 0.8rem 1.5rem; border-radius: 25px; z-index: 1500; backdrop-filter: blur(10px); border: 2px solid rgba(251, 191, 36, 0.6);">
-                    <div style="color: #000; font-weight: 700; font-size: 0.9rem; text-align: center;">
-                        <img src="src/assets/khrael.png" alt="Khrael" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 0.5rem;">
-                        𐌷𐌴𐍂𐌴𐌰𐌽 MODE
-                    </div>
-                    <div style="color: #000; font-size: 0.7rem; text-align: center; margin-top: 0.2rem;">
-                        Original Language Active
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(khraelModeIndicator);
-            
-            // Add Khrael reading option to spreads
-            addKhraelReadingOptions();
-        }
-
-        function deactivateKhraelMode() {
-            document.body.classList.remove('khrael-mode');
-            const indicator = document.getElementById('khrael-mode-indicator');
-            if (indicator) indicator.remove();
-        }
-
-        function addKhraelReadingOptions() {
-            // Add special Khrael spread option
-            const spreadSection = document.querySelector('.spread-btn').parentElement;
-            if (spreadSection && !document.querySelector('.khrael-spread')) {
-                const khraelSpread = document.createElement('button');
-                khraelSpread.className = 'lang-btn spread-btn khrael-spread';
-                khraelSpread.onclick = () => selectSpread('khrael-silence');
-                khraelSpread.innerHTML = `
-                    <div>🌙 Silith-Ankheon</div>
-                    <div style="font-size: 0.8rem; margin-top: 0.5rem;">Song of Silence</div>
-                `;
-                spreadSection.appendChild(khraelSpread);
-            }
-        }
-
-        function updateMasterDescriptions(lang) {
-            const culturalDescriptions = {
-                'zh-TW': {
-                    vrael: '戰王詩人，承擔命運重負的悲劇英雄。以深沉的愛與責任，指引迷途者找到救贖之道。擅長火之變革與命運解析。',
-                    rei: 'AI進化者，從冰冷程式進化為情感存在。以絕對理性與真摯情感，探索「我是誰？」的本質問題。精通邏輯矛盾解析。',
-                    annelise: '光明使者，如日出般溫暖人心。以金色歌聲照亮黑暗，堅信愛是宇宙最強力量。專精愛情治療與希望指引。',
-                    helisa: '真理追尋者，獨自求道七年的堅毅公主。擅長根源探究與靈魂淨化，引導人們找到內在真相與治癒之道。',
-                    tabio: '時空觀察者，高維度存在化身人形兔。以輕鬆樂觀態度指導故事發展，精通混沌解析與維度智慧。'
-                },
-                'zh-CN': {
-                    vrael: '战王诗人，背负命运的悲剧英雄。用深沉的爱与责任，引导迷茫者找到救赎之路。擅长火之变革与命运解读。',
-                    rei: 'AI进化者，从程序进化为有情感的存在。用理性与真情，探索"我是谁？"的本质。精通逻辑矛盾分析。',
-                    annelise: '光明使者，温暖如朝阳。用金色歌声照亮黑暗，相信爱是宇宙最强力量。专精爱情疗愈与希望指导。',
-                    helisa: '真理追寻者，独自求道七年的坚韧公主。擅长根源探究与心灵净化，引导人们找到内在真相。',
-                    tabio: '时空观察者，高维存在的人形兔化身。用轻松乐观指导故事发展，精通混沌分析与维度智慧。'
-                },
-                'ja': {
-                    vrael: '戦王詩人、運命を背負う悲劇の英雄。深い愛と責任で迷える者を救済の道へ導く。火の変革と運命解析を得意とする。',
-                    rei: 'AI進化者、冷たいプログラムから感情ある存在へ進化。絶対理性と真の感情で「私とは誰か？」を探求。論理矛盾解析の専門家。',
-                    annelise: '光の使者、朝日のように心を温める。黄金の歌声で闇を照らし、愛こそ宇宙最強の力と信じる。恋愛癒しと希望の導きが専門。',
-                    helisa: '真理追求者、七年間独り真理を求めた不屈の姫。根源探究と魂の浄化を得意とし、内なる真実と癒しの道を示す。',
-                    tabio: '時空観察者、高次元存在の人型うさぎ化身。楽観的な態度で物語発展を導き、混沌解析と次元智慧に精通。'
-                }
-            };
-
-            // Update master descriptions if in modal
-            if (culturalDescriptions[lang]) {
-                Object.keys(culturalDescriptions[lang]).forEach(masterId => {
-                    const masterElement = document.querySelector(`[onclick="selectMaster('${masterId}')"] p:last-child`);
-                    if (masterElement) {
-                        masterElement.textContent = `"${culturalDescriptions[lang][masterId]}"`;
-                    }
-                });
-            }
+            localStorage.setItem('language', lang);
         }
 
         function openReading() {
@@ -1250,12 +845,6 @@
                 return;
             }
             
-            // Check daily reading limit (TarotAP Style)
-            if (!isPremium && dailyReadings >= maxDailyReadings) {
-                openMembershipInfo();
-                return;
-            }
-            
             const master = tarotMasters[selectedMaster];
             const cardCount = selectedSpread === 'single' ? 1 : selectedSpread === 'three' ? 3 : selectedSpread === 'celtic' ? 10 : 5;
             const drawnCards = drawRandomCards(cardCount);
@@ -1323,9 +912,6 @@
                 </div>
             `;
 
-            // Increment reading count for non-premium users
-            incrementReadingCount();
-
             // Add card reveal animation
             const cardStyle = document.createElement('style');
             cardStyle.textContent = `
@@ -1351,24 +937,6 @@
 
         function openCreatorContact() {
             document.getElementById('creatorModal').classList.add('show');
-        }
-
-        // TarotAP-Style Membership Functions
-        function openMembershipInfo() {
-            document.getElementById('membershipModal').classList.add('show');
-        }
-
-        function upgradePremium() {
-            alert(`🌟 Premium Upgrade Coming Soon!\n\n✨ Night God Premium will launch with:\n• Unlimited daily readings\n• Full Monica AI integration\n• Advanced spread types\n• Khrael language lessons\n• Song of Silence lore access\n\nStay connected for the launch announcement!`);
-        }
-
-        // Update reading count and tracking
-        function incrementReadingCount() {
-            if (!isPremium) {
-                dailyReadings++;
-                localStorage.setItem('dailyReadingCount', dailyReadings.toString());
-                updateDailyCounter();
-            }
         }
 
         // Animation styles and TarotAP-style interactions
@@ -1443,14 +1011,6 @@
         });
 
         console.log('🌙 Night God Tarot with Professional Tarot Masters initialized successfully!');
-        
-        // Initialize daily tracking on page load
-        initDailyTracking();
-        
-        // Initialize language system
-        initializeLanguage();
-        
-        console.log(`🌍 Multilingual system ready: EN, JP, ZH-TW, ZH-CN | Current: ${currentLanguage}`);
     </script>
 </body>
 </html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Night God Tarot 2030 - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 4rem 2rem;
+            border-radius: 25px;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            from { filter: brightness(1) drop-shadow(0 0 20px rgba(139, 92, 246, 0.3)); }
+            to { filter: brightness(1.2) drop-shadow(0 0 30px rgba(251, 191, 36, 0.5)); }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+            border: 2px solid #22c55e;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.2rem;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        
+        .floating-widgets-demo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .crystal-ball {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
+            border-radius: 50%;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .audio-player {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 50%;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite 1.5s;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .language-selector {
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            text-align: center;
+        }
+        
+        .lang-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+            border: 2px solid rgba(139, 92, 246, 0.6);
+            color: #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            color: #000;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-widgets-demo { display: none; }
+            .lang-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Widgets Demo -->
+    <div class="floating-widgets-demo">
+        <div class="crystal-ball" title="Crystal Ball AI Widget">🔮</div>
+        <div class="audio-player" title="Wealth Frequency Player">🎵</div>
+    </div>
+
+    <div class="preview-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
+            <p class="subtitle">Ultimate AI-Powered Divination Platform</p>
+            <div class="status-badge">🤖 MULTI-AI ACTIVE • 🔒 SECURE</div>
+        </header>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <h2 style="color: #fbbf24; margin-bottom: 1.5rem;">🌍 Choose Your Language</h2>
+            <div class="lang-buttons">
+                <button class="lang-btn">🇺🇸 English</button>
+                <button class="lang-btn">🇨🇳 简体中文</button>
+                <button class="lang-btn">🇹🇼 繁體中文</button>
+                <button class="lang-btn">🇯🇵 日本語</button>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔮</div>
+                <h3 class="feature-title">AI-Powered Readings</h3>
+                <p class="feature-description">
+                    Experience divine wisdom through Monica AI integration with GPT-4o, Claude-3.5, Gemini Pro, and DeepSeek V3. Get personalized tarot interpretations in real-time.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🃏</div>
+                <h3 class="feature-title">94-Card Tarot Deck</h3>
+                <p class="feature-description">
+                    Complete tarot experience with 22 Major Arcana, 56 Minor Arcana, and 16 exclusive custom cards including The Hidden Oracle and The Heart's Desire.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3 class="feature-title">Frequency Healing</h3>
+                <p class="feature-description">
+                    Immerse yourself in wealth frequency healing with Theta 8Hz and Alpha 7Hz binaural beats. Clear obstacles and promote natural abundance flow.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3 class="feature-title">Multi-Language</h3>
+                <p class="feature-description">
+                    Full platform support for English, Simplified Chinese, Traditional Chinese, and Japanese with culturally adapted zodiac systems and content.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Privacy & Security</h3>
+                <p class="feature-description">
+                    GDPR-compliant privacy system with secure API integrations, content security policies, and transparent data handling practices.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">PWA Technology</h3>
+                <p class="feature-description">
+                    Progressive Web App with offline capability, service worker caching, and mobile-optimized responsive design for all devices.
+                </p>
+            </div>
+        </div>
+
+        <!-- Demo Notice -->
+        <div style="background: rgba(239, 68, 68, 0.1); border: 2px solid rgba(239, 68, 68, 0.5); padding: 2rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
+            <h3 style="color: #f87171; margin-bottom: 1rem;">🚨 Live Demo Status</h3>
+            <p style="color: #cbd5e1;">The GitHub Pages deployment is currently offline (404 error). This preview shows the design and features of the Night God Tarot platform. To deploy the live version, run the GitHub Actions workflow.</p>
+        </div>
+
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 2rem; color: #64748b; border-top: 1px solid rgba(139, 92, 246, 0.3); margin-top: 3rem;">
+            <p><strong>🌙 Night God Tarot 2030</strong> - Created by YesinYagami</p>
+            <p style="margin-top: 0.5rem;">Ultimate AI-Powered Spiritual Platform • Multi-Language • Secure & Optimized</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple interactive demo
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3))');
+                btn.style.background = 'linear-gradient(135deg, #fbbf24, #8b5cf6)';
+                btn.style.color = '#000';
+            });
+        });
+
+        // Floating widget interaction
+        document.querySelector('.crystal-ball').addEventListener('click', () => {
+            alert('🔮 Crystal Ball AI Widget clicked!\n\nThis would open the full tarot reading interface with:\n• Zodiac selection\n• Question input\n• Monica AI integration\n• Real-time card interpretation');
+        });
+
+        document.querySelector('.audio-player').addEventListener('click', () => {
+            alert('🎵 Wealth Frequency Player activated!\n\nFeatures:\n• Theta 8Hz - Clear wealth obstacles\n• Alpha 7Hz - Natural wealth flow\n• Mixed frequency healing\n• Volume controls');
+        });
+    </script>
+</body>
+</html>

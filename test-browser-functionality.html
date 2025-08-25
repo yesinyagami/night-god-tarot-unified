@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test Page</title>
+    <style>
+        body { 
+            background: #1a1a2e; 
+            color: white; 
+            font-family: Arial; 
+            padding: 20px; 
+        }
+        .test-button {
+            background: #8b5cf6;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #7c3aed;
+        }
+        #output {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔮 Browser Functionality Test</h1>
+    <p>Testing if JavaScript works in your browser:</p>
+    
+    <button class="test-button" onclick="testClick()">Test Click Function</button>
+    <button class="test-button" onclick="testConsole()">Test Console Log</button>
+    <button class="test-button" onclick="testAlert()">Test Alert</button>
+    
+    <div id="output">
+        <p>Output will appear here...</p>
+    </div>
+
+    <script>
+        function testClick() {
+            document.getElementById('output').innerHTML = '✅ Click function is working! Time: ' + new Date().toLocaleTimeString();
+        }
+        
+        function testConsole() {
+            console.log('Console test working!');
+            document.getElementById('output').innerHTML = '✅ Console function is working! Check browser console (F12).';
+        }
+        
+        function testAlert() {
+            alert('Alert is working!');
+            document.getElementById('output').innerHTML = '✅ Alert function is working!';
+        }
+        
+        // Auto-test on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('output').innerHTML = '✅ Page loaded successfully! JavaScript is functional. Time: ' + new Date().toLocaleTimeString();
+            }, 1000);
+        });
+        
+        console.log('🔮 Test page loaded at:', new Date().toLocaleTimeString());
+    </script>
+</body>
+</html>

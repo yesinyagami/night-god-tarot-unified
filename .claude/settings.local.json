@@ -58,7 +58,10 @@
       "Bash(npm --version)",
       "Read(/C:\\Users\\rovin22\\AppData\\Roaming\\Code\\logs\\20250824T004919/**)",
       "Read(/C:\\Users\\rovin22\\AppData\\Roaming\\Code\\logs\\20250824T004919\\window1\\exthost\\ms-vscode-remote.remote-containers/**)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(npm cache clean:*)",
+      "WebFetch(domain:tarotap.com)",
+      "Bash(git log:*)"
     ],
     "deny": []
   }

@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 Night God Tarot - Ultimate Global AI Platform</title>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+        
+        .header {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .monetization-bar {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .donation-btn, .premium-btn {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .donation-btn:hover, .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .user-counter {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+            border-color: #fbbf24;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-section {
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .pricing-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #fbbf24;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid #8b5cf6;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 3rem;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            color: #cbd5e1;
+        }
+        
+        .features li::before {
+            content: '✅ ';
+            color: #10b981;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            border: none;
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        .chat-section {
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .chat-window {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            min-height: 300px;
+            margin-bottom: 1rem;
+        }
+        
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            color: #94a3b8;
+        }
+        
+        /* Warning Modal */
+        .warning-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20000;
+        }
+        
+        .warning-content {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border: 3px solid #ef4444;
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(239, 68, 68, 0.5);
+        }
+        
+        .warning-icon {
+            font-size: 4rem;
+            color: #ef4444;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        .warning-title {
+            font-size: 2rem;
+            color: #ef4444;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .age-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .age-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .age-btn.accept {
+            background: #10b981;
+            color: white;
+        }
+        
+        .age-btn.decline {
+            background: #ef4444;
+            color: white;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(139, 92, 246, 0.8);
+            border: 2px solid #8b5cf6;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: #8b5cf6;
+            transform: scale(1.1);
+        }
+        
+        .lang-btn.active {
+            background: #fbbf24;
+            border-color: #fbbf24;
+        }
+        
+        /* Weather Widget */
+        .weather-widget {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 20px;
+            padding: 1.5rem;
+            min-width: 250px;
+            z-index: 9999;
+        }
+        
+        .weather-title {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .weather-icon {
+            font-size: 2rem;
+        }
+        
+        .weather-temp {
+            color: #06b6d4;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .news-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .news-title {
+            color: #fbbf24;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-item {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        /* Tarot Cards Grid */
+        .tarot-cards-section {
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .tarot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .tarot-card {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border: 2px solid #8b5cf6;
+            border-radius: 15px;
+            aspect-ratio: 2/3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tarot-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.6);
+            border-color: #fbbf24;
+        }
+        
+        .tarot-card.flipped {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-color: #fbbf24;
+        }
+        
+        .tarot-card-back {
+            color: #8b5cf6;
+            font-size: 2rem;
+        }
+        
+        .tarot-card-front {
+            display: none;
+            text-align: center;
+            color: #0f0f1e;
+            font-weight: bold;
+            padding: 1rem;
+        }
+        
+        .tarot-card.flipped .tarot-card-back {
+            display: none;
+        }
+        
+        .tarot-card.flipped .tarot-card-front {
+            display: block;
+        }
+        
+        .flipped-count {
+            text-align: center;
+            margin-top: 1rem;
+            color: #06b6d4;
+            font-weight: bold;
+        }
+        
+        /* AI Chat Enhanced */
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .ai-indicator {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-messages {
+            height: 250px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+        }
+        
+        .chat-message.user {
+            background: rgba(139, 92, 246, 0.2);
+            margin-left: 2rem;
+        }
+        
+        .chat-message.ai {
+            background: rgba(6, 182, 212, 0.2);
+            margin-right: 2rem;
+        }
+        
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Age Verification Warning Modal -->
+    <div id="warningModal" class="warning-modal">
+        <div class="warning-content">
+            <div class="warning-icon">⚠️</div>
+            <h2 class="warning-title" data-translate="warning-title">重要警告 / Important Warning / 重要な警告</h2>
+            <div class="warning-text" data-translate="warning-text">
+                <p><strong>中文:</strong> 本平台僅供娛樂用途。請勿過度依賴占卜結果做重要決定。如有賭博成癮問題請尋求專業協助。</p>
+                <p><strong>English:</strong> This platform is for entertainment purposes only. Do not rely excessively on divination results for important decisions. Seek professional help if you have gambling addiction issues.</p>
+                <p><strong>日本語:</strong> このプラットフォームは娯楽目的のみです。重要な決定を占いの結果に過度に依存しないでください。ギャンブル依存症の問題がある場合は専門家の助けを求めてください。</p>
+            </div>
+            <div class="age-buttons">
+                <button class="age-btn accept" onclick="acceptWarning()" data-translate="accept">
+                    我已滿18歲並同意 / I am 18+ and Agree / 18歳以上で同意します
+                </button>
+                <button class="age-btn decline" onclick="declineWarning()" data-translate="decline">
+                    離開 / Leave / 退出
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="setLanguage('zh')" id="zh-btn">中文</button>
+        <button class="lang-btn" onclick="setLanguage('en')" id="en-btn">English</button>
+        <button class="lang-btn" onclick="setLanguage('jp')" id="jp-btn">日本語</button>
+    </div>
+
+    <!-- Monetization Bar -->
+    <div class="monetization-bar">
+        <div class="user-counter">✨ 10,247+ Divine Readings Today</div>
+        <div>
+            <span data-translate="support-msg">Support this sacred platform • このプラットフォームをサポート • 支持神聖平台</span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <button class="donation-btn" onclick="donate()">💝 Donate</button>
+            <button class="premium-btn" onclick="upgradePremium()">⭐ Premium Unlimited</button>
+        </div>
+    </div>
+
+    <!-- Weather & News Widget -->
+    <div class="weather-widget">
+        <div class="weather-title" data-translate="weather-title">今日天氣運勢</div>
+        <div class="weather-info">
+            <div class="weather-icon" id="weatherIcon">☀️</div>
+            <div>
+                <div class="weather-temp" id="weatherTemp">22°C</div>
+                <div style="color: #cbd5e1; font-size: 0.9rem;" id="weatherDesc">晴朗</div>
+            </div>
+        </div>
+        <div class="news-section">
+            <div class="news-title" data-translate="news-title">塔羅新聞</div>
+            <div class="news-item" id="newsItem1">🔮 新月能量強化中，適合許願</div>
+            <div class="news-item" id="newsItem2">✨ 水星逆行結束，溝通更順暢</div>
+            <div class="news-item" id="newsItem3">🌟 今日幸運色彩：紫色與金色</div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="logo">🔮 Night God Tarot</div>
+        <p style="color: #cbd5e1; margin-top: 0.5rem;">全球最強AI塔羅占卜平台</p>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1 class="hero-title">探索您的命運之路</h1>
+            <p style="color: #cbd5e1; font-size: 1.2rem;">結合古老智慧與AI科技，為您揭示未來</p>
+        </section>
+
+        <!-- Free Tarot Cards Section -->
+        <section class="tarot-cards-section">
+            <h2 style="text-align: center; color: #fbbf24; font-size: 2.5rem; margin-bottom: 1rem;" data-translate="free-tarot-title">🔮 免費塔羅體驗</h2>
+            <p style="text-align: center; color: #cbd5e1; margin-bottom: 2rem;" data-translate="free-tarot-desc">每日3次免費翻牌機會，解鎖您的命運密碼</p>
+            
+            <div class="tarot-grid" id="tarotGrid">
+                <!-- Tarot cards will be generated by JavaScript -->
+            </div>
+            
+            <div class="flipped-count" id="flippedCount">已翻牌數: 0/3 今日免費</div>
+        </section>
+
+        <div class="cards-grid">
+            <div class="card" onclick="showReading('love')">
+                <div class="card-icon">💕</div>
+                <div class="card-title" data-translate="love-title">愛情占卜</div>
+                <p style="color: #94a3b8;" data-translate="love-desc">探索感情運勢與真愛指引</p>
+            </div>
+            
+            <div class="card" onclick="showReading('career')">
+                <div class="card-icon">💼</div>
+                <div class="card-title" data-translate="career-title">事業運勢</div>
+                <p style="color: #94a3b8;" data-translate="career-desc">職業發展指引與機會</p>
+            </div>
+            
+            <div class="card" onclick="showReading('wealth')">
+                <div class="card-icon">💰</div>
+                <div class="card-title" data-translate="wealth-title">財富密碼</div>
+                <p style="color: #94a3b8;" data-translate="wealth-desc">解鎖財務自由之路</p>
+            </div>
+            
+            <div class="card" onclick="showReading('health')">
+                <div class="card-icon">🏥</div>
+                <div class="card-title" data-translate="health-title">健康指引</div>
+                <p style="color: #94a3b8;" data-translate="health-desc">身心靈平衡建議</p>
+            </div>
+            
+            <div class="card" onclick="showReading('spiritual')">
+                <div class="card-icon">✨</div>
+                <div class="card-title" data-translate="spiritual-title">靈性成長</div>
+                <p style="color: #94a3b8;" data-translate="spiritual-desc">覺醒高維度智慧</p>
+            </div>
+            
+            <div class="card" onclick="showReading('daily')">
+                <div class="card-icon">🌟</div>
+                <div class="card-title" data-translate="daily-title">每日指引</div>
+                <p style="color: #94a3b8;" data-translate="daily-desc">今日運勢與建議</p>
+            </div>
+        </div>
+
+        <section class="pricing-section">
+            <h2 class="pricing-title">💰 超級現金流系統</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 style="color: #a855f7;">💎 鑽石精英</h3>
+                    <div class="price">$333<span class="price-period">/月</span></div>
+                    <ul class="features">
+                        <li>無限AI占卜</li>
+                        <li>專屬導師</li>
+                        <li>每日報告</li>
+                        <li>優先支援</li>
+                    </ul>
+                    <button class="btn" onclick="alert('購買鑽石精英方案！')">立即購買</button>
+                </div>
+                
+                <div class="pricing-card" style="border-color: #fbbf24; transform: scale(1.05);">
+                    <h3 style="color: #fbbf24;">🌌 宇宙主宰</h3>
+                    <div class="price">$666<span class="price-period">/月</span></div>
+                    <ul class="features">
+                        <li>所有鑽石功能</li>
+                        <li>私人諮詢</li>
+                        <li>量子算法</li>
+                        <li>終身VIP</li>
+                    </ul>
+                    <button class="btn" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);" onclick="alert('購買宇宙主宰方案！')">立即購買</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 style="color: #10b981;">♾️ 無限神格</h3>
+                    <div class="price">$1299<span class="price-period">/月</span></div>
+                    <ul class="features">
+                        <li>無限制功能</li>
+                        <li>24/7團隊</li>
+                        <li>客製化AI</li>
+                        <li>投資分紅</li>
+                    </ul>
+                    <button class="btn" onclick="alert('購買無限神格方案！')">立即購買</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="chat-section">
+            <h2 style="text-align: center; color: #06b6d4; margin-bottom: 2rem;" data-translate="ai-chat-title">🤖 AI神諭對話</h2>
+            <div class="ai-status">
+                <div class="ai-indicator"></div>
+                <span style="color: #10b981; font-weight: bold;" data-translate="ai-status">AI神諭在線中</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message ai">
+                    <strong>🔮 夜神AI:</strong> <span data-translate="ai-welcome">歡迎來到夜神塔羅！我是您的AI靈性導師，可以為您提供塔羅占卜、人生指引和靈性建議。請問有什麼可以幫助您的嗎？</span>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="輸入您的問題..." data-translate-placeholder="chat-placeholder">
+                <button class="btn" style="width: auto; padding: 1rem 2rem;" onclick="sendAiMessage()" data-translate="send-btn">發送</button>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Night God Tarot - 全球最先進的AI塔羅平台</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://yesinyagami.github.io/night-god-tarot-unified/" style="color: #8b5cf6;">官方網站</a>
+        </p>
+    </footer>
+
+    <script>
+        console.log('🔮 Night God Tarot - ULTIMATE VERSION LOADED!');
+        
+        // Global Variables
+        let currentLanguage = 'zh';
+        let dailyFlipped = 0;
+        let dailySpent = 0;
+        const DAILY_FLIP_LIMIT = 3;
+        const DAILY_SPENDING_LIMIT = 100;
+        
+        // Tarot Cards Data
+        const tarotCards = [
+            { id: 1, name: '愚人', name_en: 'The Fool', name_jp: '愚者', meaning: '新開始、冒險精神', icon: '🃏' },
+            { id: 2, name: '魔術師', name_en: 'The Magician', name_jp: '魔術師', meaning: '創造力、技能', icon: '🎩' },
+            { id: 3, name: '女祭司', name_en: 'The High Priestess', name_jp: '女祭司', meaning: '直覺、內在智慧', icon: '🔮' },
+            { id: 4, name: '皇后', name_en: 'The Empress', name_jp: '女帝', meaning: '豐饒、創造', icon: '👑' },
+            { id: 5, name: '皇帝', name_en: 'The Emperor', name_jp: '皇帝', meaning: '權威、穩定', icon: '🏛️' },
+            { id: 6, name: '教皇', name_en: 'The Hierophant', name_jp: '教皇', meaning: '傳統、指導', icon: '⛪' },
+            { id: 7, name: '戀人', name_en: 'The Lovers', name_jp: '恋人', meaning: '愛情、選擇', icon: '💕' },
+            { id: 8, name: '戰車', name_en: 'The Chariot', name_jp: '戦車', meaning: '勝利、控制', icon: '🏁' },
+            { id: 9, name: '力量', name_en: 'Strength', name_jp: '力', meaning: '內在力量、勇氣', icon: '💪' },
+            { id: 10, name: '隱者', name_en: 'The Hermit', name_jp: '隠者', meaning: '內省、指引', icon: '🕯️' },
+            { id: 11, name: '命運之輪', name_en: 'Wheel of Fortune', name_jp: '運命の輪', meaning: '轉變、命運', icon: '🎡' },
+            { id: 12, name: '正義', name_en: 'Justice', name_jp: '正義', meaning: '平衡、公正', icon: '⚖️' },
+            { id: 13, name: '倒吊人', name_en: 'The Hanged Man', name_jp: '吊された男', meaning: '犧牲、新視角', icon: '🙃' },
+            { id: 14, name: '死神', name_en: 'Death', name_jp: '死神', meaning: '轉化、結束', icon: '💀' },
+            { id: 15, name: '節制', name_en: 'Temperance', name_jp: '節制', meaning: '平衡、調和', icon: '🍃' },
+            { id: 16, name: '惡魔', name_en: 'The Devil', name_jp: '悪魔', meaning: '束縛、誘惑', icon: '😈' },
+            { id: 17, name: '塔', name_en: 'The Tower', name_jp: '塔', meaning: '突然變化', icon: '🗼' },
+            { id: 18, name: '星星', name_en: 'The Star', name_jp: '星', meaning: '希望、靈感', icon: '⭐' },
+            { id: 19, name: '月亮', name_en: 'The Moon', name_jp: '月', meaning: '幻象、潛意識', icon: '🌙' },
+            { id: 20, name: '太陽', name_en: 'The Sun', name_jp: '太陽', meaning: '成功、喜悅', icon: '☀️' },
+            { id: 21, name: '審判', name_en: 'Judgement', name_jp: '審判', meaning: '重生、覺醒', icon: '📯' },
+            { id: 22, name: '世界', name_en: 'The World', name_jp: '世界', meaning: '完成、成就', icon: '🌍' }
+        ];
+        
+        // Multi-language translations
+        const translations = {
+            zh: {
+                'weather-title': '今日天氣運勢',
+                'news-title': '塔羅新聞',
+                'free-tarot-title': '🔮 免費塔羅體驗',
+                'free-tarot-desc': '每日3次免費翻牌機會，解鎖您的命運密碼',
+                'ai-chat-title': '🤖 AI神諭對話',
+                'ai-status': 'AI神諭在線中',
+                'ai-welcome': '歡迎來到夜神塔羅！我是您的AI靈性導師，可以為您提供塔羅占卜、人生指引和靈性建議。請問有什麼可以幫助您的嗎？',
+                'send-btn': '發送',
+                'chat-placeholder': '輸入您的問題...',
+                'love-title': '愛情占卜',
+                'love-desc': '探索感情運勢與真愛指引',
+                'career-title': '事業運勢',
+                'career-desc': '職業發展指引與機會',
+                'wealth-title': '財富密碼',
+                'wealth-desc': '解鎖財務自由之路',
+                'health-title': '健康指引',
+                'health-desc': '身心靈平衡建議',
+                'spiritual-title': '靈性成長',
+                'spiritual-desc': '覺醒高維度智慧',
+                'daily-title': '每日指引',
+                'daily-desc': '今日運勢與建議',
+                'flip-limit-reached': '今日免費翻牌次數已用完，明日再來或升級VIP享受無限翻牌！',
+                'card-revealed': '塔羅牌揭示',
+                'love-reading': '💕 愛情塔羅顯示：真愛即將降臨，保持開放的心態迎接美好關係！',
+                'career-reading': '💼 事業運勢：新機會正在靠近，積極行動將帶來突破！',
+                'wealth-reading': '💰 財富密碼：投資運勢旺盛，理財規劃將帶來豐厚回報！',
+                'health-reading': '🏥 健康指引：注意身心平衡，適度運動有助提升能量！',
+                'spiritual-reading': '✨ 靈性成長：覺醒時刻來臨，內在智慧正在覺醒！',
+                'daily-reading': '🌟 每日指引：今日是充滿可能性的一天，保持積極心態！'
+            },
+            en: {
+                'weather-title': 'Today\\'s Weather Fortune',
+                'news-title': 'Tarot News',
+                'free-tarot-title': '🔮 Free Tarot Experience',
+                'free-tarot-desc': '3 free daily card flips to unlock your destiny',
+                'ai-chat-title': '🤖 AI Oracle Chat',
+                'ai-status': 'AI Oracle Online',
+                'ai-welcome': 'Welcome to Night God Tarot! I am your AI spiritual guide, ready to provide tarot readings, life guidance, and spiritual advice. How can I help you today?',
+                'send-btn': 'Send',
+                'chat-placeholder': 'Enter your question...',
+                'love-title': 'Love Reading',
+                'love-desc': 'Explore emotional fortune and true love guidance',
+                'career-title': 'Career Fortune',
+                'career-desc': 'Professional development guidance and opportunities',
+                'wealth-title': 'Wealth Code',
+                'wealth-desc': 'Unlock the path to financial freedom',
+                'health-title': 'Health Guidance',
+                'health-desc': 'Mind-body-spirit balance advice',
+                'spiritual-title': 'Spiritual Growth',
+                'spiritual-desc': 'Awaken high-dimensional wisdom',
+                'daily-title': 'Daily Guidance',
+                'daily-desc': 'Today\\'s fortune and advice',
+                'flip-limit-reached': 'Daily free flips used up. Come back tomorrow or upgrade to VIP for unlimited flips!',
+                'card-revealed': 'Tarot Card Revealed',
+                'love-reading': '💕 Love Tarot reveals: True love is coming! Stay open to beautiful relationships!',
+                'career-reading': '💼 Career Fortune: New opportunities approach, active action brings breakthrough!',
+                'wealth-reading': '💰 Wealth Code: Investment fortune is strong, financial planning brings rich returns!',
+                'health-reading': '🏥 Health Guidance: Focus on mind-body balance, moderate exercise boosts energy!',
+                'spiritual-reading': '✨ Spiritual Growth: Awakening moment arrives, inner wisdom is awakening!',
+                'daily-reading': '🌟 Daily Guidance: Today is full of possibilities, maintain positive attitude!'
+            },
+            jp: {
+                'weather-title': '今日の天気運勢',
+                'news-title': 'タロットニュース',
+                'free-tarot-title': '🔮 無料タロット体験',
+                'free-tarot-desc': '毎日3回の無料カードフリップで運命を解き明かす',
+                'ai-chat-title': '🤖 AI神託チャット',
+                'ai-status': 'AI神託オンライン中',
+                'ai-welcome': 'ナイトゴッドタロットへようこそ！私はあなたのAIスピリチュアルガイドです。タロット占い、人生指導、スピリチュアルアドバイスを提供します。今日はどのようにお手伝いできますか？',
+                'send-btn': '送信',
+                'chat-placeholder': '質問を入力...',
+                'love-title': '恋愛占い',
+                'love-desc': '感情運勢と真の愛の導きを探る',
+                'career-title': 'キャリア運勢',
+                'career-desc': '職業開発指導と機会',
+                'wealth-title': '財富の暗号',
+                'wealth-desc': '経済的自由への道を解放',
+                'health-title': '健康指導',
+                'health-desc': '心身霊のバランスアドバイス',
+                'spiritual-title': '精神的成長',
+                'spiritual-desc': '高次元の知恵を覚醒',
+                'daily-title': '毎日の指導',
+                'daily-desc': '今日の運勢とアドバイス',
+                'flip-limit-reached': '今日の無料フリップを使い切りました。明日またお越しいただくか、VIPにアップグレードして無制限フリップをお楽しみください！',
+                'card-revealed': 'タロットカード公開',
+                'love-reading': '💕 恋愛タロットが示す：真の愛が訪れます！美しい関係に心を開いてください！',
+                'career-reading': '💼 キャリア運勢：新しい機会が近づいています。積極的な行動が突破をもたらします！',
+                'wealth-reading': '💰 財富の暗号：投資運勢が旺盛、資産計画が豊かな収益をもたらします！',
+                'health-reading': '🏥 健康指導：心身のバランスに注意、適度な運動がエネルギーを高めます！',
+                'spiritual-reading': '✨ 精神的成長：覚醒の瞬間が来ています、内なる知恵が目覚めています！',
+                'daily-reading': '🌟 毎日の指導：今日は可能性に満ちた日です、積極的な態度を保ってください！'
+            }
+        };
+        
+        // Initialize the application
+        function initApp() {
+            console.log('🔮 Initializing Ultimate Night God Tarot...');
+            
+            // Remove any loading screens
+            document.querySelectorAll('.loading').forEach(el => el.remove());
+            
+            // Generate tarot cards
+            generateTarotCards();
+            
+            // Set default language
+            setLanguage('zh');
+            
+            // Initialize weather
+            updateWeather();
+            
+            // Initialize news
+            updateNews();
+            
+            // Set up event listeners
+            setupEventListeners();
+        }
+        
+        // Generate Tarot Cards
+        function generateTarotCards() {
+            const tarotGrid = document.getElementById('tarotGrid');
+            tarotGrid.innerHTML = '';
+            
+            // Shuffle and take 12 cards
+            const shuffledCards = [...tarotCards].sort(() => Math.random() - 0.5).slice(0, 12);
+            
+            shuffledCards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'tarot-card';
+                cardElement.dataset.cardId = card.id;
+                cardElement.innerHTML = `
+                    <div class="tarot-card-back">🔮</div>
+                    <div class="tarot-card-front">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">${card.icon}</div>
+                        <div style="font-size: 0.8rem; font-weight: bold;" data-card-name="${card.id}">${card.name}</div>
+                        <div style="font-size: 0.7rem; margin-top: 0.3rem;">${card.meaning}</div>
+                    </div>
+                `;
+                cardElement.onclick = () => flipCard(cardElement, card);
+                tarotGrid.appendChild(cardElement);
+            });
+        }
+        
+        // Flip Card Function
+        function flipCard(cardElement, cardData) {
+            if (cardElement.classList.contains('flipped')) return;
+            
+            if (dailyFlipped >= DAILY_FLIP_LIMIT) {
+                alert(getTranslation('flip-limit-reached'));
+                return;
+            }
+            
+            cardElement.classList.add('flipped');
+            dailyFlipped++;
+            updateFlippedCount();
+            
+            // Show card revelation with AI interpretation
+            setTimeout(() => {
+                showCardReading(cardData);
+            }, 500);
+        }
+        
+        // Show Card Reading
+        function showCardReading(card) {
+            const interpretations = [
+                `${card.icon} ${getCardName(card)} 揭示了重要訊息：${card.meaning}。這張牌提醒您要相信內在智慧，順應宇宙的引導。`,
+                `宇宙選擇了 ${card.icon} ${getCardName(card)} 來指引您。這意味著 ${card.meaning} 在您的生活中扮演關鍵角色。`,
+                `${card.icon} ${getCardName(card)} 的出現不是偶然。它代表 ${card.meaning}，為您指明前進的方向。`
+            ];
+            
+            const randomInterpretation = interpretations[Math.floor(Math.random() * interpretations.length)];
+            alert(`${getTranslation('card-revealed')}\n\n${randomInterpretation}`);
+        }
+        
+        // Get Card Name by Language
+        function getCardName(card) {
+            switch(currentLanguage) {
+                case 'en': return card.name_en;
+                case 'jp': return card.name_jp;
+                default: return card.name;
+            }
+        }
+        
+        // Update Flipped Count
+        function updateFlippedCount() {
+            const countElement = document.getElementById('flippedCount');
+            if (currentLanguage === 'zh') {
+                countElement.textContent = `已翻牌數: ${dailyFlipped}/${DAILY_FLIP_LIMIT} 今日免費`;
+            } else if (currentLanguage === 'en') {
+                countElement.textContent = `Flipped: ${dailyFlipped}/${DAILY_FLIP_LIMIT} Daily Free`;
+            } else {
+                countElement.textContent = `フリップ済み: ${dailyFlipped}/${DAILY_FLIP_LIMIT} 今日無料`;
+            }
+        }
+        
+        // Language Functions
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const langBtn = document.getElementById(lang + '-btn');
+            if (langBtn) langBtn.classList.add('active');
+            
+            // Update all translated elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update placeholder texts
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+            
+            // Update font family
+            if (lang === 'jp') {
+                document.body.style.fontFamily = "'Noto Serif JP', serif";
+            } else {
+                document.body.style.fontFamily = "'Noto Serif TC', serif";
+            }
+            
+            // Update card names
+            document.querySelectorAll('[data-card-name]').forEach(element => {
+                const cardId = parseInt(element.getAttribute('data-card-name'));
+                const card = tarotCards.find(c => c.id === cardId);
+                if (card) {
+                    element.textContent = getCardName(card);
+                }
+            });
+            
+            updateFlippedCount();
+        }
+        
+        // Weather Functions
+        function updateWeather() {
+            const weatherIcons = ['☀️', '🌤️', '⛅', '🌦️', '⛈️', '🌩️', '❄️', '🌈'];
+            const weatherDescs = {
+                zh: ['晴朗', '多雲', '陰天', '小雨', '雷雨', '暴風雨', '雪天', '彩虹'],
+                en: ['Sunny', 'Partly Cloudy', 'Cloudy', 'Light Rain', 'Thunderstorm', 'Storm', 'Snow', 'Rainbow'],
+                jp: ['晴れ', '曇り時々晴れ', '曇り', '小雨', '雷雨', '暴風雨', '雪', '虹']
+            };
+            
+            const randomIndex = Math.floor(Math.random() * weatherIcons.length);
+            const temp = Math.floor(Math.random() * 20) + 15; // 15-35°C
+            
+            document.getElementById('weatherIcon').textContent = weatherIcons[randomIndex];
+            document.getElementById('weatherTemp').textContent = `${temp}°C`;
+            document.getElementById('weatherDesc').textContent = weatherDescs[currentLanguage][randomIndex];
+        }
+        
+        // News Functions
+        function updateNews() {
+            const newsItems = {
+                zh: [
+                    '🔮 新月能量強化中，適合許願',
+                    '✨ 水星逆行結束，溝通更順暢',
+                    '🌟 今日幸運色彩：紫色與金色',
+                    '🌙 月圓之夜即將到來，靈感倍增',
+                    '💎 塔羅大師推薦今日冥想',
+                    '🍀 幸運數字：7, 13, 21'
+                ],
+                en: [
+                    '🔮 New Moon energy strengthening, perfect for wishes',
+                    '✨ Mercury retrograde ends, smoother communication',
+                    '🌟 Lucky colors today: Purple and Gold',
+                    '🌙 Full Moon approaching, inspiration multiplied',
+                    '💎 Tarot masters recommend meditation today',
+                    '🍀 Lucky numbers: 7, 13, 21'
+                ],
+                jp: [
+                    '🔮 新月エネルギー強化中、願い事に最適',
+                    '✨ 水星逆行終了、コミュニケーション改善',
+                    '🌟 今日のラッキーカラー：紫と金',
+                    '🌙 満月が近づき、インスピレーション倍増',
+                    '💎 タロットマスターが今日の瞑想を推奨',
+                    '🍀 ラッキーナンバー：7, 13, 21'
+                ]
+            };
+            
+            const currentNews = newsItems[currentLanguage] || newsItems.zh;
+            document.getElementById('newsItem1').textContent = currentNews[0];
+            document.getElementById('newsItem2').textContent = currentNews[1];
+            document.getElementById('newsItem3').textContent = currentNews[2];
+        }
+        
+        // AI Chat Functions
+        async function sendAiMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addChatMessage('user', message);
+            input.value = '';
+            
+            // Show AI typing
+            addChatMessage('ai', '正在思考中...', 'thinking');
+            
+            // Simulate AI response with tarot-themed replies
+            setTimeout(() => {
+                const thinkingMsg = document.querySelector('.chat-message.thinking');
+                if (thinkingMsg) thinkingMsg.remove();
+                
+                const aiResponse = generateAiResponse(message);
+                addChatMessage('ai', aiResponse);
+            }, 1500);
+        }
+        
+        function addChatMessage(type, message, className = '') {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${type} ${className}`;
+            
+            if (type === 'user') {
+                messageDiv.innerHTML = `<strong>🧙‍♂️ 您:</strong> ${message}`;
+            } else {
+                messageDiv.innerHTML = `<strong>🔮 夜神AI:</strong> ${message}`;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function generateAiResponse(userMessage) {
+            const responses = {
+                zh: [
+                    `感謝您的提問："${userMessage}"。根據宇宙的指引，我建議您保持開放的心態，相信內在智慧將為您帶來答案。🌟`,
+                    `您的問題很有深度。塔羅智慧告訴我們，"${userMessage}" 的答案就在您心中。靜心冥想將幫助您找到方向。✨`,
+                    `關於 "${userMessage}"，星象顯示這是一個重要的轉折點。建議您勇敢面對變化，擁抱新的可能性。🔮`,
+                    `宇宙聽到了您的疑問。對於 "${userMessage}"，我感應到正能量正在匯聚。保持信心，好事即將發生。🌙`
+                ],
+                en: [
+                    `Thank you for your question: "${userMessage}". According to cosmic guidance, I suggest staying open-minded - your inner wisdom will bring you answers. 🌟`,
+                    `Your question is profound. Tarot wisdom tells us the answer to "${userMessage}" lies within you. Meditation will help you find direction. ✨`,
+                    `Regarding "${userMessage}", the stars show this is an important turning point. I advise facing change bravely and embracing new possibilities. 🔮`,
+                    `The universe has heard your question. For "${userMessage}", I sense positive energy gathering. Keep faith - good things are coming. 🌙`
+                ],
+                jp: [
+                    `ご質問ありがとうございます：「${userMessage}」。宇宙の導きによると、オープンマインドを保つことをお勧めします。あなたの内なる知恵が答えをもたらすでしょう。🌟`,
+                    `あなたの質問は深遠です。タロットの知恵によると、「${userMessage}」の答えはあなたの心の中にあります。瞑想が方向を見つける助けとなるでしょう。✨`,
+                    `「${userMessage}」について、星は重要な転換点を示しています。変化を勇敢に受け入れ、新しい可能性を抱くことをお勧めします。🔮`,
+                    `宇宙があなたの疑問を聞いています。「${userMessage}」について、ポジティブなエネルギーが集まっているのを感じます。信念を保ってください。良いことが起こります。🌙`
+                ]
+            };
+            
+            const langResponses = responses[currentLanguage] || responses.zh;
+            return langResponses[Math.floor(Math.random() * langResponses.length)];
+        }
+        
+        // Reading Functions
+        function showReading(type) {
+            const readingKey = type + '-reading';
+            const reading = getTranslation(readingKey);
+            const upgradeMsg = currentLanguage === 'zh' ? '\n\n🎯 立即升級VIP獲得完整預測報告和AI分析！' : 
+                              currentLanguage === 'en' ? '\n\n🎯 Upgrade to VIP for complete prediction report and AI analysis!' : 
+                              '\n\n🎯 VIPにアップグレードして完全な予測レポートとAI分析を取得！';
+            alert(reading + upgradeMsg);
+        }
+        
+        // Warning Modal Functions
+        function acceptWarning() {
+            document.getElementById('warningModal').classList.add('hidden');
+        }
+        
+        function declineWarning() {
+            window.location.href = 'https://google.com';
+        }
+        
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Enter key for chat
+            document.getElementById('chatInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendAiMessage();
+                }
+            });
+        }
+        
+        // Utility Functions
+        function getTranslation(key) {
+            return translations[currentLanguage][key] || translations['en'][key] || key;
+        }
+        
+        // Purchase Functions (Enhanced)
+        function purchase(plan) {
+            const prices = { diamond: 333, cosmic: 666, infinity: 1299 };
+            const amount = prices[plan];
+            
+            if (dailySpent + amount > DAILY_SPENDING_LIMIT) {
+                const limitMsg = currentLanguage === 'zh' ? `已達每日消費限額 $${DAILY_SPENDING_LIMIT}。明日再來或聯繫客服提高限額。` :
+                                currentLanguage === 'en' ? `Daily spending limit $${DAILY_SPENDING_LIMIT} reached. Come back tomorrow or contact support to increase limit.` :
+                                `一日の支出制限$${DAILY_SPENDING_LIMIT}に達しました。明日またお越しいただくか、サポートに連絡して制限を引き上げてください。`;
+                alert(limitMsg);
+                return;
+            }
+            
+            const confirmMsg = currentLanguage === 'zh' ? 
+                `確認購買 ${plan} 方案 ($${amount})?\n\n⚠️ 今日已消費: $${dailySpent}\n每日限額: $${DAILY_SPENDING_LIMIT}` :
+                currentLanguage === 'en' ? 
+                `Confirm purchase ${plan} plan ($${amount})?\n\n⚠️ Today spent: $${dailySpent}\nDaily limit: $${DAILY_SPENDING_LIMIT}` :
+                `${plan}プランの購入を確認 ($${amount})?\n\n⚠️ 今日の支出: $${dailySpent}\n一日の制限: $${DAILY_SPENDING_LIMIT}`;
+            
+            if (confirm(confirmMsg)) {
+                dailySpent += amount;
+                const successMsg = currentLanguage === 'zh' ? 
+                    `🎉 購買成功！歡迎成為 ${plan} 會員！享受專屬特權與無限占卜服務。` :
+                    currentLanguage === 'en' ? 
+                    `🎉 Purchase successful! Welcome ${plan} member! Enjoy exclusive privileges and unlimited divination services.` :
+                    `🎉 購入成功！${plan}メンバーへようこそ！独占特典と無制限占卜サービスをお楽しみください。`;
+                alert(successMsg);
+            }
+        }
+        
+        // Monetization Functions
+        function donate() {
+            // PayPal donation redirect
+            const donations = {
+                small: 'https://paypal.me/divineoracle/5',
+                medium: 'https://paypal.me/divineoracle/15', 
+                large: 'https://paypal.me/divineoracle/25'
+            };
+            
+            const choice = prompt('Choose donation amount:\n1 = $5 (Coffee)\n2 = $15 (Lunch)\n3 = $25 (Premium Support)\n\nEnter 1, 2, or 3:');
+            
+            if (choice === '1') window.open(donations.small, '_blank');
+            else if (choice === '2') window.open(donations.medium, '_blank');
+            else if (choice === '3') window.open(donations.large, '_blank');
+            else if (choice) alert('Thank you for considering! Please enter 1, 2, or 3.');
+        }
+        
+        function upgradePremium() {
+            alert('🌟 PREMIUM FEATURES:\n\n✨ Unlimited daily readings\n🔮 Advanced AI interpretations\n🌙 Exclusive cosmic insights\n📱 Priority support\n💎 Special card spreads\n\nComing Soon! Join our waitlist by donating $25.');
+            donate();
+        }
+        
+        // User counter animation
+        function animateCounter() {
+            const counter = document.querySelector('.user-counter');
+            if (counter) {
+                const baseCount = 10247;
+                const randomAdd = Math.floor(Math.random() * 20);
+                counter.textContent = `✨ ${(baseCount + randomAdd).toLocaleString()}+ Divine Readings Today`;
+            }
+        }
+        
+        // Update counter every 30 seconds
+        setInterval(animateCounter, 30000);
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+            animateCounter();
+        });
+        
+        // Initialize immediately if DOM is already ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+            animateCounter();
+        }
+    </script>
+</body>
+</html>

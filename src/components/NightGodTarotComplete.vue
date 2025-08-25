@@ -283,7 +283,7 @@ const switchLanguage = (lang: string) => {
   currentLanguage.value = lang
   localStorage.setItem('nightGodTarotLanguage', lang)
 }
-const isLoading = ref(false)
+const isLoading = ref(false) // Loading disabled by default
 const progress = ref(0)
 const currentStage = ref(0)
 const selectedCards = ref<TarotCard[]>([])
