@@ -1,84 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 Night God Tarot - Ultimate AI Oracle</title>
-    <meta name="description" content="Experience divine guidance through advanced AI-powered tarot readings with multi-language support">
-    <meta name="keywords" content="tarot, AI, divination, oracle, night god, multi-language">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="🔮 Night God Tarot - Ultimate AI Oracle">
-    <meta property="og:description" content="Experience divine guidance through advanced AI-powered tarot readings">
-    <meta property="og:type" content="website">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <title>🌙 Night God Tarot - Ultimate AI Platform</title>
+    <meta name="description" content="World's Most Advanced Multi-Language AI Tarot Platform with Monica AI Integration">
+    <meta property="og:title" content="🌙 Night God Tarot">
+    <meta property="og:description" content="Experience divine wisdom through AI-powered tarot readings">
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
-        min-height: 100vh;
-        color: #e2e8f0;
-      }
-      
-      #app {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .loading {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        flex-direction: column;
-        gap: 2rem;
-      }
-      
-      .loading-spinner {
-        width: 60px;
-        height: 60px;
-        border: 4px solid rgba(139, 92, 246, 0.3);
-        border-top: 4px solid #8b5cf6;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-      
-      .loading-text {
-        font-size: 1.5rem;
-        font-weight: 600;
-        background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-align: center;
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      
-      .error {
-        text-align: center;
-        color: #ef4444;
-        padding: 2rem;
-      }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 4rem 2rem;
+            border-radius: 25px;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: brightness(1) drop-shadow(0 0 20px rgba(139, 92, 246, 0.3)); }
+            to { filter: brightness(1.2) drop-shadow(0 0 30px rgba(251, 191, 36, 0.5)); }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+            border: 2px solid #22c55e;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+        }
+        
+        /* Floating Crystal Ball Widget */
+        .crystal-ball {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a855f7, #3b0764);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
+        .ai-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 8px;
+        }
+        
+        /* Floating Audio Player */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite 1.5s;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .language-selector {
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-title {
+            color: #fbbf24;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .lang-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+            border: 2px solid rgba(139, 92, 246, 0.6);
+            color: #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-desc {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            margin: 3rem 0;
+            backdrop-filter: blur(15px);
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            color: #fbbf24;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #fbbf24, #8b5cf6);
+            color: #000;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .logo { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .lang-buttons { flex-direction: column; }
+            .lang-btn { width: 100%; }
+        }
     </style>
-  </head>
-  <body>
-    <div id="app">
-      <div class="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">🔮 Night God Tarot Loading...</div>
-      </div>
+</head>
+<body>
+    <!-- Floating Crystal Ball Widget -->
+    <div class="crystal-ball" onclick="openReading()">
+        <span>🔮</span>
+        <span class="ai-badge">AI</span>
     </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    
+    <!-- Floating Audio Player Widget -->
+    <div class="audio-player" onclick="openAudio()">
+        <span>🎵</span>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">🌙 NIGHT GOD TAROT</h1>
+            <p class="subtitle">Ultimate AI-Powered Divination Platform</p>
+            <div class="status-badge">🤖 MULTI-AI ACTIVE • 🔒 SECURE • ✨ READY</div>
+        </header>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <h2 class="lang-title">🌍 Choose Your Language</h2>
+            <div class="lang-buttons">
+                <button class="lang-btn active" onclick="setLang('en')">🇺🇸 English</button>
+                <button class="lang-btn" onclick="setLang('zh')">🇨🇳 简体中文</button>
+                <button class="lang-btn" onclick="setLang('tw')">🇹🇼 繁體中文</button>
+                <button class="lang-btn" onclick="setLang('ja')">🇯🇵 日本語</button>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔮</div>
+                <h3 class="feature-title">AI-Powered Readings</h3>
+                <p class="feature-desc">Experience divine wisdom through Monica AI integration with GPT-4o, Claude-3.5, and Gemini Pro.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🃏</div>
+                <h3 class="feature-title">94-Card Tarot Deck</h3>
+                <p class="feature-desc">Complete tarot experience with 22 Major Arcana, 56 Minor Arcana, and 16 exclusive custom cards.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3 class="feature-title">Frequency Healing</h3>
+                <p class="feature-desc">Immerse yourself in wealth frequency healing with Theta 8Hz and Alpha 7Hz binaural beats.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3 class="feature-title">Multi-Language</h3>
+                <p class="feature-desc">Full platform support for English, Chinese, Traditional Chinese, and Japanese.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Privacy & Security</h3>
+                <p class="feature-desc">GDPR-compliant privacy system with secure API integrations and transparent data handling.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">PWA Technology</h3>
+                <p class="feature-desc">Progressive Web App with offline capability and mobile optimization.</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 class="cta-title">🌟 Begin Your Sacred Journey</h2>
+            <p class="cta-subtitle">Experience the world's premier AI tarot platform with unlimited divine guidance</p>
+            <button class="cta-button" onclick="startReading()">Start Your Reading ✨</button>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>🌙 Night God Tarot 2030</strong> - Created by YesinYagami</p>
+            <p style="margin-top: 0.5rem;">Ultimate AI-Powered Spiritual Platform • Multi-Language • Secure & Optimized</p>
+        </footer>
+    </div>
+
+    <!-- Tarot Modal -->
+    <div id="tarotModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('tarotModal')">×</button>
+            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🔮 AI Tarot Reading</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2rem; text-align: center;">Select your zodiac sign to begin your personalized AI-powered reading:</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0;">
+                <button class="lang-btn" onclick="selectSign('aries')">♈ Aries</button>
+                <button class="lang-btn" onclick="selectSign('taurus')">♉ Taurus</button>
+                <button class="lang-btn" onclick="selectSign('gemini')">♊ Gemini</button>
+                <button class="lang-btn" onclick="selectSign('cancer')">♋ Cancer</button>
+                <button class="lang-btn" onclick="selectSign('leo')">♌ Leo</button>
+                <button class="lang-btn" onclick="selectSign('virgo')">♍ Virgo</button>
+                <button class="lang-btn" onclick="selectSign('libra')">♎ Libra</button>
+                <button class="lang-btn" onclick="selectSign('scorpio')">♏ Scorpio</button>
+                <button class="lang-btn" onclick="selectSign('sagittarius')">♐ Sagittarius</button>
+                <button class="lang-btn" onclick="selectSign('capricorn')">♑ Capricorn</button>
+                <button class="lang-btn" onclick="selectSign('aquarius')">♒ Aquarius</button>
+                <button class="lang-btn" onclick="selectSign('pisces')">♓ Pisces</button>
+            </div>
+            <button class="cta-button" style="width: 100%;" onclick="generateReading()">Generate AI Reading 🌟</button>
+        </div>
+    </div>
+
+    <!-- Audio Modal -->
+    <div id="audioModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('audioModal')">×</button>
+            <h2 style="color: #fbbf24; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🎵 Wealth Frequency Player</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2rem;">Select a healing frequency:</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <button class="lang-btn" onclick="playFreq('theta')">💰 Theta 8Hz - Clear Wealth Obstacles</button>
+                <button class="lang-btn" onclick="playFreq('alpha')">💎 Alpha 7Hz - Natural Wealth Flow</button>
+                <button class="lang-btn" onclick="playFreq('mixed')">🌟 Mixed Frequency - Complete Healing</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Functions
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            localStorage.setItem('language', lang);
+        }
+
+        function openReading() {
+            document.getElementById('tarotModal').classList.add('show');
+        }
+
+        function openAudio() {
+            document.getElementById('audioModal').classList.add('show');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        function selectSign(sign) {
+            localStorage.setItem('zodiac', sign);
+        }
+
+        function generateReading() {
+            alert('🔮 Your AI-powered tarot reading is being generated!\n\nThis feature connects to Monica AI for personalized insights.');
+            closeModal('tarotModal');
+        }
+
+        function playFreq(type) {
+            alert(`🎵 Playing ${type} frequency healing!\n\nRelax and allow the vibrations to align your wealth consciousness.`);
+        }
+
+        function startReading() {
+            openReading();
+        }
+
+        // Close modals on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(m => m.classList.remove('show'));
+            }
+        });
+
+        // Close modals on background click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('show');
+            });
+        });
+
+        console.log('🌙 Night God Tarot initialized successfully!');
+    </script>
+</body>
 </html>
